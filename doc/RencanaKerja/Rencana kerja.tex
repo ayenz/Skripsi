@@ -1,0 +1,128 @@
+\documentclass[a4paper,twoside]{article}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{float}
+\pagestyle{myheadings}
+\usepackage{etoolbox}
+\usepackage{setspace} 
+\usepackage{lipsum} 
+\setlength{\headsep}{30pt}
+\usepackage[inner=2cm,outer=2.5cm,top=2.5cm,bottom=2cm]{geometry} %margin
+% \pagestyle{empty}
+
+\makeatletter
+\renewcommand{\@maketitle} {\begin{center} {\LARGE \textbf{ \textsc{\@title}} \par} \bigskip {\large \textbf{\textsc{\@author}} }\end{center} }
+\renewcommand{\thispagestyle}[1]{}
+\markright{\textbf{\textsc{AIF401/AIF402 \textemdash Rencana Kerja Skripsi \textemdash Sem. Ganjil 2017/2018}}}
+
+\onehalfspacing
+ 
+\begin{document}
+
+\title{\@judultopik}
+\author{\nama \textendash \@npm} 
+
+%tulis nama dan NPM anda di sini:
+\newcommand{\nama}{Stillmen Vallian}
+\newcommand{\@npm}{2014730083}
+\newcommand{\@judultopik}{Kustomisasi Sharif Judge untuk Kebutuhan Program Studi Teknik Informatika} % Judul/topik anda
+\newcommand{\jumpemb}{1} % Jumlah pembimbing, 1 atau 2
+\newcommand{\tanggal}{04/09/2017}
+
+% Dokumen hasil template ini harus dicetak bolak-balik !!!!
+
+\maketitle
+
+\pagenumbering{arabic}
+
+\section{Deskripsi}
+Jurusan Teknik Informatika merupakan salah satu jurusan yang banyak diminati. Salah satu penyebabnya yaitu kemajuan teknologi yang pesat. Perkembangan teknologi tersebut bisa dalam bentuk perangkat keras dan perangkat lunak. Dengan berkembangnya perangkat lunak akan membantu mahasiswa dan dosen dalam proses pembelajaran. Perangkat lunak yang sering digunakan yaitu \textit{grader} (pengoreksi) otomatis.
+
+Sharif Judge adalah \textit{grader} otomatis yang mampu menilai ketepatan serta performansi program yang dikumpulkan mahasiswa. Perangkat lunak ini digunakan oleh jurusan Teknik Informatika Universitas Katolik Parahyangan. Namun perangkat lunak ini terakhir diperbarui Juli 2015. Hal ini menyebabkan Sharif Judge menjadi kurang memenuhi kebutuhan program studi Teknik Informatika. 
+
+Pada skripsi ini, akan mengkustomisasi Sharif Judge agar sesuai dengan kebutuhan yang telah dianalisis. Dari kebutuhan yang dianalisis, akan dirancang fitur-fitur untuk diimplementasikan pada Sharif Judge. Dengan pengimplementasian fitur yang baru, diharapkan kebutuhan mahasiswa dan dosen dapat terpenuhi.
+\section{Rumusan Masalah}
+Agar pembahasan masalah tidak terlalu luas, rumusan masalah yang akan dikaji adalah sebagai berikut:
+\begin{itemize}
+	\item Bagaimana cara kerja Sharif Judge?
+	\item Bagaimana cara kustomisasi Sharif Judge untuk kebutuhan program studi teknik informatika?
+\end{itemize}
+
+\section{Tujuan}
+Adapun tujuan penelitian yang dilakukan adalah untuk:
+\begin{itemize}
+	\item Mempelajari cara kerja Sharif Judge.
+	\item Mengimplementasi kebutuhan program studi teknik informatika pada Sharif Judge.
+\end{itemize}
+
+\section{Deskripsi Perangkat Lunak}
+Pada skripsi ini akan mengkustomisasi Sharif Judge sesuai dengan kebutuhan program studi Teknik Informatika.
+
+Perangkat lunak akhir yang akan dibuat memiliki fitur minimal sebagai berikut:
+\begin{itemize}
+	\item Perangkat lunak dapat menjalankan fitur sebelumnya yang sudah ada.
+	\item Perangkat lunak pada skripsi ini akan mengimplementasikan fitur yang telah digali kebutuhannya pada tahap analisis.
+		
+\end{itemize}
+
+\section{Detail Pengerjaan Skripsi}
+Bagian-bagian pekerjaan skripsi ini adalah sebagai berikut :
+	\begin{enumerate}
+		\item Melakukan studi literatur mengenai Sharif Judge, CodeIgniter.
+		\item Menganalisis kebutuhan-kebutuhan dari para dosen dan Github Sharif Judge issues.
+		\item Merancang dan menentukan fitur yang akan diimplementasi.
+		\item Mengimplementasikan fitur terhadap perangkat lunak.
+		\item Menguji secara langsung perangkat lunak.
+		\item Membuat dokumentasi perangkat lunak.
+		\item Menulis dokumen skripsi
+	\end{enumerate}
+
+\section{Rencana Kerja}
+
+\begin{center}
+  	\begin{tabular}{ | c | c | c | c | l |}
+    \hline
+    1*  & 2*(\%) & 3*(\%) & 4*(\%) &5*\\ \hline \hline
+    1   & 5  & 5  &  &  \\ \hline
+    2   & 10 & 10 &  & \\ \hline
+    3   & 10 & 10 &  &  \\ \hline
+    4   & 25 & 10 & 15 &  {\footnotesize implementasi fitur sebagian pada Skripsi 1} \\ \hline
+    5   & 15 &    & 15 &  \\ \hline
+    6   & 15 &    & 15 & \\ \hline
+    7   & 20 & 10 & 10 &  {\footnotesize bagian bab 1 dan bab 2 serta bagian awal analisis di Skripsi 1} \\ \hline
+    Total  & 100  & 45  & 55 &  \\ \hline
+	\end{tabular}
+\end{center}
+
+Keterangan (*)\\
+1 : Bagian pengerjaan Skripsi (nomor disesuaikan dengan detail pengerjaan di bagian 5)\\
+2 : Persentase total \\
+3 : Persentase yang akan diselesaikan di Skripsi 1 \\
+4 : Persentase yang akan diselesaikan di Skripsi 2 \\
+5 : Penjelasan singkat apa yang dilakukan di S1 (Skripsi 1) atau S2 (Skripsi 2)
+
+\vspace{1cm}
+\centering Bandung, \tanggal\\
+\vspace{2cm} \nama \\ 
+\vspace{1cm}
+
+Menyetujui, \\
+\ifdefstring{\jumpemb}{2}{
+\vspace{1.5cm}
+\begin{centering} Menyetujui,\\ \end{centering} \vspace{0.75cm}
+\begin{minipage}[b]{0.45\linewidth}
+% \centering Bandung, \makebox[0.5cm]{\hrulefill}/\makebox[0.5cm]{\hrulefill}/2013 \\
+\vspace{2cm} Nama: \makebox[3cm]{\hrulefill}\\ Pembimbing Utama
+\end{minipage} \hspace{0.5cm}
+\begin{minipage}[b]{0.45\linewidth}
+% \centering Bandung, \makebox[0.5cm]{\hrulefill}/\makebox[0.5cm]{\hrulefill}/2013\\
+\vspace{2cm} Nama: \makebox[3cm]{\hrulefill}\\ Pembimbing Pendamping
+\end{minipage}
+\vspace{0.5cm}
+}{
+% \centering Bandung, \makebox[0.5cm]{\hrulefill}/\makebox[0.5cm]{\hrulefill}/2013\\
+\vspace{2cm} Nama: \makebox[3cm]{\hrulefill}\\ Pembimbing Tunggal
+}
+\end{document}
+
