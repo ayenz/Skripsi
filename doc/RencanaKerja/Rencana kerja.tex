@@ -28,7 +28,7 @@
 \newcommand{\@npm}{2014730083}
 \newcommand{\@judultopik}{Kustomisasi Sharif Judge untuk Kebutuhan Program Studi Teknik Informatika} % Judul/topik anda
 \newcommand{\jumpemb}{1} % Jumlah pembimbing, 1 atau 2
-\newcommand{\tanggal}{04/09/2017}
+\newcommand{\tanggal}{12/09/2017}
 
 % Dokumen hasil template ini harus dicetak bolak-balik !!!!
 
@@ -37,23 +37,24 @@
 \pagenumbering{arabic}
 
 \section{Deskripsi}
-Jurusan Teknik Informatika merupakan salah satu jurusan yang banyak diminati. Salah satu penyebabnya yaitu kemajuan teknologi yang pesat. Perkembangan teknologi tersebut bisa dalam bentuk perangkat keras dan perangkat lunak. Dengan berkembangnya perangkat lunak akan membantu mahasiswa dan dosen dalam proses pembelajaran. Perangkat lunak yang sering digunakan yaitu \textit{grader} (pengoreksi) otomatis.
+Sharif Judge adalah \textit{grader} otomatis yang mampu menilai ketepatan serta performansi program yang dikumpulkan mahasiswa. Perangkat lunak ini diciptakan oleh Mohammad Javad Naderi dan bersifat \textit{open source}. Cara kerja perangkat lunak ini dimulai dari dosen memasukan data yang dibutuhkan berupa soal, peserta, dan kunci jawaban. Data yang dimasukan tersebut dapat diakses oleh para peserta. Peserta dapat mengumpulkan jawaban dalam bentuk kode program ke dalam Sharif Judge. Sharif Judge akan menjalankan kode program dan menyesuaikan dengan kunci jawaban, lalu \textit{grader} akan menilai jawaban para peserta.
 
-Sharif Judge adalah \textit{grader} otomatis yang mampu menilai ketepatan serta performansi program yang dikumpulkan mahasiswa. Perangkat lunak ini digunakan oleh jurusan Teknik Informatika Universitas Katolik Parahyangan. Namun perangkat lunak ini terakhir diperbarui Juli 2015. Hal ini menyebabkan Sharif Judge menjadi kurang memenuhi kebutuhan program studi Teknik Informatika. 
+Sharif Judge digunakan oleh Jurusan Teknik Informatika Universitas Katolik Parahyangan pada mata kuliah seperti Algoritma dan Struktur Data serta Desain Analisis dan Algoritma. Pada prakteknya Sharif Judge masih butuh pengembangan, karena Jurusan Teknik Informatika memiliki kebutuhan yang lebih spesifik seperti login yang terintegrasi dengan password pada Teknik Informatika. Selain itu Sharif Judge terakhir dicommit pada Github pada bulan Juli 2015, dan masih ada beberapa bug yang belum diperbaiki. Hal tersebut menyebabkan Sharif Judge kurang memenuhi kebutuhan program studi Teknik Informatika. 
 
-Pada skripsi ini, akan mengkustomisasi Sharif Judge agar sesuai dengan kebutuhan yang telah dianalisis. Dari kebutuhan yang dianalisis, akan dirancang fitur-fitur untuk diimplementasikan pada Sharif Judge. Dengan pengimplementasian fitur yang baru, diharapkan kebutuhan mahasiswa dan dosen dapat terpenuhi.
+Pada skripsi ini, peneliti akan mengembangkan Sharif Judge agar sesuai dengan kebutuhan yang disebutkan diatas. Dari kebutuhan yang disebutkan diatas, akan dirancang fitur-fitur untuk diimplementasikan pada Sharif Judge. Dengan pengimplementasian fitur yang baru, diharapkan kebutuhan mahasiswa dan dosen dapat terpenuhi.
 \section{Rumusan Masalah}
-Agar pembahasan masalah tidak terlalu luas, rumusan masalah yang akan dikaji adalah sebagai berikut:
+Rumusan masalah pada penelitian ini sebagai berikut:
 \begin{itemize}
-	\item Bagaimana cara kerja Sharif Judge?
-	\item Bagaimana cara kustomisasi Sharif Judge untuk kebutuhan program studi teknik informatika?
+	\item Bagaimana cara mengembangkan fitur-fitur yang dibutuhkan oleh Teknik Informatika? 
+	\item Bagaimana mengembangkan Sharif Judge sehingga memenuhi kebutuhan Teknik Informatika?
 \end{itemize}
 
 \section{Tujuan}
 Adapun tujuan penelitian yang dilakukan adalah untuk:
 \begin{itemize}
-	\item Mempelajari cara kerja Sharif Judge.
+	\item Menganalisa fitur-fitur yang dibutuhkan Teknik Informatika.
 	\item Mengimplementasi kebutuhan program studi Teknik Informatika pada Sharif Judge.
+	\pagebreak
 \end{itemize}
 
 \section{Deskripsi Perangkat Lunak}
@@ -69,13 +70,13 @@ Perangkat lunak akhir yang akan dibuat memiliki fitur minimal sebagai berikut:
 \section{Detail Pengerjaan Skripsi}
 Bagian-bagian pekerjaan skripsi ini adalah sebagai berikut :
 	\begin{enumerate}
-		\item Melakukan studi literatur mengenai Sharif Judge, CodeIgniter.
-		\item Menganalisis kebutuhan-kebutuhan dari para dosen dan Github Sharif Judge issues.
+		\item Melakukan studi literatur mengenai Sharif Judge dan CodeIgniter.
+		\item Menganalisis kebutuhan-kebutuhan dari para dosen pengguna Sharif Judge dan daftar isu pada repositori Sharif Judge pada Github.
 		\item Merancang dan menentukan fitur yang akan diimplementasi.
 		\item Mengimplementasikan fitur terhadap perangkat lunak.
-		\item Menguji secara langsung perangkat lunak.
+		\item Mengujikan perangkat lunak ke mata kuliah selama satu semester
 		\item Membuat dokumentasi perangkat lunak.
-		\item Menulis dokumen skripsi
+		\item Menulis dokumen skripsi.
 	\end{enumerate}
 
 \section{Rencana Kerja}
@@ -84,14 +85,14 @@ Bagian-bagian pekerjaan skripsi ini adalah sebagai berikut :
   	\begin{tabular}{ | c | c | c | c | l |}
     \hline
     1*  & 2*(\%) & 3*(\%) & 4*(\%) &5*\\ \hline \hline
-    1   & 5  & 5  &  &  \\ \hline
-    2   & 10 & 10 &  & \\ \hline
-    3   & 10 & 10 &  &  \\ \hline
-    4   & 25 & 10 & 15 &  {\footnotesize implementasi fitur sebagian pada Skripsi 1} \\ \hline
+    1   & 5 & 5 &  &  \\ \hline
+    2   & 5 & 5 &  & \\ \hline
+    3   & 5 & 5 &  &  \\ \hline
+    4   & 35 & 20 & 15 &  {\footnotesize implementasi fitur sebagian pada Skripsi 1} \\ \hline
     5   & 15 &    & 15 &  \\ \hline
-    6   & 15 &    & 15 & \\ \hline
-    7   & 20 & 10 & 10 &  {\footnotesize bagian bab 1 dan bab 2 serta bagian awal analisis di Skripsi 1} \\ \hline
-    Total  & 100  & 45  & 55 &  \\ \hline
+    6   & 15 &    & 15 &  \\ \hline
+    7   & 20 & 5 & 15 &  {\footnotesize bagian bab 1 dan bab 2 serta bagian awal analisis di Skripsi 1} \\ \hline
+    Total  & 100  & 40  & 60 &  \\ \hline
 	\end{tabular}
 \end{center}
 
@@ -101,6 +102,7 @@ Keterangan (*)\\
 3 : Persentase yang akan diselesaikan di Skripsi 1 \\
 4 : Persentase yang akan diselesaikan di Skripsi 2 \\
 5 : Penjelasan singkat apa yang dilakukan di S1 (Skripsi 1) atau S2 (Skripsi 2)
+\pagebreak
 
 \vspace{1cm}
 \centering Bandung, \tanggal\\
