@@ -4,41 +4,71 @@
    
 \section{Latar Belakang}
 \label{sec:label}
+\textit{Sharif Judge} adalah \textit{grader} otomatis yang mampu menilai ketepatan serta performansi program yang dikumpulkan mahasiswa. Perangkat lunak ini diciptakan oleh Mohammad Javad Naderi dan bersifat \textit{open source}. \textit{Web interface} perangkat lunak ini dibuat menggunakan \textit{framework CodeIgniter} dan \textit{backend} menggunakan \textit{BASH}. Selain sebagai \textit{grader}, perangkat lunak ini memiliki banyak fungsi seperti deteksi plagiarisme jawaban para peserta. Cara kerja perangkat lunak ini dimulai dari dosen memasukan data yang dibutuhkan berupa soal, peserta, dan kunci jawaban. Data yang dimasukan tersebut dapat diakses oleh para peserta. Peserta dapat mengumpulkan jawaban dalam bentuk kode program ke dalam \textit{Sharif Judge}. \textit{Sharif Judgr} akan menjalankan kode program dan menyesuaikan dengan kunci jawaban, lalu \textit{grader} akan menilai jawaban para peserta.
 
-Bagian ini akan diisi dengan apa yang melatarbelakangi pembuatan template skripsi ini.
-Termasuk juga masalah-masalah yang akan dihadapi untuk membuatnya, termasuk kurangnya kemampuan penguasaan \LaTeX{} sehingga template ini dibuat dengan mengandalkan berbagai contoh yang tersebar di dunia maya, yang digabung-gabung menjadi satu jua.
-Bagian lain juga akan dilengkapi, untuk sementara diisi dengan lorem ipsum versi bahasa inggris.
+\textit{Sharif Judge} digunakan oleh Jurusan Teknik Informatika Universitas Katolik Parahyangan pada mata kuliah seperti Algoritma dan Struktur Data serta Desain Analisis dan Algoritma. Perangkat lunak ini sangat membantu dosen dan mahasiswa dalam bidang akademik. Sistem penilaian otomatis merupakan salah satu fitur yang sering digunakan oleh para dosen. Dengan memanfaatkan fitur diatas, dosen dapat dengan mudah memberikan nilai tugas, kuis, atau ujian ke mahasiswa. Mahasiswa juga dapat melihat nilai secara langsung setelah jawaban dikumpulkan. Jika masih ada waktu, mahasiswa masih dapat memperbaiki jawaban yang salah. Ketika waktu sudah habis, jawaban terakhir yang dikumpulkan akan diambil sebagai jawaban final mahasiswa.
 
-\dtext{5-10}
+Pada prakteknya \textit{Sharif Judge} masih butuh pengembangan, karena Jurusan Teknik Informatika memiliki kebutuhan yang lebih spesifik seperti \textit{login} yang terintegrasi dengan \textit{password} pada Teknik Informatika. Selain itu Sharif Judge terakhir dicommit pada \textit{Github} pada bulan Juli 2015, dan masih ada beberapa bug yang belum diperbaiki. Hal tersebut menyebabkan \textit{Sharif Judge} kurang memenuhi kebutuhan program studi Teknik Informatika. 
+
+Pada skripsi ini, peneliti akan mengembangkan \textit{Sharif Judge} agar sesuai dengan kebutuhan yang disebutkan diatas. Dari kebutuhan yang disebutkan diatas, akan dirancang fitur-fitur untuk diimplementasikan pada \textit{Sharif Judge}. Dengan pengimplementasian fitur yang baru, diharapkan kebutuhan mahasiswa dan dosen dapat terpenuhi.
 
 \section{Rumusan Masalah}
 \label{sec:rumusan}
-Bagian ini akan diisi dengan penajaman dari masalah-masalah yang sudah diidentifikasi di bagian sebelumnya. 
-
-\dtext{6}
+\begin{enumerate}
+	\item Bagaimana cara mengembangkan fitur-fitur yang dibutuhkan oleh Teknik Informatika?
+	\item Bagaimana mengembangkan Sharif Judge sehingga memenuhi kebutuhan Teknik Informatika?
+\end{enumerate}
 
 \section{Tujuan}
 \label{sec:tujuan}
-Akan dipaparkan secara lebih terperinci dan tersturkur apa yang menjadi tujuan pembuatan template skripsi ini
-
-\dtext{7}
+\begin{enumerate}
+	\item Menganalisa fitur-fitur yang dibutuhkan Teknik Informatika.
+	\item Mengimplementasi kebutuhan program studi Teknik Informatika pada \textit{Sharif Judge}.
+\end{enumerate}
 
 \section{Batasan Masalah}
 \label{sec:batasan}
-Untuk mempermudah pembuatan template ini, tentu ada hal-hal yang harus dibatasi, misalnya saja bahwa template ini bukan berupa style \LaTeX{} pada umumnya (dengan alasannya karena belum mampu jika diminta membuat seperti itu)
-
-\dtext{8}
+Batasan masalah yang dibuat terkait dengan pengerjaan skripsi ini adalah sebagai berikut:
+\begin{enumerate}
+	\item Perangkat lunak akan dikembangkan sesuai dengan kebutuhan yang telah dianalisis oleh para dosen pengguna \textit{Sharif Judge}.
+\end{enumerate}
 
 \section{Metodologi}
-\label{sec:metlit}
-Tentunya akan diisi dengan metodologi yang serius sehingga templatenya terkesan lebih serius.
+\label{sec:metlit}Metodologi yang dilakukan dalam pengerjaan skripsi ini adalah sebagai berikut:
 
-\dtext{9}
+\begin{enumerate}
+	\item Studi literatur mengenai :
+		\begin{itemize}
+			\item \textit{CodeIgniter} sebagai framework untuk memperbaiki perangkat lunak.
+			\item Dokumentasi \textit{Sharif Judge} sebagai panduan untuk mengganti kode yang ada pada perangkat lunak.
+		\end{itemize}
+	\item Menganalisis kebutuhan-kebutuhan dari para dosen pengguna Sharif Judge dan daftar isu pada repositori Sharif Judge pada Github.
+	\item Merancang dan menentukan fitur yang akan diimplementasi.
+	\item Mengimplementasikan fitur terhadap perangkat lunak.
+	\item Mengujikan perangkat lunak ke mata kuliah selama satu semester.
+	\item Membuat dokumentasi perangkat lunak.
+\end{enumerate}
 
 \section{Sistematika Pembahasan}
 \label{sec:sispem}
-Rencananya Bab 2 akan berisi petunjuk penggunaan template dan dasar-dasar \LaTeX.
-Mungkin bab 3,4,5 dapt diisi oleh ketiga jurusan, misalnya peraturan dasar skripsi atau pedoman penulisan, tentu jika berkenan.
-Bab 6 akan diisi dengan kesimpulan, bahwa membuat template ini ternyata sungguh menghabiskan banyak waktu.
+Setiap bab dalam skripsi ini memiliki sistematika penulisan yang dijelaskan kedalam poin-poin sebagai berikut:
 
-\dtext{10}
+\begin{enumerate}
+	\item Bab 1 : Pendahuluan \\
+	Bab 1 membahas mengenai gambaran umum penelitian ini. Berisi tentang latar belakang, rumusan masalah, tujuan, batasan masalah, metode penelitian, dan sistematika penulisan.
+	
+	\item Bab 2 : Dasar Teori \\
+	Bab 2 membahas mengenai teori-teori yang mendukung berjalannya penelitian ini. Berisi tentang \textit{CodeIgniter} dan dokumentasi \textit{Sharif Judge}.
+	
+	\item Bab 3 : Analisis \\
+	Bab 3 membahas mengenai analisa masalah.
+	
+	\item Bab 4 : Perancangan \\
+	Bab 4 membahas mengenai perancangan yang dilakukan sebelum melakukan tahapan implementasi.
+	
+	\item Bab 5 : Implementasi dan Pengujian \\
+	Bab 5 membahas mengenai implementasi dan pengujian yang telah dilakukan.
+	
+	\item Bab 6 : Kesimpulan dan Saran \\
+	Bab 6 membahas hasil kesimpulan dari keseluruhan penelitian ini dan saran-saran yang dapat diberikan untuk penelitian berikutnya.
+\end{enumerate}
