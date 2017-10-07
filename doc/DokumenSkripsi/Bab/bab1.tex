@@ -4,25 +4,25 @@
    
 \section{Latar Belakang}
 \label{sec:label}
-\textit{Sharif Judge} adalah \textit{grader} otomatis yang mampu menilai ketepatan serta performansi program yang dikumpulkan mahasiswa. Perangkat lunak ini diciptakan oleh Mohammad Javad Naderi dan bersifat \textit{open source}. \textit{Web interface} perangkat lunak ini dibuat menggunakan \textit{framework CodeIgniter} dan \textit{backend} menggunakan \textit{BASH}. Selain sebagai \textit{grader}, perangkat lunak ini memiliki banyak fungsi seperti deteksi plagiarisme jawaban para peserta. Cara kerja perangkat lunak ini dimulai dari dosen memasukan data yang dibutuhkan berupa soal, peserta, dan kunci jawaban. Data yang dimasukan tersebut dapat diakses oleh para peserta. Peserta dapat mengumpulkan jawaban dalam bentuk kode program ke dalam \textit{Sharif Judge}. \textit{Sharif Judgr} akan menjalankan kode program dan menyesuaikan dengan kunci jawaban, lalu \textit{grader} akan menilai jawaban para peserta.
+\textit{Sharif Judge} adalah \textit{grader} otomatis yang mampu menilai ketepatan serta performansi program yang dikumpulkan mahasiswa. Perangkat lunak ini diciptakan oleh Mohammad Javad Naderi dan bersifat \textit{open source}. \textit{Web Interface} perangkat lunak ini dibuat menggunakan \textit{framework CodeIgniter} dan \textit{backend} menggunakan \textit{BASH} \cite{mjnaderi:14:sharifjudge}. Selain sebagai \textit{grader}, perangkat lunak ini memiliki beberapa fungsi seperti deteksi plagiarisme jawaban para peserta. Cara kerja perangkat lunak ini dimulai dari dosen memasukan data yang dibutuhkan berupa soal, peserta, dan kunci jawaban. Data yang dimasukan tersebut dapat diakses oleh para peserta. Peserta dapat mengumpulkan jawaban dalam bentuk kode program ke dalam \textit{Sharif Judge}. \textit{Sharif Judge} akan menjalankan kode program dan menyesuaikan dengan kunci jawaban, lalu \textit{grader} akan menilai jawaban para peserta.
 
-\textit{Sharif Judge} digunakan oleh Jurusan Teknik Informatika Universitas Katolik Parahyangan pada mata kuliah seperti Algoritma dan Struktur Data serta Desain Analisis dan Algoritma. Perangkat lunak ini sangat membantu dosen dan mahasiswa dalam bidang akademik. Sistem penilaian otomatis merupakan salah satu fitur yang sering digunakan oleh para dosen. Dengan memanfaatkan fitur diatas, dosen dapat dengan mudah memberikan nilai tugas, kuis, atau ujian ke mahasiswa. Mahasiswa juga dapat melihat nilai secara langsung setelah jawaban dikumpulkan. Jika masih ada waktu, mahasiswa masih dapat memperbaiki jawaban yang salah. Ketika waktu sudah habis, jawaban terakhir yang dikumpulkan akan diambil sebagai jawaban final mahasiswa.
+\textit{Sharif Judge} digunakan oleh Jurusan Teknik Informatika Universitas Katolik Parahyangan pada mata kuliah seperti Algoritma dan Struktur Data serta Desain Analisis dan Algoritma. Perangkat lunak ini sangat membantu dosen dan mahasiswa dalam bidang akademik. Sistem penilaian otomatis merupakan salah satu fitur yang sering digunakan oleh para dosen. Dengan memanfaatkan fitur di atas, dosen dapat dengan mudah memberikan nilai tugas, kuis, atau ujian ke mahasiswa. Mahasiswa juga dapat melihat nilai secara langsung setelah jawaban dikumpulkan. Jika masih ada waktu, mahasiswa masih dapat memperbaiki jawaban yang salah. Ketika waktu sudah habis, jawaban terakhir yang dikumpulkan akan diambil sebagai jawaban final mahasiswa.
 
-Pada prakteknya \textit{Sharif Judge} masih butuh pengembangan, karena Jurusan Teknik Informatika memiliki kebutuhan yang lebih spesifik seperti \textit{login} yang terintegrasi dengan \textit{password} pada Teknik Informatika. Selain itu Sharif Judge terakhir dicommit pada \textit{Github} pada bulan Juli 2015, dan masih ada beberapa bug yang belum diperbaiki. Hal tersebut menyebabkan \textit{Sharif Judge} kurang memenuhi kebutuhan program studi Teknik Informatika. 
+Pada prakteknya \textit{Sharif Judge} masih butuh pengembangan, karena Jurusan Teknik Informatika memiliki kebutuhan yang lebih spesifik seperti \textit{login} yang terintegrasi dengan \textit{password} pada Teknik Informatika. Selain itu \textit{Sharif Judge} terakhir dicommit pada \textit{Github} pada bulan Juli 2015, dan masih ada beberapa bug yang belum diperbaiki. Hal tersebut menyebabkan \textit{Sharif Judge} kurang memenuhi kebutuhan program studi Teknik Informatika. 
 
 Pada skripsi ini, peneliti akan mengembangkan \textit{Sharif Judge} agar sesuai dengan kebutuhan yang disebutkan diatas. Dari kebutuhan yang disebutkan diatas, akan dirancang fitur-fitur untuk diimplementasikan pada \textit{Sharif Judge}. Dengan pengimplementasian fitur yang baru, diharapkan kebutuhan mahasiswa dan dosen dapat terpenuhi.
 
 \section{Rumusan Masalah}
 \label{sec:rumusan}
 \begin{enumerate}
-	\item Bagaimana cara mengembangkan fitur-fitur yang dibutuhkan oleh Teknik Informatika?
+	\item Fitur-fitur apa saja yang dibutuhkan oleh Teknik Informatika?
 	\item Bagaimana mengembangkan Sharif Judge sehingga memenuhi kebutuhan Teknik Informatika?
 \end{enumerate}
 
 \section{Tujuan}
 \label{sec:tujuan}
 \begin{enumerate}
-	\item Menganalisa fitur-fitur yang dibutuhkan Teknik Informatika.
+	\item Menganalisa dan mengetahui fitur-fitur yang dibutuhkan Teknik Informatika.
 	\item Mengimplementasi kebutuhan program studi Teknik Informatika pada \textit{Sharif Judge}.
 \end{enumerate}
 
@@ -30,7 +30,7 @@ Pada skripsi ini, peneliti akan mengembangkan \textit{Sharif Judge} agar sesuai 
 \label{sec:batasan}
 Batasan masalah yang dibuat terkait dengan pengerjaan skripsi ini adalah sebagai berikut:
 \begin{enumerate}
-	\item Perangkat lunak akan dikembangkan sesuai dengan kebutuhan yang telah dianalisis oleh para dosen pengguna \textit{Sharif Judge}.
+	\item Perangkat lunak akan dikembangkan sesuai dengan kebutuhan yang telah dianalisis oleh para dosen pengguna dan daftar isu pada repositori \textit{Sharif Judge}.
 \end{enumerate}
 
 \section{Metodologi}
@@ -39,10 +39,10 @@ Batasan masalah yang dibuat terkait dengan pengerjaan skripsi ini adalah sebagai
 \begin{enumerate}
 	\item Studi literatur mengenai :
 		\begin{itemize}
-			\item \textit{CodeIgniter} sebagai framework untuk memperbaiki perangkat lunak.
-			\item Dokumentasi \textit{Sharif Judge} sebagai panduan untuk mengganti kode yang ada pada perangkat lunak.
+			\item \textit{CodeIgniter} sebagai framework untuk mengembangkan perangkat lunak.
+			\item Dokumentasi \textit{Sharif Judge} sebagai panduan untuk mengembangkan perangkat lunak.
 		\end{itemize}
-	\item Menganalisis kebutuhan-kebutuhan dari para dosen pengguna Sharif Judge dan daftar isu pada repositori Sharif Judge pada Github.
+	\item Menganalisis kebutuhan-kebutuhan dari para dosen pengguna Sharif Judge dan daftar isu pada repositori \textit{Sharif Judge} pada \textit{Github}.
 	\item Merancang dan menentukan fitur yang akan diimplementasi.
 	\item Mengimplementasikan fitur terhadap perangkat lunak.
 	\item Mengujikan perangkat lunak ke mata kuliah selama satu semester.
