@@ -24,20 +24,20 @@ Beberapa keunggulan dari \textit{CodeIgniter} yaitu:
 	\item Tidak Membutuhkan \textit{Template Engine} \\
 		\textit{CodeIgniter} dilengkapi dengan \textit{template parser} sederhana yang dapat digunakan secara opsional. \textit{Template Engine} tidak dapat menandingi kinerja dari \textit{native} PHP. Sintak yang harus dipelajari untuk menggunakan \textit{Template Engine} biasanya lebih mudah dari mempelajari dasar-dasar PHP. Perhatikan potongan kode PHP di bawah ini: \\
 		\begin{lstlisting}[backgroundcolor = \color{lightgray}]
-		<ul>
-		<?php foreach ($addressbook as $name):?>
-		<li><?=$name?></li>
-		<?php endforeach; ?>
-		</ul>
-		\end{lstlisting}
+<ul>
+<?php foreach ($addressbook as $name):?>
+<li><?=$name?></li>
+<?php endforeach; ?>
+</ul>
+	\end{lstlisting}
 		
 		Sangat berlawanan dengan \textit{pseudo-code} yang digunakan oleh \textit{Template Engine}: \\
-		\begin{lstlisting}[backgroundcolor = \color{lightgray}]
-		<ul>
-		{foreach from=$addressbook item="name"}
-		<li>{$name}</li>
-		{/foreach}
-		</ul>
+	\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+<ul>
+{foreach from=$addressbook item="name"}
+<li>{$name}</li>
+{/foreach}
+</ul>
 		\end{lstlisting}
 		Terlihat \textit{Template Engine} sedikit lebih bersih, namun harus ditukar dengan performa yang kurang baik karena \textit{pseudo-code} harus dikonversi kembali menjadi PHP. Salah satu tujuan dari \textit{CodeIgniter} adalah performa maksimal, oleh karena itu \textit{CodeIgniter} tidak menggunakan \textit{Template Engine}.
 	\item Dokumentasi yang Baik \\
@@ -107,7 +107,7 @@ CodeIgniter merupakan sistem yang loosely coupled dengan singularitas komponen y
 \textit{Sharif Judge} adalah \textit{grader} otomatis yang mampu menilai ketepatan serta performansi program yang dikumpulkan mahasiswa. Perangkat lunak ini diciptakan oleh Mohammad Javad Naderi dan bersifat \textit{open source}. \textit{Web Interface} perangkat lunak ini ditulis menggunakan PHP ()\textit{framework CodeIgniter}) dan \textit{backend} menggunakan \textit{BASH} \cite{mjnaderi:14:sharifjudge}.
 Selain sebagai \textit{grader} otomatis, \textit{Sharif Judge} juga memiliki beberapa fitur lainnya seperti:
 \begin{itemize}
-	\item Beberapa peran pengguna (\textit{admin, head instructor, instructor, student})
+	\item Beberapa peran \textit{users} (\textit{admin, head instructor, instructor, student})
 	\item Sandboxing (belum diterpakan untuk \textit{phyton})
 	\item Deteksi kecurangan (mendeteksi kode yang mirip) menggunakan \textit{Moss}
 	\item Pengaturan untuk menilai keterlambatan pengiriman
@@ -123,14 +123,14 @@ Selain sebagai \textit{grader} otomatis, \textit{Sharif Judge} juga memiliki beb
 \end{itemize}
 
 \subsection{Instalasi}
-Untuk menjalankan Sharif Judge membutuhkan sebuah \textit{server Linux} dengan persyaratan berikut:
+Untuk menjalankan Sharif Judge membutuhkan sebuah \textit{server Linux} dengan persyaratan berikut ~\cite{mjnaderi:14:sharifjudgedoc}:
 \begin{itemize}
 	\item \textit{Webserver} menjalankan PHP versi 5.3 atau yang lebih baru
 	\item Pengguna harus dapat menjalankan php dari \textit{command line}. Pada \textit{Ubuntu}, pengguna perlu meginstal paket \textit{php5-cli}
 	\item \textit{Mysql database} (dengan ekstensi \textit{mysqli} untuk PHP) atau \textit{PostgreSql database}
 	\item PHP harus memiliki akses untuk menjalankan \textit{shell commands} menggunakan fungsi \textit{shell\textunderscore exec}. Contohnya seperti \textit{command} di bawah ini: 
 		\begin{lstlisting}[backgroundcolor = \color{lightgray}]
-		echo shell_exec("php -v");
+echo shell_exec("php -v");
 		\end{lstlisting}
 	\item Perkakas yang digunakan untuk \textit{compiling} dan menjalankan kode yang dikumpulkan (\textit{gcc, g++, javac, java, python2, python3 commands})
 	\item \textit{Perl} lebih baik diinstal untuk ketepatan waktu, batas memori dan memaksimalkan batas ukuran pada \textit{output} kode yang dikirimkan
@@ -143,20 +143,20 @@ Jika persyaratan di atas telah terpenuhi, maka akan masuk tahap instalasi sebaga
 	\item (Pilihan) Pindahkan folder \textit{system} dan \textit{application} keluar dari \textit{public directory} dan
 	masukan \textit{path} lengkap di \textit{file index.php} 
 	\begin{lstlisting}[backgroundcolor = \color{lightgray}]
-	$system_path = '/home/mohammad/secret/system';
-	$application_folder = '/home/mohammad/secret/application';
+$system_path = '/home/mohammad/secret/system';
+$application_folder = '/home/mohammad/secret/application';
 	\end{lstlisting}
 	\item Buat sebuah \textit{Mysql} atau \textit{PostgreSql} database untuk Sharif Judge. Jangan menginstall paket koneksi database untuk \textit{C/C++, Java}, atau \textit{Python}
 	\item Atur pengaturan koneksi database di file \textit{application/config/database.php}. Pengguna dapat menggunakan awalan untuk nama tabel.
 	\begin{lstlisting}[backgroundcolor = \color{lightgray}]
-	/*  Enter database connection settings here:  */
-	'dbdriver' => 'postgre',    // database driver (mysqli, postgre)
-	'hostname' => 'localhost',  // database host
-	'username' => `,           // database username
-	'password' => `,           // database password
-	'database' => `,           // database name
-	'dbprefix' => 'shj_',       // table prefix
-	/**********************************************/
+/*  Enter database connection settings here:  */
+'dbdriver' => 'postgre',    // database driver (mysqli, postgre)
+'hostname' => 'localhost',  // database host
+'username' => `,           // database username
+'password' => `,           // database password
+'database' => `,           // database name
+'dbprefix' => 'shj_',       // table prefix
+/**********************************************/
 	\end{lstlisting}
 	\item Buat \textit{application/cache/Twig} dapat ditulis oleh PHP
 	\item Buka halaman utama \textit{Sharif Judge} pada web \textit{browser} dan ikuti proses instalasi berikutnya
@@ -165,7 +165,7 @@ Jika persyaratan di atas telah terpenuhi, maka akan masuk tahap instalasi sebaga
 \end{itemize}
 
 \subsection{\textit{Clean URLs}}
-Secara \textit{default}, \textit{index.php} merupakan bagian dari seluruh \textit{urls} yang ada pada \textit{Sharif Judge} seperti: 
+Secara \textit{default}, \textit{index.php} merupakan bagian dari seluruh \textit{urls} yang ada pada \textit{Sharif Judge} seperti~\cite{mjnaderi:14:sharifjudgedoc}: 
 \begin{lstlisting}[backgroundcolor = \color{lightgray}]
 http://example.mjnaderi.ir/index.php/dashboard
 http://example.mjnaderi.ir/index.php/users/add
@@ -200,8 +200,8 @@ $config['index_page'] = '';
 \end{lstlisting}
 
 \subsection{\textit{Users}}
-Pada \textit{Sharif Judge}, pengguna dikelompokan menjadi 4 yaitu \textit{Admins, Head Instructor, Instructor, }dan \textit{Students}
-Tabel~\ref{tab:userrole} menunjukan \textit{level} para pengguna.
+Pada \textit{Sharif Judge}, \textit{users} dikelompokan menjadi 4 yaitu \textit{Admins, Head Instructor, Instructor, }dan \textit{Students}
+Tabel~\ref{tab:userrole} menunjukan \textit{level users}~\cite{mjnaderi:14:sharifjudgedoc}.
 
 \begin{table}[H] %atau h saja untuk "kira kira di sini"
 	\centering 
@@ -222,171 +222,550 @@ Tabel~\ref{tab:userrole} menunjukan \textit{level} para pengguna.
 	\end{tabular} 
 \end{table}
 
-Setiap pengguna memiliki aksi yang berbeda-beda. Aksi yang dapat dilakukan para pengguna akan diseaikan dengan level masing-masing. Perhatikan tabel~\ref{tab:useraction} berikut:
+Setiap \textit{users} memiliki aksi yang berbeda-beda. Aksi yang dapat dilakukan para \textit{users} akan disesuaikan dengan \textit{level} masing-masing. Perhatikan tabel~\ref{tab:useraction} berikut:
 \begin{table}[H] %atau h saja untuk "kira kira di sini"
 	\centering 
 	\caption{\textit{Permission Table}}
 	\label{tab:useraction}
-	\begin{tabular}{ccccc}
+	\begin{tabular}{l c c c c}
 		\toprule
 		Aksi & \textit{Admin} & \textit{Head Instructor} & \textit{Instructor} & \textit{Student} \\
 		
 		\midrule
-		Mengubah \textit{Settings} & BISA & GB & GB & GB \\
-		Mengubah \textit{Settings} & BISA & GB & GB & GB \\
-		Mengubah \textit{Settings} & BISA & GB & GB & GB \\
-		Mengubah \textit{Settings} & BISA & GB & GB & GB \\
+		Mengubah \textit{Settings} & \ding{51} & \ding{53} & \ding{53} & \ding{53} \\
+		Menambah/Menghapus \textit{users} & \ding{51} & \ding{53} & \ding{53} & \ding{53} \\
+		Mengubah Peran \textit{users} & \ding{51} & \ding{53} & \ding{53} & \ding{53} \\
+		Menambah/Menghapus/Mengubah Tugas & \ding{51} & \ding{51} & \ding{53} & \ding{53} \\
+		Mengunduh \textit{Test} & \ding{51} & \ding{51} & \ding{53} & \ding{53} \\
+		
+		Menambah/Menghapus/Mengubah Notifikasi & \ding{51} & \ding{51} & \ding{53} & \ding{53} \\
+		\textit{Rejudge} & \ding{51} & \ding{51} & \ding{53} & \ding{53} \\
+		Melihat/\textit{Pause}/Melanjutkan/\textit{Submission Queue} & \ding{51} & \ding{51} & \ding{53} & \ding{53} \\
+		Mendeteksi Kode yang Mirip & \ding{51} & \ding{51} & \ding{53} & \ding{53} \\
+		Melihat Semua Kode & \ding{51} & \ding{51} & \ding{51} & \ding{53} \\
+		
+		Mengunduh Kode Final& \ding{51} & \ding{51} & \ding{51} & \ding{53} \\
+		Memilih Tugas & \ding{51} & \ding{51} & \ding{51} & \ding{51} \\
+		\textit{Submit} & \ding{51} & \ding{51} & \ding{51} & \ding{51} \\
 		
 		\bottomrule
 		
 	\end{tabular} 
 \end{table}
-\dtext{11-12} 
 
-\section{\LaTeX}
-\label{sec:latex}
+Pengguna dapat menambahkan \textit{users} dengan mengklik pada bagian \textit{Add Users} di halaman \textit{Users}. Pengguna harus mengisi semua informasi yang ada pada \textit{textarea}. Baris dimulai dengan komentar \textit{\#}. Setiap baris lainnya mewakili pengguna dengan sintaks berikut:
+\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+USERNAME EMAIL PASSWORD ROLE
+	
+* Usernames dapat berisikan huruf kecil atau nomor dan harus terdiri 
+  antara 3 sampai 20 karakter.
+* Passwords harus terdiri antara 6 sampai 30 karakter.
+* Pengguna dapat menggunakan RANDOM[n] untuk menghasilkan password 
+  acak yang terdiri dari n-digit karakter.
+* ROLE harus terdiri dari salah satu ini: `admin`, `head_instructor`, 
+  `instructor`, `student`
+\end{lstlisting}
+Contoh:
+\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+# This is a comment!
+# This is another comment!
+instructor instructor@sharifjudge.ir 123456 head_instructor
+instructor2 instructor2@sharifjudge.ir random[7] instructor
+student1 st1@sharifjudge.ir random[6] student
+student2 st2@sharifjudge.ir random[6] student
+student3 st3@sharifjudge.ir random[6] student
+student4 st4@sharifjudge.ir random[6] student
+student5 st5@sharifjudge.ir random[6] student
+student6 st6@sharifjudge.ir random[6] student
+student7 st7@sharifjudge.ir random[6] student
+\end{lstlisting}
 
-Mengapa menggunakan \LaTeX{} untuk buku skripsi dan apa keunggulan/kerugiannya bagi mahasiswa dan pembuat template. 
-
-\dtext{13-14}
-
-
-\section{Template Skripsi FTIS UNPAR}
-\label{sec:template}
- 
-Akan dipaparkan bagaimana menggunakan template ini, termasuk petunjuk singkat membuat referensi, gambar dan tabel.
-Juga hal-hal lain yang belum terpikir sampai saat ini. 
- 
-\dtext{15-16}
-
-\subsection{Tabel}  
-Berikut adalah contoh pembuatan tabel. 
-Penempatan tabel dan gambar secara umum diatur secara otomatis oleh \LaTeX{}, perhatikan contoh di file bab2.tex untuk melihat bagaimana cara memaksa tabel ditempatkan sesuai keinginan kita.
-
-Perhatikan bawa berbeda dengan penempatan judul gambar gambar, keterangan tabel harus diletakkan di atas tabel!!
-Lihat Tabel~\ref{tab:contoh1} berikut ini:
-
-\begin{table}[H] %atau h saja untuk "kira kira di sini"
-	\centering 
-	\caption{Tabel contoh}
-	\label{tab:contoh1}
-	\begin{tabular}{cccc}
-		\toprule
-		& $v_{start}$ & $\mathcal{S}_{1}$ & $v_{end}$\\
-
-		\midrule
-		$\tau_{1}$ & 1 & 12& 20\\
-		$\tau_{2}$ & 1 &  & 20\\
-		$\tau_{3}$ & 1 & 9 & 20\\
-		$\tau_{4}$ & 1 &  & 20\\
-
-		\bottomrule
-		
-	\end{tabular} 
-\end{table}
-Tabel~\ref{tab:cthwarna1} dan Tabel~\ref{tab:cthwarna2} berikut ini adalah tabel dengan sel yang berwarna dan ada dua tabel yang bersebelahan. 
-\begin{table}[H]
-	\begin{minipage}[c]{0.49\linewidth}
-		\centering
-		\caption{Tabel bewarna(1)}
-		\label{tab:cthwarna1}
-		\begin{tabular}{ccccc}
-			\toprule
-			 & $v_{start}$ & $\mathcal{S}_{2}$ & $\mathcal{S}_{1}$ & $v_{end}$\\
-			
-			\midrule
-			$\tau_{1}$ & 1 & 5 \cellcolor{green}& 12& 20\\
-			$\tau_{2}$ & 1 & 8 \cellcolor{green}& & 20\\
-			$\tau_{3}$ & 1 & 2/8/17 \cellcolor{green}& 9 & 20\\
-			$\tau_{4}$ & 1 & \cellcolor{red}& & 20\\
-			
-			\bottomrule
-
-		\end{tabular}
-	\end{minipage}
-	\begin{minipage}[c]{0.49\linewidth}
-		
-		\centering 
-		\caption{Tabel bewarna(2)}
-		\label{tab:cthwarna2}
-		\begin{tabular}{ccccc}
-			\toprule
-			 & $v_{start}$ & $\mathcal{S}_{1}$ & $\mathcal{S}_{2}$ & $v_{end}$\\
-			
-			\midrule
-			$\tau_{1}$ & 1 & 12& 5 \cellcolor{red} &20\\
-			$\tau_{2}$ & 1 &  &  8 \cellcolor{green} &20\\
-			$\tau_{3}$ & 1 & 9 & 2/8/17 \cellcolor{green} &20\\
-			$\tau_{4}$ & 1 &   & \cellcolor{red} &20\\
-			
-			\bottomrule
-		
-		\end{tabular}
-	\end{minipage}
-\end{table}
-
- 
-\subsection{Kutipan}
-\label{subs:kutipan} 
-Berikut contoh kutipan dari berbagai sumber, untuk keterangan lebih lengkap, silahkan membaca file referensi.bib yang disediakan juga di template ini.
-Contoh kutipan:
-\begin{itemize}
-	\item Buku:~\cite{berg:08:compgeom} 
-	\item Bab dalam buku:~\cite{kreveld:04:GIS}
-	\item Artikel dari Jurnal:~\cite{buchin:13:median}
-	\item Artikel dari prosiding seminar/konferensi:~\cite{kreveld:11:median}
-	\item Skripsi/Thesis/Disertasi:~\cite{lionov:02:animasi}~\cite{wiratma:10:following}~\cite{wiratma:22:later}
-	\item Technical/Scientific Report:~\cite{kreveld:07:watertight}
-	\item RFC (Request For Comments):~\cite{RFC1654}
-	\item Technical Documentation/Technical Manual:~\cite{Z.500}~\cite{unicode:16:stdv9}~\cite{google:16:and7}
-	\item Paten:~\cite{webb:12:comm}
-	\item Tidak dipublikasikan:~\cite{wiratma:09:median}~\cite{lionov:11:cpoly}
-	\item Laman web:~\cite{erickson:03:cgmodel}  
-	\item Lain-lain:~\cite{agung:12:tango}
-\end{itemize}    
-  
-\subsection{Gambar}
-
-Pada hampir semua editor, penempatan gambar di dalam dokumen \LaTeX{} tidak dapat dilakukan melalui proses {\it drag and drop}.
-Perhatikan contoh pada file bab2.tex untuk melihat bagaimana cara menempatkan gambar.
-Beberapa hal yang harus diperhatikan pada saat menempatkan gambar:
-\begin{itemize}
-	\item Setiap gambar {\bf harus} diacu di dalam teks (gunakan {\it field} {\sc label})
-	\item {\it Field} {\sc caption} digunakan untuk teks pengantar pada gambar. Terdapat dua bagian yaitu yang ada di antara tanda $[$ dan $]$ dan yang ada di antara tanda $\{$ dan $\}$. Yang pertama akan muncul di Daftar Gambar, sedangkan yang kedua akan muncul di teks pengantar gambar. Untuk skripsi ini, samakan isi keduanya.
-	\item Jenis file yang dapat digunakan sebagai gambar cukup banyak, tetapi yang paling populer adalah tipe {\sc png} (lihat Gambar~\ref{fig:ularpng}), tipe {\sc jpg} (Gambar~\ref{fig:ularjpg}) dan tipe {\sc pdf} (Gambar~\ref{fig:ularpdf})
-	\item Besarnya gambar dapat diatur dengan {\it field} {\sc scale}.
-	\item Penempatan gambar diatur menggunakan {\it placement specifier} (di antara tanda  $[$ dan $]$ setelah deklarasi gambar.
-	Yang umum digunakan adalah {\bf H} untuk menempatkan gambar {\bf sesuai} penempatannya di file .tex atau  {\bf h} yang berarti "kira-kira" di sini. \\
-	Jika tidak menggunakan {\it placement specifier}, \LaTeX{} akan menempatkan gambar secara otomatis untuk menghindari bagian kosong pada dokumen anda.
-	Walaupun cara ini sangat mudah, hindarkan terjadinya penempatan dua gambar secara berurutan. 	
-	\begin{itemize}
-		\item Gambar~\ref{fig:ularpng} ditempatkan di bagian atas halaman, walaupun penempatannya dilakukan setelah penulisan 3 paragraf setelah penjelasan ini.
-		\item Gambar~\ref{fig:ularjpg} dengan skala 0.5 ditempatkan di antara dua buah paragraf. Perhatikan penulisannya di dalam file bab2.tex!
-		\item Gambar~\ref{fig:ularpdf} ditempatkan menggunakan {\it specifier} {\bf h}.
-	\end{itemize}
-\end{itemize}
- 
-\dtext{17-18}
-\begin{figure} 
-	\centering  
-	\includegraphics[scale=1]{ular-png}  
-	\caption[Gambar {\it Serpentes} dalam format png]{Gambar {\it Serpentes} dalam format png} 
-	\label{fig:ularpng} 
-\end{figure} 
-
-\dtext{19-20}
+\subsection{Menambah Tugas}
+Pengguna dapat menambahkan tugas dengan cara mengklik \textit{Add} di halaman \textit{Assigments}~\cite{mjnaderi:14:sharifjudgedoc}. Pengguna akan melihat halaman seperti gambar~\ref{fig:addass}.
 \begin{figure}[H]
 	\centering  
-	\includegraphics[scale=0.5]{ular-jpg}  
-	\caption[Ular kecil]{Ular kecil} 
-	\label{fig:ularjpg} 
+	\includegraphics[scale=0.5]{add_assignment}  
+	\caption[Tampilan Halaman \textit{Assignments}]{Tampilan Halaman \textit{Assignments}} 
+	\label{fig:addass} 
 \end{figure} 
-\dtext{21-22}
 
-\begin{figure}[ht] 
-	\centering  
-	\includegraphics[scale=1]{ular-pdf}  
-	\caption[ {\it Serpentes} betina]{ {\it Serpentes} jantan} 
-	\label{fig:ularpdf} 
-\end{figure} 
- 
+Berikut beberapa pengaturan yang terdapat pada halaman \textit{Add Assignments}:
+\begin{itemize}
+	\item \textit{Assignment Name} \\
+	Tugas akan ditampilkan dengan nama ini dalam daftar tugas.
+	
+	\item \textit{Start Time} \\
+	\textit{Users} tidak dapat mengumpulkan tugas sebelum \textit{"Start Time"}. Gunakan format ini untuk \textit{start time}: \textit{MM/DD/YYYY HH:MM:SS}. Contoh: \textit{08/31/2013 12:00:00}
+	
+	\item \textit{Finish Time, Extra Time}\\
+	\textit{Users} tidak dapat mengumpulkan tugas setelah \textit{Finish Time + Extra Time}. Tugas yang telat akan dikalikan dengan koefisien tertentu. Pengguna harus menulis \textit{script} PHP untuk menghitung koefisien pada bidang \textit{"Coefficient Rule"}. Gunakan format ini untuk \textit{finish time}: \textit{MM/DD/YYYY HH:MM:SS}. Contoh: \textit{08/31/2013 23:59:59}. Waktu ekstra harus dalam menit. Pengguna dapat menggunakan \textit{*}. Contoh \textit{120} (2 jam) atau \textit{48*60} (2 hari).
+	
+	\item \textit{Participants} \\
+	Masukan \textit{username} dari partisipan disini. Gunakan tanda koma untuk memisah \textit{username} antar partisipan. Hanya \textit{users} ini yang dapat mengumpulkan tugas. Pengguna dapat menggunakan kata kunci \textit{ALL} untuk mengijinkan semua \textit{users} agar dapat mengumpulkan tugas. Contoh: \textit{admin, instructor1 , instructor2 ,student1  ,   student2,student3 , student4}.
+	
+	\item \textit{Open} \\
+	Pengguna dapat membuka atau menutup tugas untuk \textit{students} menggunakan pilihan ini. Jika pengguna menutup tugas, \textit{non-student users} masih dapat mengumpulkan tugas.
+	
+	\item Scoreboard \\
+	Pengguna dapat mengaktifkan atau mematikan papan nilai dengan menggunakan pilihan ini.
+	
+	\item \textit{Java Exceptions}
+	Pengguna dapat mengaktifkan dan mematikan \textit{java exceptions} yang ditunjukan kepada \textit{students}. Perubahan pada pilihan ini tidak berdampak pada kode yang sebelumnya sudah dinilai. Nama \textit{exception} akan muncul jika \textit{tester/java\_exceptions\_list} berisikan nama tersebut. Jika pengguna mengaktifkan fitur ini, kode di bawah ini akan ditampilkan kepada \textit{students} saat \textit{exception} dilemparkan: \newpage
+	\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+Test 1
+ACCEPT
+Test 2
+Runtime Error (java.lang.ArrayIndexOutOfBoundsException)
+Test 3
+Runtime Error (java.lang.ArrayIndexOutOfBoundsException)
+Test 4
+ACCEPT
+Test 5
+ACCEPT
+Test 6
+ACCEPT
+Test 7
+ACCEPT
+Test 8
+Runtime Error (java.lang.ArrayIndexOutOfBoundsException)
+Test 9
+Runtime Error (java.lang.StackOverflowError)
+Test 10
+Runtime Error (java.lang.ArrayIndexOutOfBoundsException)
+	\end{lstlisting}
+	
+	\item \textit{\textit{Coefficient Rule}} \\
+	Pengguna dapat menulis \textit{script} PHP pada bagian ini. Pengguna harus memasukan koefisien (dari 100) pada variabel \textit{\$coefficient}. Pengguna dapat menggunakan variabel \textit{\$extra\_time} dan \textit{\$delay}. \textit{\$extra\_time} merupakan total waktu ekstra yang diberikan kepada \textit{users} dalam satuan detik dan \textit{\$delay} merupakan jumlah detik berlalu dari waktu selesai (bisa negatif). \textit{Script} PHP pada bagian ini tidak mengandung \textit{tags <?php , <? , ?>}. Berikut contoh \textit{\$extra\_time} 172800 (2 hari):
+	\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+if ($delay<=0)
+// no delay
+$coefficient = 100;
+
+elseif ($delay<=3600)
+// delay less than 1 hour
+$coefficient = ceil(100-((30*$delay)/3600));
+
+elseif ($delay<=86400)
+// delay more than 1 hour and less than 1 day
+$coefficient = 70;
+
+elseif (($delay-86400)<=3600)
+// delay less than 1 hour in second day
+$coefficient = ceil(70-((20*($delay-86400))/3600));
+
+elseif (($delay-86400)<=86400)
+// delay more than 1 hour in second day
+$coefficient = 50;
+
+elseif ($delay > $extra_time)
+// too late
+$coefficient = 0;
+	\end{lstlisting}
+	
+	\item \textit{Time Limit} \\
+	Pengguna dapat mengatur batas waktu untuk menjalankan kode dalam satuan milisekon. \textit{Python} dan \textit{Java} biasanya lebih lambat dari \textit{C/C++}.	Oleh karena itu mereka membutuhkan waktu yang lebih.
+	
+	\item \textit{Memory Limit} \\
+	Pengguna dapat mengatur batas memori dalam satuan \textit{kilobyte}, namun penggunaan \textit{Memory Limit} tidak terlalu akurat.
+	
+	\item \textit{Allowed Languages} \\
+	Pengguna dapat mengatur bahasa untuk setiap permasalahan (dipisahkan menggunakan koma). Bahasa yang tersedia seperti \textit{C, C++, Java, Python 2, Python 3, zip, PDF}. Pengguna dapat menggunakan \textit{zip} atau \textit{PDF} jika mengaktifkan pilihan \textit{Upload Only}. Contoh: \textit{C, C++ , zip} atau \textit{Python 2,Python 3} atau \textit{Java ,C}.
+	
+	\item \textit{Diff Command} \\
+	\textit{Command} ini digunakan untuk membandingkan keluaran dengan keluaran yang benar. Secara \textit{default Sharif Judge} menggunakan \textit{diff}, namun pengguna dapat mengubah \textit{command} pada bagian ini.
+	
+	\item \textit{Diff Arguments} \\
+	Pengguna dapat mengatur argumen dari\textit{Diff Command} disini. Untuk melihat daftar lengkap \textit{diff} argumen, pengguna dapat melihat \textit{man diff}. \textit{Sharif Judge} menambahkan dua pilihan baru yaitu \textit{ignore} dan \textit{identical}. \textit{Ignore} akan menghiraukan semua baris baru dan spasi. \textit{Identical} tidak akan menghiraukan apapun namun keluaran dari file yang dikumpulkan harus identik dengan keluaran \textit{test case} agar dapat diterima.
+	
+	\item \textit{Upload Only} \\
+	Jika pengguna mengatur masalah sebagai \textit{Upload-Only}, maka \textit{Sharif Judge} tidak akan menilai tugas pada masalah tersebut. Pengguna dapat menggunakan \textit{zip} dan \textit{PDF} pada \textit{allowed languages} jika mengaktifkan pilihan ini.
+\end{itemize}
+
+\subsubsection{Contoh Tugas}
+
+Berikut contoh tugas untuk mencoba \textit{Sharif Judge}. Menambah tugas ini dengan mengklik \textit{Add} di halaman \textit{Assignment}. Tugas dibagi menjadi 3 permasalahan:
+\begin{enumerate}
+	\item Masalah 1 (Penjumlahan) \\
+	Program pengguna akan menerima masukan bilangan \textit{integer} n, kemudian menerima masukan lagi sebanyak n buah bilangan \textit{integer} dan menampilkan hasil penjumlahan dari n nomor tersebut. Untuk lebih jelas, perhatikan tabel~\ref{tab:tablesum}.
+	
+	\begin{table}[H] %atau h saja untuk "kira kira di sini"
+		\centering 
+		\caption{Masalah 1 (Penjumlahan)}
+		\label{tab:tablesum}
+		\begin{tabular}{cc}
+			\toprule
+			Sample Input & Sample Output\\
+			
+			\midrule
+			\multicolumn{1}{l}{5} & \multirow{2}{*}{145}\\
+			\multicolumn{1}{l}{54 78 0 4 9} & \\
+			
+			\bottomrule
+			
+		\end{tabular} 
+	\end{table}
+	
+	\item Masalah 2 (\textit{Max}) \\
+	Program pengguna akan menerima masukan bilangan \textit{integer} n, kemudian menerima masukan lagi sebanyak n buah bilangan \textit{integer} dan menampilkan hasil penjumlahan dari dua nilai tertinggi. Untuk lebih jelas, perhatikan tabel~\ref{tab:tablemax}.
+	
+	\begin{table}[H] %atau h saja untuk "kira kira di sini"
+		\centering 
+		\caption{Masalah 2 (\textit{Max})}
+		\label{tab:tablemax}
+		\begin{tabular}{cc}
+			\toprule
+			Sample Input & Sample Output\\
+			
+			\midrule
+			\multicolumn{1}{l}{7} & \multirow{2}{*}{356}\\
+			\multicolumn{1}{l}{162 173 159 164 181 158 175} & \\
+			
+			\bottomrule
+			
+		\end{tabular} 
+	\end{table}
+	
+	\item Masalah 2 (\textit{Upload!}) \\
+	Pengguna diharuskan mengunggah sebuah \textit{file} \textit{C} atau \textit{zip}. Masalah ini menggunakan pilihan \textit{"Upload Only} sehingga tidak akan dinilai oleh Sharif Judge.
+\end{enumerate}
+
+Pengguna dapat menemukan \textit{file zip} pada \textit{folder Assignments}. Perhatikan susunan pohon dari tugas ini:
+\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+.
+|-- p1
+|   |-- in
+|   |   |-- input1.txt
+|   |   |-- input2.txt
+|   |   |-- input3.txt
+|   |   |-- input4.txt
+|   |   |-- input5.txt
+|   |   |-- input6.txt
+|   |   |-- input7.txt
+|   |   |-- input8.txt
+|   |   |-- input9.txt
+|   |   --- input10.txt
+|   |-- out
+|   |   --- output1.txt
+|   |-- tester.cpp
+|   --- desc.md
+|-- p2
+|   |-- in
+|   |   |-- input1.txt
+|   |   |-- input2.txt
+|   |   |-- input3.txt
+|   |   |-- input4.txt
+|   |   |-- input5.txt
+|   |   |-- input6.txt
+|   |   |-- input7.txt
+|   |   |-- input8.txt
+|   |   |-- input9.txt
+|   |   --- input10.txt
+|   |-- out
+|   |   |-- output1.txt
+|   |   |-- output2.txt
+|   |   |-- output3.txt
+|   |   |-- output4.txt
+|   |   |-- output5.txt
+|   |   |-- output6.txt
+|   |   |-- output7.txt
+|   |   |-- output8.txt
+|   |   |-- output9.txt
+|   |   --- output10.txt
+|   |-- desc.md
+|   --- Problem2.pdf
+|-- p3
+|   --- desc.md
+--- SampleAssignment.pdf
+\end{lstlisting}
+Masalah 1 menggunkan metode \textit{"Tester"} untuk mengecek keluaran sehingga memiliki \textit{file tester.cpp (Tester Script)}. Masalah 2 menggunakan metode \textit{Output Comparison} untuk mengecek keluaran sehingga memiliki dua \textit{folder} (\textit{in} dan \textit{out}) yang berisikan \textit{test case}. Masalah 3 merupakan masalah yang menggunakan pilihan \textit{Upload-Only}.
+
+\subsubsection{Contoh Solusi}
+Permasalahan diatas dapat diselesaikan menggunakan contoh solusi berikut ini:
+\begin{itemize}
+	\item Solusi Masalah 1 \\ 
+	Menggunakan bahasa \textit{C}
+	\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+#include<stdio.h>
+int main(){
+	int n;
+	scanf("%d",&n);
+	int i;
+	int sum =0 ;
+	int k;
+	for(i=0 ; i<n ; i++){
+		scanf("%d",&k);
+		sum+=k;
+	}
+	printf("%d\n",sum);
+		return 0;
+}
+	\end{lstlisting} 
+	
+	
+	Menggunakan bahasa \textit{C++}
+	\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+#include <iostream>
+using namespace std;
+int main(){
+	int n, sum=0;
+	cin >> n;
+	for (int i=0 ; i<n ; i++){
+		int a;
+		cin >> a;
+		sum += a;
+	}
+	cout << sum << endl;
+	return 0;
+}
+	\end{lstlisting} 
+	
+	Menggunakan bahasa \textit{Java}
+	\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+import java.util.Scanner;
+class sum
+{
+	public static void main(String[] args)
+	{ 
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int sum =0;
+		for (int i=0 ; i<n ; i++)
+		{
+			int a = sc.nextInt();
+			sum += a;
+		}
+		System.out.println(sum); 
+	}
+}
+	\end{lstlisting}
+	
+	\item Solusi Masalah 2 \\ 
+	Menggunakan bahasa \textit{C}
+	\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+#include<stdio.h>
+int main(){
+	int n , m1=0, m2=0;
+	scanf("%d",&n);
+	for(;n--;){
+		int k;
+		scanf("%d",&k);
+		if(k>=m1){
+			m2=m1;
+			m1=k;
+		}
+		else if(k>m2)
+			m2=k;
+	}
+	printf("%d",m1+m2);
+	return 0;
+}
+	\end{lstlisting}
+	 
+	
+	Menggunakan bahasa \textit{C++}
+	\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+#include<iostream>
+using namespace std;
+int main(){
+	int n , m1=0, m2=0;
+	cin >> n;
+	for(;n--;){
+		int k;
+		cin >> k;
+		if(k>=m1){
+			m2=m1;
+			m1=k;
+		}
+		else if(k>m2)
+			m2=k;
+		}
+	cout << (m1+m2) << endl ;
+	return 0;
+}
+	\end{lstlisting}
+\end{itemize}
+
+\subsection{Struktur Pengujian}
+
+Pengguna harus menyediakan sebuah \textit{file zip} yang berisikan \textit{test cases} ketika menambahkan tugas. \textit{File zip} ini dapat berisikan folder-folder untuk setiap masalah. Pengguna harus memberikan nama pada folder sesuai aturan seperti \textit{p1, p2, p3, dst}. Tugas yang menggunakan pilihan \textit{Upload-Only} tidak membutuhkan \textit{folder}~\cite{mjnaderi:14:sharifjudgedoc}.
+
+\subsubsection{Metode Pengecekan}
+\textit{Sharif Judge} memiliki dua metode pengecekan untuk setiap permasalahan yaitu metode \textit{"Input/Output" Comparison} dan metode \textit{Tester}.
+\begin{itemize}
+	\item \textit{Metode Input/Output Comparison} \\
+	Dengan metode ini, pengguna harus memasukan beberapa \textit{file input dan output} pada \textit{folder} masalah. \textit{Sharif Judge} akan memasukan nilai dari \textit{file input} ke kode \textit{users} dan membandingkan hasil keluaran dari kode \textit{users} dengan \textit{file output}. \textit{Input files} harus berada dalam folder \textit{"in"} dengan nama \textit{input1.text, input2.txt, dst}.\textit{Output files} harus berada dalam folder \textit{"out"} dengan nama \textit{output1.txt, output2.txt, dst}.
+	
+	\item \textit{Metode Tester} \\
+	Dengan metode ini, pengguna harus menyediakan beberapa \textit{file input} dan sebuah \textit{file C++ (tester.cpp)} dan beberapa \textit{file output}. \textit{Sharif Judge} akan memasukan nilai dari \textit{file input} ke kode \textit{users} dan mengambil keluaran dari kode \textit{users}. \textit{tester.cpp} akan mengambil nilai dari \textit{file input, file output, }dan keluaran \textit{users}. Jika keluaran dari kode \textit{users} benar akan mengembalikan nilai 0, sebaliknya akan mengeluarkan nilai 1. Berikut contoh kode untuk menulis \textit{tester.cpp}:
+	\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+/*
+* tester.cpp
+*/
+
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+int main(int argc, char const *argv[])
+{
+	
+	ifstream test_in(argv[1]);  /* Stream ini membaca 
+	isi file input */
+	ifstream test_out(argv[2]); /* Stream ini membaca 
+	isi file output */
+	ifstream user_out(argv[3]); /* Stream ini membaca 
+	isi keluaran users */
+	
+	/* Kode Pengguna */
+	/* Jika keluaran kode user benar, mengembalikan nilai 0, 
+	sebaliknya mengembalikan 1 */
+	
+	...
+
+}
+	\end{lstlisting}
+\end{itemize}
+
+\subsubsection{Contoh \textit{File}}
+
+Pengguna dapat menemukan contoh \textit{file} penguji pada \textit{folder Assignments}. Perhatikan susunan pohon dari \textit{file} tersebut:
+\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+.
+|-- p1
+|   |-- in
+|   |   |-- input1.txt
+|   |   |-- input2.txt
+|   |   |-- input3.txt
+|   |   |-- input4.txt
+|   |   |-- input5.txt
+|   |   |-- input6.txt
+|   |   |-- input7.txt
+|   |   |-- input8.txt
+|   |   |-- input9.txt
+|   |   --- input10.txt
+|   |-- out
+|   |   --- output1.txt
+|   --- tester.cpp
+--- p2
+	|-- in
+	|   |-- input1.txt
+	|   |-- input2.txt
+	|   |-- input3.txt
+	|   |-- input4.txt
+	|   |-- input5.txt
+	|   |-- input6.txt
+	|   |-- input7.txt
+	|   |-- input8.txt
+	|   |-- input9.txt
+	|   --- input10.txt
+	--- out
+		|-- output1.txt
+		|-- output2.txt
+		|-- output3.txt
+		|-- output4.txt
+		|-- output5.txt
+		|-- output6.txt
+		|-- output7.txt
+		|-- output8.txt
+		|-- output9.txt
+		--- output10.txt
+\end{lstlisting}
+
+Masalah 1 menggunakan metode \textit{"Tester} untuk mengecek hasil keluaran, sehingga memiliki \textit{file tester.cpp}. Berikut isi dari \textit{file tester.cpp} untuk masalah 1:
+\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+/*
+* tester.cpp
+*/
+
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+int main(int argc, char const *argv[])
+{
+	
+	ifstream test_in(argv[1]);  /* Stream ini membaca 
+	isi file input */
+	ifstream test_out(argv[2]); /* Stream ini membaca 
+	isi file output */
+	ifstream user_out(argv[3]); /* Stream ini membaca 
+	isi keluaran users */
+	
+	/* Kode Pengguna */
+	/* Jika keluaran kode user benar, mengembalikan nilai 0, 
+	sebaliknya mengembalikan 1 */
+	/* e.g.: Permasalahan: membaca n nomor dan keluarkan 
+	hasil penjumlahannya: */
+	
+	int sum, user_output;
+	user_out >> user_output;
+	
+	if ( test_out.good() ) // if test's output file exists
+	{
+		test_out >> sum;
+	}
+	else
+	{
+		int n, a;
+		sum=0;
+		test_in >> n;
+		for (int i=0 ; i<n ; i++){
+			test_in >> a;
+			sum += a;
+		}
+	}
+	
+	if (sum == user_output)
+		return 0;
+	else
+		return 1;
+
+}
+\end{lstlisting}
+
+
+Masalah 2 menggunakan metode \textit{"Input/Output Comparison"} untuk mengecek hasil keluaran, sehingga memiliki dua folder \textit{in} dan \textit{out} yang berisikan \textit{test cases}. Masalah 3 menggunakan pilihan \textit{Upload-Only}, sehingga tidak memiliki folder apapun.
+
+\subsection{Deteksi Kecurangan}
+\textit{Sharif Judge} menggunakan \textit{Moss} untuk mendeteksi kode yang mirip. \textit{Moss (Measure Of Software Similarity)} merupakan sistem otomatis untuk menentukan kemiripan program. Pada saat ini, aplikasi utama \textit{Moss} telah digunakan untuk mendeteksi plagiarisme pada kelas \textit{programming}. Pengguna dapat mengirimkan kode final (yang dipilih oleh \textit{students} sebagai \textit{Final Submission}) ke \textit{server Moss} dengan satu klik~\cite{mjnaderi:14:sharifjudgedoc}.\\
+
+Sebelum menggunakan \textit{Moss} ada beberapa hal yang harus diperhatikan yaitu:
+\begin{itemize}
+	\item Pengguna harus mendapatkan \textit{Moss user id} dan mengaturnya di \textit{Sharif Judge}. Untuk mendapatkan \textit{Moss user id}, pengguna harus terlebih dahulu daftar pada halaman \\ \textit{http://theory.stanford.edu/~aiken/moss/}. Pengguna akan mendapatkan sebuah \textit{email} yang berisikan \textit{script perl}. \textit{Moss user id} berada pada \textit{script} tersebut. \\
+	Berikut potongan \textit{perl script} yang berisikan user id:
+
+\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+...
+
+$server = 'moss.stanford.edu';
+$port = '7690';
+$noreq = "Request not sent.";
+$usage = "usage: moss [-x] [-l language] [-d] 
+		  [-b basefile1] ... [-b basefilen] [-m #] 
+		  [-c \"string\"] file1 file2 file3 ...";
+
+#
+# The userid is used to authenticate your queries to the server; 
+  don't change it!
+#
+$userid=YOUR_MOSS_USER_ID;
+
+#
+# Process the command line options.  This is done in a non-standard
+# way to allow multiple -b's.
+#
+$opt_l = "c";   # default language is c
+$opt_m = 10;
+$opt_d = 0;
+
+...
+}
+
+\end{lstlisting}
+
+\item Dapatkan \textit{user id} tersebut lalukan gunakan pada \textit{Sharif Judge} untuk mendetksi kecurangan. Pengguna dapat menyimpan \textit{user id} di Sharif Judge pada halaman \textit{Moss} dan \textit{Sharif Judge} akan menggunakan \textit{user id} tersebut di \textit{Moss perl script}.
+
+\item \textit{Server} pengguna harus menginstal \textit{perl} untuk menggunakan \textit{Moss}.
+
+\item Pengguna dianjurkan untuk mendetek kode yang mirip setelah waktu tugas berakhir, karena \textit{students} masih dapat mengubah \textit{Final Submissions} mereka sebelum waktu habis. Dengan cara tersebut \textit{Sharif Judge} dapat mengirimkan \textit{Final submissions student} ke \textit{Moss}.
+\end{itemize}
