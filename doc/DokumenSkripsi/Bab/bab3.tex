@@ -1,0 +1,19 @@
+\chapter{Analisis}
+\label{chap:analisis}
+
+Bab ini membahas tentang analisis kebutuhan yang diperlukan oleh Teknik Informatika. Kebutuhan-kebutuhan tersebut didapat dari daftar isu repositori Sharif Judge di \textit{GitHub} dan dari para dosen pengguna Sharif Judge.
+
+\section{Analisis Kebutuhan dari Daftar Isu Repositori Sharif Judge di textit{GitHub}}
+\label{sec:analisisgithub} 
+Analisis dilakukan dengan menganalisa setiap isu terbuka yang ada pada repositori. Dari analisa setiap isu tersebut, didapatkan beberapa pertanyaan dan usulan pengembangan. Beberapa isu yang memiliki usulan pengembangan akan dijadikan pertimbangan untuk mengembangkan Sharif Judge. Beberapa isu yang dijadikan pertimbangan antara lain:
+\begin{enumerate}
+	\item \textit{Security with PHP} footnote\\
+	Isu ini dibuat oleh pengguna textit{GitHub} dengan username \textit{danwdart}. Pada isu tersebut dikatakan bahwa seseorang pengguna Sharif Judge dapat mengubah parameter PHP shell\_exec() yang mengakibatkan pengeksekusian kode bisa dilakukan secara sewenang-wenang. %Hal tersebut dapat dicegah dengan cara mengubah perintah shell\_exec("rm ...") dengan method \textit{unlink()}.
+	
+	\item \textit{Queue failed to process if submission take too long to complete? footnote} \\
+	Isu ini dibuat oleh pengguna textit{GitHub} dengan username \textit{truongan}. Pada isu tersebut dikatakan bahwa assignment yang memiliki masalah dengan test case yang besar menyebabkan submission status menjadi pending. %Hal diatas terjadi disebabkan oleh koneksi database times out. Untuk mengatasi masalah tersebut diperlukan method reconnect database pada file \textit{Queueprocess.php}.
+\end{enumerate}
+
+\section{Analisis Kebutuhan dari Dosen Pengguna Sharif Judge}
+\label{sec:analisisdosen} 
+Analisis kebutuhan dari para dosen pengguna Sharif Judge dilakukan dalam bentuk wawancara secara langsung dan melalui email. Dosen-dosen yang telah diwawancarai yaitu:
