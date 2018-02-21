@@ -1,7 +1,7 @@
 \chapter{Analisis}
 \label{chap:analisis}
 
-Bab ini membahas tentang analisis kebutuhan yang diperlukan oleh Teknik Informatika. Kebutuhan-kebutuhan tersebut didapat dari daftar isu repositori Sharif Judge di \textit{GitHub} dan dari para dosen pengguna Sharif Judge. Hasil dari analisis kebutuhan tersebut dicatat ke dalam Google Sheets dan didiskusikan dengan dosen pembimbing. Berikut hasil diskusi peniliti bersama dosen pembimbing yang dicatat ke dalam \textit{Google Sheets}
+Bab ini membahas tentang analisis kebutuhan yang diperlukan oleh Teknik Informatika. Kebutuhan-kebutuhan tersebut didapat dari daftar isu repositori Sharif Judge di \textit{GitHub} dan dari para dosen pengguna Sharif Judge. Hasil dari analisis kebutuhan tersebut dicatat ke dalam Google Sheets dan didiskusikan dengan dosen pembimbing. Berikut hasil diskusi peniliti bersama dosen pembimbing yang dicatat ke dalam \textit{Google Sheets}. Selain analisis kebutuhan, pada bab ini juga akan dibahas solusi yang ditawarkan untuk memenuhi kebutuhan tersebut.
 
 \begin{figure}[H]
 	\centering  
@@ -32,14 +32,30 @@ Analisis kebutuhan dari para dosen pengguna Sharif Judge dilakukan dalam bentuk 
 \end{enumerate}
 Dari hasil wawancara didapatkan beberapa kebutuhan yang sama dari setiap dosen pengguna Sharif Judge. 
 
+\subsection{Menguji kemiripan kode antar mahasiswa}
+Perangkat lunak Sharif Judge terkini sudah memiliki fitur untuk menguji kemiripan kode antar peserta dengan menggunakan Moss. Untuk sekarang ini Moss tidak dapat digunakan, karena Moss membutuhkan port 7690 yang diblok oleh UNPAR. Oleh sebab itu, kebutuhan ini tidak diimplementasikan.
+
+\subsection{Satu Akun hanya dapat login satu waktu}
+Para peserta Sharif Judge dapat login menggunakan akunnya di beberapa komputer. Peserta yang mengetahui user dan password peserta lain dapat dengan mudah login ke Sharif Judge. Hal tersebut sering dijadikan celah bagi beberapa peserta untuk melakukan tindak kecurangan. Peserta yang sudah login menggunakan akun peserta lainnya dapat melihat dan menyalin kode yang telah dikumpulkan ke Sharif Judge. Tindak kecurangan ini sering terjadi pada saat kuis maupun ujian. Bapak Husnul Hakim menginginkan perangkat lunak Sharif Judge dimana akun para peserta hanya dapat login satu waktu. Jika sebuah akun telah login di satu komputer, maka akun tersebut tidak dapat login di komputer lainnya. Diharapkan dengan adanya fitur tersebut dapat menekan jumlah tindak kecurangan yang terjadi.
+
+\subsection{Perlu ditambah petunjuk penamaan file input & output}
+Dalam membuat sebuah assignment pada perangkat lunak Sharif Judge terdapat file test case yang harus disertakan. Terdapat beberapa ketentuan  saat menyertakan file test case. Beberapa ketentuan tersebut seperti struktur direktori dan penamaan dalam file test case. Pada halaman add assignment terdapat link menuju dokumentasi Sharif Judge di GitHub yang menjelaskan ketentuan dalam menyertakan file test case. Ketentuan tersebut harus terpenuhi agar sebuah assignment dapat berjalan dengan baik. Oleh sebab itu, kebutuhan ini tidak diimplementasikan.
+
+%\subsection{UI masih merepotkan}
+
+%\subsection{UI ada yang tidak berguna}
+
+\subsection{Sharif Judge diharapkan memiliki fungsi reminder}
+Setiap assignment pada perangkat lunak Sharif Judge memiliki batas pengumpulan. Jika assignment telah melewati batas pengumpulan maka para peserta tidak dapat mengumpulkan tugasnya. Banyak peserta sering kali lupa untuk mengerjakan assignment dan pada akhirnya melewati batas pengumpulan. Bapak Claudio Fransiscus menginginkan perangkat lunak Sharif Judge yang memiliki fitur reminder. Fitur reminder akan mengirimkan email ke setiap peserta yang berisikan peringatan bahwa ada assignment yang harus diselsaikan. Namun kebutuhan ini belum dapat diimplementasikan karena masih belum ada sistem scheduller dan tingkat kesulitan yang terlalu tinggi.
+
 \subsection{Membatasi soal (deskripsi \& PDF) hanya bisa diakses saat \textit{assignment} "open" dan setelah waktu mulai}
-Kebutuhan ini merupakan salah satu kebutuhan yang paling banyak disebut oleh para dosen pengguna Sharif Judge. Perangkat lunak Sharif Judge terkini masih belum dapat memenuhi kebutuhan diatas. Para peserta dapat mengunduh diskrpsi soal \& PDF sebelum waktu \textit{assignment} dimulai. Untuk menangani hal tersebut para dosen harus %mengunggah file PDF dummy lalu pada saat assignment dimulai, para dosen harus mengedit assignment tersebut dan mengubah file PDF dummy menjadi PDF yang semestinya.
+Kebutuhan ini merupakan salah satu kebutuhan yang paling banyak disebut oleh para dosen pengguna Sharif Judge. Perangkat lunak Sharif Judge terkini masih belum dapat memenuhi kebutuhan diatas. Para peserta dapat mengunduh diskrpsi soal \& PDF sebelum waktu \textit{assignment} dimulai. Untuk menangani hal tersebut para dosen harus mengunggah file PDF tepat pada saat assignment dimulai.
 
 \subsection{Mengumpulkan file dengan format TXT}
 Pengumpulan file dengan format TXT dibutuhkan untuk \textit{Pre-test}. Perangkat lunak Sharif Judge yang sekarang hanya dapat menerima file C, C++, Java, Python 2, Python 3, Zip, dan PDF. Para peserta yang ingin mengumupulkan jawaban \textit{Pre-test}, harus terlebih dahulu mengubah ekstensi file menjadi Java atau mengkompres file ke dalam Zip.
 
 \subsection{Pendaftaran peserta disertai dengan \textit{Display Name}}
-Pendaftaran peserta ke dalam Sharif Judge terkini, tidak disertai dengan \textit{Display Name}. Perangkat lunak Sharif Judge membutuhkan empat buah parameter untuk mendaftarkan peserta, yaitu username, email, password dan role. Setiap peserta yang berhasil didaftarkan masih belum memiliki \textit{Display Name}. Para peserta harus memasukan \textit{Display Name} masing-masing secara manual.
+Pendaftaran peserta ke dalam Sharif Judge terkini tidak disertai dengan \textit{Display Name}. Perangkat lunak Sharif Judge membutuhkan empat buah parameter untuk mendaftarkan peserta, yaitu username, email, password dan role. Setiap peserta yang berhasil didaftarkan masih belum memiliki \textit{Display Name}. Para peserta harus memasukan \textit{Display Name} masing-masing secara manual.
 
 \subsection{Nama pengguna Sharif Judge seharusnya tidak bisa diubah}
 \textit{Display Name} pada perangkat lunak Sharif Judge berfungsi sebagai identitas peserta. Selain itu, \textit{Display Name} juga dapat berfungsi sebagai nama yang muncul pada bagian Scoreboard. Sharif Judge yang terkini mengijinkan para peserta untuk mengubah \textit{Display Name} pada bagian Profile. Hal tersebut dapat dijadikan sebuah "mainan" dan tindakan kecurangan karena dapat memberikan hint untuk peserta lain.
@@ -52,12 +68,9 @@ Pada masa Pra UTS dan Pra UAS biasanya para dosen memberikan assignment sebagai 
 Lab FTIS UNPAR memiliki server RADIUS yang dapat memverifikasi ID mahasiswa terhadap kata sandinya. Integrasi Sharif Judge dengan RADIUS bertujuan agar para peserta dapat login ke Sharif Judge menggunakan akun yang terdapat pada server RADIUS.
 
 \subsection{Branding Teknik Informatika}
-Mengubah logo dan ikon Sharif Judge menjadi logo Teknik Informatika
-
-%\subsection{Akun pengguna Sharif Judge diharapkan hanya dapat login 1 waktu}
+Mengubah logo dan ikon Sharif Judge menjadi logo Teknik Informatika.
 
 \subsection{Sharif Judge diharapkan memiliki Scoreboard global untuk semua assignment}
 Sharif Judge terkini memiliki fitur Scoreboard yang berfungsi menampilkan seluruh nilai akhir para peserta dari sebuah assignment. Para dosen menginginkan sebuah Scoreboard global untuk semua assignment. Scoreboard global tersebut akan menampilkan berapa problem yang telah dikerjakan para peserta diseluruh assignment yang ada.
 
 \subsection{Mengumpulkan file JAR (java multi kelas)}
-
