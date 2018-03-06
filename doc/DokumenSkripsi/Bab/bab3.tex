@@ -1,19 +1,70 @@
 \chapter{Analisis}
 \label{chap:analisis}
 
-Bab ini membahas tentang analisis kebutuhan Sharif Judge yang diperlukan oleh Teknik Informatika. Kebutuhan-kebutuhan tersebut didapat dari daftar isu repositori Sharif Judge di \textit{GitHub} dan dari para dosen pengguna Sharif Judge. Hasil dari analisis kebutuhan tersebut dicatat ke dalam \textit{Google Sheets} dan didiskusikan dengan dosen pembimbing. Selain analisis kebutuhan, pada bab ini juga akan dibahas solusi yang ditawarkan untuk memenuhi kebutuhan tersebut. Berikut hasil diskusi peniliti bersama dosen pembimbing yang dicatat ke dalam \textit{Google Sheets}. 
-
-\begin{figure}[H]
-	\centering  
-	\includegraphics[scale=0.2]{pdf1}
-	
-	\includegraphics[scale=0.2]{pdf2}
-\end{figure}
+Bab ini membahas tentang analisis kebutuhan Sharif Judge yang diperlukan oleh Teknik Informatika dan solusi yang ditawarkan untuk memenuhi kebutuhan tersebut. Kebutuhan-kebutuhan tersebut didapat dari daftar isu repositori Sharif Judge di \textit{GitHub} dan dari para dosen pengguna Sharif Judge. Hasil dari analisis kebutuhan tersebut dicatat ke dalam \textit{Google Sheets} dan didiskusikan dengan dosen pembimbing. Selain analisis kebutuhan, pada bab ini juga akan dibahas analisis sistem terkini pada perangkat lunak Sharif Judge.
 
 
-\section{Analisis Kebutuhan dari Daftar Isu Repositori Sharif Judge   \textit{GitHub}}
-\label{sec:analisisgithub} 
-Analisis dilakukan dengan menganalisa setiap isu terbuka yang ada pada repositori. Dari analisa setiap isu tersebut, didapatkan beberapa pertanyaan dan usulan pengembangan. Beberapa isu yang memiliki usulan pengembangan akan dijadikan pertimbangan untuk mengembangkan Sharif Judge.
+\section{Analisis Kebutuhan Perangkat Lunak Sharif Judge}
+\label{sec:analisis}
+Analisis dilakukan dengan menganalisis setiap isu terbuka yang ada pada repositori di GitHub. Setiap isu di GitHub terdapat kode unik yang dimulai dengan tanda '\#' dan diikuti dengan angka. Kode unik tersebut menunjukan urutan isu yang dibuat oleh para pengguna GitHub. Dari analisa setiap isu tersebut, didapatkan beberapa pertanyaan dan usulan pengembangan. Beberapa isu yang memiliki usulan pengembangan akan dijadikan pertimbangan untuk mengembangkan Sharif Judge. \\
+
+Analisis kebutuhan dari para dosen pengguna Sharif Judge dilakukan dalam bentuk wawancara secara langsung dan melalui email. Dosen-dosen yang telah diwawancarai antara lain:
+\begin{enumerate}
+	\item Husnul Hakim
+	\item Claudio Franciscus
+	\item Vania Natali
+	\item Luciana Abednego
+	\item Joanna Helga
+\end{enumerate}
+%Dari hasil wawancara didapatkan beberapa kebutuhan yang sama dari setiap dosen pengguna Sharif Judge. 
+
+\begin{table}[H] %atau h saja untuk "kira kira di sini"
+	\centering 
+	\caption{\textit{Kebutuhan Sharif Judge}}
+	\label{tab:kebutuhan}
+	\resizebox{\textwidth}{!}{%
+	\begin{tabular}{|l|l|l|l|l|l|}
+		\toprule
+		No & Deskripsi & Sumber & \thead{\textit{Issue Number /} \\ Nama Mata Kuliah} & \thead{Pembuat \textit{Issue} \\ Nama Dosen} & Status\\
+		
+		\midrule
+		1 & Security with PHP & GitHub & \#61 & kathiedart & Diimplemntasi\\ \hline
+		2 & Securing Assignment  & GitHub & \#55 & wojcik13 & Tidak diimplementasi\\ \hline
+		3 & New Function & GitHub & \#53 & wojcik13 & Tidak diimplementasi\\ \hline
+		4 & Solved Problem Indicator & GitHub & \#46 & atiabjobayer & Tidak diimplementasi\\ \hline
+		5 & Some Problem \& Sugestion & GitHub & \#45 & atiabjobayer & Tidak diimplementasi\\ \hline
+		6 & \makecell[l]{Queue failed to process if \\ submission take too long to \\ complete?}  & GitHub & \#32 & truongan & Diimplemntasi\\ \hline
+		
+		7 & Compilation Error on all language & GitHub & \#34 & Eririn07 & Tidak diimplementasi\\ \hline
+		8 & \makecell[l]{Membatasi soal (deskripsi dan PDF) \\ hanya bisa diakses saat assignment \\ "open" dan setelah waktu mulai} & Dosen & ASD & Husnul Hakim & Diimplementasi\\ \hline
+		
+		9 & \makecell[l]{Menguji kemiripan kode antar \\ mahasiswa (Contek)} & Dosen & ASD & Husnul Hakim & Tidak diimplementasi\\ \hline
+		10 & \makecell[l]{1 Akun hanya dapat login 1 waktu \\ (Jika suatu akun sedang login, tidak \\ ada lagi yang bisa login akun tersebut)} & Dosen & ASD & Husnul Hakim & Diimplementasi\\ \hline
+		11 & asd & Dosen & ASD & Vania Natali & Diimplementasi\\ \hline
+		12 & asd & Dosen & ASD & Vania Natali & Diimplementasi\\ \hline
+		13 & asd & Dosen & DAA & Luciana Abednego & Diimplementasi\\ \hline
+		14 & asd & Dosen & DAA & Luciana Abednego & Diimplementasi\\ \hline
+		15 & asd & Dosen & DAA & Luciana Abednego & Tidak diimplementasi\\ \hline
+		16 & asd & Dosen & DAA & Joanna Helga & Diimplementasi\\ \hline
+		17 & asd & Dosen & DAA & Joanna Helga & Diimplementasi\\ \hline
+		18 & asd & Dosen & DAA & Joanna Helga & Diimplementasi\\ \hline
+		19 & asd & Dosen & DAA & Joanna Helga & Diimplementasi\\ \hline
+		20 & asd & Dosen & ASD \& DAA & Joanna Helga & Diimplementasi\\ \hline
+		21 & asd & Dosen & ASD \& DAA & Claudio Fransiscus & Diimplementasi\\ \hline
+		22 & asd & Dosen & ASD \& DAA & Claudio Fransiscus & Diimplementasi\\ \hline
+		23 & asd & Dosen & ASD \& DAA & Claudio Fransiscus & Tidak diimplementasi\\ \hline
+		24 & asd & Dosen & ASD \& DAA & Claudio Fransiscus & Tidak diimplementasi\\ \hline
+		25 & asd & Dosen & ASD \& DAA & Claudio Fransiscus & Tidak diimplementasi\\ \hline
+		26 & asd & Dosen & ASD \& DAA & Pascal Alfadian & Diimplementasi\\ \hline
+		27 & asd & Dosen & AIF401 & Pascal Alfadian & Diimplementasi\\ \hline
+		28 & asd & Dosen & AIF401 & Pascal Alfadian & Diimplementasi\\ \hline
+		29 & asd & Dosen & AIF401 & Pascal Alfadian & Diimplementasi\\ \hline
+		30 & asd & Dosen & AIF401 & Pascal Alfadian & Diimplementasi\\ \hline
+
+		\bottomrule
+		
+	\end{tabular}}
+\end{table}
 
 \subsection{\textit{Security with PHP}}
 Isu ini dibuat oleh pengguna \textit{GitHub} dengan username \textit{danwdart}. Pada isu tersebut dikatakan bahwa seseorang pengguna Sharif Judge dapat mengubah parameter PHP \textit{shell\_exec()} yang mengakibatkan pengeksekusian kode bisa dilakukan secara sewenang-wenang. Solusi yang ditawarkan untuk mengatasi hal diatas adalah mengganti penggunaan PHP \textit{shell\_exec()} dengan method lain. Contohnya seperti perintah \textit{shell\_exec("rm ...")} yang memiliki fungsi untuk menghapus sebuah file. Perintah tersebut dapat diganti menggunakan method \textit{unlink()} yang memiliki fungsi sama yaitu menghapus sebuah file.
@@ -23,20 +74,9 @@ Isu ini dibuat oleh pengguna \textit{GitHub} dengan username \textit{danwdart}. 
 Isu ini dibuat oleh pengguna \textit{GitHub} dengan username \textit{truongan}. Pada isu tersebut dikatakan bahwa assignment yang memiliki masalah dengan test case besar akan menyebabkan \textit{submission status} menjadi \textit{pending}. User \textit{truongan} memperkirakan hal diatas terjadi dikarenakan \textit{database connection times out}. Solusi yang ditawarkan untuk mengatasi hal diatas adalah menambahakan \textit{method reconnect database}. \textit{Method reconnect database} akan menghubungkan kembali database ketika terjadi kasus seperti diatas.
 % Untuk mengatasi masalah tersebut diperlukan method reconnect database pada file \textit{Queueprocess.php}.
 
-\section{Analisis Kebutuhan dari Dosen Pengguna Sharif Judge}
-\label{sec:analisisdosen} 
-Analisis kebutuhan dari para dosen pengguna Sharif Judge dilakukan dalam bentuk wawancara secara langsung dan melalui email. Dosen-dosen yang telah diwawancarai antara lain:
-\begin{enumerate}
-	\item Bapak Husnul Hakim
-	\item Bapak Claudio Franciscus
-	\item Ibu Vania Natali
-	\item Ibu Luciana Abednego
-	\item Ibu Joanna Helga
-\end{enumerate}
-Dari hasil wawancara didapatkan beberapa kebutuhan yang sama dari setiap dosen pengguna Sharif Judge. 
 
 \subsection{Menguji kemiripan kode antar mahasiswa}
-Perangkat lunak Sharif Judge terkini sudah memiliki fitur untuk menguji kemiripan kode antar peserta dengan menggunakan Moss (\textit{Measure Of Software Similarity}). Moss adalah sistem otomatis untuk mendeteksi kemiripan program. Aplikasi Moss telah berkembang dari tahun 1994 hingga sekarang. Algoritma yang digunakan pada aplikasi Moss sangat efektif dibandingkan algoritma deteksi kecurangan lainnya \footnote{Alex Aiken, "A System for Detecting Software Similarity" Plagiarism Detection. \textit{http://theory.stanford.edu/~aiken/moss/} (diakses 25 Februari 2018)}. Namun untuk sekarang ini, Moss tidak dapat digunakan karena aplikasi Moss membutuhkan port 7690 yang diblok oleh UNPAR. Oleh sebab itu, kebutuhan ini tidak diimplementasikan.
+Perangkat lunak Sharif Judge terkini sudah memiliki fitur untuk menguji kemiripan kode antar peserta dengan menggunakan Moss (\textit{Measure Of Software Similarity}). Moss adalah sistem otomatis untuk mendeteksi kemiripan program. Aplikasi Moss telah berkembang dari tahun 1994 hingga sekarang. Algoritma yang digunakan pada aplikasi Moss sangat efektif dibandingkan algoritma deteksi kecurangan lainnya~\cite{aiken:10:moss}. Namun untuk sekarang ini, Moss tidak dapat digunakan karena aplikasi Moss membutuhkan port 7690 yang diblok oleh UNPAR. Oleh sebab itu, kebutuhan ini tidak diimplementasikan.
 
 \subsection{Satu Akun hanya dapat login satu waktu}
 Para peserta Sharif Judge dapat login menggunakan akunnya di beberapa komputer. Peserta yang mengetahui user dan password peserta lain dapat dengan mudah login ke Sharif Judge. Hal tersebut sering dijadikan celah bagi beberapa peserta untuk melakukan tindak kecurangan. Peserta yang sudah login menggunakan akun peserta lainnya, dapat melihat dan menyalin kode yang telah dikumpulkan ke Sharif Judge. Tindak kecurangan ini sering terjadi pada saat kuis maupun ujian. Bapak Husnul Hakim menginginkan perangkat lunak Sharif Judge dimana akun para peserta hanya dapat login satu waktu. Jika sebuah akun telah login di satu komputer, maka akun tersebut tidak dapat login di komputer lainnya. Diharapkan dengan adanya fitur tersebut dapat menekan jumlah tindak kecurangan yang terjadi. \\
@@ -82,7 +122,7 @@ RADIUS (\textit{Remote Authentication Dial In User Service}) merupakan protokol 
 Lab FTIS UNPAR memiliki server RADIUS yang dapat memverifikasi ID mahasiswa terhadap kata sandinya. Server RADIUS juga berguna untuk autentikasi ID mahasiswa agar menggunakan komputer di Lab FTIS UNPAR. Dengan pengimplementasian integrasi login RADIUS pada Sharif Judge, para peserta dapat login ke Sharif Judge menggunakan akun yang terdapat pada server RADIUS. 
 
 \subsection{Branding Teknik Informatika}
-Branding Teknik Informatika akan dilakukan dengan cara mengubah logo dan ikon Sharif Judge menjadi logo Teknik Informatika. Hal tersebut dapat dilakukan karena Sharif Judge sendiri menggunakan lisensi GPL versi 3. GPL merupakan kepanjangan dari General Public License yang memberikan beberapa kebebasan pada setiap penggunanya. \footnote{Brett Smith, "A Quick Guide to GPLv3," A Quick Guide to GPLv3 - GNU Project - Free Software Foundation. \textit{https://www.gnu.org/licenses/quick-guide-gplv3.html} (diakses 22 Februari 2018)}. %footnote 
+Branding Teknik Informatika akan dilakukan dengan cara mengubah logo dan ikon Sharif Judge menjadi logo Teknik Informatika. Hal tersebut dapat dilakukan karena Sharif Judge sendiri menggunakan lisensi GPL versi 3. GPL merupakan kepanjangan dari General Public License yang memberikan beberapa kebebasan pada setiap penggunanya~\cite{brett:10:moss}. %footnote 
 Kebebasan tersebut antara lain:
 	\begin{itemize}
 		\item Kebebasan untuk menggunakan perangkat lunak dengan tujuan apapun \\
