@@ -1,7 +1,7 @@
 \chapter{Analisis}
 \label{chap:analisis}
 
-Bab ini membahas tentang analisis kebutuhan Sharif Judge yang diperlukan oleh Teknik Informatika dan solusi yang ditawarkan untuk memenuhi kebutuhan tersebut. Kebutuhan-kebutuhan tersebut didapat dari daftar isu repositori Sharif Judge di \textit{GitHub} dan dari para dosen pengguna Sharif Judge. Hasil dari analisis kebutuhan tersebut dicatat ke dalam \textit{Google Sheets} dan didiskusikan dengan dosen pembimbing. Selain analisis kebutuhan, pada bab ini juga akan dibahas analisis sistem terkini pada perangkat lunak Sharif Judge.
+Bab ini membahas tentang analisis kebutuhan Sharif Judge yang diperlukan oleh Teknik Informatika dan solusi yang ditawarkan untuk memenuhi kebutuhan tersebut. Kebutuhan-kebutuhan tersebut didapat dari daftar isu repositori Sharif Judge di \textit{GitHub} dan dari para dosen pengguna Sharif Judge. Hasil dari analisis kebutuhan tersebut dicatat ke dalam \textit{Google Sheets} dan didiskusikan dengan dosen pembimbing. Selain analisis kebutuhan, pada bab ini juga akan dibahas analisis sistem kini pada perangkat lunak Sharif Judge.
 
 
 \section{Analisis Kebutuhan Perangkat Lunak Sharif Judge}
@@ -274,3 +274,117 @@ Berikut beberapa tampilan SharIF Judge yang baru.
 	\caption[Logo SharIF Judge pada Top Bar]{Logo SharIF Judge pada Top Bar} 
 	\label{fig:logo} 
 \end{figure} 
+
+\pagebreak
+
+\section{Analisis Sistem Kini}
+
+Seperti yang telah dibahas pada \hyperref[sec:sharifjudge]{Bab 2.2}, Sharif Judge menggunakan framework Codeigniter. Framework ini menerapkan prinsip Model-View-Controller (M-V-C). Model-View-Controller merupakan metode untuk membuat sebuah aplikasi dengan memisahkan data (Model) dari tampilan (View) dan cara memprosesnya (Controller). Pada perangkat lunak Sharif Judge model, view dan controller terdapat pada folder Application serta dipisahkan ke dalam masing-masing folder.  
+
+\subsection{Model}
+Di dalam folder {Model}, terdapat beberapa file model yang berisikan fungsi-fungsi untuk membantu pengguna mengambil, menyimpan, dan memperbarui informasi pada database.
+
+\subsubsection{Assignment\_Model.php}
+Pada file Assignment\_Model.php terdapat beberapa fungsi yaitu:
+\begin{itemize}
+	\item add\_assignment: menambahkan assignment baru ke dalam database atau mengedit assignment yang ada
+	\item delete\_assignment: menghapus assignment 
+	\item all\_assignments: menampilkan semua daftar assignment dan informasinya
+	\item new\_assignment\_id: mengembalikan nilai int terkecil yang dapat digunakan sebagai id untuk assignment baru
+	\item all\_problems: mengembalikan array yang berisi semua masalah dalam assignment yang diberikan
+	\item problem\_info: mengembalikan baris database untuk masalah tertentu
+	\item assignment\_info: mengembalikan baris database untuk assignment tertentu
+	\item is\_participant: mengecek apakah pengguna terdaftar sebagai peserta pada assignment tertentu
+	\item increase\_total\_submits: meningkatkan jumlah total submit sebanyak satu
+	\item set\_moss\_time: mengedit "\textit{Moss Update Time}" untuk assingment tertentu
+	\item get\_moss\_time: mengembalikan "\textit{Moss Update Time}" untuk assingment tertentu
+	\item save\_problem\_description: menambahkan atau Memperbarui deskripsi masalah
+	\item \_update\_coefficients: memperbarui koefisien yang terdapat pada assignment tertentu. Fungsi ini akan dipanggil oleh fungsi add\_assignment
+\end{itemize}
+
+\subsubsection{Notifications\_Model.php}
+Pada file Notifications\_Model.php terdapat beberapa fungsi yaitu:
+\begin{itemize}
+	\item get\_all\_notifications: mengembalikan semua notifikasi
+	\item get\_latest\_notifications: mengembalikan 10 notifikasi terkini
+	\item add\_notification: menambahkan notifikasi baru
+	\item update\_notification: mengedit notifikasi tertentu
+	\item delete\_notification: menghapus notifikasi tertentu
+	\item get\_notification: menampilkan notifikasi tertentu
+	\item have\_new\_notification: mengecek apakah terdapat notifikasi setelah melewati waktu tertentu
+\end{itemize}
+
+\subsubsection{Queue\_Model.php}
+Pada file Queue\_Model.php terdapat beberapa fungsi yaitu:
+\begin{itemize}
+	\item in\_queue: mengecek apakah sebuah submission telah berada dalam antrian
+	\item get\_queue: mengembalikan semua antrian submission
+	\item empty\_queue: mengosongkan antrian
+	\item add\_to\_queue: memasukan submission ke dalam antrian
+	\item rejudge: menambahkan submission ke dalam antrian untuk di-\textit{rejudge}
+	\item rejudge\_single: menambahkan submission tunggal ke dalam antrian untuk di-\textit{rejudge}
+	\item get\_first\_item: mengembalikan item pertama dari antrian
+	\item remove\_item: menghapus item tertentu dari antrian
+	\item save\_judge\_result\_in\_db: menyimpan hasil dari \textit{judge} ke dalam database. Fungsi ini akan dipanggil oleh fungsi Queueprocess di Controller
+\end{itemize}
+
+\subsubsection{Scoreboard\_Model.php}
+Pada file Scoreboard\_Model.php terdapat beberapa fungsi yaitu:
+\begin{itemize}
+	\item \_generate\_scoreboard: menghasilkan scoreboard dari Final Submissions untuk assignment tertentu. Fungsi ini akan dipanggil oleh update\_scoreboard
+	\item update\_scoreboards: mengupdate \textit{cache} scoreboard dari semua assignment. Fungsi ini akan dipanggil setiap kali pengguna menghapus atau semua assignment pengguna dihapus.
+	\item update\_scoreboard: mengupdate cache scoreboard dari semua assignment dan menyimpan kode html scoreboard ke dalam database. Fungsi ini dipanggil setelah judging/rejudging sebuah submission dan ketika beberapa settings diubah pada assignment tertentu. Setting tersebut terdiri dari Extra Time, Start Time, Finish Time, Coefficient's Rule dan Enable/Disable Scoreboard.
+	\item get\_scoreboard: mengembalikan \textit{cache} scoreboard untuk assignment tertentu sebagai teks html
+\end{itemize}
+
+\subsubsection{Settings\_Model.php}
+Pada file Settings\_Model.php terdapat beberapa fungsi yaitu:
+\begin{itemize}
+	\item get\_setting: mengembalikan pengaturan tertentu
+	\item set\_setting: mengupdate pengaturan tertentu
+	\item get\_all\_settings: menampilkan semua pengaturan
+	\item set\_setting: mengupdate seluruh pengaturan
+\end{itemize}
+
+\subsubsection{Submit\_Model.php}
+Pada file Submit\_Model.php terdapat beberapa fungsi yaitu:
+\begin{itemize}
+	\item get\_submission: mengembalikan baris tabel sebuah submission tertentu 
+	\item get\_final\_submissions: mengembalikan baris tabel final submission para peserta dari sebuah submission tertentu
+	\item get\_all\_submissions: mengembalikan baris tabel seluruh submission
+	\item count\_final\_submissions: mengembalikan jumlah total final submission dari peserta tertentu
+	\item count\_all\_submissions: mengembalikan jumlah total submission dari peserta tertentu
+	\item set\_final\_submission: menentukan submission tertentu agar menjadi final submission
+	\item add\_upload\_only: menambahkan hasil dari submit "Upload only" ke database
+\end{itemize}
+
+\subsubsection{User.php}
+Pada file User.php terdapat beberapa fungsi yaitu:
+\begin{itemize}
+	\item select\_assignment: menetapkan assignment yang dipilih untuk username tertentu
+	\item save\_widget\_positions: mengupdate posisi dari dashboard widget ke database
+	\item get\_widget\_positions: mengembalikan posisi dashboard widget dari database
+\end{itemize}
+
+\subsubsection{User\_Model.php}
+Pada file User\_Model.php terdapat beberapa fungsi yaitu:
+\begin{itemize}
+	\item have\_user: mengecek apakah pengguna dengan username yang diinput terdapat di database
+	\item user\_id\_to\_username: mengubah user id menjadi username
+	\item username\_to\_user\_id: mengubah username menjadi user id
+	\item have\_email: mengecek apakah pengguna dengan email yang diberikan terdapat di database
+	\item add\_user: menambahkan pengguna tunggal
+	\item add\_users: menambahkan beberapa pengguna
+	\item delete\_user: menghapus pengguna tertentu
+	\item delete\_submissions: menghapus semua submission pengguna tertentu
+	\item validate\_user: mengecek apakah user dan password yang diinput cocok untuk keperluan login
+	\item selected\_assignment: mengembalikan assignment yang dipilih
+	\item get\_names: mengembalikan nama dari username tertentu
+	\item update\_profile: memperbarui user profile (Name, Email, Password, Role)
+	\item send\_password\_reset\_mail: Menghasilkan password reset key dan mengirim email berisi link untuk mereset password
+	\item passchange\_is\_valid: mengecek apakah password reset key sesuai
+	\item reset\_password: mereset password untuk password reset key yang diberikan
+	\item get\_all\_users: menampilkan seluruh user yang ada pada database
+	\item get\_user: mengembalikan baris tabel user dengan user id tertentu
+	\item update\_login\_time: memperbaru First Login Time dan Last Login Time username tertentu	
+\end{itemize}
