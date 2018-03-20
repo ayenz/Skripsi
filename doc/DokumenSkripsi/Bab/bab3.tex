@@ -282,7 +282,7 @@ Berikut beberapa tampilan SharIF Judge yang baru.
 Seperti yang telah dibahas pada \hyperref[sec:sharifjudge]{Bab 2.2}, Sharif Judge menggunakan framework Codeigniter. Framework ini menerapkan prinsip Model-View-Controller (M-V-C). Model-View-Controller merupakan metode untuk membuat sebuah aplikasi dengan memisahkan data (Model) dari tampilan (View) dan cara memprosesnya (Controller). Pada perangkat lunak Sharif Judge model, view dan controller terdapat pada folder Application serta dipisahkan ke dalam masing-masing folder.  
 
 \subsection{Model}
-Di dalam folder {Model}, terdapat beberapa file model yang berisikan fungsi-fungsi untuk membantu pengguna mengambil, menyimpan, dan memperbarui informasi pada database.
+Di dalam folder models, terdapat beberapa file model yang berisikan fungsi-fungsi untuk membantu pengguna mengambil, menyimpan, dan memperbarui informasi pada database.
 
 \subsubsection{Assignment\_Model.php}
 Pada file Assignment\_Model.php terdapat beberapa fungsi yaitu:
@@ -388,3 +388,93 @@ Pada file User\_Model.php terdapat beberapa fungsi yaitu:
 	\item get\_user: mengembalikan baris tabel user dengan user id tertentu
 	\item update\_login\_time: memperbaru First Login Time dan Last Login Time username tertentu	
 \end{itemize}
+
+\subsection{View}
+Pada perangkat lunak Sharif Judge, file view menggunakan framework aplikasi yaitu Twig. Twig merupakan sebuah template engine modern untuk PHP. Beberapa kelebihannya adalah
+\begin{itemize}
+	\item Cepat: Twig dapat mengcompile template ke dalam kode HTML dan dapat dioptimalkan. Dibandingkan dengan kode PHP biasa, Twig dapat menghasilkan kode PHP menjadi seminimum mungkin.
+	\item Aman: Twig memiliki mode \textit{sandbox} untuk mengevaluasi kode template yang tidak tepercaya. Hal ini memungkinkan Twig digunakan sebagai template language untuk banyak aplikasi dimana pengguna dapat memodifikasi desain template yang ada.
+	\item Fleksibel: Twig didukung oleh lexer dan parser yang fleksibel. Hal ini memungkinkan para pengembang untuk menentukan tag dan filter khusus~\cite{fabien:09:twig}.
+\end{itemize}
+
+Di dalam folder views, terdapat beberapa folder yang memisahkan file view diantaranya adalah folder admin dan authentication. Folder admin berisikan tampilan yang hanya dapat dilihat oleh admin, sedangkan folder authentication berisikan tampilan yang berhubungan dengan akses akun pengguna.
+
+\subsubsection{dashboard.twig}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.5]{dashboard}  
+	\caption[Dashboard]{Dashboard} 
+	\label{fig:dashboard} 
+\end{figure} 
+Dashboard merupakan tampilan utama tepat setelah pengguna berhasil login pada perangkat lunak Sharif Judge. Pada tampilan dashboard, terdapat kalendar dan tabel notifikasi. Kalendar akan menampilkan keterangan assignment yang ada pada Sharif Judge, sedangkan tabel notifikasi akan berisikan 10 pengumuman terbaru yang telah dibuat oleh admin.
+
+\subsubsection{notifications.twig}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.5]{notifications}  
+	\caption[Notifications]{Notifications} 
+	\label{fig:notifications} 
+\end{figure} 
+Halaman notifikasi akan berisikan seluruh notifikasi yang telah dibuat oleh admin. Jika admin yang memasuki halaman tersebut, maka terdapat pilihan "New" dimana admin dapat menambahkan pengumuman baru untuk para pengguna Sharif Judge. Pengumuman tersebut akan munucl pada tabel notifikasi di dashboard.
+
+\subsubsection{assignments.twig}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.5]{assignments}  
+	\caption[Assignments]{Assignments} 
+	\label{fig:assignments} 
+\end{figure} 
+Halaman assignments akan berisikan seluruh assignment yang ada pada Sharif Judge. Pada halaman ini, pengguna dapat memilih assignment mana yang akan dikerjakan. Jika admin yang memasuki halaman tersebut, maka terdapat beberapa pilihan tambahan. Beberapa pilihan tambahan seperti fungsi "Add" akan mengarahkan admin ke halaman baru untuk menambah assignment dan beberapa fungsi lain untuk mengedit, menghapus atau mengunduh assignment yang sudah ada.
+
+\subsubsection{problems.twig}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.5]{problems}  
+	\caption[Problems]{Problems} 
+	\label{fig:problems} 
+\end{figure} 
+Halaman problems akan berisikan masalah-masalah yang ada pada suatu assignment. Pada halaman ini, pengguna dapat melihat diskripsi pada masing-masing masalah. Selain melihat diskripsi masalah, para pengguna juga dapat mengumpulkan jawaban dari setiap masalah tersebut.
+
+\subsubsection{submit.twig}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.5]{submit}  
+	\caption[Submit]{Submit} 
+	\label{fig:submit} 
+\end{figure} 
+Halaman submit berfungsi untuk mengumpulkan jawaban dari assignment yang telah dipilih pengguna sebelumnya. Pengguna dapat memilih masalah telah diselsaikan lalu memilih bahasa yang digunakan dan memilih file jawaban yang akan dikumpulkan. Setelah mengumpulkan jawaban, pengguna akan diarahkan ke halaman All Submission untuk melihat hasil dari jawaban yang telah dikumpulkan sebelumnya.
+
+\subsubsection{profile.twig}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.5]{profile}  
+	\caption[Profile]{Profile} 
+	\label{fig:profile} 
+\end{figure} 
+Halaman profile akan berisikan keterangan akun pengguna Sharif Judge. Pada halaman ini, pengguna dapat mengubah nama, email dan password. Jika admin yang memasuki halaman ini, maka terdapat tambahan pilihan yaitu user role. Admin dapat mengubah user role menjadi \textit{head\_instructor, instructor} dan \textit{student}.
+
+\subsubsection{scoreboard.twig}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.5]{scoreboard}  
+	\caption[Scoreboard]{Scoreboard} 
+	\label{fig:scoreboard} 
+\end{figure} 
+Halaman scoreboard akan berisikan nilai seluruh pengguna Sharif Judge pada assignment tertentu. Nama pengguna yang muncul akan terurut secara menurun bedasarkan nilai assignment pengguna. Admin dapat menonaktifkan scoreboard dengan cara menghilangkan checklist "Enable Scoreboard" pada halaman Add Assignment.
+
+\subsubsection{submission.twig}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.5]{allsubmission}  
+	\caption[All Submission]{All Submission} 
+	\label{fig:allsubmission} 
+\end{figure} 
+
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.5]{finalsubmission}  
+	\caption[Final Submission]{Final Submission} 
+	\label{fig:finalsubmission} 
+\end{figure} 
+
+File submission.twig akan terbagi menjadi dua halaman yaitu All Submission dan Final Submission. Pada halaman All Submission, pengguna dapat melihat seluruh jawaban yang telah dikumpulkan. Pengguna juga dapat memilih salah satu jawaban dari suatu masalah yang akan dijadikan jawaban akhir. Pada halaman Final Submission, pengguna dapat melihat seluruh jawaban akhir yang telah dipilih sebelumnya di halaman All Submission.
