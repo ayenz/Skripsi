@@ -397,7 +397,7 @@ Pada perangkat lunak Sharif Judge, file view menggunakan framework aplikasi yait
 	\item Fleksibel: Twig didukung oleh lexer dan parser yang fleksibel. Hal ini memungkinkan para pengembang untuk menentukan tag dan filter khusus~\cite{fabien:09:twig}.
 \end{itemize}
 
-Di dalam folder views, terdapat beberapa folder yang memisahkan file view diantaranya adalah folder admin dan authentication. Folder admin berisikan tampilan yang hanya dapat dilihat oleh admin, sedangkan folder authentication berisikan tampilan yang berhubungan dengan akses akun pengguna.
+Direktori views perangkat lunak Sharif Judge terdapat pada \path{Sharif-Judge\application\views}. Di dalam folder views, terdapat beberapa folder yang memisahkan file view diantaranya adalah folder error, pages dan templates. Folder error berisikan tampilan ketika pengguna melakukan kesalahan seperti 404 Page Not Found atau Database Error. Folder template berisikan tampilan dasar penyusun Sharif Judge seperti Top Bar, Side Bar, dan Header. Folder pages berisikan tampilan utama Sharif Judge. Pada folder ini terdapat beberapa folder yaitu admin dan authtentication. Folder admin berisikan tampilan yang hanya dapat dilihat oleh admin seperti tampilan Settings, User, Install, Add Assignemnt, Add Notification dan lain-lain. Folder authentication berisikan tampilan yang berhubungan dengan akses akun pengguna tampilan Login, Register dan Reset Password.
 
 \subsubsection{dashboard.twig}
 \begin{figure}[H]
@@ -460,7 +460,7 @@ Halaman profile akan berisikan keterangan akun pengguna Sharif Judge. Pada halam
 	\caption[Scoreboard]{Scoreboard} 
 	\label{fig:scoreboard} 
 \end{figure} 
-Halaman scoreboard akan berisikan nilai seluruh pengguna Sharif Judge pada assignment tertentu. Nama pengguna yang muncul akan terurut secara menurun bedasarkan nilai assignment pengguna. Admin dapat menonaktifkan scoreboard dengan cara menghilangkan checklist "Enable Scoreboard" pada halaman Add Assignment.
+Halaman scoreboard akan berisikan nilai seluruh pengguna Sharif Judge pada assignment tertentu. Nama pengguna yang muncul akan terurut secara menurun bedasarkan nilai assignment pengguna. Admin dapat menonaktifkan scoreboard dengan cara menghilangkan checklist "Scoreboard" pada halaman Add Assignment.
 
 \subsubsection{submission.twig}
 \begin{figure}[H]
@@ -478,3 +478,84 @@ Halaman scoreboard akan berisikan nilai seluruh pengguna Sharif Judge pada assig
 \end{figure} 
 
 File submission.twig akan terbagi menjadi dua halaman yaitu All Submission dan Final Submission. Pada halaman All Submission, pengguna dapat melihat seluruh jawaban yang telah dikumpulkan. Pengguna juga dapat memilih salah satu jawaban dari suatu masalah yang akan dijadikan jawaban akhir. Pada halaman Final Submission, pengguna dapat melihat seluruh jawaban akhir yang telah dipilih sebelumnya di halaman All Submission.
+
+\subsubsection{settings.twig}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.5]{settings}  
+	\caption[Settings]{Settings} 
+	\label{fig:settings} 
+\end{figure} 
+Halaman settings akan berisikan pengaturan yang ada pada Sharid Judge. Beberapa pengaturannya yaitu pengaturan timezone, direktori path, direktori tester, email, sandboxing, shield dan lain-lain.
+
+\subsubsection{user.twig}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.5]{user}  
+	\caption[User]{User} 
+	\label{fig:user} 
+\end{figure} 
+Halaman user akan berisikan list pengguna yang terdaftar pada Sharif Judge. Pada halaman ini, admin dapat melakukan beberapa aksi seperti menambah pengguna, menghapus pengguna, melihat hasil jawaban pengguna, menghapus jawaban pengguna dan mengubah data diri pengguna. 
+
+\subsubsection{add\_user.twig}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.5]{adduser}  
+	\caption[Add User]{Add User} 
+	\label{fig:adduser} 
+\end{figure} 
+Halaman add user berfungsi untuk menambah peserta pada Sharif Judge. Pada halaman ini, admin dapat memasukan informasi pengguna yang ingin didaftarkan pada Sharif Judge. Informasi tersebut berupa username, email, password dan role.
+
+\subsubsection{add\_notification.twig}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.5]{addnotification}  
+	\caption[Add Notification]{Add Notification} 
+	\label{fig:addnotification} 
+\end{figure} 
+Halaman add notification berfungsi untuk menambah pengumuman pada Sharif Judge. Pada halaman ini, terdapat beberapa form seperti judul pengumuman dan isi dari pengumuman tersebut.  
+
+\subsubsection{add\_assignment.twig}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.5]{addassignment}  
+	\caption[Add Assignment]{Add Assignment} 
+	\label{fig:addassignment} 
+\end{figure} 
+Halaman add assignment berfungsi untuk menambah assignment pada Sharif Judge. Pada halaman ini, admin dan head instructor dapat mengatur beberapa pengaturan assignment tersebut. Beberapa pengaturan seperti nama, waktu mulai, waktu akhir, scoreboard dan lain-lain. Admin juga dapat mengunggah diskripsi serta file PDF untuk assignment tersebut.
+
+\subsubsection{rejudge.twig}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.5]{rejudge}  
+	\caption[Rejudge]{Rejudge} 
+	\label{fig:rejudge} 
+\end{figure} 
+Halaman rejudge berfungsi untuk menilai ulang hasil pekerjaan seluruh peserta Sharif Judge. Pada halaman ini, admin dan head instructor dapat menilai ulang setiap masalah pada assignment yang dipilih.
+
+\subsubsection{login.twig}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.5]{ular-jpg}  
+	\caption[Login]{login} 
+	\label{fig:oldlogin} 
+\end{figure} 
+Halaman login merupakan halaman pertama yang akan tampil ketika pengguna membuka Sharif Judge. Untuk dapat menggunakan Sharif Judge, para pengguna harus memasukan kombinasi username dan password yang tepat. Jika pengguna berhasil login, maka akan diarahkan ke halaman dashboard. Jika pengguna gagal login, maka akan muncul pesan kesalahan "\textit{Incorrect username or password}" .
+
+\subsubsection{register.twig}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.5]{ular-jpg}  
+	\caption[Register]{Register} 
+	\label{fig:register} 
+\end{figure} 
+Halaman register berfungsi untuk mendaftar sebagai peserta Sharif Judge. Umumnya halaman ini tidak tersedia karena pengguna Sharif Judge telah ditentukan sebelumnya oleh admin dan head instructor. Halaman ini akan muncul jika admin menyalakan fitur \textit{Open Public Registration} pada halaman Settings.
+
+\subsubsection{lost.twig}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.5]{ular-jpg}  
+	\caption[Lost]{Lost} 
+	\label{fig:lost} 
+\end{figure} 
+Halaman lost berfungsi untuk para peserta yang lupa kombinasi username dan password. Peserta harus memasukan email yang didaftarkan pada Sharif Judge. Sharif Judge akan mengirimkan link untuk mereset password ke email yang telah dimasukan sebelumnya.
