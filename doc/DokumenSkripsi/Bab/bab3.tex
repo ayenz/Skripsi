@@ -282,7 +282,7 @@ Berikut beberapa tampilan SharIF Judge yang baru.
 Seperti yang telah dibahas pada \hyperref[sec:sharifjudge]{Bab 2.2}, Sharif Judge menggunakan framework Codeigniter. Framework ini menerapkan prinsip Model-View-Controller (M-V-C). Model-View-Controller merupakan metode untuk membuat sebuah aplikasi dengan memisahkan data (Model) dari tampilan (View) dan cara memprosesnya (Controller). Pada perangkat lunak Sharif Judge model, view dan controller terdapat pada folder Application serta dipisahkan ke dalam masing-masing folder.  
 
 \subsection{Model}
-Di dalam folder models, terdapat beberapa file model yang berisikan fungsi-fungsi untuk membantu pengguna mengambil, menyimpan, dan memperbarui informasi pada database.
+Direktori model perangkat lunak Sharif Judge terdapat pada \path{Sharif-Judge\application\models}.Di dalam folder models, terdapat beberapa file model yang berisikan fungsi-fungsi untuk membantu pengguna mengambil, menyimpan, dan memperbarui informasi pada database.
 
 \subsubsection{Assignment\_Model.php}
 Pada file Assignment\_Model.php terdapat beberapa fungsi yaitu:
@@ -397,7 +397,7 @@ Pada perangkat lunak Sharif Judge, file view menggunakan framework aplikasi yait
 	\item Fleksibel: Twig didukung oleh lexer dan parser yang fleksibel. Hal ini memungkinkan para pengembang untuk menentukan tag dan filter khusus~\cite{fabien:09:twig}.
 \end{itemize}
 
-Direktori views perangkat lunak Sharif Judge terdapat pada \path{Sharif-Judge\application\views}. Di dalam folder views, terdapat beberapa folder yang memisahkan file view diantaranya adalah folder error, pages dan templates. Folder error berisikan tampilan ketika pengguna melakukan kesalahan seperti 404 Page Not Found atau Database Error. Folder template berisikan tampilan dasar penyusun Sharif Judge seperti Top Bar, Side Bar, dan Header. Folder pages berisikan tampilan utama Sharif Judge. Pada folder ini terdapat beberapa folder yaitu admin dan authtentication. Folder admin berisikan tampilan yang hanya dapat dilihat oleh admin seperti tampilan Settings, User, Install, Add Assignemnt, Add Notification dan lain-lain. Folder authentication berisikan tampilan yang berhubungan dengan akses akun pengguna tampilan Login, Register dan Reset Password.
+Direktori view perangkat lunak Sharif Judge terdapat pada \path{Sharif-Judge\application\views}. Di dalam folder views, terdapat beberapa folder yang memisahkan file view diantaranya adalah folder error, pages dan templates. Folder error berisikan tampilan ketika pengguna melakukan kesalahan seperti 404 Page Not Found atau Database Error. Folder template berisikan tampilan dasar penyusun Sharif Judge seperti Top Bar, Side Bar, dan Header. Folder pages berisikan tampilan utama Sharif Judge. Pada folder ini terdapat beberapa folder yaitu admin dan authtentication. Folder admin berisikan tampilan yang hanya dapat dilihat oleh admin seperti tampilan Settings, User, Install, Add Assignemnt, Add Notification dan lain-lain. Folder authentication berisikan tampilan yang berhubungan dengan akses akun pengguna tampilan Login, Register dan Reset Password.
 
 \subsubsection{dashboard.twig}
 \begin{figure}[H]
@@ -559,3 +559,68 @@ Halaman register berfungsi untuk mendaftar sebagai peserta Sharif Judge. Umumnya
 	\label{fig:lost} 
 \end{figure} 
 Halaman lost berfungsi untuk para peserta yang lupa kombinasi username dan password. Peserta harus memasukan email yang didaftarkan pada Sharif Judge. Sharif Judge akan mengirimkan link untuk mereset password ke email yang telah dimasukan sebelumnya.
+
+\subsection{Controller}
+Direktori controller perangkat lunak Sharif Judge terdapat pada \path{Sharif-Judge\application\controllers}.Di dalam folder controllers, terdapat beberapa file controller yang berisikan fungsi-fungsi sebagai perantara antara model, view, dan resource lainnya yang dibutuhkan untuk memproses HTTP request.
+
+\subsubsection{Assignments.php}
+Pada file Assignments.php terdapat beberapa fungsi yaitu:
+\begin{itemize}
+	\item index: mempersiapkan data yang dibutuhkan untuk halaman assignments.twig. Data yang dipersiapkan, diambil menggunakan fungsi-fungsi yang terdapat pada Assignment\_model.php
+	\item select: memilih assignment yang ada pada Sharif Judge
+	\item pdf: mengunduh file pdf atau deskripsi masalah pada assignment tertentu
+	\item downloadtestsdesc: mengompres dan mengunduh test data dan deskripsi assignment tertentu
+	\item download\_submissions: mengompres dan mengunduh jawaban akhir para peserta pada assignment tertentu
+	\item delete: menghapus sebuah assignment
+	\item add: mengambil input dari user untuk menambah atau mengubah assignment
+	\item \_add: menambah atau mengubah assignment
+\end{itemize}
+
+\subsubsection{Dashboard.php}
+Pada file Dashboard.php terdapat beberapa fungsi yaitu:
+\begin{itemize}
+	\item index: mempersiapkan data yang dibutuhkan untuk halaman dashboard.twig. Data yang dipersiapkan, diambil menggunakan beberapa fungsi yang terdapat pada Assignment\_model.php, Settings\_model.php dan Notification\_model.php
+	\item widget\_positions: menyimpan posisi widget pada Dashboard pengguna
+\end{itemize}
+
+\subsubsection{Install.php}
+Pada file Install.php terdapat beberapa fungsi yaitu:
+\begin{itemize}
+	\item index: fungsi ini akan membuat table-table yang dibutuhkan oleh Sharif Judge ke database yang telah ditentukan
+\end{itemize}
+
+\subsubsection{Login.php}
+Pada file Login.php terdapat beberapa fungsi yaitu:
+\begin{itemize}
+	\item \_registration\_code: memeriksa apakah kode pendaftaran yang dimasukkan sudah benar atau tidak
+	\item index: memvalidasi kombinasi antara username dan password yang telah dimasukan pengguna
+	\item register: mempersiapakan form registrasi dan memproses tampilan pada register.twig
+	\item logout: keluar dari Sharif Judge dan mengalihkan pengguna ke halanan login
+	\item lost: mempersiapakan form lupa password dan memproses tampilan pada lost.twig
+\end{itemize}
+
+\subsubsection{Notification.php}
+Pada file Notification.php terdapat beberapa fungsi yaitu:
+\begin{itemize}
+	\item index: mempersiapkan data yang dibutuhkan untuk halaman notification.twig. Data yang dipersiapkan, diambil menggunakan beberapa fungsi yang terdapat pada Assignment\_model.php dan Notification\_model.php
+	\item add: menambah pengumuman pada Sharif Judge
+	\item edit: mengubah pengumuman yang ada pada Sharif Judge
+	\item delete: menghapus pengumuman yang ada pada Sharif Judge
+\end{itemize}
+
+\subsubsection{Problems.php}
+Pada file Problems.php terdapat beberapa fungsi yaitu:
+\begin{itemize}
+	\item index: menampilkan deskripsi problem yang diberikan
+	\item edit: mengubah diskripsi problem yang ada pada Sharif Judge
+\end{itemize}
+
+\subsubsection{Profile.php}
+Pada file Profile.php terdapat beberapa fungsi yaitu:
+\begin{itemize}
+	\item index: mempersiapkan form profile yang berfungsi untuk mengubah informasi dari pengguna Sharif Judge
+	\item \_password\_check: mengecek apakah password yang dibuat oleh pengguna Sharif Judge memenuhi syarat. Syarat password tersebut yaitu minimal terdiri dari 6 karakter.
+	\item \_password\_again\_check: mengecek apakah 'password again' yang dimasukan sama dengan password yang telah dimasukan sebelumnya
+	\item \_email\_check: mengecek apakah email yang dimasukan pengguna telah digunakan pengguna lain
+	\item \_role\_check: memvalidasi user role
+\end{itemize}
