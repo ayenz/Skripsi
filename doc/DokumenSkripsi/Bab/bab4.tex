@@ -1,0 +1,75 @@
+\chapter{Perancangan}
+\label{chap:perancangan}
+
+Bab ini membahas tentang perancangan setiap fitur yang akan diimplementasi pada perangkat lunak Sharif Judge. 
+
+\section{Mengganti method \textit{shell\_exec("rm ...")} menjadi unlink()}
+Method \textit{shell\_exec("rm ...")} yang memiliki fungsi untuk menghapus sebuah file terdapat pada file controller Assignment.php tepatnya di baris kode 425 dan 473
+
+Assignments.php
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true]
+
+...
+423	// Upload Tests (zip file)
+424	
+425	shell_exec('rm -f '.$assignments_root.'/*.zip');
+426	$config = array(
+...
+472	foreach($old_pdf_files as $old_name)
+473		shell_exec("rm -f $old_name");
+474	$this->messages[] = array(
+...
+
+\end{lstlisting}
+
+Fungsi \textit{shell\_exec("rm ...")} pada baris 425 dan 473 akan diubah menggunakan fungsi unlink() menjadi kode berikut
+
+Assignments.php
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true]
+
+...
+423	// Upload Tests (zip file)
+424	
+425	unlink($assignments_root.'/*.zip');
+426	$config = array(
+...
+472	foreach($old_pdf_files as $old_name)
+473		unlink($old_name);
+474	$this->messages[] = array(
+...
+
+\end{lstlisting}
+
+\section{Menambahkan method rekoneksi ke database}
+Method rekoneksi ke database akan ditambahkan pada file controller Queueprocess.php. 
+
+Queueprocess.php
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true]
+
+...
+133
+134	// Save the result
+135	$this->queue_model->save_judge_result_in_db($submission, $type);
+...
+
+\end{lstlisting}
+
+Method rekoneksi yang digunakan yaitu \textit{\$this->db->reconnect()}. Method ini diletakan pada baris 134 tepat sebelum Sharif Judge menyimpan hasil judge. Hal tersebut dilakukan untuk menghindari connection times out akibat pengujian yang memakan waktu lama.
+
+Queueprocess.php
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true]
+
+...
+133
+134	//reconnect to database incase we have run test for a long time.
+135	$this->db->reconnect();
+136
+137	// Save the result
+138	$this->queue_model->save_judge_result_in_db($submission, $type);
+...
+
+\end{lstlisting}
