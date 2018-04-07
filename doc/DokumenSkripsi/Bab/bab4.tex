@@ -1,12 +1,12 @@
 \chapter{Perancangan}
 \label{chap:perancangan}
 
-Bab ini membahas tentang perancangan setiap fitur yang akan diimplementasi pada perangkat lunak Sharif Judge. 
+Bab ini membahas tentang perancangan setiap fitur yang akan diimplementasi pada perangkat lunak \textit{Sharif Judge}. 
 
-\section{Mengganti method \textit{shell\_exec("rm ...")} menjadi unlink()}
-Method \textit{shell\_exec("rm ...")} yang memiliki fungsi untuk menghapus sebuah file terdapat pada file controller Assignment.php tepatnya di baris kode 425 dan 473
+\section{Mengganti method \textit{shell\_exec("rm ...")} menjadi \textit{unlink()}}
+\textit{Method} \textit{shell\_exec("rm ...")} yang memiliki fungsi untuk menghapus sebuah file terdapat pada file \textit{controller Assignment.php} tepatnya di baris kode 425 dan 473
 
-Assignments.php
+\textit{Assignments.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true]
 
@@ -23,9 +23,9 @@ columns=fullflexible, keepspaces=true]
 
 \end{lstlisting}
 
-Fungsi \textit{shell\_exec("rm ...")} pada baris 425 dan 473 akan diubah menggunakan fungsi unlink() menjadi kode berikut
+Fungsi \textit{shell\_exec("rm ...")} pada baris 425 dan 473 akan diubah menggunakan fungsi \textit{unlink()} menjadi seperti berikut
 
-Assignments.php
+\textit{Assignments.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true]
 
@@ -42,10 +42,10 @@ columns=fullflexible, keepspaces=true]
 
 \end{lstlisting}
 
-\section{Menambahkan method rekoneksi ke database}
-Method rekoneksi ke database akan ditambahkan pada file controller Queueprocess.php. 
+\section{Menambahkan method rekoneksi ke \textit{database}}
+\textit{Method} rekoneksi ke \textit{database} akan ditambahkan pada \textit{file controller Queueprocess.php}. 
 
-Queueprocess.php
+\textit{Queueprocess.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true]
 
@@ -57,9 +57,9 @@ columns=fullflexible, keepspaces=true]
 
 \end{lstlisting}
 
-Method rekoneksi yang digunakan yaitu \textit{\$this->db->reconnect()}. Method ini diletakan pada baris 134 tepat sebelum Sharif Judge menyimpan hasil judge. Hal tersebut dilakukan untuk menghindari connection times out akibat pengujian yang memakan waktu lama.
+\textit{Method} rekoneksi yang digunakan yaitu \textit{\$this->db->reconnect()}. \textit{Method} ini diletakan pada baris 134 tepat sebelum \textit{Sharif Judge} menyimpan hasil \textit{judge}. Hal tersebut dilakukan untuk menghindari \textit{connection times out} akibat pengujian yang memakan waktu lama.
 
-Queueprocess.php
+\textit{Queueprocess.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true]
 
@@ -74,117 +74,378 @@ columns=fullflexible, keepspaces=true]
 
 \end{lstlisting}
 
-\section{Membuat halaman Logs yang mencatat aktivitas login pengguna}
-Agar halaman Logs dapat berjalan dengan baik, perlu ditambahkan tabel baru pada database Sharif Judge.  Tabel baru tersebut akan bernama shj\_logins. 
+\section{Membatasi soal (deskripsi \& PDF) hanya bisa diunduh saat \textit{assignment "open"} dan setelah waktu mulai}
+Fungsi untuk mengunduh soal (deskripsi \& PDF) terdapat pada \textit{controller Assignment.php} tepatnya di baris kode 100.
+
+\textit{Assignments.php}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+
+97	/**
+98	* Download pdf file of an assignment (or problem) to browser
+99	*/
+100	public function pdf($assignment_id, $problem_id = NULL)
+101	{
+102		// Find pdf file
+103		if ($problem_id === NULL)
+104			$pattern = rtrim($this->settings_model->get_setting('assignments_root'),'/')."/assignment_{$assignment_id}/*.pdf";
+105		else
+106			$pattern = rtrim($this->settings_model->get_setting('assignments_root'),'/')."/assignment_{$assignment_id}/p{$problem_id}/*.pdf";
+107		$pdf_files = glob($pattern);
+108		if ( ! $pdf_files )
+109			show_error("File not found");
+110
+111		// Download the file to browser
+112		$this->load->helper('download')->helper('file');
+113		$filename = shj_basename($pdf_files[0]);
+114		force_download($filename, file_get_contents($pdf_files[0]), TRUE);
+115	}
+
+\end{lstlisting}
+
+Selain membatasi soal (deskripsi \& PDF) hanya dapat diunduh saat \textit{assignment "open"} dan setelah waktu mulai, pada fungsi ini juga ditambahkan fitur lain. Fitur lain tersebut yaitu membatasi soal hanya dapat diunduh oleh peserta yang terdaftar sebagai "\textit{participant}" dan soal tidak dapat diunduh setelah melewati batas waktu pengumpulan. Rancangan algoritma kode yang akan digunakan yaitu
+\begin{itemize}
+	\item Membuat atribut tambahan untuk menyimpan informasi waktu selesai, waktu mulai dan waktu tambahan sebuah assignment.
+	\item Jika atribut "\textit{open}" pada \textit{assignment} tidak memiliki nilai, maka munculkan pesan \textit{error} "\textit{Selected assignment has been closed}."
+	\item Jika pengguna tidak terdaftar sebagai "\textit{participant}" dalam \textit{assignment} yang dipilih, maka munculkan pesan error "\textit{You are not registered for submitting}."
+	\item Jika waktu sekarang telah melewati batas waktu selesai + waktu tambahan, maka munculkan pesan \textit{error} "\textit{Selected assignment has finished}."
+	\item Jika waktu sekarang belum melewati waktu mulai, maka munculkan pesan \textit{error} "\textit{Selected assignment has not started}."	
+\end{itemize}
+
+Berikut hasil pengimplementasian rancangan algoritma di atas ke dalam kode program
+
+\textit{Assignments.php}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+
+...
+97	/**
+98	* Download pdf file of an assignment (or problem) to browser
+99	*/
+100	public function pdf($assignment_id, $problem_id = NULL)
+101	{
+102		$finishtime = strtotime($this->assignment_model->assignment_info($assignment_id)['finish_time']);
+103		$starttime = strtotime($this->assignment_model->assignment_info($assignment_id)['start_time']);
+104		$extratime = $this->assignment_model->assignment_info($assignment_id)['extra_time'];
+105
+106		// Find pdf file
+107		if ($problem_id === NULL)
+108			$pattern = rtrim($this->settings_model->get_setting('assignments_root'),'/')."/assignment_{$assignment_id}/*.pdf";
+109		else
+110			$pattern = rtrim($this->settings_model->get_setting('assignments_root'),'/')."/assignment_{$assignment_id}/p{$problem_id}/*.pdf";
+111		$pdf_files = glob($pattern);
+112		if ( ! $pdf_files )
+113			show_error("File not found");
+114		elseif (!$this->assignment_model->assignment_info($assignment_id)['open'])
+115			show_error('Selected assignment has been closed.');
+116		elseif	( ! $this->assignment_model->is_participant($this->assignment_model->assignment_info($assignment_id)['participants'],$this->user->username) )
+117			show_error('You are not registered for submitting.');
+118		elseif ( shj_now() > $finishtime + $extratime)
+119			show_error('Selected assignment has finished.');
+120		elseif ( shj_now() < $starttime)
+121			show_error('Selected assignment has not started.');
+122			
+123		// Download the file to browser
+124		$this->load->helper('download')->helper('file');
+125		$filename = shj_basename($pdf_files[0]);
+126		force_download($filename, file_get_contents($pdf_files[0]), TRUE);
+127	}
+...
+
+\end{lstlisting}
+
+\section{Mensupport \textit{file} dengan ekstensi TXT}
+Untuk dapat mensupport \textit{file} dengan ekstensi TXT pada perangkat lunak \textit{Sharif Judge}, diperlukan penambahan dan perubahan kode pada beberapa \textit{file}. Beberapa \textit{file} tersebut antara lain \textit{controller Submit.php, model Assignment\_model.php, view submissions.twig} dan \textit{file} bantuan \textit{shj\_helper.php} yang terdapat pada direktori \path{Sharif-Judge\helpers\}. Berikut beberapa baris potongan kode program
+
+\textit{Submit.php}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+
+...
+58		case 'java': return 'java';
+59		case 'zip': return 'zip';
+60		case 'pdf': return 'pdf';
+61		default: return FALSE;
+62	}
+...
+76		case 'java': return ($extension==='java'?TRUE:FALSE);
+77		case 'zip': return ($extension==='zip'?TRUE:FALSE);
+78		case 'pdf': return ($extension==='pdf'?TRUE:FALSE);
+79	}
+...
+88	if ($str=='0')
+89		return FALSE;
+90	if (in_array( strtolower($str),array('c', 'c++', 'python 2', 'python 3', 'java', 'zip', 'pdf')))
+91		return TRUE;
+92	return FALSE;
+...
+
+\end{lstlisting}
+
+\textit{Assignment\_model.php}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+
+...
+100	$item2 = strtolower($item);
+101	if ( ! in_array($item2, array('c','c++','python 2','python 3','java','zip','pdf')))
+102		continue;
+...
+
+\end{lstlisting}
+
+\textit{shj\_helper.php}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+
+...
+81	case 'java': return 'java';
+82	case 'zip': return 'zip';
+83	case 'pdf': return 'pdf';
+84	default: return FALSE;
+...
+104	case 'java': return 'Java';
+105	case 'zip': return 'Zip';
+106	case 'pdf': return 'PDF';
+107	default: return FALSE;
+...
+
+\end{lstlisting}
+
+\textit{submissions.twig}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+
+...
+160	<td>
+161		{% if submission.file_type == 'zip' or submission.file_type == 'pdf' %}
+162			<div class="btn shj-orange" data-type="download">Download</div>
+163		{% else %}
+164			<div class="btn shj-orange" data-type="code" >Code</div>
+165		{% endif %}
+166	</td>
+...
+
+\end{lstlisting}
+
+Penambahan dan perubahan kode dilakukan setelah baris 60, 78 dan 90 pada \textit{controller Submit.php}. Berikut hasil penambahan dan perubahan kode 
+
+\textit{Submit.php}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+
+...
+58		case 'java': return 'java';
+59		case 'zip': return 'zip';
+60		case 'pdf': return 'pdf';
+61		case 'txt': return 'txt';
+62		default: return FALSE;
+63	}
+...
+77		case 'java': return ($extension==='java'?TRUE:FALSE);
+78		case 'zip': return ($extension==='zip'?TRUE:FALSE);
+79		case 'pdf': return ($extension==='pdf'?TRUE:FALSE);
+80		case 'txt': return ($extension==='txt'?TRUE:FALSE);
+81	}
+...
+90	if ($str=='0')
+91		return FALSE;
+92	if (in_array( strtolower($str),array('c', 'c++', 'python 2', 'python 3', 'java', 'zip', 'pdf', 'txt')))
+93		return TRUE;
+94	return FALSE;
+...
+
+\end{lstlisting}
+
+Perubahan kode dilakukan di baris 101 pada model \textit{Assignment\_model.php}. Berikut hasil perubahan kode 
+
+\textit{Assignment\_model.php}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+
+...
+100	$item2 = strtolower($item);
+101	if ( ! in_array($item2, array('c','c++','python 2','python 3','java','zip','pdf','txt')))
+102		continue;
+...
+
+\end{lstlisting}
+
+Penambahan kode dilakukan setelah baris 83 pada \textit{file} bantuan \textit{shj\_helper.php}. Berikut hasil penambahan kode 
+
+\textit{shj\_helper.php}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+
+...
+81	case 'java': return 'java';
+82	case 'zip': return 'zip';
+83	case 'pdf': return 'pdf';
+84	case 'txt': return 'txt';
+85	default: return FALSE;
+...
+105	case 'java': return 'Java';
+106	case 'zip': return 'Zip';
+107	case 'pdf': return 'PDF';
+108	case 'txt': return 'TXT';
+109	default: return FALSE;
+...
+
+\end{lstlisting}
+
+Perubahan kode dilakukan pada baris 161 pada \textit{view submissions.twig}. Berikut hasil perubahan kode
+
+\textit{submissions.twig}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+
+...
+160	<td>
+161		{% if submission.file_type == 'zip' or submission.file_type == 'pdf' or submission.file_type == 'txt' %}
+162			<div class="btn shj-orange" data-type="download">Download</div>
+163		{% else %}
+164			<div class="btn shj-orange" data-type="code" >Code</div>
+165		{% endif %}
+166	</td>
+...
+
+\end{lstlisting}
+
+\section{Membuat halaman \textit{Logs} yang mencatat aktivitas \textit{login} pengguna}
+Agar halaman \textit{Logs} dapat berjalan dengan baik, perlu ditambahkan tabel baru pada \textit{database} \textit{Sharif Judge}.  \textit{Tabel} baru tersebut akan bernama \textit{shj\_logins}. 
 \begin{table}[H] %atau h saja untuk "kira kira di sini"
 	\centering 
-	\caption{Perancangan Tabel shj\_logins}
+	\caption{Perancangan Tabel \textit{shj\_logins}}
 	\label{tab:tabellogs}
 		\begin{tabular}{|c|c|c|c|}
 			\hline
 			\textbf{Atribut} & \textbf{Tipe Data} & \textbf{Ukuran}  & \textbf{Default} \\
 			\hline
-			login\_id (PK*) & int & 11  & None \\
+			\textit{login\_id} (PK*) & int & 11  & None \\
 			\hline
-			username & varchar & 20  & None \\
+			\textit{username} & varchar & 20  & None \\
 			\hline
-			ip\_address & varchar & 15  & None \\
+			\textit{ip\_address} & varchar & 15  & None \\
 			\hline
-			timestamp & timestamp & 11  & current\_timestamp \\
+			\textit{timestamp} & timestamp & 11  & current\_timestamp \\
 			\hline
-			last\_24h\_login\_id	 & int & 11  & null \\
+			\textit{last\_24h\_login\_id}	 & int & 11  & null \\
 			\hline
 		\end{tabular}
 \end{table}
-*PK = Primary Key.
+*PK = \textit{Primary Key}.
 
 Keterangan atribut:
 \begin{enumerate}
-	\item login\_id: sebagai penanda yang membedakan setiap login peserta satu dengan yang lain. Memiliki length default int dari phpMyAdmin yaitu 11. Merupakan primary key karena id harus unik agar setiap login peserta dapat dibedakan. Atribut ini juga bersifat auto increment.
-	\item username: username peserta yang berhasil login pada Sharif Judge. Memiliki length varchar 20 karena length username pada tabel shj\_users 20.
-	\item ip\_address: ip address peserta yang berhasil login pada Sharif Judge. Memiliki length varchar 15 karena length maksimal dari ip address protocol version 4 (IPv4) adalah 15. Contoh: 202.100.123.255
-	\item timestamp: waktu peserta saat berhasil login pada Sharif Judge. Menggunakan tipe data timestamp yang akan mencatat waktu login dengan format YYYY-MM-DD HH:MM:SS. Contoh: 2018-04-06 18:15:43
-	\item last\_24h\_login\_id: id login peserta yang berhasil login pada Sharif Judge namun menggunakan ip berbeda dalam waktu 24 jam terakhir.
+	\item \textit{login\_id}: sebagai penanda yang membedakan setiap \textit{login} peserta satu dengan yang lain. Memiliki \textit{length default} int dari \textit{phpMyAdmin} yaitu 11. Atribut \textit{login\_id} merupakan \textit{primary key} karena id harus unik agar setiap \textit{login} peserta dapat dibedakan. Atribut ini juga bersifat \textit{auto increment}.
+	\item \textit{username}: \textit{username} peserta yang berhasil \textit{login} pada \textit{Sharif Judge}. Memiliki \textit{length varchar} 20 karena \textit{length username} pada tabel \textit{shj\_users} adalah 20.
+	\item \textit{ip\_address}: \textit{ip address} peserta yang berhasil \textit{login} pada \textit{Sharif Judge}. Memiliki \textit{length varchar} 15 karena \textit{length} maksimal dari \textit{ip address protocol version 4 (IPv4)} adalah 15. Contoh: 202.100.123.255
+	\item \textit{timestamp}: waktu peserta saat berhasil \textit{login} pada \textit{Sharif Judge}. Menggunakan tipe data timestamp yang akan mencatat waktu \textit{login} dengan format YYYY-MM-DD HH:MM:SS. Contoh: 2018-04-06 18:15:43
+	\item \textit{last\_24h\_login\_id}: id \textit{login} peserta yang berhasil \textit{login} pada \textit{Sharif Judge} namun menggunakan \textit{ip address} berbeda dalam waktu 24 jam terakhir.
 \end{enumerate}
 
-Selain tabel diatas, halaman logs juga akan ditambahkan model, view dan controller.
+Selain tabel diatas, halaman logs juga akan ditambahkan \textit{model, view} dan \textit{controller}.
 \begin{enumerate}
-	\item Model \\
-	Model untuk halaman logs akan bernama Logs\_model.php. Berikut adalah perincian fungsi yang terdapat dalam rancangan model Logs\_model.php.
+	\item \textit{Model} \\
+	\textit{Model} untuk halaman \textit{logs} akan bernama \textit{Logs\_model.php}. Berikut adalah perincian fungsi yang terdapat dalam rancangan \textit{model Logs\_model.php}.
 	\begin{table}[H]
-		\caption{Perincian fungsi insert\_to\_logs}
+		\caption{Perincian fungsi \textit{insert\_to\_logs}}
 		\begin{tabular}{|c|p{11cm}|}
 			\hline
-			Nama Method 	& 	insert\_to\_logs 	\\
+			Nama \textit{Method} 	& 	\textit{insert\_to\_logs} 	\\
 			\hline
-			Parameter Input & \$username dan \$ip\_address \\
+			Parameter \textit{Input} & \textit{\$username} dan \textit{\$ip\_address} \\
 			\hline
-			Parameter Output & -\\
+			Parameter \textit{Output} & -\\
 			\hline
-			Tabel yang berhubungan & shj\_logins \\
+			Tabel yang berhubungan & \textit{shj\_logins} \\
 			\hline
-			Deskripsi	& Proses untuk memasukan logs pengguna Sharif Judge \\
+			Deskripsi	& Proses untuk memasukan \textit{logs} pengguna \textit{Sharif Judge} \\
 			\hline
 			Algoritma	& \begin{itemize}
-				\item mengecek dan menghapus logs pada tabel shj\_logins yang timestampnya lebih dari 24 jam
-				\item mengecek entri login terakhir untuk \$username yang  menggunakan IP address nya tidak sama dengan \$ip\_address
-				\item jika tidak memiliki hasil, maka tambahkan entri baru menggunakan \$username dan \$ip\_address tersebut
-				\item jika memiliki hasil,  maka tambahkan entri baru menggunakan \$username dan \$ip\_address serta last\_24h\_login\_id diisi dengan login\_id sebelumnya
+				\item mengecek dan menghapus \textit{logs} pada tabel \textit{shj\_logins} yang \textit{timestampnya} lebih dari 24 jam
+				\item mengecek entri \textit{login} terakhir untuk \textit{\$username} yang  menggunakan \textit{IP address} tidak sama dengan \textit{\$ip\_address}
+				\item jika tidak memiliki hasil, maka tambahkan entri baru menggunakan \textit{\$username} dan \textit{\$ip\_address} tersebut
+				\item jika memiliki hasil,  maka tambahkan entri baru menggunakan \textit{\$username} dan \textit{\$ip\_address} serta last\textit{\_24h\_login\_id} diisi dengan \textit{login\_id} sebelumnya
 			\end{itemize} \\
 			\hline
 		\end{tabular}
 	\end{table}
 
 	\begin{table}[H]
-		\caption{Perincian fungsi get\_all\_logs}
+		\caption{Perincian fungsi \textit{get\_all\_logs}}
 		\begin{tabular}{|c|p{11cm}|}
 			\hline
-			Nama Method 	& 	get\_all\_logs 	\\
+			Nama \textit{Method} 	& 	\textit{get\_all\_logs} 	\\
 			\hline
-			Parameter Input & - \\
+			Parameter \textit{Input} & - \\
 			\hline
-			Parameter Output &  semua entri logs dari tabel shj\_logins\\
+			Parameter \textit{Output} &  semua entri logs dari tabel \textit{shj\_logins}\\
 			\hline
-			Tabel yang berhubungan & shj\_logins \\
+			Tabel yang berhubungan & \textit{shj\_logins} \\
 			\hline
-			Deskripsi	& Proses untuk mengembalikan entri logs yang terdapat pada tabel shj\_logins \\
+			Deskripsi	& Proses untuk mengembalikan entri \textit{logs} yang terdapat pada tabel \textit{shj\_logins} \\
 			\hline
 			Algoritma	& \begin{itemize}
-				\item mengembalikan seluruh entri logs yang terdapat pada tabel shj\_logins dalam bentuk array
+				\item mengembalikan seluruh entri logs yang terdapat pada tabel \textit{shj\_logins} dalam bentuk \textit{array}
 			\end{itemize} \\
 			\hline
 		\end{tabular}
 	\end{table}
 
 	\item View \\
-	View untuk halaman logs akan bernama Logs.twig. Menu halaman logs akan terletak di bawah menu Scoreboard dan akan bernama '24-hour log'. Berikut adalah rancangan tampilan halaman logs.
+	\textit{View} untuk halaman \textit{logs} akan bernama \textit{Logs.twig}. Menu halaman \textit{logs} akan terletak di bawah menu \textit{Scoreboard} dan akan bernama '\textit{24-hour log}'. Berikut adalah rancangan tampilan halaman \textit{logs}.
 	
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{mockuplogs}  
-		\caption[Rancangan tampilan halaman logs]{Rancangan tampilan halaman logs} 
+		\caption[Rancangan tampilan halaman \textit{logs}]{Rancangan tampilan halaman \textit{logs}} 
 		\label{fig:mockuplogs} 
 	\end{figure}
 
-	\item Controller \\
-	Controller untuk halaman logs akan bernama Logs.php. Berikut adalah perincian fungsi yang terdapat dalam rancangan model Logs\_model.php.
+	\item \textit{Controller} \\
+	\textit{Controller} untuk halaman \textit{logs} akan bernama \textit{Logs.php}. Berikut adalah perincian fungsi yang terdapat dalam rancangan \textit{controller Logs.php}.
 	\begin{table}[H]
-		\caption{Perincian fungsi index}
+		\caption{Perincian fungsi \textit{consturct\_\_}}
 		\begin{tabular}{|c|p{11cm}|}
 			\hline
-			Nama Method 	& 	index 	\\
+			Nama \textit{Method} 	& 	\textit{consturct\_\_} 	\\
 			\hline
-			Parameter Input & - \\
+			Parameter \textit{Input} & - \\
 			\hline
-			Parameter Output &  - \\
+			Parameter \textit{Output} &  - \\
 			\hline
-			Tabel yang berhubungan & shj\_logins \\
+			Tabel yang berhubungan & - \\
 			\hline
-			Deskripsi	& Proses untuk memuat seluruh entri logs pada halaman Logs.twig	 \\
+			Deskripsi	& membatasi pengguna yang dapat mengakses halaman \textit{logs}	 \\
 			\hline
 			Algoritma	& \begin{itemize}
-				\item memuat data logs menggunakan fungsi get\_all\_logs dari model Logs\_model.php
-				\item memproses data untuk tampilan Logs.twig
+				\item mengecek \textit{session} pengguna yang akan mengakses halaman \textit{logs}
+				\item jika \textit{session} tidak berstatus '\textit{logged\_in}, maka pengguna akan dialihkan ke halaman \textit{login}
+				\item mengecek \textit{role} pengguna yang akan mengakses halaman \textit{logs}
+				\item jika role pengguna bukan \textit{admin}, maka pengguna akan dialihkan ke halaman \textit{'404 Not Found'}
+			\end{itemize} \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[H]
+		\caption{Perincian fungsi \textit{index}}
+		\begin{tabular}{|c|p{11cm}|}
+			\hline
+			Nama \textit{Method} 	& 	\textit{index} 	\\
+			\hline
+			Parameter \textit{Input} & - \\
+			\hline
+			Parameter \textit{Output} &  - \\
+			\hline
+			Tabel yang berhubungan & \textit{shj\_logins} \\
+			\hline
+			Deskripsi	& Proses untuk memuat seluruh entri \textit{logs} pada halaman \textit{Logs.twig}	 \\
+			\hline
+			Algoritma	& \begin{itemize}
+				\item memuat data \textit{logs} menggunakan fungsi \textit{get\_all\_logs} dari \textit{model Logs\_model.php}
+				\item memproses data untuk tampilan \textit{Logs.twig}
 			\end{itemize} \\
 			\hline
 		\end{tabular}
