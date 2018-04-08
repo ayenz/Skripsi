@@ -9,7 +9,6 @@ Bab ini membahas tentang perancangan setiap fitur yang akan diimplementasi pada 
 \textit{Assignments.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true]
-
 ...
 423	// Upload Tests (zip file)
 424	
@@ -20,7 +19,6 @@ columns=fullflexible, keepspaces=true]
 473		shell_exec("rm -f $old_name");
 474	$this->messages[] = array(
 ...
-
 \end{lstlisting}
 
 Fungsi \textit{shell\_exec("rm ...")} pada baris 425 dan 473 akan diubah menggunakan fungsi \textit{unlink()} menjadi seperti berikut
@@ -28,7 +26,6 @@ Fungsi \textit{shell\_exec("rm ...")} pada baris 425 dan 473 akan diubah menggun
 \textit{Assignments.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true]
-
 ...
 423	// Upload Tests (zip file)
 424	
@@ -39,7 +36,6 @@ columns=fullflexible, keepspaces=true]
 473		unlink($old_name);
 474	$this->messages[] = array(
 ...
-
 \end{lstlisting}
 
 \section{Menambahkan method rekoneksi ke \textit{database}}
@@ -48,13 +44,11 @@ columns=fullflexible, keepspaces=true]
 \textit{Queueprocess.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true]
-
 ...
 133
 134	// Save the result
 135	$this->queue_model->save_judge_result_in_db($submission, $type);
 ...
-
 \end{lstlisting}
 
 \textit{Method} rekoneksi yang digunakan yaitu \textit{\$this->db->reconnect()}. \textit{Method} ini diletakan pada baris 134 tepat sebelum \textit{Sharif Judge} menyimpan hasil \textit{judge}. Hal tersebut dilakukan untuk menghindari \textit{connection times out} akibat pengujian yang memakan waktu lama.
@@ -62,7 +56,6 @@ columns=fullflexible, keepspaces=true]
 \textit{Queueprocess.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true]
-
 ...
 133
 134	//reconnect to database incase we have run test for a long time.
@@ -71,7 +64,6 @@ columns=fullflexible, keepspaces=true]
 137	// Save the result
 138	$this->queue_model->save_judge_result_in_db($submission, $type);
 ...
-
 \end{lstlisting}
 
 \section{Membatasi soal (deskripsi \& PDF) hanya bisa diunduh saat \textit{assignment "open"} dan setelah waktu mulai}
@@ -80,7 +72,7 @@ Fungsi untuk mengunduh soal (deskripsi \& PDF) terdapat pada \textit{controller 
 \textit{Assignments.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-
+...
 97	/**
 98	* Download pdf file of an assignment (or problem) to browser
 99	*/
@@ -100,7 +92,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 113		$filename = shj_basename($pdf_files[0]);
 114		force_download($filename, file_get_contents($pdf_files[0]), TRUE);
 115	}
-
+...
 \end{lstlisting}
 
 Selain membatasi soal (deskripsi \& PDF) hanya dapat diunduh saat \textit{assignment "open"} dan setelah waktu mulai, pada fungsi ini juga ditambahkan fitur lain. Fitur lain tersebut yaitu membatasi soal hanya dapat diunduh oleh peserta yang terdaftar sebagai "\textit{participant}" dan soal tidak dapat diunduh setelah melewati batas waktu pengumpulan. Rancangan algoritma kode yang akan digunakan yaitu
@@ -117,7 +109,6 @@ Berikut hasil pengimplementasian rancangan algoritma di atas ke dalam kode progr
 \textit{Assignments.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-
 ...
 97	/**
 98	* Download pdf file of an assignment (or problem) to browser
@@ -151,7 +142,6 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 126		force_download($filename, file_get_contents($pdf_files[0]), TRUE);
 127	}
 ...
-
 \end{lstlisting}
 
 \section{Mensupport \textit{file} dengan ekstensi TXT}
@@ -160,7 +150,6 @@ Untuk dapat mensupport \textit{file} dengan ekstensi TXT pada perangkat lunak \t
 \textit{Submit.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-
 ...
 58		case 'java': return 'java';
 59		case 'zip': return 'zip';
@@ -179,25 +168,21 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 91		return TRUE;
 92	return FALSE;
 ...
-
 \end{lstlisting}
 
 \textit{Assignment\_model.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-
 ...
 100	$item2 = strtolower($item);
 101	if ( ! in_array($item2, array('c','c++','python 2','python 3','java','zip','pdf')))
 102		continue;
 ...
-
 \end{lstlisting}
 
 \textit{shj\_helper.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-
 ...
 81	case 'java': return 'java';
 82	case 'zip': return 'zip';
@@ -209,13 +194,11 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 106	case 'pdf': return 'PDF';
 107	default: return FALSE;
 ...
-
 \end{lstlisting}
 
 \textit{submissions.twig}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-
 ...
 160	<td>
 161		{% if submission.file_type == 'zip' or submission.file_type == 'pdf' %}
@@ -225,7 +208,6 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 165		{% endif %}
 166	</td>
 ...
-
 \end{lstlisting}
 
 Penambahan dan perubahan kode dilakukan setelah baris 60, 78 dan 90 pada \textit{controller Submit.php}. Berikut hasil penambahan dan perubahan kode 
@@ -233,7 +215,6 @@ Penambahan dan perubahan kode dilakukan setelah baris 60, 78 dan 90 pada \textit
 \textit{Submit.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-
 ...
 58		case 'java': return 'java';
 59		case 'zip': return 'zip';
@@ -254,7 +235,6 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 93		return TRUE;
 94	return FALSE;
 ...
-
 \end{lstlisting}
 
 Perubahan kode dilakukan di baris 101 pada model \textit{Assignment\_model.php}. Berikut hasil perubahan kode 
@@ -262,13 +242,11 @@ Perubahan kode dilakukan di baris 101 pada model \textit{Assignment\_model.php}.
 \textit{Assignment\_model.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-
 ...
 100	$item2 = strtolower($item);
 101	if ( ! in_array($item2, array('c','c++','python 2','python 3','java','zip','pdf','txt')))
 102		continue;
 ...
-
 \end{lstlisting}
 
 Penambahan kode dilakukan setelah baris 83 pada \textit{file} bantuan \textit{shj\_helper.php}. Berikut hasil penambahan kode 
@@ -276,7 +254,6 @@ Penambahan kode dilakukan setelah baris 83 pada \textit{file} bantuan \textit{sh
 \textit{shj\_helper.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-
 ...
 81	case 'java': return 'java';
 82	case 'zip': return 'zip';
@@ -290,7 +267,6 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 108	case 'txt': return 'TXT';
 109	default: return FALSE;
 ...
-
 \end{lstlisting}
 
 Perubahan kode dilakukan pada baris 161 pada \textit{view submissions.twig}. Berikut hasil perubahan kode
@@ -298,7 +274,6 @@ Perubahan kode dilakukan pada baris 161 pada \textit{view submissions.twig}. Ber
 \textit{submissions.twig}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-
 ...
 160	<td>
 161		{% if submission.file_type == 'zip' or submission.file_type == 'pdf' or submission.file_type == 'txt' %}
@@ -308,7 +283,6 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 165		{% endif %}
 166	</td>
 ...
-
 \end{lstlisting}
 
 \section{Membuat halaman \textit{Logs} yang mencatat aktivitas \textit{login} pengguna}
@@ -462,13 +436,12 @@ Untuk dapat menambahkan parameter "\textit{Display Name}" pada pendaftaran peser
 	\item Mengubah urutan data yang digunakan pada fungsi pendaftaran peserta melalui \textit{email}.
 	\item Menambahkan \textit{text field Display Name} pada halaman \textit{Register} \textit{(Open Public Registration}).
 \end{enumerate}
-Dari algoritma yang akan diterapkan, terdapat beberapa perubahan dan penambahan kode pada beberapa \textit{file}. Beberapa file tersebut antara lain \textit{controller Install.php, controller Login.php, model User\_model.php, view add\_user.twig, view add\_user\_result.twig} dan \textit{view register.twig}.
+Dari rancangan algoritma yang akan diterapkan, terdapat perubahan dan penambahan kode pada beberapa \textit{file}. Beberapa file tersebut antara lain \textit{controller Install.php, controller Login.php, model User\_model.php, view add\_user.twig, view add\_user\_result.twig} dan \textit{view register.twig}.
 Berikut beberapa baris potongan kode program
 
 \textit{Install.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-
 ...
 252	// add admin user
 253	$this->user_model->add_user(
@@ -483,7 +456,6 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 \textit{Login.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-
 ...
 92	$this->user_model->add_user(
 93		$this->input->post('username'),
@@ -495,7 +467,6 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 \textit{User\_model.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-
 ...
 120	*/
 121	public function add_user($username, $email, $password, $role)
@@ -532,25 +503,21 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 233	$text = str_replace('{PASSWORD}', htmlspecialchars($user[2]), $text);
 234	$text = str_replace('{LOGIN_URL}', base_url(), $text);
 ...
-
 \end{lstlisting}
 ~\\
 \textit{add\_user.twig}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-
 ...
 66	#
 67	# USERNAME EMAIL PASSWORD ROLE
 68	#
 ...
-
 \end{lstlisting}
 ~\\
 \textit{add\_user\_result.twig}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-
 ...
 9	{% for item in ok %}
 10	<li>Usename: {{ item[0] }} Email: {{ item[1] }} Password: <code>{{ item[2] }}</code> Role: {{ item[3] }}</li>
@@ -565,7 +532,6 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 \textit{register.twig}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-
 ...
 33	{{ form_error('email','<div class="shj_error">','</div>') }}
 34	</p>
@@ -579,7 +545,6 @@ Perubahan dan penambahan kode di \textit{User\_model.php} untuk menambahkan para
 \textit{User\_model.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
- 
 ...
 120	*/
 121	public function add_user($username, $email, $display_name, $password, $role)
@@ -617,15 +582,13 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 234	$text = str_replace('{PASSWORD}', htmlspecialchars($user[3]), $text);
 235	$text = str_replace('{LOGIN_URL}', base_url(), $text);
 ...
- 
- \end{lstlisting}
+\end{lstlisting}
 ~\\
 Penambahan kode di \textit{Install.php} untuk menambahkan \textit{Display Name admin} terjadi setelah baris 255. Berikut hasil penambahan kode program yang terjadi di \textit{Install.php}
  
 \textit{Install.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-
 ...
 252	// add admin user
 253	$this->user_model->add_user(
@@ -643,19 +606,16 @@ Perubahan dan penambahan kode di halaman \textit{add\_user.twig} untuk menambahk
 \textit{add\_user.twig}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-
 ...
 66	#
 67	# USERNAME,EMAIL,DISPLAY-NAME,PASSWORD,ROLE
 68	#
 ...
-
 \end{lstlisting}
 
 \textit{add\_user\_result.twig}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-
 ...
 9	{% for item in ok %}
 10	<li>Usename: {{ item[0] }} Email: {{ item[1] }} Diplay Name: {{ item[2] }} Password: <code>{{ item[3] }}</code> Role: {{ item[4] }} </li>
@@ -672,7 +632,6 @@ Penambahan kode di halaman \textit{register.twig} untuk menambahkan \textit{text
 \textit{register.twig}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-
 ...
 33	{{ form_error('email','<div class="shj_error">','</div>') }}
 34	</p>
@@ -689,12 +648,155 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 \textit{Login.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-
 ...
 92	$this->user_model->add_user(
 93		$this->input->post('username'),
 94		$this->input->post('email'),
 95		$this->input->post('displayname'),
 96		$this->input->post('password'),
+...
+\end{lstlisting}
+
+\section{Menambahkan fitur "\textit{Lock Student's Display Name}"}
+Fitur "\textit{Lock Student's Display Name}" membutuhkan sebuah "\textit{key}" pada \textit{database}, dimana "\textit{key}" tersebut berfungsi untuk menyimpan sebuah nilai. Nilai yang disimpan akan menentukan apakah para peserta dapat mengubah \textit{Display Name} atau tidak. "\textit{Key}" akan disimpan pada tabel \textit{shj\_settings} pada kolom \textit{shj\_key} dengan nama \textit{lock\_student\_display\_name}. \textit{lock\_student\_display\_name} akan memiliki nilai \textit{default shj\_value} = 0. Jika nilai dari \textit{lock\_student\_display\_name} = 1, maka para peserta tidak dapat mengubah \textit{Display Name}, sebaliknya jika bernilai 0, maka para peserta dapat mengubah \textit{Display Name}.
+
+Rancangan algoritma yang digunakan untuk menambahkan fitur "\textit{Lock Student's Display Name}" yaitu
+\begin{enumerate}
+	\item Menambahkan \textit{shj\_key} dengan nama \textit{lock\_student\_display\_name} yang memiliki nilai \textit{shj\_value} = 0 pada tabel \textit{shj\_settings}.
+	\item Menambahkan \textit{check box} pada halaman \textit{settings.twig} untuk mengaktifkan atau menonaktifkan fitur "\textit{Lock Student's Display Name}".
+	\item Jika fitur "\textit{Lock Student's Display Name}" diaktifkan, maka \textit{text field Display Name} pada halaman \textit{profile.twig} akan dinonaktifkan (\textit{disabled}).
+	\item Jika fitur "\textit{Lock Student's Display Name}" dinonaktifkan, maka \textit{text field Display Name} pada halaman \textit{profile.twig} akan kembali aktif.
+	\item Menambahkan fungsi untuk mengecek kembali nilai dari \textit{lock\_student\_display\_name} pada saat peserta menyimpan perubahan yang terjadi di halaman \textit{profile.twig}. Hal tersebut dilakukan untuk menangani para peserta yang "memaksa" agar dapat mengubah \textit{Display Name} dengan cara \textit{inspect element} lalu menghapus kode "\textit{disabled}" pada \textit{text field Display Name}.
+\end{enumerate}
+
+Dari rancangan algoritma yang akan diterapkan, terdapat penambahan kode pada beberapa \textit{file}. Beberapa file tersebut antara lain \textit{controller Profile.php, controller Settings.php, model User\_model.php, view settings.twig} dan \textit{view profile.twig}.
+Berikut beberapa baris potongan kode program
+
+\textit{Profile.php}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+...
+65		'role' => $user->role,
+66		'form_status' => $this->form_status,
+67	);
+...
+\end{lstlisting}
+~\\
+\textit{Settings.php}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+...
+113	'results_per_page_all' => $this->input->post('rpp_all'),
+114	'results_per_page_final' => $this->input->post('rpp_final'),
+115	'week_start' => $this->input->post('week_start'),
+...
+\end{lstlisting}
+~\\
+\textit{User\_model.php}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+...
+405	$username = $the_user->username;
+406
+407	$user=array(
+408		'display_name' => $this->input->post('display_name'),
+409		'email' => $this->input->post('email')
+410	);
+...
+\end{lstlisting}
+~\\
+\textit{settings.twig}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+...
+115		<span class="form_comment">Enable Log</span>
+116	</p>
+117	<p class="input_p">
+...
+\end{lstlisting}
+~\\
+\textit{profile.twig}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+...
+31		<input id="form_name" type="text" name="display_name" class="sharif_input medium" value="{{ display_name }}"/>
+32		{{ form_error('display_name', '<div class="shj_error">', '</div>') }}
+33	</p>
+...
+\end{lstlisting}
+~\\
+Penambahan kode di halaman \textit{settings.twig} untuk menambahkan check box fitur "\textit{Lock Student's Display Name}", terjadi setelah baris 116. Berikut hasil penambahan kode program yang terjadi di halaman \textit{settings.twig}
+\textit{settings.twig}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+...
+115		<span class="form_comment">Enable Log</span>
+116	</p>
+117	<p class="input_p">
+118		<input id="form_lock_student_display_name" type="checkbox" name="lock_student_display_name" value="1" {{ lock_student_display_name ? 'checked' }}/>
+119		<label for="form_lock_student_display_name">Lock Student's Display Name</label><br>
+120		<span class="form_comment">Student's can't change their display name</span>
+121	</p>
+122	<p class="input_p">
+...
+\end{lstlisting}
+~\\
+Penambahan kode di \textit{controller Settings.php} untuk menyimpan nilai dari \textit{check box} fitur "\textit{Lock Student's Display Name}" ke \textit{database}, terjadi setelah baris 115. Berikut hasil penambahan kode program yang terjadi di \textit{controller Settings.php}
+\textit{Settings.php}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+...
+113	'results_per_page_all' => $this->input->post('rpp_all'),
+114	'results_per_page_final' => $this->input->post('rpp_final'),
+115	'week_start' => $this->input->post('week_start'),
+116	'lock_student_display_name' => $this->input->post('lock_student_display_name')===NULL?0:1,
+...
+\end{lstlisting}
+~\\
+Penambahan kode di \textit{controller Profile.php} untuk mengecek apakah fitur "\textit{Lock Student's Display Name}" aktif atau tidak aktif terjadi setelah baris 66. Hasil pengecekan tersebut akan dikirimkan untuk halaman \textit{profile.twig}. Berikut hasil penambahan kode program yang terjadi di \textit{controller} \textit{Profile.php}
+\textit{Profile.php}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+...
+65		'role' => $user->role,
+66		'form_status' => $this->form_status,
+67		'lock_student_display_name' => $this->settings_model->get_setting(lock_student_display_name),
+68	);
+...
+\end{lstlisting}
+~\\
+Penambahan kode di halaman \textit{profile.twig} untuk menentukan apakah \textit{text field Display Name} akan diaktifkan atau tidak terjadi setelah baris 31. Berikut hasil penambahan kode program yang terjadi di tampilan \textit{profile.twig}
+\textit{profile.twig}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+...
+31
+32	{% if lock_student_display_name == 1 %}
+33	<input id="form_name" type="text" name="display_name" class="sharif_input medium" value="{{ display_name }}" disabled/>
+34	{% else %}
+35	<input id="form_name" type="text" name="display_name" class="sharif_input medium" value="{{ display_name }}"/>
+36	{% endif %}
+37
+...
+\end{lstlisting}
+~\\
+Penambahan kode di \textit{model User\_model.php} untuk mengecek apakah fitur "\textit{Lock Student's Display Name}" aktif atau tidak aktif terjadi setelah baris 405. Berikut hasil penambahan kode program yang terjadi di \textit{model User\_model.php}
+\textit{User\_model.php}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+
+...
+405	$username = $the_user->username;
+406
+407	$display_name = $this->input->post('display_name');
+408	$locked = $this->settings_model->get_setting(lock_student_display_name);
+409	if ($locked == 1) {
+410		$display_name = $the_user->display_name;
+411	}
+412	
+413	$user=array(
+414		'display_name' => $display_name,
+415		'email' => $this->input->post('email')
+416	);
 ...
 \end{lstlisting}
