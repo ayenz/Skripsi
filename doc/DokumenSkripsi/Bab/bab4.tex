@@ -451,3 +451,250 @@ Selain tabel diatas, halaman logs juga akan ditambahkan \textit{model, view} dan
 		\end{tabular}
 	\end{table}
 \end{enumerate}
+
+\section{Menambahkan parameter "\textit{Display Name}" pada pendaftaran peserta \textit{Sharif Judge}}
+Untuk dapat menambahkan parameter "\textit{Display Name}" pada pendaftaran peserta \textit{Sharif Judge}, diperlukan beberapa perubahan dan penambahan kode. Berikut rancangan algoritma yang akan dilakukan
+\begin{enumerate}
+	\item Menambahkan parameter "\textit{Display Name}" pada fungsi \textit{add\_user} yang terdapat di \textit{model User\_model.php}.
+	\item Mengubah pemisah (\textit{separator}) antar parameter pada fungsi \textit{add\_user}. Pemisah antar parameter yang awalnya menggunakan spasi akan diubah menggunakan tanda koma.
+	\item Menambahkan keterangan parameter "\textit{Display Name}" pada halaman \textit{add\_user.twig} dan  \textit{add\_user\_result.twig}.
+	\item Menambahkan \textit{Display Name} untuk \textit{admin} pada proses \textit{install Sharif Judge}.
+	\item Mengubah urutan data yang digunakan pada fungsi pendaftaran peserta melalui \textit{email}.
+	\item Menambahkan \textit{text field Display Name} pada halaman \textit{Register} \textit{(Open Public Registration}).
+\end{enumerate}
+Dari algoritma yang akan diterapkan, terdapat beberapa perubahan dan penambahan kode pada beberapa \textit{file}. Beberapa file tersebut antara lain \textit{controller Install.php, controller Login.php, model User\_model.php, view add\_user.twig, view add\_user\_result.twig} dan \textit{view register.twig}.
+Berikut beberapa baris potongan kode program
+
+\textit{Install.php}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+
+...
+252	// add admin user
+253	$this->user_model->add_user(
+254		$this->input->post('username'),
+255		$this->input->post('email'),
+256		$this->input->post('password'),
+257		'admin'
+	);
+...
+\end{lstlisting}
+~\\
+\textit{Login.php}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+
+...
+92	$this->user_model->add_user(
+93		$this->input->post('username'),
+94		$this->input->post('email'),
+95		$this->input->post('password'),
+...
+\end{lstlisting}
+~\\
+\textit{User\_model.php}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+
+...
+120	*/
+121	public function add_user($username, $email, $password, $role)
+122	{
+...
+138	'username' => $username,
+139	'email' => $email,
+140	'password' => $this->password_hash->HashPassword($password),
+...
+176	$parts = preg_split('/\s+/', $line);
+177	if (count($parts) != 4)
+178		continue; //ignore lines that not contain 4 parts
+...
+180	if (strtolower(substr($parts[2], 0, 6)) == 'random')
+181	{
+182		// generate random password
+183		$len = trim(substr($parts[2], 6), '[]');
+184		if (is_numeric($len)){
+185			$this->load->helper('string');
+186			$parts[2] = shj_random_password($len);
+187		}
+188	}
+189	
+190	$result = $this->add_user($parts[0], $parts[1], $parts[2], $parts[3]);
+191	
+192	if ($result === TRUE)
+193		array_push($users_ok, array($parts[0], $parts[1], $parts[2], $parts[3]));
+194	else
+195		array_push($users_error, array($parts[0], $parts[1], $parts[2], $parts[3], $result));
+...
+230	$text = str_replace('{SITE_URL}', base_url(), $text);
+231	$text = str_replace('{ROLE}', $user[3], $text);
+232	$text = str_replace('{USERNAME}', $user[0], $text);
+233	$text = str_replace('{PASSWORD}', htmlspecialchars($user[2]), $text);
+234	$text = str_replace('{LOGIN_URL}', base_url(), $text);
+...
+
+\end{lstlisting}
+~\\
+\textit{add\_user.twig}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+
+...
+66	#
+67	# USERNAME EMAIL PASSWORD ROLE
+68	#
+...
+
+\end{lstlisting}
+~\\
+\textit{add\_user\_result.twig}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+
+...
+9	{% for item in ok %}
+10	<li>Usename: {{ item[0] }} Email: {{ item[1] }} Password: <code>{{ item[2] }}</code> Role: {{ item[3] }}</li>
+11	{% endfor %}
+...
+17	{% for item in error %}
+18	<li>Usename: {{ item[0] }} Email: {{ item[1] }} Password: <code>{{ item[2] }}</code> Role: {{ item[3] }} ({{ item[4] }})</li>
+19	{% endfor %}
+...
+\end{lstlisting}
+~\\
+\textit{register.twig}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+
+...
+33	{{ form_error('email','<div class="shj_error">','</div>') }}
+34	</p>
+35	<p>
+36	<label for="form_password">Password</label><br/>
+...
+\end{lstlisting}
+~\\
+Perubahan dan penambahan kode di \textit{User\_model.php} untuk menambahkan parameter "\textit{Display Name}" terjadi pada baris 121, 139, 180, 183, 190, 193 dan 195. Mengubah pemisah antar parameter menggunakan tanda koma terjadi pada baris 176. Mengubah urutan data pada pada pendaftaran peserta melalui \textit{email} terjadi pada baris 231 dan 233. Berikut hasil penambahan dan perubahan kode program yang terjadi di \textit{User\_model.php}
+
+\textit{User\_model.php}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+ 
+...
+120	*/
+121	public function add_user($username, $email, $display_name, $password, $role)
+122	{
+...
+138	'username' => $username,
+139	'email' => $email,
+140	'display_name' => $display_name,
+141	'password' => $this->password_hash->HashPassword($password),
+...
+177	$parts = preg_split('/,+/', $line);
+178	if (count($parts) != 5)
+179		continue; //ignore lines that not contain 5 parts
+...
+181	if (strtolower(substr($parts[3], 0, 6)) == 'random')
+181	{
+183		// generate random password
+184		$len = trim(substr($parts[3], 6), '[]');
+185		if (is_numeric($len)){
+186			$this->load->helper('string');
+187			$parts[3] = shj_random_password($len);
+188		}
+189	}
+190	
+191	$result = $this->add_user($parts[0], $parts[1], $parts[2], $parts[3]);
+192	
+193	if ($result === TRUE)
+194		array_push($users_ok, array($parts[0], $parts[1], $parts[2], $parts[3], $parts[4]));
+195	else
+196		array_push($users_error, array($parts[0], $parts[1], $parts[2], $parts[3], $parts[4], $result));
+...
+231	$text = str_replace('{SITE_URL}', base_url(), $text);
+232	$text = str_replace('{ROLE}', $user[4], $text);
+233	$text = str_replace('{USERNAME}', $user[0], $text);
+234	$text = str_replace('{PASSWORD}', htmlspecialchars($user[3]), $text);
+235	$text = str_replace('{LOGIN_URL}', base_url(), $text);
+...
+ 
+ \end{lstlisting}
+~\\
+Penambahan kode di \textit{Install.php} untuk menambahkan \textit{Display Name admin} terjadi setelah baris 255. Berikut hasil penambahan kode program yang terjadi di \textit{Install.php}
+ 
+\textit{Install.php}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+
+...
+252	// add admin user
+253	$this->user_model->add_user(
+254		$this->input->post('username'),
+255		$this->input->post('email'),
+256		'Admin',
+257		$this->input->post('password'),
+258		'admin'
+);
+...
+\end{lstlisting}
+~\\ 
+Perubahan dan penambahan kode di halaman \textit{add\_user.twig} untuk menambahkan keterangan parameter "\textit{Display Name}" terjadi pada baris 67, sedangkan halaman \textit{add\_user\_result.twig} terjadi pada baris 10 dan 18. Berikut hasil penambahan kode program yang terjadi di halaman \textit{add\_user.twig} dan halaman \textit{add\_user\_result.twig}
+
+\textit{add\_user.twig}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+
+...
+66	#
+67	# USERNAME,EMAIL,DISPLAY-NAME,PASSWORD,ROLE
+68	#
+...
+
+\end{lstlisting}
+
+\textit{add\_user\_result.twig}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+
+...
+9	{% for item in ok %}
+10	<li>Usename: {{ item[0] }} Email: {{ item[1] }} Diplay Name: {{ item[2] }} Password: <code>{{ item[3] }}</code> Role: {{ item[4] }} </li>
+11	{% endfor %}
+...
+17	{% for item in error %}
+18	<li>Usename: {{ item[0] }} Email: {{ item[1] }} Diplay Name: {{ item[2] }} Password: <code>{{ item[3] }}</code> Role: {{ item[4] }} ({{ item[5] }})</li>
+19	{% endfor %}
+...
+\end{lstlisting}
+~\\
+Penambahan kode di halaman \textit{register.twig} untuk menambahkan \textit{text field Display Name} terjadi setelah baris 34 dan pada \textit{controller Login.php} setelah baris 94. Berikut hasil penambahan kode program yang terjadi di halaman \textit{register.twig} dan \textit{controller Login.php}.
+
+\textit{register.twig}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+
+...
+33	{{ form_error('email','<div class="shj_error">','</div>') }}
+34	</p>
+35	<p>
+36		<label for="form_displayname">Display Name</label><br/>
+37		<input id="form_displayname" type="text" name="displayname" required="required" pattern="[A-Za-z\s]+" title="The Display Name field must be contain only alphabetical letters" class="sharif_input" value="{{ set_value('displayname') }}"/>
+38		{{ form_error('form_displayname', '<div class="shj_error">', '</div>') }}
+39	</p>
+40	<p>
+41	<label for="form_password">Password</label><br/>
+...
+\end{lstlisting}
+
+\textit{Login.php}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+
+...
+92	$this->user_model->add_user(
+93		$this->input->post('username'),
+94		$this->input->post('email'),
+95		$this->input->post('displayname'),
+96		$this->input->post('password'),
+...
+\end{lstlisting}
