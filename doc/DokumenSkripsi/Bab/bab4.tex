@@ -145,7 +145,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 \end{lstlisting}
 
 \section{Mensupport \textit{file} dengan ekstensi TXT}
-Untuk dapat mensupport \textit{file} dengan ekstensi TXT pada perangkat lunak \textit{Sharif Judge}, diperlukan penambahan dan perubahan kode pada beberapa \textit{file}. Beberapa \textit{file} tersebut antara lain \textit{controller Submit.php, model Assignment\_model.php, view submissions.twig} dan \textit{file} bantuan \textit{shj\_helper.php} yang terdapat pada direktori \path{Sharif-Judge\helpers\}. Berikut beberapa baris potongan kode program
+Untuk dapat mensupport \textit{file} dengan ekstensi TXT pada perangkat lunak \textit{Sharif Judge}, diperlukan penambahan dan perubahan kode pada beberapa \textit{file}. Beberapa \textit{file} tersebut antara lain \textit{controller Submit.php, model Assignment\_model.php, view submissions.twig} dan \textit{file} bantuan \textit{shj\_helper.php} yang terdapat pada direktori \path{Sharif-Judge\application\helper}. Berikut beberapa baris potongan kode program
 
 \textit{Submit.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
@@ -368,7 +368,7 @@ Selain tabel diatas, halaman logs juga akan ditambahkan \textit{model, view} dan
 	\end{table}
 
 	\item View \\
-	\textit{View} untuk halaman \textit{logs} akan bernama \textit{Logs.twig}. Menu halaman \textit{logs} akan terletak di bawah menu \textit{Scoreboard} dan akan bernama '\textit{24-hour log}'. Berikut adalah rancangan tampilan halaman \textit{logs}.
+	\textit{View} untuk halaman \textit{logs} akan bernama \textit{logs.twig}. Menu halaman \textit{logs} akan terletak di paling bawah menu lainnya dan akan bernama '\textit{24-hour log}'. Berikut adalah rancangan tampilan halaman \textit{logs}.
 	
 	\begin{figure}[H]
 		\centering  
@@ -415,11 +415,11 @@ Selain tabel diatas, halaman logs juga akan ditambahkan \textit{model, view} dan
 			\hline
 			Tabel yang berhubungan & \textit{shj\_logins} \\
 			\hline
-			Deskripsi	& Proses untuk memuat seluruh entri \textit{logs} pada halaman \textit{Logs.twig}	 \\
+			Deskripsi	& Proses untuk memuat seluruh entri \textit{logs} pada halaman \textit{logs.twig}	 \\
 			\hline
 			Algoritma	& \begin{itemize}
 				\item memuat data \textit{logs} menggunakan fungsi \textit{get\_all\_logs} dari \textit{model Logs\_model.php}
-				\item memproses data untuk tampilan \textit{Logs.twig}
+				\item memproses data untuk tampilan \textit{logs.twig}
 			\end{itemize} \\
 			\hline
 		\end{tabular}
@@ -560,7 +560,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 179		continue; //ignore lines that not contain 5 parts
 ...
 181	if (strtolower(substr($parts[3], 0, 6)) == 'random')
-181	{
+182	{
 183		// generate random password
 184		$len = trim(substr($parts[3], 6), '[]');
 185		if (is_numeric($len)){
@@ -726,6 +726,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 \end{lstlisting}
 ~\\
 Penambahan kode di halaman \textit{settings.twig} untuk menambahkan check box fitur "\textit{Lock Student's Display Name}", terjadi setelah baris 116. Berikut hasil penambahan kode program yang terjadi di halaman \textit{settings.twig}
+
 \textit{settings.twig}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
@@ -742,6 +743,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 \end{lstlisting}
 ~\\
 Penambahan kode di \textit{controller Settings.php} untuk menyimpan nilai dari \textit{check box} fitur "\textit{Lock Student's Display Name}" ke \textit{database}, terjadi setelah baris 115. Berikut hasil penambahan kode program yang terjadi di \textit{controller Settings.php}
+
 \textit{Settings.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
@@ -754,6 +756,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 \end{lstlisting}
 ~\\
 Penambahan kode di \textit{controller Profile.php} untuk mengecek apakah fitur "\textit{Lock Student's Display Name}" aktif atau tidak aktif terjadi setelah baris 66. Hasil pengecekan tersebut akan dikirimkan untuk halaman \textit{profile.twig}. Berikut hasil penambahan kode program yang terjadi di \textit{controller} \textit{Profile.php}
+
 \textit{Profile.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
@@ -766,6 +769,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 \end{lstlisting}
 ~\\
 Penambahan kode di halaman \textit{profile.twig} untuk menentukan apakah \textit{text field Display Name} akan diaktifkan atau tidak terjadi setelah baris 31. Berikut hasil penambahan kode program yang terjadi di tampilan \textit{profile.twig}
+
 \textit{profile.twig}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
@@ -781,6 +785,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 \end{lstlisting}
 ~\\
 Penambahan kode di \textit{model User\_model.php} untuk mengecek apakah fitur "\textit{Lock Student's Display Name}" aktif atau tidak aktif terjadi setelah baris 405. Berikut hasil penambahan kode program yang terjadi di \textit{model User\_model.php}
+
 \textit{User\_model.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
@@ -800,3 +805,411 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 416	);
 ...
 \end{lstlisting}
+
+\section{Menambahakan fitur "\textit{Archived Assignment}"}
+Fitur "\textit{Archived Assignment}" membutuhkan sebuah atribut baru pada \textit{database}, dimana atribut tersebut berfungsi untuk menyimpan sebuah nilai. Nilai yang disimpan akan menentukan apakah \textit{assignment} tersebut bersifat \textit{Archived Assignment} atau tidak. Atribut baru tersebut akan ditambahkan pada tabel \textit{shj\_assignments} dengan nama \textit{archived\_assignment} yang menggunakan tipe data \textit{tinyint}. \textit{archived\_assignment} akan memiliki nilai \textit{default} = 0. Jika nilai dari \textit{archived\_assignment} = 1, maka \textit{assignment} tersebut merupakan sebuah \textit{archived\_assignment}, sebaliknya jika bernilai 0, maka \textit{assignment} tersebut merupakan \textit{assignment} biasa.
+
+Rancangan algoritma yang digunakan untuk menambahkan fitur "\textit{Archived Assignment}" yaitu
+\begin{enumerate}
+	\item Menambahkan atribut baru dengan nama \textit{archived\_assignment} yang menggunakan tipe data \textit{tinyint}. Atribut baru tersebut akan ditambahkan pada tabel \textit{shj\_assignments}
+	\item Menambahkan \textit{check box} pada halaman \textit{assignments.twig} untuk mengaktifkan atau menonaktifkan fitur "\textit{Archived Assignment}".
+	\item Jika fitur "\textit{Archived Assignment}" diaktifkan, maka secara otomatis \textit{text field Start time} akan bernilai 1970-01-02 00:00:00, \textit{text field Finish Time} akan bernilai 2038-01-18 00:00:00 dan \textit{text field Extra Time} akan bernilai 0.
+	\item \textit{Assignment} yang bersifat \textit{Archived Assignment} tidak akan muncul pada kalendar halaman \textit{dashboard}.
+\end{enumerate}
+
+Dari rancangan algoritma yang akan diterapkan, terdapat penambahan kode pada beberapa \textit{file}. Beberapa file tersebut antara lain \textit{model Assignment\_model.php, view add\_assignment.twig} dan \textit{view dashboard.twig}.
+Berikut beberapa baris potongan kode program
+~\\
+\textit{Assignment\_model.php}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+...
+37	foreach($extra_items as $extra_item)
+38	{
+39		$extra_time *= $extra_item;
+40	}
+41	$assignment = array(
+42		'id' => $id,
+43		'name' => $this->input->post('assignment_name'),
+44		'problems' => $this->input->post('number_of_problems'),
+45		'total_submits' => 0,
+46		'open' => ($this->input->post('open')===NULL?0:1),
+47		'scoreboard' => ($this->input->post('scoreboard')===NULL?0:1),
+48		'javaexceptions' => ($this->input->post('javaexceptions')===NULL?0:1),
+49		'description' => '', /* todo */
+50		'start_time' => date('Y-m-d H:i:s', strtotime($this->input->post('start_time'))),
+51		'finish_time' => date('Y-m-d H:i:s', strtotime($this->input->post('finish_time'))),
+52		'extra_time' => $extra_time*60,
+53		'late_rule' => $this->input->post('late_rule'),
+54		'participants' => $this->input->post('participants')
+55	);
+...
+\end{lstlisting}
+~\\
+\textit{add\_assignment.twig}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+...
+37	$("#add").click(function(){
+38			$('#problems_table>tbody').append(shj.row.replace(/PID/g, (shj.num_of_problems+1)));
+39			shj.num_of_problems++;
+40			$('#nop').attr('value', shj.num_of_problems);
+41		});
+42	$(document).on('click', '.delete_problem', function(){
+43		if (shj.num_of_problems==1) return;
+44		var row = $(this).parents('tr');
+...
+154		{{ form_error('javaexceptions', '<div class="shj_error">', '</div>') }}
+155	</p>
+156	<p class="input_p">
+...
+\end{lstlisting}
+~\\
+\textit{dashboard.twig}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+...
+28	{% set colors = ['#812C8C','#FF750D','#2C578C','#013440','#A6222C','#42758C','#02A300','#BA6900'] %}
+29	{% for assignment in all_assignments %}
+30		{id:{{ assignment.id }},title:'{{ assignment.name|e('js') }}', start:'{{ assignment.start_time }}', end:' {{ assignment.finish_time }}',
+31		allDay:false,color:'{{ colors[(loop.index0)%colors|length] }}'}
+32	{% if not loop.last %},{% endif %}
+33	{% endfor %}
+...
+\end{lstlisting}
+~\\
+Penambahan kode di \textit{model Assignment\_model.php} untuk menyimpan nilai dari \textit{check box} fitur "\textit{Archived Assignment}" ke \textit{database}, terjadi setelah baris 54. Penambahan kode setelah baris 40 berfungsi untuk mengambil nilai dari \textit{archived\_assignment} dari sebuah \textit{assignment}. Berikut hasil penambahan kode program yang terjadi di textit{model Assignment\_model.php} 
+
+\textit{Assignment\_model.php}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+...
+37	foreach($extra_items as $extra_item)
+38	{
+39		$extra_time *= $extra_item;
+40	}
+41
+42	$archived_assignment = $archived_assignment = $this->input->post('archived_assignment')!==NULL ? 1 : 0;
+43
+44	$assignment = array(
+45		'id' => $id,
+46		'name' => $this->input->post('assignment_name'),
+47		'problems' => $this->input->post('number_of_problems'),
+48		'total_submits' => 0,
+49		'open' => ($this->input->post('open')===NULL?0:1),
+50		'scoreboard' => ($this->input->post('scoreboard')===NULL?0:1),
+51		'javaexceptions' => ($this->input->post('javaexceptions')===NULL?0:1),
+52		'description' => '', /* todo */
+53		'start_time' => date('Y-m-d H:i:s', strtotime($this->input->post('start_time'))),
+54		'finish_time' => date('Y-m-d H:i:s', strtotime($this->input->post('finish_time'))),
+55		'extra_time' => $extra_time*60,
+56		'late_rule' => $this->input->post('late_rule'),
+57		'participants' => $this->input->post('participants')
+58		'archived_assignment' => $archived_assignment
+59	);
+...
+\end{lstlisting}
+~\\
+Penambahan kode di halaman \textit{add\_assignment.twig} untuk menambahkan \textit{check box} fitur "\textit{Archived Assignment}", terjadi setelah baris 155. Penambahan kode setelah baris 41 untuk mengisi nilai \textit{text field Start time} menjadi 1970-01-02 00:00:00, \textit{text field Finish Time} menjadi 2038-01-18 00:00:00 dan \textit{text field Extra Time} menjadi 0. Berikut hasil penambahan kode program yang terjadi di halaman \textit{add\_assignment.twig}
+
+\textit{add\_assignment.twig}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+...
+37	$("#add").click(function(){
+38			$('#problems_table>tbody').append(shj.row.replace(/PID/g, (shj.num_of_problems+1)));
+39			shj.num_of_problems++;
+40			$('#nop').attr('value', shj.num_of_problems);
+41		});
+42	$("#form_a_archived_assignment").click(function(){
+43		if ($("#form_a_archived_assignment").is(':checked')) {
+44			$("#start_time").val('1970-01-02 00:00:00');
+45			$("#finish_time").val('2038-01-18 00:00:00');
+46			$("#form_extra_time").val('0');
+47		}
+48		else{
+49			$("#start_time").val('');
+50			$("#finish_time").val('');
+51			$("#form_extra_time").val('');
+52		}
+53	});
+54	$(document).on('click', '.delete_problem', function(){
+55		if (shj.num_of_problems==1) return;
+56		var row = $(this).parents('tr');
+...
+166		{{ form_error('javaexceptions', '<div class="shj_error">', '</div>') }}
+167	</p>
+168	<p class="input_p">
+169		<input id="form_a_archived_assignment" type="checkbox" name="archived_assignment" value="1" {{ edit ? (edit_assignment.archived_assignment ? 'checked') : set_checkbox('archived_assignment', '1')|raw }} />
+170		<label for="form_a_archived_assignment" class="default">Archived Assignment</label>
+171		<span class="form_comment space-left">Check this to make an archived assignment</span>
+172		{{ form_error('archived_assignment', '<div class="shj_error">', '</div>') }}
+173	</p>
+174	<p class="input_p">
+...
+\end{lstlisting}
+~\\
+Penambahan kode di halaman \textit{dashboard.twig} untuk mengatur \textit{assignment} yang bersifat \textit{Archived Assignment} agar tidak muncul pada kalendar, terjadi setelah baris 29. Berikut hasil penambahan kode program yang terjadi di halaman \textit{dashboard.twig}
+
+\textit{dashboard.twig}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+...
+28	{% set colors = ['#812C8C','#FF750D','#2C578C','#013440','#A6222C','#42758C','#02A300','#BA6900'] %}
+29	{% for assignment in all_assignments %}
+30		{% if assignment.archived_assignment == '0' %}
+31			{id:{{ assignment.id }},title:'{{ assignment.name|e('js') }}', start:'{{ assignment.start_time }}', end:' {{ assignment.finish_time }}', allDay:false,color:'{{ colors[(loop.index0)%colors|length] }}'}
+32	{% endif %}
+33		{% if assignment.archived_assignment == '1' %}
+34	{}
+35	{% endif %}
+36	{% if not loop.last %},{% endif %}
+37	{% endfor %}
+...
+\end{lstlisting}
+
+\section{Menambahkan halaman \textit{Hall of Fame}}
+Halaman \textit{Hall of Fame} tidak membutuhkan atribut atau tabel baru pada \textit{database} namun perlu ditambahkan \textit{model, view} dan \textit{controller}.
+
+\begin{enumerate}
+	\item \textit{Model} \\
+	\textit{Model} untuk halaman \textit{Hall of Fame} akan bernama \textit{Hof\_model.php}. Berikut adalah perincian fungsi yang terdapat dalam rancangan \textit{model Hof\_model.php}.
+	\begin{table}[H]
+		\caption{Perincian fungsi \textit{get\_all\_final\_submission}}
+		\begin{tabular}{|c|p{11cm}|}
+			\hline
+			Nama \textit{Method} 	& 	\textit{get\_all\_final\_submission} 	\\
+			\hline
+			Parameter \textit{Input} & - \\
+			\hline
+			Parameter \textit{Output} & semua entri nilai submissions yang telah dijumlahkan \\
+			\hline
+			Tabel yang berhubungan & \textit{shj\_submissions} \\
+			\hline
+			Deskripsi	& Proses untuk mengembalikan semua entri nilai submission yang telah djumlahkan pada tabel \textit{shj\_submissions} \\
+			\hline
+			Algoritma	& \begin{itemize}
+				\item menjumlahkan seluruh nilai submission setiap peserta yang tidak bersifat "\textit{Upload Only}". Nilai yang telah dijumlahkan akan disimpan sebagai total skor.
+				\item mengurutkan total skor dari yang paling besar
+				\item mengembalikan seluruh entri yang telah dijumlahkan dalam bentuk \textit{array}
+			\end{itemize} \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[H]
+		\caption{Perincian fungsi \textit{get\_all\_user\_assignments}}
+		\begin{tabular}{|c|p{11cm}|}
+			\hline
+			Nama \textit{Method} 	& 	\textit{get\_all\_user\_assignments} 	\\
+			\hline
+			Parameter \textit{Input} & \textit{\$username} \\
+			\hline
+			Parameter \textit{Output} &  mengembalikan seluruh \textit{details} dari \textit{assignment} pengguna tertentu\\
+			\hline
+			Tabel yang berhubungan & \textit{shj\_submissions} \\
+			\hline
+			Deskripsi	& Proses untuk mengembalikan \textit{details assignment} pengguna tertentu. \textit{Details} akan berisikan nama \textit{assignment}, nama \textit{problem} dan skor \\
+			\hline
+			Algoritma	& \begin{itemize}
+				\item menyimpan nama \textit{assignment}, nama \textit{problem} dan skor setiap \textit{problem} dari sebuah \textit{assignment} pengguna tertentu
+				\item mengembalikan \textit{details} di atas dalam bentuk \textit{array}
+			\end{itemize} \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	\item \textit{View} \\
+	\textit{View} untuk halaman \textit{Hall of Fame} akan bernama \textit{halloffame.twig}. Menu halaman \textit{Hall of Fame} akan terletak di bawah menu \textit{Scoreboard}. Pada halaman ini juga akan berlaku sistem ranking dimana para peserta akan diurutkan bedasarkan total skor. Jika total skor yang dimiliki peserta memiliki nilai yang sama dengan peserta lainnya, maka peserta tersebut memiliki rangking yang sama dengan peserta lainnya. Berikut adalah rancangan tampilan halaman \textit{Hall of Fame}
+	
+	\begin{figure}[H]
+		\centering  
+		\includegraphics[width=1.0\textwidth]{mockuphof}  
+		\caption[Rancangan tampilan halaman \textit{Hall of Fame}]{Rancangan tampilan halaman \textit{Hall of Fame}} 
+		\label{fig:mockuphof} 
+	\end{figure}
+
+	Berikut adalah rancangan tampilan detail dari \textit{Hall of Fame} peserta tertentu
+	
+	\begin{figure}[H]
+		\centering  
+		\includegraphics[width=1.0\textwidth]{mockuphofdetail}  
+		\caption[Rancangan tampilan \textit{details} \textit{Hall of Fame} peserta tertentu]{Rancangan tampilan \textit{details} \textit{Hall of Fame} peserta tertentu} 
+		\label{fig:mockuphofdetail} 
+	\end{figure}
+	
+	\item \textit{Controller} \\
+	\textit{Controller} untuk halaman \textit{Hall of Fame} akan bernama \textit{Halloffame.php}. Berikut adalah perincian fungsi yang terdapat dalam rancangan \textit{controller Logs.php}.
+	\begin{table}[H]
+		\caption{Perincian fungsi \textit{consturct\_\_}}
+		\begin{tabular}{|c|p{11cm}|}
+			\hline
+			Nama \textit{Method} 	& 	\textit{consturct\_\_} 	\\
+			\hline
+			Parameter \textit{Input} & - \\
+			\hline
+			Parameter \textit{Output} &  - \\
+			\hline
+			Tabel yang berhubungan & - \\
+			\hline
+			Deskripsi	& membatasi pengguna yang dapat mengakses halaman \textit{Hall of Fame}	 \\
+			\hline
+			Algoritma	& \begin{itemize}
+				\item mengecek \textit{session} pengguna yang akan mengakses halaman \textit{Hall of Fame}
+				\item jika \textit{session} tidak berstatus '\textit{logged\_in}, maka pengguna akan dialihkan ke halaman \textit{login}
+				\item memuat \textit{model Hof\_model.php}
+			\end{itemize} \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[H]
+		\caption{Perincian fungsi \textit{index}}
+		\begin{tabular}{|c|p{11cm}|}
+			\hline
+			Nama \textit{Method} 	& 	\textit{index} 	\\
+			\hline
+			Parameter \textit{Input} & - \\
+			\hline
+			Parameter \textit{Output} &  - \\
+			\hline
+			Tabel yang berhubungan & \textit{shj\_submissions} \\
+			\hline
+			Deskripsi	& Proses untuk memuat seluruh entri \textit{submissions} yang telah dijumlahkan pada halaman \textit{halloffame.twig}	 \\
+			\hline
+			Algoritma	& \begin{itemize}
+				\item memuat data \textit{Hall of Fame} menggunakan fungsi \textit{get\_all\_final\_submission} dari \textit{model Hof\_model.php}
+				\item memproses data untuk tampilan \textit{halloffame.twig}
+			\end{itemize} \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[H]
+		\caption{Perincian fungsi \textit{hof\_details}}
+		\begin{tabular}{|c|p{11cm}|}
+			\hline
+			Nama \textit{Method} 	& 	\textit{hof\_details} 	\\
+			\hline
+			Parameter \textit{Input} & - \\
+			\hline
+			Parameter \textit{Output} &  - \\
+			\hline
+			Tabel yang berhubungan & \textit{shj\_submissions} \\
+			\hline
+			Deskripsi	& Proses untuk memuat details \textit{submissions} pada halaman \textit{halloffame.twig}	 \\
+			\hline
+			Algoritma	& \begin{itemize}
+				\item memuat \textit{details} \textit{Hall of Fame} peserta tertentu menggunakan fungsi \textit{get\_all\_user\_assignments} dari \textit{model Hof\_model.php}
+				\item memproses data untuk tampilan \textit{details} \textit{Hall of Fame} dari peserta tertentu pada halaman \textit{halloffame.twig}
+			\end{itemize} \\
+			\hline
+		\end{tabular}
+	\end{table}
+\end{enumerate}
+
+Selain menambahkan \textit{file model, view} dan \textit{controller}, terdapat penambahan fungsi pada \textit{file shj\_functions.js} yang terletak di \path{Sharif-Judge\assets\js}. Penambahan fungsi tersebut berguna untuk meminta \textit{details} dari Hall of Fame peserta tertentu menggunakan fungsi hof\_details pada \textit{controller Halloffame.php} lalu menampilkannya.
+Berikut beberapa baris potongan kode program
+
+\textit{shj\_functions.js}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+...
+478	});
+479
+480
+481
+482	/**
+483	* Set dir="auto" for all input elements
+484	*/
+485	$(document).ready(function(){
+486		$('input').attr('dir', 'auto');
+487	});
+...
+\end{lstlisting}
+
+Fungsi tersebut akan ditambahkan setelah baris 479. Berikut hasil penambahan kode program yang terjadi di \textit{shj\_functions.js}
+\iffalse
+\textit{shj\_functions.js}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+...
+478	});
+479	
+480	/**
+481	* "Hall of Fame" page
+482	*/
+483	$(document).ready(function(){
+484		$('.hof_details').click(function(){
+485			var row = $(this).closest("tr");    // Find the row
+486			var username = row.find(".username").text();
+487			$.ajax({
+488			type: 'POST',
+489			url: shj.site_url+'halloffame/hof_details',
+490			data: {
+491				username: username,
+492				shj_csrf_token: shj.csrf_token
+493			},
+494			beforeSend: shj.loading_start,
+495			complete: shj.loading_finish,
+496			error: shj.loading_error,
+497	
+498			success: function(response){
+499				var currentAssignment = '';
+500				var prevAssignment = '';
+501				var temp = '';
+502	
+503				for (var i = 0; i < response.length; i++) {
+504					if (response[i].scoreboard == 0) {
+505						temp = temp + '--------------------------------------------------<br><b>' + response[i].assignment + '</b><br>Scoreboard Disabled!';
+506					}
+507					else{
+508						if (i == 0) {
+509							temp = temp + '<b>' + response[i].assignment + '</b> <br>' + response[i].problem + ' : ' + response[i].score +'<br>';
+510							prevAssignment = response[i].assignment;
+511						}
+512						else{
+513							currentAssignment = response[i].assignment;
+514							var index = currentAssignment.localeCompare(prevAssignment); //comparing previous assignment's name with current assignment's name
+515							if (index == 0) {
+516							temp = temp + response[i].problem + ' : ' + response[i].score + '<br>';
+517							prevAssignment = currentAssignment;
+518							}
+519							else{
+520							temp = temp + '--------------------------------------------------<br><b>'+currentAssignment + '</b><br>' + response[i].problem + ' : ' + response[i].score + '<br>';
+521							prevAssignment = currentAssignment;
+522						}
+523					}
+524				}
+525			}
+526	
+527			noty({
+528				text: 'Hall of Fame for username: <b>'+username+'</b><br>============================<br>'+temp,
+529				layout: 'center',
+530				type: 'confirm',
+531				animation: {
+532					open: {height: 'toggle'},
+533					close: {height: 'toggle'},
+534					easing: 'swing',
+535					speed: 300
+536				},
+537				buttons: [
+538					{addClass: 'btn shj-red', text: 'Close', onClick: function($noty){$noty.close();}}
+539				]
+540				});
+541			}
+542			});
+543		});
+544	});
+545	
+546	
+547	
+548	/**
+549	* Set dir="auto" for all input elements
+550	*/
+551	$(document).ready(function(){
+552		$('input').attr('dir', 'auto');
+553	});
+...
+\end{lstlisting}
+\fi
