@@ -3,7 +3,7 @@
 
 Bab ini membahas tentang perancangan setiap fitur yang akan diimplementasi pada perangkat lunak \textit{Sharif Judge}. 
 
-\section{Mengganti method \textit{shell\_exec("rm ...")} menjadi \textit{unlink()}}
+\section{Mengganti Method \textit{shell\_exec("rm ...")} Menjadi \textit{unlink()}}
 \textit{Method} \textit{shell\_exec("rm ...")} yang memiliki fungsi untuk menghapus sebuah file terdapat pada file \textit{controller Assignment.php} tepatnya di baris kode 425 dan 473
 
 \textit{Assignments.php}
@@ -38,7 +38,7 @@ columns=fullflexible, keepspaces=true]
 ...
 \end{lstlisting}
 
-\section{Menambahkan method rekoneksi ke \textit{database}}
+\section{Menambahkan Method Rekoneksi ke \textit{Database}}
 \textit{Method} rekoneksi ke \textit{database} akan ditambahkan pada \textit{file controller Queueprocess.php}. 
 
 \textit{Queueprocess.php}
@@ -66,7 +66,7 @@ columns=fullflexible, keepspaces=true]
 ...
 \end{lstlisting}
 
-\section{Membatasi soal (deskripsi \& PDF) hanya bisa diunduh saat \textit{assignment "open"} dan setelah waktu mulai}
+\section{Membatasi Soal (deskripsi \& PDF) Hanya Dapat Diunduh dengan Syarat Tertentu}%}Saat \textit{Assignment "Open"} dan setelah waktu mulai}
 Fungsi untuk mengunduh soal (deskripsi \& PDF) terdapat pada \textit{controller Assignment.php} tepatnya di baris kode 100.
 
 \textit{Assignments.php}
@@ -144,7 +144,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 ...
 \end{lstlisting}
 
-\section{Mensupport \textit{file} dengan ekstensi TXT}
+\section{Mensupport \textit{File} dengan Ekstensi TXT}
 Untuk dapat mensupport \textit{file} dengan ekstensi TXT pada perangkat lunak \textit{Sharif Judge}, diperlukan penambahan dan perubahan kode pada beberapa \textit{file}. Beberapa \textit{file} tersebut antara lain \textit{controller Submit.php, model Assignment\_model.php, view submissions.twig} dan \textit{file} bantuan \textit{shj\_helper.php} yang terdapat pada direktori \path{Sharif-Judge\application\helper}. Berikut beberapa baris potongan kode program
 
 \textit{Submit.php}
@@ -285,7 +285,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 ...
 \end{lstlisting}
 
-\section{Membuat halaman \textit{Logs} yang mencatat aktivitas \textit{login} pengguna}
+\section{Menambahkan Halaman \textit{Logs}}% yang Mencatat Aktivitas \textit{Login} Pengguna}
 Agar halaman \textit{Logs} dapat berjalan dengan baik, perlu ditambahkan tabel baru pada \textit{database} \textit{Sharif Judge}.  \textit{Tabel} baru tersebut akan bernama \textit{shj\_logins}. 
 \begin{table}[H] %atau h saja untuk "kira kira di sini"
 	\centering 
@@ -295,7 +295,7 @@ Agar halaman \textit{Logs} dapat berjalan dengan baik, perlu ditambahkan tabel b
 			\hline
 			\textbf{Atribut} & \textbf{Tipe Data} & \textbf{Ukuran}  & \textbf{Default} \\
 			\hline
-			\textit{login\_id} (PK*) & int & 11  & None \\
+			\textit{login\_id (primary key)} & int & 11  & None \\
 			\hline
 			\textit{username} & varchar & 20  & None \\
 			\hline
@@ -307,7 +307,6 @@ Agar halaman \textit{Logs} dapat berjalan dengan baik, perlu ditambahkan tabel b
 			\hline
 		\end{tabular}
 \end{table}
-*PK = \textit{Primary Key}.
 
 Keterangan atribut:
 \begin{enumerate}
@@ -426,7 +425,7 @@ Selain tabel diatas, halaman logs juga akan ditambahkan \textit{model, view} dan
 	\end{table}
 \end{enumerate}
 
-\section{Menambahkan parameter "\textit{Display Name}" pada pendaftaran peserta \textit{Sharif Judge}}
+\section{Menambahkan Parameter "\textit{Display Name}" pada Pendaftaran Peserta \textit{Sharif Judge}}
 Untuk dapat menambahkan parameter "\textit{Display Name}" pada pendaftaran peserta \textit{Sharif Judge}, diperlukan beberapa perubahan dan penambahan kode. Berikut rancangan algoritma yang akan dilakukan
 \begin{enumerate}
 	\item Menambahkan parameter "\textit{Display Name}" pada fungsi \textit{add\_user} yang terdapat di \textit{model User\_model.php}.
@@ -657,7 +656,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 ...
 \end{lstlisting}
 
-\section{Menambahkan fitur "\textit{Lock Student's Display Name}"}
+\section{Menambahkan Fitur "\textit{Lock Student's Display Name}"}
 Fitur "\textit{Lock Student's Display Name}" membutuhkan sebuah "\textit{key}" pada \textit{database}, dimana "\textit{key}" tersebut berfungsi untuk menyimpan sebuah nilai. Nilai yang disimpan akan menentukan apakah para peserta dapat mengubah \textit{Display Name} atau tidak. "\textit{Key}" akan disimpan pada tabel \textit{shj\_settings} pada kolom \textit{shj\_key} dengan nama \textit{lock\_student\_display\_name}. \textit{lock\_student\_display\_name} akan memiliki nilai \textit{default shj\_value} = 0. Jika nilai dari \textit{lock\_student\_display\_name} = 1, maka para peserta tidak dapat mengubah \textit{Display Name}, sebaliknya jika bernilai 0, maka para peserta dapat mengubah \textit{Display Name}.
 
 Rancangan algoritma yang digunakan untuk menambahkan fitur "\textit{Lock Student's Display Name}" yaitu
@@ -806,7 +805,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 ...
 \end{lstlisting}
 
-\section{Menambahakan fitur "\textit{Archived Assignment}"}
+\section{Menambahakan Fitur "\textit{Archived Assignment}"}
 Fitur "\textit{Archived Assignment}" membutuhkan sebuah atribut baru pada \textit{database}, dimana atribut tersebut berfungsi untuk menyimpan sebuah nilai. Nilai yang disimpan akan menentukan apakah \textit{assignment} tersebut bersifat \textit{Archived Assignment} atau tidak. Atribut baru tersebut akan ditambahkan pada tabel \textit{shj\_assignments} dengan nama \textit{archived\_assignment} yang menggunakan tipe data \textit{tinyint}. \textit{archived\_assignment} akan memiliki nilai \textit{default} = 0. Jika nilai dari \textit{archived\_assignment} = 1, maka \textit{assignment} tersebut merupakan sebuah \textit{archived\_assignment}, sebaliknya jika bernilai 0, maka \textit{assignment} tersebut merupakan \textit{assignment} biasa.
 
 Rancangan algoritma yang digunakan untuk menambahkan fitur "\textit{Archived Assignment}" yaitu
@@ -817,7 +816,7 @@ Rancangan algoritma yang digunakan untuk menambahkan fitur "\textit{Archived Ass
 	\item \textit{Assignment} yang bersifat \textit{Archived Assignment} tidak akan muncul pada kalendar halaman \textit{dashboard}.
 \end{enumerate}
 
-Dari rancangan algoritma yang akan diterapkan, terdapat penambahan kode pada beberapa \textit{file}. Beberapa file tersebut antara lain \textit{model Assignment\_model.php, view add\_assignment.twig} dan \textit{view dashboard.twig}.
+Dari rancangan algoritma yang akan diterapkan, terdapat penambahan kode pada beberapa \textit{file}. Beberapa \textit{file} tersebut antara lain \textit{model Assignment\_model.php, view add\_assignment.twig} dan \textit{view dashboard.twig}.
 Berikut beberapa baris potongan kode program
 ~\\
 \textit{Assignment\_model.php}
@@ -968,7 +967,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 ...
 \end{lstlisting}
 
-\section{Menambahkan halaman \textit{Hall of Fame}}
+\section{Menambahkan Halaman \textit{Hall of Fame}}
 Halaman \textit{Hall of Fame} tidak membutuhkan atribut atau tabel baru pada \textit{database} namun perlu ditambahkan \textit{model, view} dan \textit{controller}.
 
 \begin{enumerate}
@@ -1214,7 +1213,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 \end{lstlisting}
 \fi
 
-\section{Integrasi \textit{login} ke \textit{server RADIUS}}
+\section{Integrasi \textit{Login} ke \textit{Server RADIUS}}
 \textit{Sharif Judge} memerlukan \textit{library} baru agar dapat mengintegrasikan \textit{login} ke \textit{server RADIUS}. \textit{Library} yang akan digunakan adalah \textit{Dapphp/Radius}. \textit{Dapphp/Radius} adalah klien \textit{RADIUS PHP} untuk mengautentikasi pengguna terhadap \textit{server RADIUS} REFRENSI. Cara yang disarankan untuk menginstal \textit{Dapphp/Radius} adalah menggunakan \textit{Composer}. Jika \textit{Composer} telah terinstall, maka jalankan perintah "\textit{composer require dapphp/radius}" atau tambahkan "\textit{dapphp/radius}" pada file \textit{composer.json} bagian "\textit{section}"~\cite{drew:16:radius}.
 
 Rancangan algoritma yang digunakan untuk menambahkan mengintegrasikan \textit{login} ke \textit{server RADIUS} yaitu
@@ -1352,7 +1351,7 @@ Berikut tampilan \textit{Sharif Judge} yang baru
 	\label{fig:logo} 
 \end{figure} 
 
-\section{Mengganti \textit{library PHPExcel} menjadi \textit{PhpSpreadsheet}}
+\section{Mengganti \textit{Library PHPExcel} Menjadi \textit{PhpSpreadsheet}}
 \textit{PhpSpreadsheet} adalah \textit{library} yang ditulis dalam PHP. \textit{Library PhpSpreadsheet} menyediakan sekumpulan kelas yang memungkinkan pengguna untuk membaca dan menulis ke berbagai format \textit{file spreadsheet}, seperti \textit{Excel} dan \textit{LibreOffice Calc} ~\cite{phpoffice:10:phpspreadsheet}. Menginstall \textit{library PhpSpreadsheet} dapat dilakukan dengan menggunakan \textit{Composer} dan menjalankan perintah "\textit{composer require phpoffice/phpspreadsheet}".
 
 Rancangan algoritma yang digunakan untuk mengganti \textit{library PHPExcel} menjadi \textit{PhpSpreadsheet} yaitu
