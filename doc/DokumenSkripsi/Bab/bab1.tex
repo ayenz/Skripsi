@@ -4,11 +4,11 @@
    
 \section{Latar Belakang}
 \label{sec:label}
-\textit{Sharif Judge} adalah \textit{grader} otomatis yang mampu menilai ketepatan serta performansi program yang dikumpulkan mahasiswa. Perangkat lunak ini diciptakan oleh Mohammad Javad Naderi dan bersifat \textit{open source}. \textit{Web Interface} perangkat lunak ini dibuat menggunakan \textit{framework CodeIgniter} dan \textit{backend} menggunakan \textit{BASH} \cite{mjnaderi:14:sharifjudge}. Selain sebagai \textit{grader}, perangkat lunak ini memiliki beberapa fungsi seperti deteksi plagiarisme jawaban para peserta. Cara kerja perangkat lunak ini dimulai dari dosen memasukan data yang dibutuhkan berupa soal, peserta, dan kunci jawaban. Data yang dimasukan tersebut dapat diakses oleh para peserta. Peserta dapat mengumpulkan jawaban dalam bentuk kode program ke dalam \textit{Sharif Judge}. \textit{Sharif Judge} akan menjalankan kode program dan menyesuaikan dengan kunci jawaban, lalu \textit{grader} akan menilai jawaban para peserta.
+\textit{Sharif Judge} adalah \textit{grader} otomatis yang mampu menilai ketepatan serta performansi program yang dikumpulkan mahasiswa. Perangkat lunak ini diciptakan oleh Mohammad Javad Naderi dan bersifat \textit{open source}. Antarmuka \textit{Sharif Judge} ditulis menggunakan bahasa pemrograman PHP (\textit{framework CodeIgniter}) dan \textit{backend} menggunakan \textit{BASH} \cite{mjnaderi:14:sharifjudge}. Selain berfungsi sebagai \textit{grader}, \textit{Sharif Judge} memiliki beberapa fungsi seperti deteksi plagiarisme jawaban para peserta. Cara kerja \textit{grader} pada \textit{Sharif Judge} dimulai dari dosen membuat \textit{assignment}. Untuk membuat \textit{assignment} dibutuhkan data-data seperti nama \textit{assignment}, waktu mulai, waktu berhenti, waktu tambahan, daftar peserta, diskripsi soal dan kunci jawaban. Para peserta dapat mengunduh diskripsi soal lalu mengerjakan \textit{assignment} tersebut. Peserta yang telah selesai mengerjakan \textit{assignment}, dapat mengumpulkan jawaban dalam bentuk kode program. \textit{Sharif Judge} akan menjalankan kode program dan menyesuaikan dengan kunci jawaban, lalu \textit{grader} akan langsung menilai jawaban para peserta.
 
-\textit{Sharif Judge} digunakan oleh Jurusan Teknik Informatika Universitas Katolik Parahyangan pada mata kuliah seperti Algoritma dan Struktur Data serta Desain Analisis dan Algoritma. Perangkat lunak ini sangat membantu dosen dan mahasiswa dalam bidang akademik. Sistem penilaian otomatis merupakan salah satu fitur yang sering digunakan oleh para dosen. Dengan memanfaatkan fitur di atas, dosen dapat dengan mudah memberikan nilai tugas, kuis, atau ujian ke mahasiswa. Mahasiswa juga dapat melihat nilai secara langsung setelah jawaban dikumpulkan. Jika masih ada waktu, mahasiswa masih dapat memperbaiki jawaban yang salah. Ketika waktu sudah habis, jawaban terakhir yang dikumpulkan akan diambil sebagai jawaban final mahasiswa.
+\textit{Sharif Judge} digunakan oleh Jurusan Teknik Informatika Universitas Katolik Parahyangan pada mata kuliah seperti Algoritma dan Struktur Data serta Desain dan Analisis Algoritma. Perangkat lunak \textit{Sharif Judge} sangat membantu dosen dan mahasiswa dalam bidang akademik. Sistem penilaian otomatis merupakan salah satu fitur yang sering digunakan oleh para dosen. Dengan memanfaatkan fitur di atas, dosen dapat dengan mudah memberikan nilai tugas, kuis dan ujian. Mahasiswa juga dapat melihat nilai secara langsung setelah jawaban dikumpulkan. Para mahasiswa dapat memperbaiki jawaban yang telah dikumpulkan jika assignment yang dikerjakan tidak melewati batas waktu pengumpulan.
 
-Pada prakteknya \textit{Sharif Judge} masih butuh pengembangan, karena Jurusan Teknik Informatika memiliki kebutuhan yang lebih spesifik seperti \textit{login} yang terintegrasi dengan \textit{password} pada Teknik Informatika. Selain itu \textit{Sharif Judge} terakhir dicommit pada \textit{Github} pada bulan Juli 2015, dan masih ada beberapa bug yang belum diperbaiki. Hal tersebut menyebabkan \textit{Sharif Judge} kurang memenuhi kebutuhan program studi Teknik Informatika. 
+Pada prakteknya, perangkat lunak \textit{Sharif Judge} terkini masih butuh pengembangan. Pengembangan tersebut dibutuhkan karena Jurusan Teknik Informatika memiliki kebutuhan yang lebih spesifik seperti \textit{login} yang terintegrasi dengan server RADIUS Teknik Informatika, membatasi pengaksesan diskripsi soal pada assignment dan kebutuhan spesifik lainnya. \textit{Sharif Judge} terakhir dicommit pada \textit{Github} pada bulan Juli 2015 dan meninggalkan beberapa bug yang belum diperbaiki. Hal-hal di atas menyebabkan \textit{Sharif Judge} kurang memenuhi kebutuhan program studi Teknik Informatika. 
 
 Pada skripsi ini, peneliti akan mengembangkan \textit{Sharif Judge} agar sesuai dengan kebutuhan yang disebutkan diatas. Dari kebutuhan yang disebutkan diatas, akan dirancang fitur-fitur untuk diimplementasikan pada \textit{Sharif Judge}. Dengan pengimplementasian fitur yang baru, diharapkan kebutuhan mahasiswa dan dosen dapat terpenuhi.
 
@@ -28,24 +28,24 @@ Pada skripsi ini, peneliti akan mengembangkan \textit{Sharif Judge} agar sesuai 
 
 \section{Batasan Masalah}
 \label{sec:batasan}
-Batasan masalah yang dibuat terkait dengan pengerjaan skripsi ini adalah sebagai berikut:
+Batasan masalah yang dibuat terkait dengan pengerjaan skripsi ini adalah sebagai berikut :
 \begin{enumerate}
-	\item Perangkat lunak akan dikembangkan sesuai dengan kebutuhan yang telah dianalisis oleh para dosen pengguna dan daftar isu pada repositori \textit{Sharif Judge}.
+	\item Perangkat lunak akan dikembangkan sesuai dengan kebutuhan para dosen pengguna dan daftar isu pada repositori \textit{Sharif Judge}.
 \end{enumerate}
 
 \section{Metodologi}
-\label{sec:metlit}Metodologi yang dilakukan dalam pengerjaan skripsi ini adalah sebagai berikut:
+\label{sec:metlit}Metodologi yang dilakukan dalam pengerjaan skripsi ini adalah sebagai berikut :
 
 \begin{enumerate}
-	\item Studi literatur mengenai :
+	\item Studi literatur mengenai:
 		\begin{itemize}
-			\item \textit{CodeIgniter} sebagai framework untuk mengembangkan perangkat lunak.
+			\item \textit{CodeIgniter} sebagai \textit{framework} untuk mengembangkan perangkat lunak.
 			\item Dokumentasi \textit{Sharif Judge} sebagai panduan untuk mengembangkan perangkat lunak.
 		\end{itemize}
-	\item Menganalisis kebutuhan-kebutuhan dari para dosen pengguna Sharif Judge dan daftar isu pada repositori \textit{Sharif Judge} pada \textit{Github}.
-	\item Merancang dan menentukan fitur yang akan diimplementasi.
+	\item Menganalisis kebutuhan-kebutuhan dari para dosen pengguna \textit{Sharif Judge} dan daftar isu pada repositori \textit{Sharif Judge} pada \textit{Github}.
+	\item Menentukan dan merancang fitur yang akan diimplementasi.
 	\item Mengimplementasikan fitur terhadap perangkat lunak.
-	\item Mengujikan perangkat lunak ke mata kuliah selama satu semester.
+	\item Menguji perangkat lunak ke mata kuliah selama satu semester.
 	\item Membuat dokumentasi perangkat lunak.
 \end{enumerate}
 
@@ -55,16 +55,16 @@ Setiap bab dalam skripsi ini memiliki sistematika penulisan yang dijelaskan keda
 
 \begin{enumerate}
 	\item Bab 1 : Pendahuluan \\
-	Bab 1 membahas mengenai gambaran umum penelitian ini. Berisi tentang latar belakang, rumusan masalah, tujuan, batasan masalah, metode penelitian, dan sistematika penulisan.
+	Bab 1 membahas mengenai gambaran umum penelitian ini. Berisi tentang latar belakang, rumusan masalah, tujuan, batasan masalah, metodologi dan sistematika pembahasan.
 	
 	\item Bab 2 : Dasar Teori \\
 	Bab 2 membahas mengenai teori-teori yang mendukung berjalannya penelitian ini. Berisi tentang \textit{CodeIgniter} dan dokumentasi \textit{Sharif Judge}.
 	
 	\item Bab 3 : Analisis \\
-	Bab 3 membahas mengenai analisa masalah.
+	Bab 3 membahas mengenai analisis kebutuhan \textit{Sharif Judge}.
 	
 	\item Bab 4 : Perancangan \\
-	Bab 4 membahas mengenai perancangan yang dilakukan sebelum melakukan tahapan implementasi.
+	Bab 4 membahas mengenai perancangan yang dilakukan sebelum masuk ke tahap implementasi.
 	
 	\item Bab 5 : Implementasi dan Pengujian \\
 	Bab 5 membahas mengenai implementasi dan pengujian yang telah dilakukan.
