@@ -1,10 +1,10 @@
 \chapter{Perancangan}
 \label{chap:perancangan}
 
-Bab ini membahas tentang perancangan setiap fitur yang akan diimplementasi pada perangkat lunak \textit{Sharif Judge}. 
+Bab ini membahas tentang perancangan setiap fitur yang diimplementasi pada perangkat lunak \textit{Sharif Judge}. 
 
 \section{Mengganti Method \textit{shell\_exec("rm ...")} Menjadi \textit{unlink()}}
-\textit{Method} \textit{shell\_exec("rm ...")} yang memiliki fungsi untuk menghapus sebuah file terdapat pada file \textit{controller Assignment.php} tepatnya di baris kode 425 dan 473
+\textit{Method} \textit{shell\_exec("rm ...")} yang memiliki fungsi untuk menghapus sebuah \textit{file} terdapat pada kelas \textit{controller Assignment.php} tepatnya di baris kode 425 dan 473
 
 \textit{Assignments.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
@@ -21,7 +21,7 @@ columns=fullflexible, keepspaces=true]
 ...
 \end{lstlisting}
 
-Fungsi \textit{shell\_exec("rm ...")} pada baris 425 dan 473 akan diubah menggunakan fungsi \textit{unlink()} menjadi seperti berikut
+Fungsi \textit{shell\_exec("rm ...")} pada baris 425 dan 473 diubah menggunakan fungsi \textit{unlink()} menjadi seperti berikut
 
 \textit{Assignments.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
@@ -39,7 +39,7 @@ columns=fullflexible, keepspaces=true]
 \end{lstlisting}
 
 \section{Menambahkan Method Rekoneksi ke \textit{Database}}
-\textit{Method} rekoneksi ke \textit{database} akan ditambahkan pada \textit{file controller Queueprocess.php}. 
+\textit{Method} rekoneksi ke \textit{database} ditambahkan pada kelas \textit{controller Queueprocess.php}. 
 
 \textit{Queueprocess.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
@@ -95,7 +95,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 ...
 \end{lstlisting}
 
-Selain membatasi soal (deskripsi \& PDF) hanya dapat diunduh saat \textit{assignment "open"} dan setelah waktu mulai, pada fungsi ini juga ditambahkan fitur lain. Fitur lain tersebut yaitu membatasi soal hanya dapat diunduh oleh peserta yang terdaftar sebagai "\textit{participant}" dan soal tidak dapat diunduh setelah melewati batas waktu pengumpulan. Rancangan algoritma kode yang akan digunakan yaitu
+Selain membatasi soal (deskripsi \& PDF) hanya dapat diunduh saat \textit{assignment "open"} dan setelah waktu mulai, pada fungsi ini juga ditambahkan fitur lain. Fitur lain tersebut yaitu membatasi soal hanya dapat diunduh oleh peserta yang terdaftar sebagai "\textit{participant}" dan soal tidak dapat diunduh setelah melewati batas waktu pengumpulan. Rancangan algoritma kode yang digunakan yaitu
 \begin{itemize}
 	\item Membuat atribut tambahan untuk menyimpan informasi waktu selesai, waktu mulai dan waktu tambahan sebuah assignment.
 	\item Jika atribut "\textit{open}" pada \textit{assignment} tidak memiliki nilai, maka munculkan pesan \textit{error} "\textit{Selected assignment has been closed}."
@@ -145,7 +145,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 \end{lstlisting}
 
 \section{Mensupport \textit{File} dengan Ekstensi TXT}
-Untuk dapat mensupport \textit{file} dengan ekstensi TXT pada perangkat lunak \textit{Sharif Judge}, diperlukan penambahan dan perubahan kode pada beberapa \textit{file}. Beberapa \textit{file} tersebut antara lain \textit{controller Submit.php, model Assignment\_model.php, view submissions.twig} dan \textit{file} bantuan \textit{shj\_helper.php} yang terdapat pada direktori \path{Sharif-Judge\application\helper}. Berikut beberapa baris potongan kode program
+Untuk dapat mensupport \textit{file} dengan ekstensi TXT pada perangkat lunak \textit{Sharif Judge}, diperlukan penambahan dan perubahan kode pada beberapa kelas. Beberapa kelas tersebut antara lain \textit{controller Submit.php, model Assignment\_model.php, view submissions.twig} dan kelas bantuan \textit{shj\_helper.php} yang terdapat pada direktori \path{Sharif-Judge\application\helper}. Berikut beberapa baris potongan kode program
 
 \textit{Submit.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
@@ -249,7 +249,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 ...
 \end{lstlisting}
 
-Penambahan kode dilakukan setelah baris 83 pada \textit{file} bantuan \textit{shj\_helper.php}. Berikut hasil penambahan kode 
+Penambahan kode dilakukan setelah baris 83 pada kelas bantuan \textit{shj\_helper.php}. Berikut hasil penambahan kode 
 
 \textit{shj\_helper.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
@@ -286,7 +286,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 \end{lstlisting}
 
 \section{Menambahkan Halaman \textit{Logs}}% yang Mencatat Aktivitas \textit{Login} Pengguna}
-Agar halaman \textit{Logs} dapat berjalan dengan baik, perlu ditambahkan tabel baru pada \textit{database} \textit{Sharif Judge}.  \textit{Tabel} baru tersebut akan bernama \textit{shj\_logins}. 
+Agar halaman \textit{Logs} dapat berjalan dengan baik, perlu ditambahkan tabel baru pada \textit{database} \textit{Sharif Judge}.  \textit{Tabel} baru tersebut bernama \textit{shj\_logins}. 
 \begin{table}[H] %atau h saja untuk "kira kira di sini"
 	\centering 
 	\caption{Perancangan Tabel \textit{shj\_logins}}
@@ -313,14 +313,14 @@ Keterangan atribut:
 	\item \textit{login\_id}: sebagai penanda yang membedakan setiap \textit{login} peserta satu dengan yang lain. Memiliki \textit{length default} int dari \textit{phpMyAdmin} yaitu 11. Atribut \textit{login\_id} merupakan \textit{primary key} karena id harus unik agar setiap \textit{login} peserta dapat dibedakan. Atribut ini juga bersifat \textit{auto increment}.
 	\item \textit{username}: \textit{username} peserta yang berhasil \textit{login} pada \textit{Sharif Judge}. Memiliki \textit{length varchar} 20 karena \textit{length username} pada tabel \textit{shj\_users} adalah 20.
 	\item \textit{ip\_address}: \textit{ip address} peserta yang berhasil \textit{login} pada \textit{Sharif Judge}. Memiliki \textit{length varchar} 15 karena \textit{length} maksimal dari \textit{ip address protocol version 4 (IPv4)} adalah 15. Contoh: 202.100.123.255
-	\item \textit{timestamp}: waktu peserta saat berhasil \textit{login} pada \textit{Sharif Judge}. Menggunakan tipe data timestamp yang akan mencatat waktu \textit{login} dengan format YYYY-MM-DD HH:MM:SS. Contoh: 2018-04-06 18:15:43
+	\item \textit{timestamp}: waktu peserta saat berhasil \textit{login} pada \textit{Sharif Judge}. Menggunakan tipe data timestamp yang mencatat waktu \textit{login} dengan format YYYY-MM-DD HH:MM:SS. Contoh: 2018-04-06 18:15:43
 	\item \textit{last\_24h\_login\_id}: id \textit{login} peserta yang berhasil \textit{login} pada \textit{Sharif Judge} namun menggunakan \textit{ip address} berbeda dalam waktu 24 jam terakhir.
 \end{enumerate}
 
-Selain tabel diatas, halaman logs juga akan ditambahkan \textit{model, view} dan \textit{controller}.
+Selain tabel diatas, halaman logs juga ditambahkan kelas \textit{model, view} dan \textit{controller}.
 \begin{enumerate}
 	\item \textit{Model} \\
-	\textit{Model} untuk halaman \textit{logs} akan bernama \textit{Logs\_model.php}. Berikut adalah perincian fungsi yang terdapat dalam rancangan \textit{model Logs\_model.php}.
+	\textit{Model} untuk halaman \textit{logs} bernama \textit{Logs\_model.php}. Berikut adalah perincian fungsi yang terdapat dalam rancangan \textit{model Logs\_model.php}.
 	\begin{table}[H]
 		\caption{Perincian fungsi \textit{insert\_to\_logs}}
 		\begin{tabular}{|c|p{11cm}|}
@@ -367,7 +367,7 @@ Selain tabel diatas, halaman logs juga akan ditambahkan \textit{model, view} dan
 	\end{table}
 
 	\item View \\
-	\textit{View} untuk halaman \textit{logs} akan bernama \textit{logs.twig}. Menu halaman \textit{logs} akan terletak di paling bawah menu lainnya dan akan bernama '\textit{24-hour log}'. Berikut adalah rancangan tampilan halaman \textit{logs}.
+	\textit{View} untuk halaman \textit{logs} bernama \textit{logs.twig}. Menu halaman \textit{logs} terletak di paling bawah menu lainnya dan bernama '\textit{24-hour log}'. Berikut adalah rancangan tampilan halaman \textit{logs}.
 	
 	\begin{figure}[H]
 		\centering  
@@ -377,7 +377,7 @@ Selain tabel diatas, halaman logs juga akan ditambahkan \textit{model, view} dan
 	\end{figure}
 
 	\item \textit{Controller} \\
-	\textit{Controller} untuk halaman \textit{logs} akan bernama \textit{Logs.php}. Berikut adalah perincian fungsi yang terdapat dalam rancangan \textit{controller Logs.php}.
+	\textit{Controller} untuk halaman \textit{logs} bernama \textit{Logs.php}. Berikut adalah perincian fungsi yang terdapat dalam rancangan \textit{controller Logs.php}.
 	\begin{table}[H]
 		\caption{Perincian fungsi \textit{consturct\_\_}}
 		\begin{tabular}{|c|p{11cm}|}
@@ -426,16 +426,16 @@ Selain tabel diatas, halaman logs juga akan ditambahkan \textit{model, view} dan
 \end{enumerate}
 
 \section{Menambahkan Parameter "\textit{Display Name}" pada Pendaftaran Peserta \textit{Sharif Judge}}
-Untuk dapat menambahkan parameter "\textit{Display Name}" pada pendaftaran peserta \textit{Sharif Judge}, diperlukan beberapa perubahan dan penambahan kode. Berikut rancangan algoritma yang akan dilakukan
+Untuk dapat menambahkan parameter "\textit{Display Name}" pada pendaftaran peserta \textit{Sharif Judge}, diperlukan beberapa perubahan dan penambahan kode. Berikut rancangan algoritma yang dilakukan
 \begin{enumerate}
 	\item Menambahkan parameter "\textit{Display Name}" pada fungsi \textit{add\_user} yang terdapat di \textit{model User\_model.php}.
-	\item Mengubah pemisah (\textit{separator}) antar parameter pada fungsi \textit{add\_user}. Pemisah antar parameter yang awalnya menggunakan spasi akan diubah menggunakan tanda koma.
+	\item Mengubah pemisah (\textit{separator}) antar parameter pada fungsi \textit{add\_user}. Pemisah antar parameter yang awalnya menggunakan spasi diubah menggunakan tanda koma.
 	\item Menambahkan keterangan parameter "\textit{Display Name}" pada halaman \textit{add\_user.twig} dan  \textit{add\_user\_result.twig}.
 	\item Menambahkan \textit{Display Name} untuk \textit{admin} pada proses \textit{install Sharif Judge}.
 	\item Mengubah urutan data yang digunakan pada fungsi pendaftaran peserta melalui \textit{email}.
 	\item Menambahkan \textit{text field Display Name} pada halaman \textit{Register} \textit{(Open Public Registration}).
 \end{enumerate}
-Dari rancangan algoritma yang akan diterapkan, terdapat perubahan dan penambahan kode pada beberapa \textit{file}. Beberapa file tersebut antara lain \textit{controller Install.php, controller Login.php, model User\_model.php, view add\_user.twig, view add\_user\_result.twig} dan \textit{view register.twig}.
+Dari rancangan algoritma yang diterapkan, terdapat perubahan dan penambahan kode pada beberapa kelas. Beberapa kelas tersebut antara lain \textit{controller Install.php, controller Login.php, model User\_model.php, view add\_user.twig, view add\_user\_result.twig} dan \textit{view register.twig}.
 Berikut beberapa baris potongan kode program
 
 \textit{Install.php}
@@ -657,7 +657,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 \end{lstlisting}
 
 \section{Menambahkan Fitur "\textit{Lock Student's Display Name}"}
-Fitur "\textit{Lock Student's Display Name}" membutuhkan sebuah "\textit{key}" pada \textit{database}, dimana "\textit{key}" tersebut berfungsi untuk menyimpan sebuah nilai. Nilai yang disimpan akan menentukan apakah para peserta dapat mengubah \textit{Display Name} atau tidak. "\textit{Key}" akan disimpan pada tabel \textit{shj\_settings} pada kolom \textit{shj\_key} dengan nama \textit{lock\_student\_display\_name}. \textit{lock\_student\_display\_name} akan memiliki nilai \textit{default shj\_value} = 0. Jika nilai dari \textit{lock\_student\_display\_name} = 1, maka para peserta tidak dapat mengubah \textit{Display Name}, sebaliknya jika bernilai 0, maka para peserta dapat mengubah \textit{Display Name}.
+Fitur "\textit{Lock Student's Display Name}" membutuhkan sebuah "\textit{key}" pada \textit{database}, dimana "\textit{key}" tersebut berfungsi untuk menyimpan sebuah nilai. Nilai yang disimpan akan menentukan apakah para peserta dapat mengubah \textit{Display Name} atau tidak. "\textit{Key}" disimpan pada tabel \textit{shj\_settings} pada kolom \textit{shj\_key} dengan nama \textit{lock\_student\_display\_name}. \textit{lock\_student\_display\_name} memiliki nilai \textit{default shj\_value} = 0. Jika nilai dari \textit{lock\_student\_display\_name} = 1, maka para peserta tidak dapat mengubah \textit{Display Name}, sebaliknya jika bernilai 0, maka para peserta dapat mengubah \textit{Display Name}.
 
 Rancangan algoritma yang digunakan untuk menambahkan fitur "\textit{Lock Student's Display Name}" yaitu
 \begin{enumerate}
@@ -668,7 +668,7 @@ Rancangan algoritma yang digunakan untuk menambahkan fitur "\textit{Lock Student
 	\item Menambahkan fungsi untuk mengecek kembali nilai dari \textit{lock\_student\_display\_name} pada saat peserta menyimpan perubahan yang terjadi di halaman \textit{profile.twig}. Hal tersebut dilakukan untuk menangani para peserta yang "memaksa" agar dapat mengubah \textit{Display Name} dengan cara \textit{inspect element} lalu menghapus kode "\textit{disabled}" pada \textit{text field Display Name}.
 \end{enumerate}
 
-Dari rancangan algoritma yang akan diterapkan, terdapat penambahan kode pada beberapa \textit{file}. Beberapa file tersebut antara lain \textit{controller Profile.php, controller Settings.php, model User\_model.php, view settings.twig} dan \textit{view profile.twig}.
+Dari rancangan algoritma yang diterapkan, terdapat penambahan kode pada beberapa kelas. Beberapa kelas tersebut antara lain \textit{controller Profile.php, controller Settings.php, model User\_model.php, view settings.twig} dan \textit{view profile.twig}.
 Berikut beberapa baris potongan kode program
 
 \textit{Profile.php}
@@ -806,17 +806,17 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 \end{lstlisting}
 
 \section{Menambahakan Fitur "\textit{Archived Assignment}"}
-Fitur "\textit{Archived Assignment}" membutuhkan sebuah atribut baru pada \textit{database}, dimana atribut tersebut berfungsi untuk menyimpan sebuah nilai. Nilai yang disimpan akan menentukan apakah \textit{assignment} tersebut bersifat \textit{Archived Assignment} atau tidak. Atribut baru tersebut akan ditambahkan pada tabel \textit{shj\_assignments} dengan nama \textit{archived\_assignment} yang menggunakan tipe data \textit{tinyint}. \textit{archived\_assignment} akan memiliki nilai \textit{default} = 0. Jika nilai dari \textit{archived\_assignment} = 1, maka \textit{assignment} tersebut merupakan sebuah \textit{archived\_assignment}, sebaliknya jika bernilai 0, maka \textit{assignment} tersebut merupakan \textit{assignment} biasa.
+Fitur "\textit{Archived Assignment}" membutuhkan sebuah atribut baru pada \textit{database}, dimana atribut tersebut berfungsi untuk menyimpan sebuah nilai. Nilai yang disimpan akan menentukan apakah \textit{assignment} tersebut bersifat \textit{Archived Assignment} atau tidak. Atribut baru tersebut  ditambahkan pada tabel \textit{shj\_assignments} dengan nama \textit{archived\_assignment} yang menggunakan tipe data \textit{tinyint}. \textit{archived\_assignment} memiliki nilai \textit{default} = 0. Jika nilai dari \textit{archived\_assignment} = 1, maka \textit{assignment} tersebut merupakan sebuah \textit{archived\_assignment}, sebaliknya jika bernilai 0, maka \textit{assignment} tersebut merupakan \textit{assignment} biasa.
 
 Rancangan algoritma yang digunakan untuk menambahkan fitur "\textit{Archived Assignment}" yaitu
 \begin{enumerate}
-	\item Menambahkan atribut baru dengan nama \textit{archived\_assignment} yang menggunakan tipe data \textit{tinyint}. Atribut baru tersebut akan ditambahkan pada tabel \textit{shj\_assignments}
+	\item Menambahkan atribut baru dengan nama \textit{archived\_assignment} yang menggunakan tipe data \textit{tinyint}. Atribut baru tersebut ditambahkan pada tabel \textit{shj\_assignments}
 	\item Menambahkan \textit{check box} pada halaman \textit{assignments.twig} untuk mengaktifkan atau menonaktifkan fitur "\textit{Archived Assignment}".
-	\item Jika fitur "\textit{Archived Assignment}" diaktifkan, maka secara otomatis \textit{text field Start time} akan bernilai 1970-01-02 00:00:00, \textit{text field Finish Time} akan bernilai 2038-01-18 00:00:00 dan \textit{text field Extra Time} akan bernilai 0.
-	\item \textit{Assignment} yang bersifat \textit{Archived Assignment} tidak akan muncul pada kalendar halaman \textit{dashboard}.
+	\item Jika fitur "\textit{Archived Assignment}" diaktifkan, maka secara otomatis \textit{text field Start time} bernilai 1970-01-02 00:00:00, \textit{text field Finish Time} bernilai 2038-01-18 00:00:00 dan \textit{text field Extra Time} bernilai 0.
+	\item \textit{Assignment} yang bersifat \textit{Archived Assignment} tidak muncul pada kalendar halaman \textit{dashboard}.
 \end{enumerate}
 
-Dari rancangan algoritma yang akan diterapkan, terdapat penambahan kode pada beberapa \textit{file}. Beberapa \textit{file} tersebut antara lain \textit{model Assignment\_model.php, view add\_assignment.twig} dan \textit{view dashboard.twig}.
+Dari rancangan algoritma yang diterapkan, terdapat penambahan kode pada beberapa kelas. Beberapa kelas tersebut antara lain \textit{model Assignment\_model.php, view add\_assignment.twig} dan \textit{view dashboard.twig}.
 Berikut beberapa baris potongan kode program
 ~\\
 \textit{Assignment\_model.php}
@@ -972,7 +972,7 @@ Halaman \textit{Hall of Fame} tidak membutuhkan atribut atau tabel baru pada \te
 
 \begin{enumerate}
 	\item \textit{Model} \\
-	\textit{Model} untuk halaman \textit{Hall of Fame} akan bernama \textit{Hof\_model.php}. Berikut adalah perincian fungsi yang terdapat dalam rancangan \textit{model Hof\_model.php}.
+	\textit{Model} untuk halaman \textit{Hall of Fame} bernama \textit{Hof\_model.php}. Berikut adalah perincian fungsi yang terdapat dalam rancangan \textit{model Hof\_model.php}.
 	\begin{table}[H]
 		\caption{Perincian fungsi \textit{get\_all\_final\_submission}}
 		\begin{tabular}{|c|p{11cm}|}
@@ -1008,7 +1008,7 @@ Halaman \textit{Hall of Fame} tidak membutuhkan atribut atau tabel baru pada \te
 			\hline
 			Tabel yang berhubungan & \textit{shj\_submissions} \\
 			\hline
-			Deskripsi	& Proses untuk mengembalikan \textit{details assignment} pengguna tertentu. \textit{Details} akan berisikan nama \textit{assignment}, nama \textit{problem} dan skor \\
+			Deskripsi	& Proses untuk mengembalikan \textit{details assignment} pengguna tertentu. \textit{Details} berisikan nama \textit{assignment}, nama \textit{problem} dan skor \\
 			\hline
 			Algoritma	& \begin{itemize}
 				\item Menyimpan nama \textit{assignment}, nama \textit{problem} dan skor setiap \textit{problem} dari sebuah \textit{assignment} pengguna tertentu.
@@ -1019,7 +1019,7 @@ Halaman \textit{Hall of Fame} tidak membutuhkan atribut atau tabel baru pada \te
 	\end{table}
 	
 	\item \textit{View} \\
-	\textit{View} untuk halaman \textit{Hall of Fame} akan bernama \textit{halloffame.twig}. Menu halaman \textit{Hall of Fame} akan terletak di bawah menu \textit{Scoreboard}. Pada halaman ini juga akan berlaku sistem ranking dimana para peserta akan diurutkan bedasarkan total skor. Jika total skor yang dimiliki peserta memiliki nilai yang sama dengan peserta lainnya, maka peserta tersebut memiliki rangking yang sama dengan peserta lainnya. Berikut adalah rancangan tampilan halaman \textit{Hall of Fame}
+	\textit{View} untuk halaman \textit{Hall of Fame} bernama \textit{halloffame.twig}. Menu halaman \textit{Hall of Fame} terletak di bawah menu \textit{Scoreboard}. Pada halaman ini juga berlaku sistem rangking dimana para peserta diurutkan bedasarkan total skor. Jika total skor yang dimiliki peserta memiliki nilai yang sama dengan peserta lainnya, maka peserta tersebut memiliki rangking yang sama dengan peserta lainnya. Berikut adalah rancangan tampilan halaman \textit{Hall of Fame}
 	
 	\begin{figure}[H]
 		\centering  
@@ -1038,7 +1038,7 @@ Halaman \textit{Hall of Fame} tidak membutuhkan atribut atau tabel baru pada \te
 	\end{figure}
 	
 	\item \textit{Controller} \\
-	\textit{Controller} untuk halaman \textit{Hall of Fame} akan bernama \textit{Halloffame.php}. Berikut adalah perincian fungsi yang terdapat dalam rancangan \textit{controller Logs.php}.
+	\textit{Controller} untuk halaman \textit{Hall of Fame} bernama \textit{Halloffame.php}. Berikut adalah perincian fungsi yang terdapat dalam rancangan \textit{controller Logs.php}.
 	\begin{table}[H]
 		\caption{Perincian fungsi \textit{consturct\_\_}}
 		\begin{tabular}{|c|p{11cm}|}
@@ -1107,7 +1107,7 @@ Halaman \textit{Hall of Fame} tidak membutuhkan atribut atau tabel baru pada \te
 	\end{table}
 \end{enumerate}
 
-Selain menambahkan \textit{file model, view} dan \textit{controller}, terdapat penambahan fungsi pada \textit{file shj\_functions.js} yang terletak di \path{Sharif-Judge\assets\js}. Penambahan fungsi tersebut berguna untuk meminta \textit{details} dari Hall of Fame peserta tertentu menggunakan fungsi hof\_details pada \textit{controller Halloffame.php} lalu menampilkannya.
+Selain menambahkan kelas \textit{model, view} dan \textit{controller}, terdapat penambahan fungsi pada \textit{file shj\_functions.js} yang terletak di \path{Sharif-Judge\assets\js}. Penambahan fungsi tersebut berguna untuk meminta \textit{details} dari Hall of Fame peserta tertentu menggunakan fungsi hof\_details pada \textit{controller Halloffame.php} lalu menampilkannya.
 Berikut beberapa baris potongan kode program
 
 \textit{shj\_functions.js}
@@ -1127,7 +1127,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 ...
 \end{lstlisting}
 
-Fungsi tersebut akan ditambahkan setelah baris 479. Berikut hasil penambahan kode program yang terjadi di \textit{shj\_functions.js}
+Fungsi tersebut ditambahkan setelah baris 479. Berikut hasil penambahan kode program yang terjadi di \textit{shj\_functions.js}
 \iffalse
 \textit{shj\_functions.js}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
@@ -1214,7 +1214,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 \fi
 
 \section{Integrasi \textit{Login} ke \textit{Server RADIUS}}
-\textit{Sharif Judge} memerlukan \textit{library} baru agar dapat mengintegrasikan \textit{login} ke \textit{server RADIUS}. \textit{Library} yang akan digunakan adalah \textit{Dapphp/Radius}. \textit{Dapphp/Radius} adalah klien \textit{RADIUS PHP} untuk mengautentikasi pengguna terhadap \textit{server RADIUS} REFRENSI. Cara yang disarankan untuk menginstal \textit{Dapphp/Radius} adalah menggunakan \textit{Composer}. Jika \textit{Composer} telah terinstall, maka jalankan perintah "\textit{composer require dapphp/radius}" atau tambahkan "\textit{dapphp/radius}" pada file \textit{composer.json} bagian "\textit{section}"~\cite{drew:16:radius}.
+\textit{Sharif Judge} memerlukan \textit{library} baru agar dapat mengintegrasikan \textit{login} ke \textit{server RADIUS}. \textit{Library} yang digunakan adalah \textit{Dapphp/Radius}. \textit{Dapphp/Radius} adalah klien \textit{RADIUS PHP} untuk mengautentikasi pengguna terhadap \textit{server RADIUS} REFRENSI. Cara yang disarankan untuk menginstal \textit{Dapphp/Radius} adalah menggunakan \textit{Composer}. Jika \textit{Composer} telah terinstall, maka jalankan perintah "\textit{composer require dapphp/radius}" atau tambahkan "\textit{dapphp/radius}" pada file \textit{composer.json} bagian "\textit{section}"~\cite{drew:16:radius}.
 
 Rancangan algoritma yang digunakan untuk menambahkan mengintegrasikan \textit{login} ke \textit{server RADIUS} yaitu
 \begin{enumerate}
@@ -1224,7 +1224,7 @@ Rancangan algoritma yang digunakan untuk menambahkan mengintegrasikan \textit{lo
 	\item Mengintegrasikan \textit{login} pengguna \textit{Sharif Judge} ke \textit{server RADIUS}.
 \end{enumerate}
 
-Dari rancangan algoritma yang akan diterapkan, terdapat penambahan kode pada \textit{file model User\_model.php}. Berikut beberapa baris potongan kode program
+Dari rancangan algoritma yang diterapkan, terdapat penambahan kode pada kelas \textit{model User\_model.php}. Berikut beberapa baris potongan kode program
 
 \textit{User\_model.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
@@ -1304,7 +1304,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 \end{lstlisting}
 
 \section{Branding Teknik Informatika}
-Branding Teknik Informatika akan dilakukan dengan cara mengubah seluruh logo dan ikon \textit{Sharif Judge} menggunakan logo dan ikon Teknik Informatika. Berikut logo dan ikon Teknik Informatika yang akan digunakan
+Branding Teknik Informatika dilakukan dengan cara mengubah seluruh logo dan ikon \textit{Sharif Judge} menggunakan logo dan ikon Teknik Informatika. Berikut logo dan ikon Teknik Informatika yang digunakan
 
 \begin{figure}[H]
 	\centering  
@@ -1322,7 +1322,7 @@ Branding Teknik Informatika akan dilakukan dengan cara mengubah seluruh logo dan
 
 Agar dapat menggunakan logo dan ikon Teknik Informatika dibutuhkan penggantian beberapa file. Beberapa \textit{file} tersebut antara lain \textit{banner.png, favicon.ico} dan \textit{logo\_small.png} yang terdapat pada \path{Sharif-Judge\assets\images}. Penggantian beberapa \textit{file} tersebut mencakup \textit{banner} pada halaman \textit{login}, icon pada \textit{title bar} dan \textit{top bar}.
 
-Langkah-langkah yang akan dilakukan untuk proses branding Teknik Informatika adalah
+Langkah-langkah yang dilakukan untuk proses branding Teknik Informatika adalah
 \begin{enumerate}
 	\item Menggunakan logo dan ikon Teknik Informatika pada \textit{Sharif Judge}.
 	\item Mengubah nama \textit{Sharif Judge} menjadi SharIF Judge.
@@ -1361,7 +1361,7 @@ Rancangan algoritma yang digunakan untuk mengganti \textit{library PHPExcel} men
 	\item Mengubah fungsi yang menggunakan kelas \textit{PHPExcel} menjadi menggunakan kelas \textit{PhpSpreadsheet}
 \end{enumerate}
 
-Dari rancangan algoritma yang akan diterapkan, terdapat perubahan kode pada \textit{file controller Submissions.php} dan \textit{controller Users.php}. Berikut beberapa baris potongan kode program
+Dari rancangan algoritma yang diterapkan, terdapat perubahan kode pada kelas \textit{controller Submissions.php} dan \textit{controller Users.php}. Berikut beberapa baris potongan kode program
 
 \textit{Submissions.php}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
