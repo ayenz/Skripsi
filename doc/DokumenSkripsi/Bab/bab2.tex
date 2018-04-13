@@ -2,44 +2,46 @@
 \chapter{Landasan Teori}
 \label{chap:teori}
 
-Bab ini membahas tentang landasan teori yang akan digunakan dalam skripsi ini yang diambil dari dua sumber, yaitu ''CodeIgniter Documentation'' karya British Columbia Institute of Technology ~\cite{bcit:17:cidoc} dan ''Sharif Judge Documentation'' karya Mohammad Javad Naderi ~\cite{mjnaderi:14:sharifjudgedoc}.
+Bab ini membahas tentang landasan teori yang digunakan dalam skripsi ini yang diambil dari dua sumber, yaitu "\textit{CodeIgniter Documentation}" karya \textit{British Columbia Institute of Technology} ~\cite{bcit:17:cidoc} dan "\textit{Sharif Judge Documentation}" karya Mohammad Javad Naderi ~\cite{mjnaderi:14:sharifjudgedoc}.
 
 \section{\textit{CodeIgniter}}
 \label{sec:codeigniter} 
  
-\textit{CodeIgniter} merupakan sebuah \textit{framework} bagi pengguna yang ingin membangun aplikasi web menggunakan PHP. Tujuan utamanya adalah memungkinkan para pengguna mengembangkan proyek-proyek menjadi lebih cepat dibandingkan menulis kode dari awal. \textit{Framework} ini memiliki banyak libary untuk tugas-tugas yang biasa diperlukan, serta antarmuka dan struktur logis yang sederhana untuk mengakses library ini. CodeIgniter membuat para pengguna lebih fokus pada proyek dengan meminimalkan jumlah kode yang dibutuhkan untuk tugas yanf diberikan~\cite{bcit:17:cidoc}. \\
+\textit{CodeIgniter} merupakan sebuah \textit{framework} bagi pengguna yang ingin membangun aplikasi web menggunakan PHP. Tujuan utamanya adalah memungkinkan para pengguna untuk mengembangkan proyek-proyek menjadi lebih cepat dibandingkan menulis kode dari awal. \textit{Framework} ini memiliki banyak libary untuk fungsi-fungsi yang biasa diperlukan, serta antarmuka dan struktur logis yang sederhana untuk mengakses library ini. \textit{CodeIgniter} membuat para pengguna lebih fokus pada proyek dengan cara meminimalkan jumlah kode yang dibutuhkan~\cite{bcit:17:cidoc}. \\
 
 Beberapa keunggulan dari \textit{CodeIgniter} yaitu:
 \begin{itemize}
 	\item \textit{Framework} yang Ringan \\
-		Inti dari sistem CodeIgniter hanya membutuhkan \textit{library} yang kecil. Hal ini sangat berbeda dengan framework lain yang membutuhkan \textit{resource} yang lebih. \textit{Library} tambahan dimuat secara dinamis atau sesuai dengan permintaan sehingga sistem dapat berjalan cepat.
+		Inti dari sistem \textit{CodeIgniter} membutuhkan \textit{library} yang kecil. Hal ini sangat berbeda dengan \textit{framework} lain yang membutuhkan \textit{resource} lebih. \textit{Library} tambahan dimuat secara dinamis atau sesuai dengan permintaan sehingga sistem dapat berjalan cepat.
 	\item Menggunakan Konsep M-V-C \\
 		\textit{CodeIgniter} menggunakan pendekatan \textit{Model-View-Controller} yang memungkinkan pemisahan anatara logika dan presentasi.
 	\item Menghasilkan \textit{Clean URLs} \\
-		\textit{URL} yang dihasilkan oleh  \textit{CodeIgniter} berish dan \textit{search-engine friendly}. \textit{CodeIgniter} menggunakan pendekatan \textit{segment-based} seperti: \\example.com/news/article/345
+		\textit{URL} yang dihasilkan oleh \textit{CodeIgniter} \textit{Clean URLs} dan \textit{search-engine friendly}. Clean URLs akan mempermudah pengguna dalam membaca URL. Contoh perbandingan URL biasa dengan Clean URLs: URL biasa: \path{\\example.com/index.php?page=news}, Clean URLs: \path{\\example.com/news}.
 	\item \textit{Packs a Punch} \\
-		\textit{CodeIgniter} dilengkapi dengan \textit{library} yang umumnya diperlukan untuk tugas pengembangan web seperti mengakses database, mengirim email, memvalidasi data \textit{form}, menjaga \textit{session}, memanipulasi gambar, bekerja dengan \textit{XML-RPC} data dan masih banyak lagi.
+		\textit{CodeIgniter} dilengkapi dengan \textit{library} yang umumnya diperlukan untuk mengembangkan web, seperti mengakses database, mengirim email, memvalidasi data \textit{form}, menjaga \textit{session}, memanipulasi gambar dan masih banyak lagi.
 	\item \textit{Extensible} \\
 		Sistem dapat dengan mudah diperluas dengan menggunakan \textit{library} pengguna, \textit{helper}, atau melalui \textit{class extensions} dan \textit{system hooks}.
 	\item Tidak Membutuhkan \textit{Template Engine} \\
 		\textit{CodeIgniter} dilengkapi dengan \textit{template parser} sederhana yang dapat digunakan secara opsional. \textit{Template Engine} tidak dapat menandingi kinerja dari \textit{native} PHP. Sintak yang harus dipelajari untuk menggunakan \textit{Template Engine} biasanya lebih mudah dari mempelajari dasar-dasar PHP. Perhatikan potongan kode PHP di bawah ini: \\
-		\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+		\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+		columns=fullflexible, keepspaces=true, breaklines=true]
 <ul>
 <?php foreach ($addressbook as $name):?>
 <li><?=$name?></li>
 <?php endforeach; ?>
 </ul>
-	\end{lstlisting}
+\end{lstlisting}
 		
 		Sangat berlawanan dengan \textit{pseudo-code} yang digunakan oleh \textit{Template Engine}: \\
-	\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+	\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 <ul>
 {foreach from=$addressbook item="name"}
 <li>{$name}</li>
 {/foreach}
 </ul>
-		\end{lstlisting}
-		Terlihat \textit{Template Engine} sedikit lebih bersih, namun harus ditukar dengan performa yang kurang baik karena \textit{pseudo-code} harus dikonversi kembali menjadi PHP. Salah satu tujuan dari \textit{CodeIgniter} adalah performa maksimal, oleh karena itu \textit{CodeIgniter} tidak menggunakan \textit{Template Engine}.
+\end{lstlisting}
+		Terlihat \textit{Template Engine} sedikit lebih rapih, namun harus ditukar dengan performa yang kurang baik karena \textit{pseudo-code} harus dikonversi kembali menjadi PHP. Salah satu tujuan dari \textit{CodeIgniter} adalah performa maksimal, oleh karena itu \textit{CodeIgniter} tidak menggunakan \textit{Template Engine}.
 	\item Dokumentasi yang Baik \\
 		Dokumentasi merupakan salah satu bagian terpenting dari kode itu sendiri. \textit{CodeIgniter} berkomitmen membuat kode yang sangat bersih dan terdokumentasi dengan baik. 
 \end{itemize}
@@ -65,7 +67,7 @@ Berikut beberapa fitur utama yang terdapat pada \textit{framework CodeIgniter} s
 Gambar~\ref{fig:flow} menunjukan bagaimana data mengalir ke seluruh sistem~\cite{bcit:17:cidoc}:
 \begin{figure}[H]
 	\centering  
-	\includegraphics[scale=1]{appflowchart}  
+	\includegraphics[width=1.0\textwidth]{appflowchart}  
 	\caption[\textit{Flow Chart} Aplikasi]{\textit{Flow Chart} Aplikasi} 
 	\label{fig:flow} 
 \end{figure} 
@@ -80,14 +82,15 @@ Gambar~\ref{fig:flow} menunjukan bagaimana data mengalir ke seluruh sistem~\cite
 \end{enumerate}
 
 \subsection{\textit{Model-View-Controller}}
-\textit{CodeIgniter} merupakan \textit{framework} yang menggunaakan pola pengembangan \textit{Model-View-Controller}. \textit{MVC} adalah pendekatan perangkat lunak yang memisahkan logika aplikasi dari presentasi. Hal tersebut memungkinkan halaman web pengguna memiliki \textit{scripting} yang minimal karena presentasi terpisah dari \textit{scripting} PHP~\cite{bcit:17:cidoc}. \\
+\textit{CodeIgniter} merupakan \textit{framework} yang menggunaakan pola pengembangan \textit{Model-View-Controller}. \textit{MVC} adalah pendekatan perangkat lunak yang memisahkan logika aplikasi dari presentasi. Hal tersebut memungkinkan halaman web pengguna memiliki \textit{scripting} yang sedikit karena presentasi terpisah dari \textit{scripting} PHP~\cite{bcit:17:cidoc}. \\
 
 	\subsubsection{\textit{Model}}
-	\textit{Model} merepresentasikan bagian struktur data pengguna. Biasanya kelas \textit{Model} akan berisikan fungsi-fungsi yang membantu pengguna untuk mengambil, menyimpan, dan memperbarui informasi pada database. Berikut beberapa hal penting yang terdapat pada Model:
+	\textit{Model} merepresentasikan bagian struktur data pengguna. Biasanya kelas \textit{Model} berisikan fungsi-fungsi yang membantu pengguna untuk mengambil, menyimpan, dan memperbarui informasi pada \textit{database}. Berikut beberapa hal penting yang terdapat pada \textit{Model}:
 	\begin{itemize}
-		\item Susunan dari Model \\
-		Kelas model berada di direktori application/models/. Model dapat dikelompokkan di dalam sub direktori bila model jika pengguna menginginkannya. Bentuk dasar kode pada kelas model digambarkan seperti berikut ini:
-		\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+		\item Susunan dari \textit{Model} \\
+		Kelas \textit{model} berada di direktori \path{application/models/}. \textit{Model} dapat dikelompokkan di dalam sub direktori jika pengguna menginginkannya. Bentuk dasar kode pada kelas \textit{model} digambarkan seperti berikut ini:
+		\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 class Model_name extends CI_Model {
 	public function_construct()
 	{
@@ -95,37 +98,42 @@ class Model_name extends CI_Model {
 		//constructor code
 	}
 }
-		\end{lstlisting}
+\end{lstlisting}
 		
-		Model\_name adalah nama kelas dari kelas model yang pengguna buat. Penamaan kelas harus dimulai dengan huruf kapital. Pastikan kelas model merupakan turunan dari base Model (class CI\_Model atau MY\_Model).
+		\textit{Model\_name} adalah nama kelas dari kelas \textit{model} yang pengguna buat. Penamaan kelas harus dimulai dengan huruf kapital. Pastikan kelas \textit{model} merupakan turunan dari \textit{base Model} (\textit{class CI\_Model} atau \textit{MY\_Model}).
 		
-		\item Menghubungkan Sebuah Model \\
-		Pada dasarnya model akan dimuat dan dipanggil dari method atau fungsi yang ada pada controller. Untuk menghubungkan model, pengguna harus menggunakan method berikut:
-		\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+		\item Menghubungkan Sebuah \textit{Model} \\
+		Pada dasarnya \textit{model} akan dimuat dan dipanggil dari \textit{method} atau fungsi yang ada pada \textit{controller}. Untuk menghubungkan \textit{model}, pengguna harus menggunakan method berikut:
+		\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 $this->model->model('model_name');
-		\end{lstlisting}
+\end{lstlisting}
 		
-		Jika model yang pengguna buat terletak di dalam sebuah sub-direktori, maka pengguna harus menyertakan alamat relatif (relative path) dari model yang dibuat. Sebagai contoh, jika model yang pengguna miliki berlokasi di application/models/blog/Queries.php pengguna dapat menghubungkannya dengan cara:
-		\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+		Jika \textit{model} yang pengguna buat terletak di dalam sebuah sub-direktori, maka pengguna harus menyertakan alamat relatif \textit{(relative path)} dari \textit{model} yang dibuat. Sebagai contoh, jika \textit{model} yang pengguna berlokasi di \path{application/models/blog/Queries.php} pengguna dapat menghubungkannya dengan cara:
+		\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 $this->load->model('blog/queries');
-		\end{lstlisting}
+\end{lstlisting}
 		
-		Pengguna dapat mengakses method yang terdapat pada model menggunakan sebuah objek dengan nama yang sama dengan nama kelas yang pengguna buat sebelumnya:
-		\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+		Pengguna dapat mengakses \textit{method} yang terdapat pada \textit{model} menggunakan sebuah objek dengan nama yang sama dengan nama kelas yang pengguna buat sebelumnya:
+		\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 $this->load->model('model_name');
 		
 $this->model_name->method();
-		\end{lstlisting}
+\end{lstlisting}
 		
-		Jika pengguna ingin menggunakan objek yang berbeda untuk sebuah model, maka pengguna dapat menggunakan penamaan (alias) di parameter kedua:
-		\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+		Jika pengguna ingin menggunakan objek yang berbeda untuk sebuah \textit{model}, maka pengguna dapat menggunakan penamaan (alias) di parameter kedua:
+		\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 $this->load->model('model_name', 'foobar');
 	
 $this->foobar->method();
-		\end{lstlisting}
+\end{lstlisting}
 		
-		Berikut merupakan contoh sebuah controller yang terhubung dengan sebuah model dan menampilkan data hasil olahan model ke view:
-		\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+		Berikut merupakan contoh sebuah \textit{controller} yang terhubung dengan sebuah \textit{model} dan menampilkan data hasil olahan model ke \textit{view}:
+		\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 class Blog_controller extends CI_Controller {
 			
 	public function blog()
@@ -138,22 +146,23 @@ class Blog_controller extends CI_Controller {
 		$this->load->view('blog', $data);
 	}
 }
-		\end{lstlisting}
+\end{lstlisting}
 		
-		\item Auto-loading Model \\
-		Auto-loading (menghubungkan secara otomatis) model tertentu secara global dapat pengguna lakukan dengan menggunakan pengaturan yang ada pada berkas application/config/autoload.php. Tambahkan model yang ingin pengguna hubungkan secara otomatis selama sistem berjalan: 
-		\$autoload['model'] = array('model\_name');
+		\item \textit{Auto-loading Model} \\
+		\textit{Auto-loading} (menghubungkan secara otomatis) model tertentu secara global dapat pengguna lakukan dengan menggunakan pengaturan yang ada pada berkas \path{application/config/autoload.php}. Kode yang ditambahkan untuk menghubungkan \textit{model} secara otomatis selama sistem berjalan adalah \textit{\$autoload['model'] = array('model\_name');}
 		
-		\item Koneksi ke Database \\
-		Ketika sebuah model dipanggail, model tidak akan terhubung ke database secara otomatis. Beberapa opsi yang dapat digunakan untuk menghubungkan model ke database:
+		\item Koneksi ke \textit{Database} \\
+		Ketika sebuah \textit{model} dipanggil, \textit{model} tidak akan terhubung ke \textit{database} secara otomatis. Beberapa opsi yang dapat digunakan untuk menghubungkan \textit{model} ke \textit{database}:
 		\begin{itemize}
-			\item Pengguna dapat menghubungkan dengan menggunakan standar metode database antara class Controller atau class Model. \\
-			\item Pengguna dapat mengatur sebuah model melakukan \textit{auto-connect} dengan menambahkan nilai \textit{TRUE} (boolean) di parameter ketiga atau mengatur konektivitas sebagaimana yang telah didefinisikan di dalam berkas application/config/database.php:
-			\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+			\item Pengguna dapat menghubungkan dengan menggunakan metode standar database antara \textit{class Controller} atau \textit{class Model}. \\
+			\item Pengguna dapat mengatur sebuah \textit{model} melakukan \textit{auto-connect} dengan menambahkan nilai \textit{TRUE} (boolean) di parameter ketiga atau mengatur konektivitas sebagaimana yang telah didefinisikan di dalam berkas \path{application/config/database.php}
+			\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 \$this->load->model('model_name', '', TRUE);
-			\end{lstlisting}
-			\item pengguna dapat mengatur koneksi secara manual dengan menambahkan \textit{item-item} berupa \textit{array} pada \textit{parameter} ketiga seperti contoh berikut:
-			\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+\end{lstlisting}
+			\item Pengguna dapat mengatur koneksi secara manual dengan menambahkan \textit{item-item} berupa \textit{array} pada \textit{parameter} ketiga seperti contoh berikut:
+			\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 $config['hostname'] = 'localhost';
 $config['username'] = 'username';
 $config['password'] = 'katasandi';
@@ -164,18 +173,20 @@ $config['pconnect'] = FALSE;
 $config['db_debug'] = TRUE;
 			
 $this->load->model('model_name', '', $config);
-			\end{lstlisting}
+\end{lstlisting}
 		\end{itemize}
 	\end{itemize}
 	
 	\subsubsection{\textit{View}}
-	\textit{View} merupakan informasi yang akan ditampilkan kepada pengguna. Umumnya \textit{View} merupakan sebuah halaman web, namun pada \textit{CodeIgniter}, \textit{View} dapat berupa bagian-bagian halaman seperti \textit{header} atau \textit{footer}. Selain itu \textit{View} juga dapat berupa halaman \textit{RSS} atau jenis "halaman" lainnya. \textit{View} tidak pernah dipanggil secara langsung, melainkan harus melalui controller karena dalam framework MVC controller berfungsi sebagai pengatur. Untuk memuat tampilan tertentu, pengguna dapat menggunakan \textit{method} berikut:
-	\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+	\textit{View} merupakan informasi yang akan ditampilkan kepada pengguna. Umumnya \textit{View} merupakan sebuah halaman web, namun pada \textit{CodeIgniter}, \textit{View} dapat berupa bagian-bagian halaman seperti \textit{header} atau \textit{footer}. Selain itu \textit{View} juga dapat berupa halaman \textit{RSS} atau jenis "halaman" lainnya. \textit{View} tidak pernah dipanggil secara langsung, melainkan harus melalui \textit{controller} karena dalam \textit{framework} \textit{MVC}, \textit{controller} berfungsi sebagai pengatur. Untuk memuat tampilan tertentu, pengguna dapat menggunakan \textit{method} berikut:
+	\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 $this->load->view('name');
-	\end{lstlisting}
+\end{lstlisting}
 	
-	CodeIgniter dapat menangani beberapa panggilan method \textit{\$this->load->view()} dari dalam controller. Jika lebih dari satu panggilan terjadi, maka panggilan tersebut ditambahkan bersama. Contohnya pengguna ingin memiliki header view, menu view, content view dan footer view. Kode program yang digunakan seperti ini:
-	\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+	\textit{CodeIgniter} dapat menangani beberapa panggilan \textit{method} \textit{\$this->load->view()} dari dalam \textit{controller}. Jika lebih dari satu panggilan terjadi, maka panggilan tersebut ditambahkan bersama. Contohnya pengguna ingin memiliki \textit{header view, menu view, content view} dan \textit{footer view}. Kode program yang digunakan seperti berikut:
+	\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 class Page{
 	public function INDEX(){
 		$data['page_title'] = 'Your title';
@@ -185,13 +196,14 @@ class Page{
 		$load->view('footer');
 	}
 }
-	\end{lstlisting}
+\end{lstlisting}
 	
 	\subsubsection{\textit{Controller}}
-	\textit{Controller} berfungsi sebagai perantara antara \textit{Model}, \textit{View}, dan \textit{resource} lain yang dibutuhkan untuk memproses \textit{HTTP request} dan menghasilkan halaman web. Controller merupakan sebuah kelas yang dinamakan demikian agar dapat dikaitkan dengan URI. Sebagai contoh URI "example.com/index.php/blog/", CodeIgniter akan mencari controller bernama Blog.php dan menjalankannya. Nama controller harus diawali dengan huruf kapital. Selain itu controller juga harus extend kelas "CI\_Controller".
+	\textit{Controller} berfungsi sebagai perantara antara \textit{Model}, \textit{View} dan \textit{resource} lain yang dibutuhkan untuk memproses \textit{HTTP request} dan menghasilkan halaman web. Controller merupakan sebuah kelas yang dinamakan demikian agar dapat dikaitkan dengan URI. Sebagai contoh URI \path{example.com/index.php/blog/}, \textit{CodeIgniter} akan mencari \textit{controller} bernama \textit{Blog.php} dan menjalankannya. Nama \textit{cont}roller harus diawali dengan huruf kapital. Selain itu controller juga harus \textit{extend} kelas "\textit{CI\_Controller}".
 	Perhatikan contoh berikut:
 	Contoh yang benar :
-\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 <?php
 class Blog extends CI_Controller {
 
@@ -199,85 +211,83 @@ class Blog extends CI_Controller {
 \end{lstlisting}
 	
 	Contoh yang salah :
-\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 <?php
 class blog extends CI_Controller {
 
 }
 \end{lstlisting} 
 
-	Berikut beberapa hal penting yang terdapat pada Controller:
+	Berikut beberapa hal penting yang terdapat pada \textit{Controller}:
 	\begin{itemize}
-		\item Method \\
-		Untuk menjalankan suatu method, pengembang perlu menuliskannya pada segmen kedua URI. Contoh "example.com/index.php/blog/comments" maka method comments() akan dijalankan pada controller blog.php. Method index() akan dijalankan jika bagian kedua URI kosong. Jika URI mengandung lebih dari dua segment, maka segment-segment tersebut akan dimasukan ke dalam method sebagai parameter.
+		\item \textit{Method} \\
+		Untuk menjalankan suatu \textit{method}, pengguna perlu menuliskannya pada segmen kedua URI. Contoh \path{example.com/index.php/blog/comments} maka method \textit{comments()} akan dijalankan pada \textit{controller} \textit{blog.php}. \textit{Method index()} akan dijalankan jika bagian kedua URI kosong. Jika URI mengandung lebih dari dua segment, maka segment-segment tersebut akan dimasukan ke dalam \textit{method} sebagai parameter.
 		
-		\item Default Controller \\
-		CodeIgniter dapat diperintahkan untuk menjalankan \textit{default controller} jika tidak terdapat URI. Hal ini umumnya terjadi ketika  terdapat permintaan menggunakan URL dasar \textit{website}. Penentuan \textit{default controller} terdapat pada \textit{file} "application/config/routes.php". Perhatikan contoh berikut:
-		\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+		\item \textit{Default Controller} \\
+		\textit{CodeIgniter} dapat diperintahkan untuk menjalankan \textit{default controller} jika tidak terdapat URI. Hal ini umumnya terjadi ketika terdapat permintaan menggunakan URL dasar \textit{website}. Penentuan \textit{default controller} terdapat pada \textit{file} \path{application/config/routes.php}. Perhatikan contoh berikut:
+		\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 $route['default_controller'] = 'blog';
 		}
-		\end{lstlisting} 
-		Blog merupakan nama kelas controller yang ingin digunakan. Jika pengguna mengakses file index.php utama tanpa menentukan segmen URI, maka akan dijalankan controller blog.
+\end{lstlisting} 
+		\textit{Blog} merupakan nama kelas \textit{controller} yang ingin digunakan. Jika pengguna mengakses file \textit{index.php} utama tanpa menentukan segmen URI, maka akan dijalankan \textit{controller} \textit{blog}.
 		
 		\item Processing Output \\
 		CodeIgniter memiliki kelas \textit{output} yang menangani pengiriman data ke \textit{web browser} secara otomatis. Dalam beberapa kasus saat pengguna ingin mengubah cara pengiriman data tersebut, CodeIgniter akan menambahkan method bernama "\_output()" ke \textit{controller} terkait. Jika controller memiliki method bernama "\_output()" maka controller tersebut akan selalu dipanggil oleh kelas "output".
 		Contoh penggunaan method "\_output()" : 
-		\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+		\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 public function _output(\$output)
 {
 	echo $output;
 }
-		\end{lstlisting}
+\end{lstlisting}
 		
-		\item Private Method
-		Method-method dengan tipe \textit{private} tidak dapat diakses oleh publik. Method ini hanya dapat diakses oleh method lain dalam \textit{controller} yang sama dan method ini juga tidak dapat diakses melalui URL. Contoh penulisan \textit{private method}:
-		\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+		\item \textit{Private Method}
+		\textit{Method-method} dengan tipe \textit{private} tidak dapat diakses oleh publik. Method ini hanya dapat diakses oleh method lain dalam \textit{controller} yang sama dan \textit{method} ini juga tidak dapat diakses melalui URL. Contoh penulisan \textit{private method}:
+		\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 private function _utility()
 {
 	// kode program
 }
-		\end{lstlisting}
+\end{lstlisting}
 		
-		Method di atas tidak dapat diakses dengan cara pemanggilan method pada umum seperti berikut:
-		\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+		\textit{Method} di atas tidak dapat diakses dengan cara pemanggilan method yang umum seperti berikut:
+		\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 example.com/index.php/blog/_utility/
-		\end{lstlisting}
+\end{lstlisting}
 		
-		\item Mengorganisir Controller ke Dalam Sub Direktori \\
-		CodeIgniter mengizinkan pengguna untuk mengorganisir \textit{controller} ke dalam sub direktori. Pengguna dapat membuat sub direktori di dalam direktori \textit{application/controllers/} dan simpan kelas \textit{controller} ke dalamnya. Ketika menggunakan fitur ini, pengguna harus menspesifikasikan folder tersebut ke dalam URI. Perhatikan contoh berikut:
-		Sebuah controller berlokasi pada direktori
-		\begin{lstlisting}[backgroundcolor = \color{lightgray}]
-application/controllers/products/Shoes.php
-		\end{lstlisting}
-		Untuk memanggil controller di atas, URI pengguna akan terlihat seperti ini:
-		\begin{lstlisting}[backgroundcolor = \color{lightgray}]
-example.com/index.php/products/shoes/show/123
-		\end{lstlisting}
+		\item Mengorganisir \textit{Controller} ke Dalam Sub Direktori \\
+		\textit{CodeIgniter} mengizinkan pengguna untuk mengorganisir \textit{controller} ke dalam sub direktori. Pengguna dapat membuat sub direktori di dalam direktori \path{application/controllers/} dan simpan kelas \textit{controller} ke direktori tersebut. Ketika menggunakan fitur ini, pengguna harus menspesifikasikan folder tersebut ke dalam URI. Perhatikan contoh berikut:
+		Sebuah \textit{controller} berlokasi pada direktori \path{application/controllers/products/Shoes.php}. Untuk memanggil controller tersebut, URI pengguna yang tampil akan seperti \path{example.com/index.php/products/shoes/show/123}.
 	\end{itemize}
 
-\textit{CodeIgniter} memiliki pendekatan yang cukup fleksibel terhadap \textit{MVC} karena \textit{Model} tidak selalu diperlukan. Para pengguna dapat membangun aplikasi minimal  menggunakan \textit{Controller} dan \textit{View}. Hal tersebut dapat dilakukan jika pengguna tidak memerlukan adanya pemisahan tambahan atau pengguna merasa bahwa mempertahankan sebuah \textit{Model} membutuhkan kompleksitas yang lebih tinggi~\cite{bcit:17:cidoc}. 
+\textit{CodeIgniter} memiliki pendekatan yang cukup fleksibel terhadap \textit{MVC} karena \textit{Model} tidak selalu diperlukan. Para pengguna dapat membangun aplikasi hanya menggunakan \textit{Controller} dan \textit{View}. Hal tersebut dapat dilakukan jika pengguna tidak memerlukan adanya pemisahan tambahan atau pengguna merasa bahwa menggunakan sebuah \textit{Model} membutuhkan kompleksitas yang lebih tinggi~\cite{bcit:17:cidoc}. 
 
 \subsection{Desain dan Tujuan Arsitektur}
-Dari sudut pandang teknis, dan arsitektural, CodeIgniter dibuat dengan tujuan sebagai berikut:
+Dari sudut pandang teknis dan arsitektural, \textit{CodeIgniter} dibuat dengan tujuan sebagai berikut:
 \begin{itemize}
 	\item \textit{Dynamic Instation} \\
-	Dalam \textit{CodeIgniter}, komponen dimuat dan rutinitas dieksekusi hanya jika diminta. Tidak ada asumsi yang dibuat oleh sistem tentang apa yang mungkin diperlukan di luar resource utama, sehingga sistem ini sangat ringan secara \textit{default}. \textit{Event}, \textit{Controller} dan \textit{View} yang pengguna rancang akan menentukan apa yang dipanggil.
+	Dalam \textit{CodeIgniter}, komponen dimuat dan dieksekusi jika diminta. Tidak ada asumsi yang dibuat oleh sistem tentang apa yang mungkin diperlukan di luar \textit{resource} utama, sehingga sistem sangat ringan secara \textit{default}. \textit{Event}, \textit{Controller} dan \textit{View} yang pengguna rancang akan menentukan apa yang dipanggil.
 	\item \textit{Loose Coupling} \\
-	\textit{Coupling} adalah sejauh mana komponen-komponen dari sistem saling mengandalkan satu sama lain. Semakin sedikit komponen yang bergantung satu sama lain, maka komponen tersebut lebih dapat digunakan kembali dan sistem menjadi fleksibel. Tujuan dari \textit{framework} ini adalah sistem yang sangat longgar (\textit{very loosely coupled system}).
+	\textit{Coupling} adalah sejauh mana komponen-komponen dari sistem saling mengandalkan satu sama lain. Semakin sedikit komponen yang bergantung satu sama lain, maka komponen tersebut lebih dapat digunakan kembali dan sistem menjadi lebih fleksibel. Tujuan dari \textit{framework} ini adalah sistem yang sangat longgar (\textit{very loosely coupled system}).
 	\item \textit{Component Singularity} \\
-	\textit{Singularity} adalah sejauh mana komponen memiliki tujuan yang difokuskan secara sempit. Dalam CodeIgniter, setiap kelas dan fungsinya sangat otonom. Hal tersebut memungkinkan fungsi dapat berjalan secara maksimal.
+	\textit{Singularity} adalah sejauh mana komponen memiliki tujuan. Dalam CodeIgniter, setiap kelas dan fungsinya sangat otonom. Hal tersebut memungkinkan fungsi dapat berjalan secara maksimal.
 \end{itemize}
 
-CodeIgniter merupakan sistem yang loosely coupled dengan singularitas komponen yang tinggi (\textit{dynamically instantiated}). Codeigniter berusaha untuk sederhana, fleksible, dan kinerja tinggi dengan paket yang sekecil mungkin ~\cite{bcit:17:cidoc}.
+\textit{CodeIgniter} merupakan sistem yang \textit{loosely coupled} dengan singularitas komponen yang tinggi (\textit{dynamically instantiated}). \textit{Codeigniter} berusaha untuk sederhana, fleksible dan kinerja tinggi dengan paket yang sekecil mungkin ~\cite{bcit:17:cidoc}.
 
 \section{\textit{Sharif Judge}}
 \label{sec:sharifjudge} 
 
-\textit{Sharif Judge} adalah \textit{grader} otomatis yang mampu menilai ketepatan serta performansi program yang dikumpulkan mahasiswa. Perangkat lunak ini diciptakan oleh Mohammad Javad Naderi dan bersifat \textit{open source}. \textit{Web Interface} perangkat lunak ini ditulis menggunakan PHP ()\textit{framework CodeIgniter}) dan \textit{backend} menggunakan \textit{BASH} \cite{mjnaderi:14:sharifjudge}.
+\textit{Sharif Judge} adalah \textit{grader} otomatis yang mampu menilai ketepatan serta performansi program yang dikumpulkan mahasiswa. Perangkat lunak ini diciptakan oleh Mohammad Javad Naderi dan bersifat \textit{open source}. Antarmuka \textit{Sharif Judge} ditulis menggunakan bahasa pemrograman PHP (\textit{framework CodeIgniter}) dan \textit{backend} menggunakan \textit{BASH} \cite{mjnaderi:14:sharifjudge}.
 Selain sebagai \textit{grader} otomatis, \textit{Sharif Judge} juga memiliki beberapa fitur lainnya seperti:
 \begin{itemize}
-	\item Beberapa peran \textit{users} (\textit{admin, head instructor, instructor, student})
-	\item Sandboxing (belum diterpakan untuk \textit{phyton})
+	\item Beberapa peran (\textit{role}) \textit{users} (\textit{admin, head instructor, instructor, student})
+	\item \textit{Sandboxing} (belum diterpakan untuk \textit{phyton})
 	\item Deteksi kecurangan (mendeteksi kode yang mirip) menggunakan \textit{Moss}
 	\item Pengaturan untuk menilai keterlambatan pengiriman
 	\item Antrian Pengiriman
@@ -285,39 +295,42 @@ Selain sebagai \textit{grader} otomatis, \textit{Sharif Judge} juga memiliki beb
 	\item Mengunduh kode yang telah dikirim dalam bentuk \textit{file zip}
 	\item Metode "\textit{Output Comparison}" dan "\textit{Tester Code}" untuk memeriksa kebenaran dari hasil keluaran.
 	\item Menambahakan beberapa pengguna sekaligus
-	\item Diskripsi Masalah (\textit{PDF/Markdown/HTML})
+	\item Diskripsi \textit{Problem} (\textit{PDF/Markdown/HTML})
 	\item Penilaian ulang (\textit{rejudge})
 	\item Papan nilai
 	\item Notifikasi
 \end{itemize}
 
 \subsection{Instalasi}
-Untuk menjalankan Sharif Judge membutuhkan sebuah \textit{server Linux} dengan persyaratan berikut ~\cite{mjnaderi:14:sharifjudgedoc}:
+Untuk menjalankan \textit{Sharif Judge}, dibutuhkan sebuah server \textit{Linux} dengan persyaratan berikut ~\cite{mjnaderi:14:sharifjudgedoc}:
 \begin{itemize}
 	\item \textit{Webserver} menjalankan PHP versi 5.3 atau yang lebih baru
-	\item Pengguna harus dapat menjalankan php dari \textit{command line}. Pada \textit{Ubuntu}, pengguna perlu meginstal paket \textit{php5-cli}
+	\item Pengguna harus dapat menjalankan PHP dari \textit{command line}. Pada \textit{Ubuntu}, pengguna perlu meginstal paket \textit{php5-cli}
 	\item \textit{Mysql database} (dengan ekstensi \textit{mysqli} untuk PHP) atau \textit{PostgreSql database}
 	\item PHP harus memiliki akses untuk menjalankan \textit{shell commands} menggunakan fungsi \textit{shell\textunderscore exec}. Contohnya seperti \textit{command} di bawah ini: 
-		\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+		\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 echo shell_exec("php -v");
-		\end{lstlisting}
-	\item Perkakas yang digunakan untuk \textit{compiling} dan menjalankan kode yang dikumpulkan (\textit{gcc, g++, javac, java, python2, python3 commands})
-	\item \textit{Perl} lebih baik diinstal untuk ketepatan waktu, batas memori dan memaksimalkan batas ukuran pada \textit{output} kode yang dikirimkan
+\end{lstlisting}
+	\item Perkakas yang digunakan untuk \textit{compiling} dan menjalankan kode yang dikumpulkan adalah (\textit{gcc, g++, javac, java, python2, python3 commands})
+	\item \textit{Perl} lebih baik diinstal untuk alasan ketepatan waktu, batas memori dan memaksimalkan batas ukuran pada \textit{output} kode yang dikirimkan
 \end{itemize}
 
 
 Jika persyaratan di atas telah terpenuhi, maka akan masuk tahap instalasi sebagai berikut:
 \begin{itemize}
-	\item Mengunduh versi terakhir dari Sharif Judge dan \textit{unpack} hasil download di direktori \textit{public html}
+	\item Mengunduh versi terakhir dari \textit{Sharif Judge} dan \textit{unpack} hasil download di direktori \textit{public html}
 	\item (Pilihan) Pindahkan folder \textit{system} dan \textit{application} keluar dari \textit{public directory} dan
 	masukan \textit{path} lengkap di \textit{file index.php} 
-	\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+	\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 $system_path = '/home/mohammad/secret/system';
 $application_folder = '/home/mohammad/secret/application';
-	\end{lstlisting}
-	\item Buat sebuah \textit{Mysql} atau \textit{PostgreSql} database untuk Sharif Judge. Jangan menginstall paket koneksi database untuk \textit{C/C++, Java}, atau \textit{Python}
-	\item Atur pengaturan koneksi database di file \textit{application/config/database.php}. Pengguna dapat menggunakan awalan untuk nama tabel.
-	\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+\end{lstlisting}
+	\item Buat sebuah \textit{Mysql} atau \textit{PostgreSql} \textit{database} untuk \textit{Sharif Judge}. Jangan menginstall paket koneksi \textit{database} untuk \textit{C/C++, Java}, atau \textit{Python}
+	\item Atur pengaturan koneksi database di file \path{application/config/database.php}. Pengguna dapat menggunakan awalan untuk nama tabel.
+	\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 /*  Enter database connection settings here:  */
 'dbdriver' => 'postgre',    // database driver (mysqli, postgre)
 'hostname' => 'localhost',  // database host
@@ -326,28 +339,24 @@ $application_folder = '/home/mohammad/secret/application';
 'database' => `,           // database name
 'dbprefix' => 'shj_',       // table prefix
 /**********************************************/
-	\end{lstlisting}
-	\item Buat \textit{application/cache/Twig} dapat ditulis oleh PHP
+\end{lstlisting}
+	\item Buat direktori \textit{application/cache/Twig} agar dapat ditulis oleh PHP
 	\item Buka halaman utama \textit{Sharif Judge} pada web \textit{browser} dan ikuti proses instalasi berikutnya
 	\item \textit{Log in} menggunakan akun \textit{admin}
-	\item Pindahkan folder \textit{tester} dan \textit{assigments} di luar \textit{public directory} lalu simpan \textit{path} lengkap di halaman \textit{Settings}. Dua folder tersebut harus dapat ditulis oleh PHP. File-file yang diserhkan akan disimpan di folder \textit{assigments} sehingga tidak dapat diakses publik.
+	\item Pindahkan folder \textit{tester} dan \textit{assigments} di luar \textit{public directory} lalu simpan \textit{path} lengkap di halaman \textit{Settings}. Dua folder tersebut harus dapat ditulis oleh PHP. \textit{File-file} yang diunggah akan disimpan di folder \textit{assigments} sehingga tidak dapat diakses publik.
 \end{itemize}
 
 \subsection{\textit{Clean URLs}}
-Secara \textit{default}, \textit{index.php} merupakan bagian dari seluruh \textit{urls} yang ada pada \textit{Sharif Judge} seperti~\cite{mjnaderi:14:sharifjudgedoc}: 
-\begin{lstlisting}[backgroundcolor = \color{lightgray}]
-http://example.mjnaderi.ir/index.php/dashboard
-http://example.mjnaderi.ir/index.php/users/add
-\end{lstlisting}
-Pengguna dapat menghilangkan \textit{index.php} dan memiliki \textit{urls} yang baik jika sistem pengguna mendukung aturan \textit{rewrite} seperti:  
-\begin{lstlisting}[backgroundcolor = \color{lightgray}]
-http://example.mjnaderi.ir/dashboard
-http://example.mjnaderi.ir/users/add
-\end{lstlisting}
-
+Secara \textit{default}, \textit{index.php} merupakan bagian dari seluruh \textit{urls} yang ada pada \textit{Sharif Judge} seperti~\cite{mjnaderi:14:sharifjudgedoc}:  \\
+\path{http://example.mjnaderi.ir/index.php/dashboard} \\
+\path{http://example.mjnaderi.ir/index.php/users/add} \\
+Pengguna dapat menghilangkan \textit{index.php} dan memiliki \textit{urls} yang baik jika sistem pengguna mendukung aturan \textit{rewrite} seperti: \\ 
+\path{http://example.mjnaderi.ir/dashboard}\\
+\path{http://example.mjnaderi.ir/users/add}\\
 Untuk memungkinkan \textit{clean urls}, ubah isi file \textit{.htaccess2} menjadi \textit{.htaccess} yang berlokasi di direktori utama \textit{Sharif Judge}.
 Berikut isi file \textit{.htaccess2}: 
-\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 # You also need to change 
 # $config['index_page'] = 'index.php';
 # to
@@ -359,52 +368,45 @@ RewriteEngine on
 RewriteCond $1 !^(index\.php|assets|robots\.txt)
 RewriteRule ^(.*)$ index.php?/$1 [L]
 \end{lstlisting}
-Lalu buka file \textit{application/config/config.php} dan ubah  
-\begin{lstlisting}[backgroundcolor = \color{lightgray}]
-$config['index_page'] = 'index.php';
-\end{lstlisting}
-menjadi
-\begin{lstlisting}[backgroundcolor = \color{lightgray}]
-$config['index_page'] = '';
-\end{lstlisting}
+Lalu buka file \path{application/config/config.php} dan ubah \textit{\$config['index\_page'] = 'index.php';} menjadi \textit{\$config['index\_page'] = '';}.
 
 \subsection{\textit{Users}}
-Pada \textit{Sharif Judge}, \textit{users} dikelompokan menjadi 4 yaitu \textit{Admins, Head Instructor, Instructor, }dan \textit{Students}
+Pada \textit{Sharif Judge}, \textit{users} dibagi menjadi 4 \textit{role}. Keempat \textit{role} tersebut adalah \textit{Admins, Head Instructor, Instructor, }dan \textit{Students}
 Tabel~\ref{tab:userrole} menunjukan \textit{level users}~\cite{mjnaderi:14:sharifjudgedoc}.
 
 \begin{table}[H] %atau h saja untuk "kira kira di sini"
 	\centering 
 	\caption{\textit{User Roles Table}}
 	\label{tab:userrole}
-	\begin{tabular}{cc}
-		\toprule
-		\textit{User Role} & \textit{User Level} \\
-		
-		\midrule
+	\begin{tabular}{|c|c|}
+		\hline
+		\textit{\textbf{User Role}} & \textit{\textbf{User Level}} \\
+		\hline
 		\textit{Admin} & 3 \\
+		\hline
 		\textit{Head Instructor} & 2 \\
+		\hline
 		\textit{Instructor} & 1 \\
+		\hline
 		\textit{Student} & 0 \\
-		
-		\bottomrule
-		
+		\hline		
 	\end{tabular} 
 \end{table}
 
-Setiap \textit{users} memiliki aksi yang berbeda-beda. Aksi yang dapat dilakukan para \textit{users} akan disesuaikan dengan \textit{level} masing-masing. Perhatikan tabel~\ref{tab:useraction} berikut:
+Setiap \textit{users} dapat melakukan aksi yang berbeda-beda. Aksi yang dapat dilakukan para \textit{users} akan disesuaikan dengan \textit{level} masing-masing. Perhatikan tabel~\ref{tab:useraction} berikut:
 \begin{table}[H] %atau h saja untuk "kira kira di sini"
 	\centering 
 	\caption{\textit{Permission Table}}
 	\label{tab:useraction}
-	\begin{tabular}{l c c c c}
-		\toprule
+	\begin{tabular}{|l|c|c|c|c|}
+		\hline
 		Aksi & \textit{Admin} & \textit{Head Instructor} & \textit{Instructor} & \textit{Student} \\
 		
-		\midrule
+		\hline
 		Mengubah \textit{Settings} & \ding{51} & \ding{53} & \ding{53} & \ding{53} \\
 		Menambah/Menghapus \textit{users} & \ding{51} & \ding{53} & \ding{53} & \ding{53} \\
 		Mengubah Peran \textit{users} & \ding{51} & \ding{53} & \ding{53} & \ding{53} \\
-		Menambah/Menghapus/Mengubah Tugas & \ding{51} & \ding{51} & \ding{53} & \ding{53} \\
+		Menambah/Menghapus/Mengubah \textit{Assignment} & \ding{51} & \ding{51} & \ding{53} & \ding{53} \\
 		Mengunduh \textit{Test} & \ding{51} & \ding{51} & \ding{53} & \ding{53} \\
 		
 		Menambah/Menghapus/Mengubah Notifikasi & \ding{51} & \ding{51} & \ding{53} & \ding{53} \\
@@ -414,16 +416,17 @@ Setiap \textit{users} memiliki aksi yang berbeda-beda. Aksi yang dapat dilakukan
 		Melihat Semua Kode & \ding{51} & \ding{51} & \ding{51} & \ding{53} \\
 		
 		Mengunduh Kode Final& \ding{51} & \ding{51} & \ding{51} & \ding{53} \\
-		Memilih Tugas & \ding{51} & \ding{51} & \ding{51} & \ding{51} \\
+		Memilih \textit{Assignment} & \ding{51} & \ding{51} & \ding{51} & \ding{51} \\
 		\textit{Submit} & \ding{51} & \ding{51} & \ding{51} & \ding{51} \\
 		
-		\bottomrule
+		\hline
 		
 	\end{tabular} 
 \end{table}
 
-Pengguna dapat menambahkan \textit{users} dengan mengklik pada bagian \textit{Add Users} di halaman \textit{Users}. Pengguna harus mengisi semua informasi yang ada pada \textit{textarea}. Baris dimulai dengan komentar \textit{\#}. Setiap baris lainnya mewakili pengguna dengan sintaks berikut:
-\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+Pengguna dapat menambahkan \textit{users} dengan mengklik pada bagian \textit{Add Users} di halaman \textit{Users}. Pengguna harus mengisi semua informasi yang ada pada \textit{text area}. Baris dimulai dengan komentar \textit{\#}. Setiap baris lainnya mewakili pengguna dengan sintaks berikut:
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 USERNAME EMAIL PASSWORD ROLE
 	
 * Usernames dapat berisikan huruf kecil atau nomor dan harus terdiri 
@@ -435,7 +438,8 @@ USERNAME EMAIL PASSWORD ROLE
   `instructor`, `student`
 \end{lstlisting}
 Contoh:
-\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 # This is a comment!
 # This is another comment!
 instructor instructor@sharifjudge.ir 123456 head_instructor
@@ -449,8 +453,8 @@ student6 st6@sharifjudge.ir random[6] student
 student7 st7@sharifjudge.ir random[6] student
 \end{lstlisting}
 
-\subsection{Menambah Tugas}
-Pengguna dapat menambahkan tugas dengan cara mengklik \textit{Add} di halaman \textit{Assigments}~\cite{mjnaderi:14:sharifjudgedoc}. Pengguna akan melihat halaman seperti gambar~\ref{fig:addass}.
+\subsection{Menambah \textit{Assignment}}
+Pengguna dapat menambahkan \textit{assignment} dengan cara mengklik \textit{Add} di halaman \textit{assigments}~\cite{mjnaderi:14:sharifjudgedoc}. Pengguna akan melihat halaman seperti gambar~\ref{fig:addass}.
 \begin{figure}[H]
 	\centering  
 	\includegraphics[scale=0.5]{add_assignment}  
@@ -461,26 +465,27 @@ Pengguna dapat menambahkan tugas dengan cara mengklik \textit{Add} di halaman \t
 Berikut beberapa pengaturan yang terdapat pada halaman \textit{Add Assignments}:
 \begin{itemize}
 	\item \textit{Assignment Name} \\
-	Tugas akan ditampilkan dengan nama ini dalam daftar tugas.
+	\textit{Assignment} akan ditampilkan dengan nama ini dalam daftar \textit{assignment}.
 	
 	\item \textit{Start Time} \\
-	\textit{Users} tidak dapat mengumpulkan tugas sebelum \textit{"Start Time"}. Gunakan format ini untuk \textit{start time}: \textit{MM/DD/YYYY HH:MM:SS}. Contoh: \textit{08/31/2013 12:00:00}
+	\textit{Users} tidak dapat mengumpulkan \textit{assignment} sebelum \textit{"Start Time"}. Gunakan format ini untuk \textit{start time}: \textit{MM/DD/YYYY HH:MM:SS}. Contoh: \textit{08/31/2013 12:00:00}
 	
 	\item \textit{Finish Time, Extra Time}\\
-	\textit{Users} tidak dapat mengumpulkan tugas setelah \textit{Finish Time + Extra Time}. Tugas yang telat akan dikalikan dengan koefisien tertentu. Pengguna harus menulis \textit{script} PHP untuk menghitung koefisien pada bidang \textit{"Coefficient Rule"}. Gunakan format ini untuk \textit{finish time}: \textit{MM/DD/YYYY HH:MM:SS}. Contoh: \textit{08/31/2013 23:59:59}. Waktu ekstra harus dalam menit. Pengguna dapat menggunakan \textit{*}. Contoh \textit{120} (2 jam) atau \textit{48*60} (2 hari).
+	\textit{Users} tidak dapat mengumpulkan \textit{ssignment} setelah \textit{Finish Time + Extra Time}. \textit{Assignment} yang telat akan dikalikan dengan koefisien tertentu. Pengguna harus menulis \textit{script} PHP untuk menghitung koefisien pada bidang \textit{"Coefficient Rule"}. Gunakan format berikut untuk \textit{finish time}: \textit{MM/DD/YYYY HH:MM:SS}. Contoh: \textit{08/31/2013 23:59:59}. Waktu ekstra harus dalam menit. Pengguna dapat menggunakan \textit{*}. Contoh \textit{120} (2 jam) atau \textit{48*60} (2 hari).
 	
 	\item \textit{Participants} \\
-	Masukan \textit{username} dari partisipan disini. Gunakan tanda koma untuk memisah \textit{username} antar partisipan. Hanya \textit{users} ini yang dapat mengumpulkan tugas. Pengguna dapat menggunakan kata kunci \textit{ALL} untuk mengijinkan semua \textit{users} agar dapat mengumpulkan tugas. Contoh: \textit{admin, instructor1 , instructor2 ,student1  ,   student2,student3 , student4}.
+	Masukan \textit{username} dari partisipan disini. Gunakan tanda koma untuk memisah \textit{username} antar peserta. Hanya \textit{users} ini yang dapat mengumpulkan \textit{assignment}. Pengguna dapat menggunakan kata kunci \textit{ALL} untuk mengijinkan semua \textit{users} agar dapat mengumpulkan \textit{assignment}. Contoh: \textit{admin, instructor1 , instructor2 ,student1  ,   student2,student3 , student4}.
 	
 	\item \textit{Open} \\
-	Pengguna dapat membuka atau menutup tugas untuk \textit{students} menggunakan pilihan ini. Jika pengguna menutup tugas, \textit{non-student users} masih dapat mengumpulkan tugas.
+	Pengguna dapat membuka atau menutup \textit{assignment} menggunakan pilihan ini. Jika pengguna menutup \textit{assignment}, \textit{non-student users} masih dapat mengumpulkan \textit{assignment}.
 	
 	\item Scoreboard \\
 	Pengguna dapat mengaktifkan atau mematikan papan nilai dengan menggunakan pilihan ini.
 	
 	\item \textit{Java Exceptions}
 	Pengguna dapat mengaktifkan dan mematikan \textit{java exceptions} yang ditunjukan kepada \textit{students}. Perubahan pada pilihan ini tidak berdampak pada kode yang sebelumnya sudah dinilai. Nama \textit{exception} akan muncul jika \textit{tester/java\_exceptions\_list} berisikan nama tersebut. Jika pengguna mengaktifkan fitur ini, kode di bawah ini akan ditampilkan kepada \textit{students} saat \textit{exception} dilemparkan: \newpage
-	\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+	\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 Test 1
 ACCEPT
 Test 2
@@ -501,11 +506,12 @@ Test 9
 Runtime Error (java.lang.StackOverflowError)
 Test 10
 Runtime Error (java.lang.ArrayIndexOutOfBoundsException)
-	\end{lstlisting}
+\end{lstlisting}
 	
 	\item \textit{\textit{Coefficient Rule}} \\
 	Pengguna dapat menulis \textit{script} PHP pada bagian ini. Pengguna harus memasukan koefisien (dari 100) pada variabel \textit{\$coefficient}. Pengguna dapat menggunakan variabel \textit{\$extra\_time} dan \textit{\$delay}. \textit{\$extra\_time} merupakan total waktu ekstra yang diberikan kepada \textit{users} dalam satuan detik dan \textit{\$delay} merupakan jumlah detik berlalu dari waktu selesai (bisa negatif). \textit{Script} PHP pada bagian ini tidak mengandung \textit{tags <?php , <? , ?>}. Berikut contoh \textit{\$extra\_time} 172800 (2 hari):
-	\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+	\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 if ($delay<=0)
 // no delay
 $coefficient = 100;
@@ -529,16 +535,16 @@ $coefficient = 50;
 elseif ($delay > $extra_time)
 // too late
 $coefficient = 0;
-	\end{lstlisting}
+\end{lstlisting}
 	
 	\item \textit{Time Limit} \\
-	Pengguna dapat mengatur batas waktu untuk menjalankan kode dalam satuan milisekon. \textit{Python} dan \textit{Java} biasanya lebih lambat dari \textit{C/C++}.	Oleh karena itu mereka membutuhkan waktu yang lebih.
+	Pengguna dapat mengatur batas waktu untuk menjalankan kode dalam satuan milisekon. \textit{Python} dan \textit{Java} biasanya lebih lambat dari \textit{C/C++}.	Oleh karena itu \textit{Python} dan \textit{Java} membutuhkan waktu yang lebih.
 	
 	\item \textit{Memory Limit} \\
 	Pengguna dapat mengatur batas memori dalam satuan \textit{kilobyte}, namun penggunaan \textit{Memory Limit} tidak terlalu akurat.
 	
 	\item \textit{Allowed Languages} \\
-	Pengguna dapat mengatur bahasa untuk setiap permasalahan (dipisahkan menggunakan koma). Bahasa yang tersedia seperti \textit{C, C++, Java, Python 2, Python 3, zip, PDF}. Pengguna dapat menggunakan \textit{zip} atau \textit{PDF} jika mengaktifkan pilihan \textit{Upload Only}. Contoh: \textit{C, C++ , zip} atau \textit{Python 2,Python 3} atau \textit{Java ,C}.
+	Pengguna dapat mengatur bahasa untuk setiap \textit{problem} (dipisahkan menggunakan koma). Bahasa yang tersedia seperti \textit{C, C++, Java, Python 2, Python 3, zip, PDF}. Pengguna dapat menggunakan \textit{zip} atau \textit{PDF} jika mengaktifkan pilihan \textit{Upload Only}. Contoh: \textit{C, C++ , zip} atau \textit{Python 2,Python 3} atau \textit{Java ,C}.
 	
 	\item \textit{Diff Command} \\
 	\textit{Command} ini digunakan untuk membandingkan keluaran dengan keluaran yang benar. Secara \textit{default Sharif Judge} menggunakan \textit{diff}, namun pengguna dapat mengubah \textit{command} pada bagian ini.
@@ -547,59 +553,60 @@ $coefficient = 0;
 	Pengguna dapat mengatur argumen dari\textit{Diff Command} disini. Untuk melihat daftar lengkap \textit{diff} argumen, pengguna dapat melihat \textit{man diff}. \textit{Sharif Judge} menambahkan dua pilihan baru yaitu \textit{ignore} dan \textit{identical}. \textit{Ignore} akan menghiraukan semua baris baru dan spasi. \textit{Identical} tidak akan menghiraukan apapun namun keluaran dari file yang dikumpulkan harus identik dengan keluaran \textit{test case} agar dapat diterima.
 	
 	\item \textit{Upload Only} \\
-	Jika pengguna mengatur masalah sebagai \textit{Upload-Only}, maka \textit{Sharif Judge} tidak akan menilai tugas pada masalah tersebut. Pengguna dapat menggunakan \textit{zip} dan \textit{PDF} pada \textit{allowed languages} jika mengaktifkan pilihan ini.
+	Jika pengguna mengatur \textit{problem} sebagai \textit{Upload-Only}, maka \textit{Sharif Judge} tidak akan menilai \textit{assignment} pada \textit{problem} tersebut. Pengguna dapat menggunakan \textit{zip} dan \textit{PDF} pada \textit{allowed languages} jika mengaktifkan pilihan ini.
 \end{itemize}
 
-\subsubsection{Contoh Tugas}
+\subsubsection{Contoh \textit{Assignment}}
 
-Berikut contoh tugas untuk mencoba \textit{Sharif Judge}. Menambah tugas ini dengan mengklik \textit{Add} di halaman \textit{Assignment}. Tugas dibagi menjadi 3 permasalahan:
+Berikut contoh \textit{assignment} untuk mencoba \textit{Sharif Judge}. Menambah \textit{assignment} dengan mengklik \textit{Add} di halaman \textit{Assignment}. \textit{Assignment} dibagi menjadi 3 \textit{problem}:
 \begin{enumerate}
-	\item Masalah 1 (Penjumlahan) \\
+	\item \textit{Problem} 1 (Penjumlahan) \\
 	Program pengguna akan menerima masukan bilangan \textit{integer} n, kemudian menerima masukan lagi sebanyak n buah bilangan \textit{integer} dan menampilkan hasil penjumlahan dari n nomor tersebut. Untuk lebih jelas, perhatikan tabel~\ref{tab:tablesum}.
 	
 	\begin{table}[H] %atau h saja untuk "kira kira di sini"
 		\centering 
-		\caption{Masalah 1 (Penjumlahan)}
+		\caption{\textit{Problem} 1 (Penjumlahan)}
 		\label{tab:tablesum}
-		\begin{tabular}{cc}
-			\toprule
+		\begin{tabular}{|c|c|}
+			\hline
 			Sample Input & Sample Output\\
 			
-			\midrule
-			\multicolumn{1}{l}{5} & \multirow{2}{*}{145}\\
-			\multicolumn{1}{l}{54 78 0 4 9} & \\
+			\hline
+			\multicolumn{1}{|l|}{5} & \multirow{2}{*}{145}\\
+			\multicolumn{1}{|l|}{54 78 0 4 9} & \\
 			
-			\bottomrule
+			\hline
 			
 		\end{tabular} 
 	\end{table}
 	
-	\item Masalah 2 (\textit{Max}) \\
+	\item \textit{Problem} 2 (\textit{Max}) \\
 	Program pengguna akan menerima masukan bilangan \textit{integer} n, kemudian menerima masukan lagi sebanyak n buah bilangan \textit{integer} dan menampilkan hasil penjumlahan dari dua nilai tertinggi. Untuk lebih jelas, perhatikan tabel~\ref{tab:tablemax}.
 	
 	\begin{table}[H] %atau h saja untuk "kira kira di sini"
 		\centering 
-		\caption{Masalah 2 (\textit{Max})}
+		\caption{\textit{Problem} 2 (\textit{Max})}
 		\label{tab:tablemax}
-		\begin{tabular}{cc}
-			\toprule
+		\begin{tabular}{|c|c|}
+			\hline
 			Sample Input & Sample Output\\
 			
-			\midrule
-			\multicolumn{1}{l}{7} & \multirow{2}{*}{356}\\
-			\multicolumn{1}{l}{162 173 159 164 181 158 175} & \\
+			\hline
+			\multicolumn{1}{|l|}{7} & \multirow{2}{*}{356}\\
+			\multicolumn{1}{|l|}{162 173 159 164 181 158 175} & \\
 			
-			\bottomrule
+			\hline
 			
 		\end{tabular} 
 	\end{table}
 	
-	\item Masalah 2 (\textit{Upload!}) \\
-	Pengguna diharuskan mengunggah sebuah \textit{file} \textit{C} atau \textit{zip}. Masalah ini menggunakan pilihan \textit{"Upload Only} sehingga tidak akan dinilai oleh Sharif Judge.
+	\item \textit{Problem} 2 (\textit{Upload!}) \\
+	Pengguna diharuskan mengunggah sebuah \textit{file} \textit{C} atau \textit{zip}. \textit{Problem} ini menggunakan pilihan \textit{"Upload Only} sehingga tidak akan dinilai oleh \textit{Sharif Judge}.
 \end{enumerate}
 
 Pengguna dapat menemukan \textit{file zip} pada \textit{folder Assignments}. Perhatikan susunan pohon dari tugas ini:
-\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 .
 |-- p1
 |   |-- in
@@ -646,14 +653,15 @@ Pengguna dapat menemukan \textit{file zip} pada \textit{folder Assignments}. Per
 |   --- desc.md
 --- SampleAssignment.pdf
 \end{lstlisting}
-Masalah 1 menggunkan metode \textit{"Tester"} untuk mengecek keluaran sehingga memiliki \textit{file tester.cpp (Tester Script)}. Masalah 2 menggunakan metode \textit{Output Comparison} untuk mengecek keluaran sehingga memiliki dua \textit{folder} (\textit{in} dan \textit{out}) yang berisikan \textit{test case}. Masalah 3 merupakan masalah yang menggunakan pilihan \textit{Upload-Only}.
+\textit{Problem} 1 menggunakan metode \textit{"Tester"} untuk mengecek keluaran, sehingga memiliki \textit{file tester.cpp (Tester Script)}. \textit{Problem} 2 menggunakan metode \textit{Output Comparison} untuk mengecek keluaran, sehingga memiliki dua \textit{folder} (\textit{in} dan \textit{out}) yang berisikan \textit{test case}. \textit{Problem} 3 merupakan \textit{problem} yang menggunakan pilihan \textit{Upload-Only}.
 
 \subsubsection{Contoh Solusi}
-Permasalahan diatas dapat diselesaikan menggunakan contoh solusi berikut ini:
+\textit{Problem} diatas dapat diselesaikan menggunakan contoh solusi berikut ini:
 \begin{itemize}
-	\item Solusi Masalah 1 \\ 
+	\item Solusi \textit{Problem} 1 \\ 
 	Menggunakan bahasa \textit{C}
-	\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+	\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 #include<stdio.h>
 int main(){
 	int n;
@@ -668,11 +676,12 @@ int main(){
 	printf("%d\n",sum);
 		return 0;
 }
-	\end{lstlisting} 
+\end{lstlisting} 
 	
 	
 	Menggunakan bahasa \textit{C++}
-	\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+	\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 #include <iostream>
 using namespace std;
 int main(){
@@ -686,10 +695,11 @@ int main(){
 	cout << sum << endl;
 	return 0;
 }
-	\end{lstlisting} 
+\end{lstlisting} 
 	
 	Menggunakan bahasa \textit{Java}
-	\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+	\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 import java.util.Scanner;
 class sum
 {
@@ -706,11 +716,12 @@ class sum
 		System.out.println(sum); 
 	}
 }
-	\end{lstlisting}
+\end{lstlisting}
 	
-	\item Solusi Masalah 2 \\ 
+	\item Solusi \textit{Problem} 2 \\ 
 	Menggunakan bahasa \textit{C}
-	\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+	\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 #include<stdio.h>
 int main(){
 	int n , m1=0, m2=0;
@@ -728,11 +739,12 @@ int main(){
 	printf("%d",m1+m2);
 	return 0;
 }
-	\end{lstlisting}
+\end{lstlisting}
 	 
 	
 	Menggunakan bahasa \textit{C++}
-	\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+	\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 #include<iostream>
 using namespace std;
 int main(){
@@ -751,22 +763,23 @@ int main(){
 	cout << (m1+m2) << endl ;
 	return 0;
 }
-	\end{lstlisting}
+\end{lstlisting}
 \end{itemize}
 
 \subsection{Struktur Pengujian}
 
-Pengguna harus menyediakan sebuah \textit{file zip} yang berisikan \textit{test cases} ketika menambahkan tugas. \textit{File zip} ini dapat berisikan folder-folder untuk setiap masalah. Pengguna harus memberikan nama pada folder sesuai aturan seperti \textit{p1, p2, p3, dst}. Tugas yang menggunakan pilihan \textit{Upload-Only} tidak membutuhkan \textit{folder}~\cite{mjnaderi:14:sharifjudgedoc}.
+Pengguna harus menyediakan sebuah \textit{file zip} yang berisikan \textit{test cases} ketika menambahkan \textit{assignment}. \textit{File zip} ini dapat berisikan folder-folder untuk setiap \textit{problem}. Pengguna harus memberikan nama pada folder sesuai aturan seperti \textit{p1, p2, p3, dst}. \textit{Assignment} yang menggunakan pilihan \textit{Upload-Only} tidak membutuhkan \textit{folder}~\cite{mjnaderi:14:sharifjudgedoc}.
 
 \subsubsection{Metode Pengecekan}
-\textit{Sharif Judge} memiliki dua metode pengecekan untuk setiap permasalahan yaitu metode \textit{"Input/Output" Comparison} dan metode \textit{Tester}.
+\textit{Sharif Judge} memiliki dua metode pengecekan untuk setiap \textit{problem} yaitu metode \textit{"Input/Output" Comparison} dan metode \textit{Tester}.
 \begin{itemize}
 	\item \textit{Metode Input/Output Comparison} \\
-	Dengan metode ini, pengguna harus memasukan beberapa \textit{file input dan output} pada \textit{folder} masalah. \textit{Sharif Judge} akan memasukan nilai dari \textit{file input} ke kode \textit{users} dan membandingkan hasil keluaran dari kode \textit{users} dengan \textit{file output}. \textit{Input files} harus berada dalam folder \textit{"in"} dengan nama \textit{input1.text, input2.txt, dst}.\textit{Output files} harus berada dalam folder \textit{"out"} dengan nama \textit{output1.txt, output2.txt, dst}.
+	Dengan metode ini, pengguna harus memasukan beberapa \textit{file input dan output} pada \textit{folder} \textit{problem}. \textit{Sharif Judge} akan memasukan nilai dari \textit{file input} ke kode \textit{users} dan membandingkan hasil keluaran dari kode \textit{users} dengan \textit{file output}. \textit{Input files} harus berada dalam folder \textit{"in"} dengan nama \textit{input1.text, input2.txt, dst}.\textit{Output files} harus berada dalam folder \textit{"out"} dengan nama \textit{output1.txt, output2.txt, dst}.
 	
 	\item \textit{Metode Tester} \\
-	Dengan metode ini, pengguna harus menyediakan beberapa \textit{file input} dan sebuah \textit{file C++ (tester.cpp)} dan beberapa \textit{file output}. \textit{Sharif Judge} akan memasukan nilai dari \textit{file input} ke kode \textit{users} dan mengambil keluaran dari kode \textit{users}. \textit{tester.cpp} akan mengambil nilai dari \textit{file input, file output, }dan keluaran \textit{users}. Jika keluaran dari kode \textit{users} benar akan mengembalikan nilai 0, sebaliknya akan mengeluarkan nilai 1. Berikut contoh kode untuk menulis \textit{tester.cpp}:
-	\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+	Dengan metode ini, pengguna harus menyediakan beberapa \textit{file input} dan sebuah \textit{file C++ (tester.cpp)} dan beberapa \textit{file output}. \textit{Sharif Judge} akan memasukan nilai dari \textit{file input} ke kode \textit{users} dan mengambil keluaran dari kode \textit{users}. \textit{tester.cpp} akan mengambil nilai dari \textit{file input, file output, }dan keluaran \textit{users}. Jika keluaran dari kode \textit{users} benar akan mengembalikan nilai 0, sebaliknya jika salah akan mengeluarkan nilai 1. Berikut contoh kode untuk menulis \textit{tester.cpp}:
+	\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 /*
 * tester.cpp
 */
@@ -792,13 +805,14 @@ int main(int argc, char const *argv[])
 	...
 
 }
-	\end{lstlisting}
+\end{lstlisting}
 \end{itemize}
 
 \subsubsection{Contoh \textit{File}}
 
 Pengguna dapat menemukan contoh \textit{file} penguji pada \textit{folder Assignments}. Perhatikan susunan pohon dari \textit{file} tersebut:
-\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 .
 |-- p1
 |   |-- in
@@ -840,8 +854,9 @@ Pengguna dapat menemukan contoh \textit{file} penguji pada \textit{folder Assign
 		--- output10.txt
 \end{lstlisting}
 
-Masalah 1 menggunakan metode \textit{"Tester} untuk mengecek hasil keluaran, sehingga memiliki \textit{file tester.cpp}. Berikut isi dari \textit{file tester.cpp} untuk masalah 1:
-\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+\textit{Problem} 1 menggunakan metode \textit{"Tester} untuk mengecek hasil keluaran, sehingga memiliki \textit{file tester.cpp}. Berikut isi dari \textit{file tester.cpp} untuk \textit{problem} 1:
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 /*
 * tester.cpp
 */
@@ -893,17 +908,18 @@ int main(int argc, char const *argv[])
 \end{lstlisting}
 
 
-Masalah 2 menggunakan metode \textit{"Input/Output Comparison"} untuk mengecek hasil keluaran, sehingga memiliki dua folder \textit{in} dan \textit{out} yang berisikan \textit{test cases}. Masalah 3 menggunakan pilihan \textit{Upload-Only}, sehingga tidak memiliki folder apapun.
+\textit{Problem} 2 menggunakan metode \textit{"Input/Output Comparison"} untuk mengecek hasil keluaran, sehingga memiliki dua folder \textit{in} dan \textit{out} yang berisikan \textit{test cases}. \textit{Problem} 3 menggunakan pilihan \textit{Upload-Only}, sehingga tidak memiliki folder apapun.
 
 \subsection{Deteksi Kecurangan}
 \textit{Sharif Judge} menggunakan \textit{Moss} untuk mendeteksi kode yang mirip. \textit{Moss (Measure Of Software Similarity)} merupakan sistem otomatis untuk menentukan kemiripan program. Pada saat ini, aplikasi utama \textit{Moss} telah digunakan untuk mendeteksi plagiarisme pada kelas \textit{programming}. Pengguna dapat mengirimkan kode final (yang dipilih oleh \textit{students} sebagai \textit{Final Submission}) ke \textit{server Moss} dengan satu klik~\cite{mjnaderi:14:sharifjudgedoc}.\\
 
 Sebelum menggunakan \textit{Moss} ada beberapa hal yang harus diperhatikan yaitu:
 \begin{itemize}
-	\item Pengguna harus mendapatkan \textit{Moss user id} dan mengaturnya di \textit{Sharif Judge}. Untuk mendapatkan \textit{Moss user id}, pengguna harus terlebih dahulu daftar pada halaman \\ \textit{http://theory.stanford.edu/~aiken/moss/}. Pengguna akan mendapatkan sebuah \textit{email} yang berisikan \textit{script perl}. \textit{Moss user id} berada pada \textit{script} tersebut. \\
-	Berikut potongan \textit{perl script} yang berisikan user id:
+	\item Pengguna harus mendapatkan \textit{Moss user id} dan mengaturnya di \textit{Sharif Judge}. Untuk mendapatkan \textit{Moss user id}, pengguna harus terlebih dahulu daftar pada halaman \path{http://theory.stanford.edu/~aiken/moss/}. Pengguna akan mendapatkan sebuah \textit{email} yang berisikan \textit{script perl}. \textit{Moss user id} berada pada \textit{script} tersebut. \\
+	Berikut potongan \textit{perl script} yang berisikan \textit{user id}:
 
-\begin{lstlisting}[backgroundcolor = \color{lightgray}]
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 ...
 
 $server = 'moss.stanford.edu';
@@ -932,9 +948,9 @@ $opt_d = 0;
 
 \end{lstlisting}
 
-\item Dapatkan \textit{user id} tersebut lalukan gunakan pada \textit{Sharif Judge} untuk mendetksi kecurangan. Pengguna dapat menyimpan \textit{user id} di Sharif Judge pada halaman \textit{Moss} dan \textit{Sharif Judge} akan menggunakan \textit{user id} tersebut di \textit{Moss perl script}.
+\item Dapatkan \textit{user id} tersebut lalukan gunakan pada \textit{Sharif Judge} untuk mendetksi kecurangan. Pengguna dapat menyimpan \textit{user id} di \textit{Sharif Judge} pada halaman \textit{Moss}. \textit{Sharif Judge} akan menggunakan \textit{user id} tersebut di \textit{Moss perl script}.
 
 \item \textit{Server} pengguna harus menginstal \textit{perl} untuk menggunakan \textit{Moss}.
 
-\item Pengguna dianjurkan untuk mendetek kode yang mirip setelah waktu tugas berakhir, karena \textit{students} masih dapat mengubah \textit{Final Submissions} mereka sebelum waktu habis. Dengan cara tersebut \textit{Sharif Judge} dapat mengirimkan \textit{Final submissions student} ke \textit{Moss}.
+\item Pengguna dianjurkan untuk mendetek kode yang mirip setelah waktu \textit{assignment} berakhir, karena para peserta masih dapat mengubah \textit{Final Submissions} masing-masing sebelum waktu habis. Dengan cara tersebut \textit{Sharif Judge} dapat mengirimkan \textit{Final submissions} para peserta ke \textit{server Moss}.
 \end{itemize}
