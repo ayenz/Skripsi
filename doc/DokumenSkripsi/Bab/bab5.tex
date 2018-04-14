@@ -269,3 +269,107 @@ Hasil implementasi dari rancangan perangkat lunak yang sudah dibuat ini terdiri 
 		\label{fig:sidemenu} 
 	\end{figure}
 \end{enumerate}
+
+\section{Pengujian Fungsional}
+Pengujian fungsional bertujuan untuk memastikan bahwa perangkat lunak dapat berfungsi sebagaimana mestinya. Jika fungsi yang telah diimplementasi tidak berjalan dengan baik, maka perangkat lunak masih memiliki kekurangan.
+	\subsection{Mengunduh Soal (deskripsi \& PDF) yang Telah Dibatasi}
+	Hasil yang diharapkan dari pengujian fungsi ini adalah soal dapat dibatasi sesuai dengan ketentuan yang telah dirancang pada \hyperref[chap:batassoal]{sub bab 4.3}. Pengujian dimulai dengan membuat empat buah \textit{assignment}.
+	\begin{figure}[H]
+		\centering  
+		\includegraphics[width=1.0\textwidth]{/pengujian/batasisoal/listassignment}  
+		\caption[Empat Buah \textit{Assignment} yang Dibuat]{Empat Buah \textit{Assignment} yang Dibuat} 
+		\label{fig:listassignment} 
+	\end{figure}
+	
+	\textit{Assignment} dengan nama "\textit{Participant} Hanya \textit{Username} Tertentu", merupakan \textit{assignment} yang dikhususkan untuk peserta tertentu. \textit{Assignment} dengan nama "\textit{Assignment} Belum Mulai", merupakan \textit{assignment} yang belum dimulai. \textit{Assignment} dengan nama "\textit{Assignment} Telah Selesai", merupakan \textit{assignment} yang waktu pengumpulannya telah habis. \textit{Assignment} dengan nama "\textit{Closed Assignment}", merupakan \textit{assignment} yang memiliki status \textit{close}. \\
+	
+	Jika peserta yang tidak terdaftar sebagai \textit{participant}, mencoba untuk mengunduh \textit{assignment} dengan nama "\textit{Participant} Hanya \textit{Username} Tertentu", maka muncul pesan \textit{error "You are not registered for submitting."} seperti \hyperref[fig:np]{Gambar 5.7} 
+	\begin{figure}[H]
+		\centering  
+		\includegraphics[width=1.0\textwidth]{/pengujian/batasisoal/np}  
+		\caption[Pesan \textit{Error "You are not registered for submitting."}]{Pesan \textit{Error "You are not registered for submitting."}} 
+		\label{fig:np} 
+	\end{figure}
+
+	Jika peserta mencoba untuk mengunduh \textit{assignment} dengan nama "\textit{Assignment} Belum Mulai", maka muncul pesan \textit{error "Selected assignment has not started."} seperti \hyperref[fig:ns]{Gambar 5.8} 
+	\begin{figure}[H]
+		\centering  
+		\includegraphics[width=1.0\textwidth]{/pengujian/batasisoal/ns}  
+		\caption[Pesan \textit{Error "Selected assignment has not started."}]{Pesan \textit{Error "Selected assignment has not started."}} 
+		\label{fig:ns} 
+	\end{figure}
+
+	Jika peserta mencoba untuk mengunduh \textit{assignment} dengan nama "\textit{Assignment} Telah Selesai", maka muncul pesan \textit{error "Selected assignment has finished."} seperti \hyperref[fig:f]{Gambar 5.9} 
+	\begin{figure}[H]
+		\centering  
+		\includegraphics[width=1.0\textwidth]{/pengujian/batasisoal/f}  
+		\caption[Pesan\textit{ Error "Selected assignment has finished."}]{Pesan \textit{Error "Selected assignment has finished."}} 
+		\label{fig:f} 
+	\end{figure}
+
+	Jika peserta mencoba untuk mengunduh \textit{assignment} dengan nama "\textit{Closed Assignment}", maka muncul pesan \textit{error "Selected assignment has been closed."} seperti \hyperref[fig:c]{Gambar 5.10} 
+	\begin{figure}[H]
+		\centering  
+		\includegraphics[width=1.0\textwidth]{/pengujian/batasisoal/c}  
+		\caption[Pesan \textit{Error "Selected assignment has been closed."}]{Pesan \textit{Error "Selected assignment has been closed."}} 
+		\label{fig:c} 
+	\end{figure}
+
+	\subsection{Membuat \textit{Assignment} yang Menerima \textit{File} dengan Ekstensi TXT}
+	Hasil yang diharapkan dari pengujian fungsi ini adalah dosen dapat membuat \textit{assignment} yang bisa menerima \textit{file} dengan ekstensi TXT dan para peserta bisa mengumpulkan file dengan ekstensi TXT ke \textit{assignment} tersebut. Pengujian dimulai dengan membuat \textit{assignment} yang bersifat "\textit{Upload Only}" dan menambahkan '\textit{txt}' pada \textit{text field Allowed Language}.
+	\begin{figure}[H]
+		\centering  
+		\includegraphics[width=1.0\textwidth]{/pengujian/uploadtxt/uploadtxt}  
+		\caption[Pembuatan \textit{Assignment} Upload TXT]{Pembuatan \textit{Assignment} Upload TXT} 
+		\label{fig:uploadtxt} 
+	\end{figure}
+	
+	Setelah \textit{assignment} berhasil dibuat, selanjutnya dicoba untuk mengumpulkan \textit{file} dengan ekstensi TXT pada halaman \textit{Submit} seperti \hyperref[fig:submittxt]{Gambar 5.12}. Jika berhasil mengumpulkan \textit{file} TXT, maka peserta langsung diarahkan ke halaman \textit{All Submission} seperti \hyperref[fig:resultttxt]{Gambar 5.13}
+	
+	\begin{figure}[H]
+		\centering  
+		\includegraphics[scale=0.5]{/pengujian/uploadtxt/submittxt}  
+		\caption[\textit{Submit File} TXT]{\textit{Submit File} TXT} 
+		\label{fig:submittxt} 
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering  
+		\includegraphics[width=1.0\textwidth]{/pengujian/uploadtxt/resulttxt}  
+		\caption[Halaman \textit{All Submission} setelah Mengumpulkan \textit{File} TXT]{Halaman \textit{All Submission} setelah Mengumpulkan \textit{File} TXT} 
+		\label{fig:resultttxt} 
+	\end{figure}
+
+	Pengujian dilanjutkan dengan mengunduh dan mencocokan isi dari \textit{file} TXT yang baru saja dikumpulkan. Jika isi dari \textit{file} TXT hasil unduh sama dengan \textit{file} TXT utama, maka fitur ini dapat berjalan dengan baik. \hyperref[fig:resultttxt]{Gambar 5.14} merupakan isi dari \textit{file} TXT yang dikumpulkan dan \hyperref[fig:resultttxt]{Gambar 5.15} isi dari \textit{file} TXT utama.
+	
+	\begin{figure}[H]
+		\centering  
+		\includegraphics[scale=0.5]{/pengujian/uploadtxt/fileunduh}  
+		\caption[\textit{File} TXT Hasil Unduh]{\textit{File} TXT Hasil Unduh} 
+		\label{fig:fileunduh} 
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering  
+		\includegraphics[scale=0.5]{/pengujian/uploadtxt/fileutama}  
+		\caption[File TXT Utama]{File TXT Utama} 
+		\label{fig:fileutama} 
+	\end{figure}
+
+	\subsection{Mengakses Halaman \textit{24-hour Logs}}
+	Hasil yang diharapkan dari pengujian fungsi ini adalah halaman \textit{24-hour Logs} dapat menampilkan seluruh aktivitas \textit{login} dari pengguna. Pengujian dimulai dari \textit{login} menggunakan \textit{username} dengan \textit{role admin}. Setelah berhasil \textit{login}, akses halaman \textit{24-hour Logs} yang terletak di paling bawah \textit{side menu}. Halaman \textit{24-hour Logs} tampil seperti \hyperref[fig:logs]{Gambar 5.16}
+	\begin{figure}[H]
+		\centering  
+		\includegraphics[width=1.0\textwidth]{/pengujian/logs/logs}  
+		\caption[Halaman \textit{24-hour Logs} yang Tampil]{Halaman \textit{24-hour Logs} yang Tampil} 
+		\label{fig:logs} 
+	\end{figure}
+
+	Pengujian dilanjutkan dengan mencoba \textit{login} menggunakan \textit{username} yang sama namun menggunakan \textit{ip address} yang berbeda. Hasil yang diharapkan adalah halaman \textit{24-hour Logs} dapat mencatat dan menampilkan Login ID yang menggunakan \textit{ip address berbeda}.
+	\begin{figure}[H]
+		\centering  
+		\includegraphics[width=1.0\textwidth]{/pengujian/logs/logs1}  
+		\caption[Halaman \textit{24-hour Logs} Mencatat Aktivitas \textit{Login} Pengguna]{Halaman \textit{24-hour Logs} Mencatat Aktivitas \textit{Login} Pengguna} 
+		\label{fig:logs1} 
+	\end{figure}
+	Terlihat pada \hyperref[fig:logs1]{Gambar 5.17}, \textit{username} stillmen pertama kali \textit{login} menggunakan \textit{ip address} 10.10.100.1 (baris 4). Setelah mencoba untuk \textit{login} menggunakan \textit{ip address} yang berbeda, halaman \textit{24-hour Logs} dapat mencatat dan menampilkan \textit{Login ID} dari \textit{username} stillmen (baris 2).
