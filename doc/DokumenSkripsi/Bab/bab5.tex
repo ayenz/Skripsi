@@ -373,3 +373,45 @@ Pengujian fungsional bertujuan untuk memastikan bahwa perangkat lunak dapat berf
 		\label{fig:logs1} 
 	\end{figure}
 	Terlihat pada \hyperref[fig:logs1]{Gambar 5.17}, \textit{username} stillmen pertama kali \textit{login} menggunakan \textit{ip address} 10.10.100.1 (baris 4). Setelah mencoba untuk \textit{login} menggunakan \textit{ip address} yang berbeda, halaman \textit{24-hour Logs} dapat mencatat dan menampilkan \textit{Login ID} dari \textit{username} stillmen (baris 2).
+	
+	\subsection{Mendaftarkan Peserta Menggunakan Tambahan Parameter "\textit{Display Name}"}
+	Hasil yang diharapkan dari pengujian fungsi ini adalah peserta yang didaftarkan langsung memiliki \textit{Display Name}. Pengujian dimulai dengan menekan tombol \textit{Add Users} pada halaman \textit{Users}. Gunakan parameter "pengguna1,pengguna1@judge.com,Pengguna Satu,penggunaa1,student" untuk menambah peserta baru seperti \hyperref[fig:useradd]{Gambar 5.18}
+	\begin{figure}[H]
+		\centering  
+		\includegraphics[width=1.0\textwidth]{/pengujian/displayname/add}  
+		\caption[Halaman \textit{Add User}]{Halaman \textit{Add User}} 
+		\label{fig:useradd} 
+	\end{figure}
+
+	Jika pengguna baru berhasil ditambahkan, maka akan muncul pesan bahwa pengguna tersebut berhasil didaftarkan.
+	\begin{figure}[H]
+		\centering  
+		\includegraphics[width=1.0\textwidth]{/pengujian/displayname/success}  
+		\caption[Pengguna Berhasil Didaftarkan]{Pengguna Berhasil Didaftarkan} 
+		\label{fig:success} 
+	\end{figure}
+
+	Pengujian dilanjutkan dengan \textit{login} menggunakan \textit{user} yang baru didaftarkan dan mengecek \textit{Display Name}. \hyperref[fig:dp]{Gambar 5.20} menunjukan bahwa \textit{Display Name} yang muncul sesuai dengan parameter \textit{Display Name} yang telah dimasukan sebelumnya.
+	\begin{figure}[H]
+		\centering  
+		\includegraphics[width=1.0\textwidth]{/pengujian/displayname/dp}  
+		\caption[\textit{Display Name} yang Tampil Sesuai dengan Parameter yang Dimasukan]{\textit{Display Name} yang Tampil Sesuai dengan Parameter yang Dimasukan} 
+		\label{fig:dp} 
+	\end{figure}
+
+	\subsection{\textit{Disable Display Name} Peserta Menggunakan Fitur "\textit{Lock Student's Display Name}"}
+	Hasil yang diharapkan dari pengujian fungsi ini adalah \textit{text field Display Name} pada halaman \textit{Profile} menjadi \textit{disable}, sehingga para peserta tidak dapat mengubahnya. Pengujian dimulai dengan mengaktifkan fitur \textit{Lock Student's Display Name} pada halaman \textit{Settings} seperti \hyperref[fig:dp]{Gambar 5.21}.
+	\begin{figure}[H]
+		\centering  
+		\includegraphics[width=1.0\textwidth]{/pengujian/lock/aktif}  
+		\caption[Mengaktifkan Fitur \textit{Lock Student's Display Name}]{Mengaktifkan Fitur \textit{Lock Student's Display Name}} 
+		\label{fig:aktif} 
+	\end{figure}
+	
+	Pengujian dilanjutkan dengan mengecek \textit{text field Display Name} pada halaman \textit{Profile}. \hyperref[fig:dp]{Gambar 5.22} menunjukan bahwa \textit{text field Display Name} telah disable.
+	\begin{figure}[H]
+		\centering  
+		\includegraphics[width=1.0\textwidth]{/pengujian/lock/disable}  
+		\caption[\textit{Text Field Display Name} Menjadi \textit{Disable}]{\textit{Text Field Display Name} Menjadi \textit{Disable}} 
+		\label{fig:disable} 
+	\end{figure}
