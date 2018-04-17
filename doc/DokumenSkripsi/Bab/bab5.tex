@@ -3,103 +3,80 @@
 
 Bab ini membahas tentang implementasi dan pengujian perangkat lunak berdasarkan rancangan yang sudah dibuat. Ada dua jenis pengujian yang dilakukan, yaitu pengujian fungsional dan pengujian eksperimental. Bab ini juga membahas tentang lingkungan yang digunakan untuk pengujian perangkat lunak ini.
 
-\section{Lingkungan untuk Pengujian}
-Pengujian fungsional dan pengujian eksperimental dilakukan menggunakan dua jenis lingkungan yang berbeda. 
-\begin{enumerate}
-	\item Pengujian Fungsional. \\
-	Berikut spesifikasi perangkat keras dan perangkat lunak yang digunakan untuk melakukan pengujian fungsional
-	\begin{table}[H] %atau h saja untuk "kira kira di sini" 
-		\caption{Lingkungan perangkat keras untuk pengujian fungsional}
-		\label{tab:lingkunganpkpf}
-		\resizebox{\textwidth}{!}{%
-			\begin{tabular}{|l|l|}
-				\hline
-				\textbf{Parameter} & \textbf{Nilai} \\
-				\hline
-				\textit{Processor} & \textit{Intel Core i5 4200u}\\
-				\hline
-				\textit{Graphics Processing Unit (GPU)} & \textit{Intel HD Graphics HD4000} dan \textit{Nvidia GeForce 840M}\\
-				\hline
-				\textit{Random Access Memory (RAM)}& 12.00GB DDR3\\
-				\hline
-				\textit{Storage} & 120GB \textit{SSD} dan 1TB \textit{Harddisk}\\
-				\hline
-		\end{tabular}}
-	\end{table}
+\section{Lingkungan untuk Implementasi dan Pengujian}
+Berikut spesifikasi lingkungan perangkat keras dan perangkat lunak yang digunakan untuk melakukan implementasi dan pengujian perangkat lunak
+\begin{table}[H] %atau h saja untuk "kira kira di sini" 
+	\caption{Lingkungan Perangkat Keras}
+	\label{tab:lingkunganpkpf}
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{|l|l|}
+			\hline
+			\textbf{Parameter} & \textbf{Nilai} \\
+			\hline
+			\textit{Processor} & \textit{Intel Core i5 4200u}\\
+			\hline
+			\textit{Graphics Processing Unit (GPU)} & \textit{Intel HD Graphics HD4000} dan \textit{Nvidia GeForce 840M}\\
+			\hline
+			\textit{Random Access Memory (RAM)}& 12.00GB DDR3\\
+			\hline
+			\textit{Storage} & 120GB \textit{SSD} dan 1TB \textit{Harddisk}\\
+			\hline
+	\end{tabular}}
+\end{table}
 
-	\begin{table}[H] %atau h saja untuk "kira kira di sini" 
-		\caption{Lingkungan perangkat lunak untuk pengujian fungsional}
-		\label{tab:lingkunganplpf}
-		\resizebox{\textwidth}{!}{%
-			\begin{tabular}{|l|l|}
-				\hline
-				\textbf{Parameter} & \textbf{Nilai} \\
-				\hline
-				Sistem Operasi & Windows 10 \textit{10 Education 64-bit}\\
-				\hline
-				Bahasa Pemrograman & PHP, JavaScript, CSS dan HTML\\
-				\hline
-				\textit{Text Editor} & \textit{Atom}\\
-				\hline
-				\textit{Framework} & \textit{CodeIgniter}\\
-				\hline
-				\multirow{4}{*}{Perangkat Lunak pendukung} 	& \textit{XAMPP Control Panel} v3.2.2\\
-															& \textit{Google Chrome Version} 65.0.3325.181 (Official Build) (64-bit)\\
-															& \textit{Firefox Quantum} 59.0.2 (64-bit)\\
-															& \textit{Microsoft Excel} 2016\\
-				\hline
-		\end{tabular}}
-	\end{table}
-
-	\item Pengujian Eksperimental. \\
-	Berikut spesifikasi perangkat keras dan perangkat lunak yang digunakan untuk melakukan pengujian eksperimental
-	\begin{table}[H] %atau h saja untuk "kira kira di sini" 
-		\caption{Lingkungan perangkat keras untuk pengujian eksperimental}
-		\centering
-		\label{tab:lingkunganpkpe}
-		%\resizebox{\textwidth}{!}{%
-			\begin{tabular}{|l|l|}
-				\hline
-				\textbf{Parameter} & \textbf{Nilai} \\
-				\hline
-				\textit{Processor} & \textit{Intel Xeon E5-2603v4}\\
-				\hline
-				\textit{Graphics Processing Unit (GPU)} & \textit{AMD RADEON R7 240}\\
-				\hline
-				\textit{Random Access Memory (RAM)}& 8.00GB DDR4\\
-				\hline
-				\textit{Storage} & 1TB \textit{Harddisk}\\
-				\hline
-		\end{tabular}%}
-	\end{table}
-	
-	\begin{table}[h] %atau h saja untuk "kira kira di sini" 
-		\caption{Lingkungan perangkat lunak untuk pengujian eksperimental}
-		\label{tab:lingkunganplpe}
-		\centering
-		%\resizebox{\textwidth}{!}{%
-			\begin{tabular}{|l|l|}
-				\hline
-				\textbf{Parameter} & \textbf{Nilai} \\
-				\hline
-				Sistem Operasi & Ubuntu --\\
-				\hline
-				\multirow{4}{*}{Perangkat Lunak pendukung} 	& Apache Server\\
-															& MySQL \\
-															& PHP\\
-															& phpMyAdmin\\
-				\hline
-		\end{tabular}%}
-	\end{table}
-\end{enumerate}
+\begin{table}[H] %atau h saja untuk "kira kira di sini" 
+	\caption{Lingkungan Perangkat Lunak}
+	\label{tab:lingkunganplpf}
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{|l|l|}
+			\hline
+			\textbf{Parameter} & \textbf{Nilai} \\
+			\hline
+			Sistem Operasi & Windows 10 \textit{10 Education 64-bit}\\
+			\hline
+			Bahasa Pemrograman & PHP, JavaScript, CSS dan HTML\\
+			\hline
+			\textit{Text Editor} & \textit{Atom}\\
+			\hline
+			\textit{Framework} & \textit{CodeIgniter}\\
+			\hline
+			\multirow{4}{*}{Perangkat Lunak pendukung} 	& \textit{XAMPP Control Panel} v3.2.2\\
+														& \textit{Google Chrome Version} 65.0.3325.181 (Official Build) (64-bit)\\
+														& \textit{Firefox Quantum} 59.0.2 (64-bit)\\
+														& \textit{Microsoft Excel} 2016\\
+			\hline
+	\end{tabular}}
+\end{table}
 
 \section{Implementasi}
-Hasil implementasi dari rancangan perangkat lunak yang sudah dibuat ini terdiri dari tiga bagian, yaitu
+Hasil implementasi dari rancangan perangkat lunak yang sudah dibuat, terdiri dari tiga bagian, yaitu
 \begin{enumerate}
-	\item Kode program \\
-	Perubahan dan penambahan kode program untuk mengimplementasi kebutuhan \textit{Sharif Judge}, ditulis dalam bahasa pemrograman PHP. Seluruh perubahan kode program telah dijabarkan dalam setiap sub bab pada bab 4. Kode program untuk halaman \textit{Logs} dan \textit{Hall of Fame} dapat dilihat di bab Lampiran --.
+	\item Kode Program \\
+	Perubahan dan penambahan kode program untuk mengimplementasi kebutuhan \textit{Sharif Judge}, ditulis dalam bahasa pemrograman PHP. Seluruh perubahan kode program telah dijabarkan dalam setiap sub bab pada bab 4. Kode program untuk halaman \textit{Logs} dapat dilihat di \hyperref[lamp:kodeprogramhalamanlogs]{Lampiran A}. Kode program untuk halaman \textit{Hall of Fame} dapat dilihat di \hyperref[lamp:kodeprogramhalamanhof]{Lampiran B}.
 	\item Basis Data \\
-	Terdapat penambahan \textit{key} dan \textit{value} dalam mengimplementasi kebutuhan \textit{Sharif Judge} pada sub bab 4.7. Pada tabel \textit{shj\_settings} ditambahkan \textit{shj\_key} dengan nama \textit{lock\_student\_display\_name} dan \textit{shj\_value} dengan nilai 0. Berikut struktur tabel \textit{shj\_settings}
+	Terdapat penambahan tabel dalam mengimplementasi kebutuhan \textit{Sharif Judge} pada \hyperref[chap:logs]{sub bab 4.5}. Tabel tersebut diberi nama \textit{shj\_logins}. Berikut struktur tabel \textit{shj\_logins}
+	\begin{table}[H] %atau h saja untuk "kira kira di sini"
+		\centering 
+		\caption{Struktur Tabel \textit{shj\_logins}}
+		\label{tab:tabellogsfix}
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			\textbf{Atribut} & \textbf{Tipe Data} & \textbf{Ukuran}  & \textbf{Default} \\
+			\hline
+			\textit{login\_id (primary key)} & int & 11  & None \\
+			\hline
+			\textit{username} & varchar & 20  & None \\
+			\hline
+			\textit{ip\_address} & varchar & 15  & None \\
+			\hline
+			\textit{timestamp} & timestamp & 11  & current\_timestamp \\
+			\hline
+			\textit{last\_24h\_login\_id}	 & int & 11  & null \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	Terdapat penambahan \textit{key} dan \textit{value} dalam mengimplementasi kebutuhan \textit{Sharif Judge} pada \hyperref[chap:lock]{sub bab 4.7}. Pada tabel \textit{shj\_settings} ditambahkan \textit{shj\_key} dengan nama \textit{lock\_student\_display\_name} dan \textit{shj\_value} dengan nilai 0. Berikut struktur tabel \textit{shj\_settings}
 	
 	\begin{table}[H] %atau h saja untuk "kira kira di sini"
 		\centering 
@@ -165,7 +142,7 @@ Hasil implementasi dari rancangan perangkat lunak yang sudah dibuat ini terdiri 
 		\end{tabular}}
 	\end{table}
 	
-	Terdapat penambahan atribut dalam mengimplementasi kebutuhan \textit{Sharif Judge} pada sub bab 4.8. Pada tabel \textit{shj\_assignments} ditambahkan atribut baru dengan nama \textit{archived\_assignment}. Berikut struktur tabel \textit{shj\_assignments}
+	Terdapat penambahan atribut dalam mengimplementasi kebutuhan \textit{Sharif Judge} pada \hyperref[chap:arc]{sub bab 4.8}. Pada tabel \textit{shj\_assignments} ditambahkan atribut baru dengan nama \textit{archived\_assignment}. Berikut struktur tabel \textit{shj\_assignments}
 	
 	\begin{table}[H] %atau h saja untuk "kira kira di sini"
 		\centering 
@@ -209,28 +186,6 @@ Hasil implementasi dari rancangan perangkat lunak yang sudah dibuat ini terdiri 
 		\end{tabular}%}
 	\end{table}
 
-	Terdapat penambahan tabel dalam mengimplementasi kebutuhan \textit{Sharif Judge} pada sub bab 4.5. Tabel tersebut diberi nama \textit{shj\_logins}. Berikut struktur tabel \textit{shj\_logins}
-	\begin{table}[H] %atau h saja untuk "kira kira di sini"
-		\centering 
-		\caption{Struktur Tabel \textit{shj\_logins}}
-		\label{tab:tabellogsfix}
-		\begin{tabular}{|c|c|c|c|}
-			\hline
-			\textbf{Atribut} & \textbf{Tipe Data} & \textbf{Ukuran}  & \textbf{Default} \\
-			\hline
-			\textit{login\_id (primary key)} & int & 11  & None \\
-			\hline
-			\textit{username} & varchar & 20  & None \\
-			\hline
-			\textit{ip\_address} & varchar & 15  & None \\
-			\hline
-			\textit{timestamp} & timestamp & 11  & current\_timestamp \\
-			\hline
-			\textit{last\_24h\_login\_id}	 & int & 11  & null \\
-			\hline
-		\end{tabular}
-	\end{table}
-
 	\item Tampilan \\
 	Tampilan untuk untuk pengembangan Sharif Judge ini dirancang bedasarkan rancangan tampilan yang sudah dibuat. Berikut beberapa tampilan halaman baru pada pengembangan Sharif Judge
 	
@@ -271,9 +226,10 @@ Hasil implementasi dari rancangan perangkat lunak yang sudah dibuat ini terdiri 
 \end{enumerate}
 
 \section{Pengujian Fungsional}
-Pengujian fungsional bertujuan untuk memastikan bahwa perangkat lunak dapat berfungsi sebagaimana mestinya. Jika fungsi yang telah diimplementasi tidak berjalan dengan baik, maka perangkat lunak masih memiliki kekurangan.
-	\subsection{Mengunduh Soal (deskripsi \& PDF) yang Telah Dibatasi}
-	Hasil yang diharapkan dari pengujian fungsi ini adalah soal dapat dibatasi sesuai dengan ketentuan yang telah dirancang pada \hyperref[chap:batassoal]{sub bab 4.3}. Pengujian dimulai dengan membuat empat buah \textit{assignment}.
+%Pengujian fungsional bertujuan untuk memastikan bahwa perangkat lunak dapat berfungsi sebagaimana mestinya. Jika fungsi yang telah diimplementasi tidak berjalan dengan baik, maka perangkat lunak masih memiliki kekurangan.
+Pengujian fungsional bertujuan untuk memastikan setiap fitur baru pada SharIF Judge dapat berfungsi dengan baik.
+	\subsection{Mengunduh Soal (deskripsi \& PDF) yang Telah Dibatasi} 
+	Hasil yang diharapkan dari pengujian fitur ini adalah soal dapat dibatasi sesuai dengan ketentuan yang telah dirancang pada \hyperref[chap:batassoal]{sub bab 4.3}. Pengujian dimulai dengan membuat empat buah \textit{assignment}.
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/batasisoal/listassignment}  
@@ -316,7 +272,7 @@ Pengujian fungsional bertujuan untuk memastikan bahwa perangkat lunak dapat berf
 	\end{figure}
 
 	\subsection{Membuat \textit{Assignment} yang Menerima \textit{File} dengan Ekstensi TXT}
-	Hasil yang diharapkan dari pengujian fungsi ini adalah \textit{assignment} yang diibuat bisa menerima \textit{file} dengan ekstensi TXT dan pengguna bisa mengumpulkan file dengan ekstensi TXT ke \textit{assignment} tersebut. Pengujian dimulai dengan membuat \textit{assignment} yang bersifat "\textit{Upload Only}" dan menambahkan '\textit{txt}' pada \textit{text field Allowed Language}.
+	Hasil yang diharapkan dari pengujian fitur ini adalah \textit{assignment} yang dibuat bisa menerima \textit{file} dengan ekstensi TXT dan pengguna bisa mengumpulkan file dengan ekstensi TXT ke \textit{assignment} tersebut. Pengujian dimulai dengan membuat \textit{assignment} yang bersifat "\textit{Upload Only}" dan menambahkan '\textit{txt}' pada \textit{text field Allowed Language}.
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/uploadtxt/uploadtxt}  
@@ -357,7 +313,7 @@ Pengujian fungsional bertujuan untuk memastikan bahwa perangkat lunak dapat berf
 	\end{figure}
 
 	\subsection{Mengakses Halaman \textit{24-hour Logs}}
-	Hasil yang diharapkan dari pengujian fungsi ini adalah halaman \textit{24-hour Logs} dapat menampilkan seluruh aktivitas \textit{login} dari pengguna. Pengujian dimulai dari \textit{login} menggunakan \textit{username} dengan \textit{role admin}. Setelah berhasil \textit{login}, akses halaman \textit{24-hour Logs} yang terletak di paling bawah \textit{side menu}. Halaman \textit{24-hour Logs} tampil seperti \hyperref[fig:logs]{Gambar 5.16}
+	Hasil yang diharapkan dari pengujian fitur ini adalah halaman \textit{24-hour Logs} dapat menampilkan seluruh aktivitas \textit{login} dari pengguna. Pengujian dimulai dari \textit{login} menggunakan \textit{username} dengan \textit{role admin}. Setelah berhasil \textit{login}, akses halaman \textit{24-hour Logs} yang terletak di paling bawah \textit{side menu}. Halaman \textit{24-hour Logs} tampil seperti \hyperref[fig:logs]{Gambar 5.16}
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/logs/logs}  
@@ -375,7 +331,7 @@ Pengujian fungsional bertujuan untuk memastikan bahwa perangkat lunak dapat berf
 	Terlihat pada \hyperref[fig:logs1]{Gambar 5.17}, \textit{username} stillmen pertama kali \textit{login} menggunakan \textit{ip address} 10.10.100.1 (baris 4). Setelah mencoba untuk \textit{login} menggunakan \textit{ip address} yang berbeda, halaman \textit{24-hour Logs} dapat mencatat dan menampilkan \textit{Login ID} dari \textit{username} stillmen (baris 2).
 	
 	\subsection{Mendaftarkan Peserta Menggunakan Tambahan Parameter "\textit{Display Name}"}
-	Hasil yang diharapkan dari pengujian fungsi ini adalah peserta yang didaftarkan langsung memiliki \textit{Display Name}. Pengujian dimulai dengan menekan tombol \textit{Add Users} pada halaman \textit{Users}. Gunakan parameter "pengguna1,pengguna1@judge.com,Pengguna Satu,penggunaa1,student" untuk menambah peserta baru seperti \hyperref[fig:useradd]{Gambar 5.18}
+	Hasil yang diharapkan dari pengujian fitur ini adalah peserta yang didaftarkan langsung memiliki \textit{Display Name}. Pengujian dimulai dengan menekan tombol \textit{Add Users} pada halaman \textit{Users}. Gunakan parameter "pengguna1,pengguna1@judge.com,Pengguna Satu,penggunaa1,student" untuk menambah peserta baru seperti \hyperref[fig:useradd]{Gambar 5.18}
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/displayname/add}  
@@ -400,7 +356,7 @@ Pengujian fungsional bertujuan untuk memastikan bahwa perangkat lunak dapat berf
 	\end{figure}
 
 	\subsection{\textit{Disable Display Name} Peserta Menggunakan Fitur "\textit{Lock Student's Display Name}"}
-	Hasil yang diharapkan dari pengujian fungsi ini adalah \textit{text field Display Name} pada halaman \textit{Profile} menjadi \textit{disable}, sehingga para peserta tidak dapat mengubahnya. Pengujian dimulai dengan mengaktifkan fitur \textit{Lock Student's Display Name} pada halaman \textit{Settings} seperti \hyperref[fig:dp]{Gambar 5.21}.
+	Hasil yang diharapkan dari pengujian fitur ini adalah \textit{text field Display Name} pada halaman \textit{Profile} menjadi \textit{disable}, sehingga para peserta tidak dapat mengubahnya. Pengujian dimulai dengan mengaktifkan fitur \textit{Lock Student's Display Name} pada halaman \textit{Settings} seperti \hyperref[fig:dp]{Gambar 5.21}.
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/lock/aktif}  
@@ -417,7 +373,7 @@ Pengujian fungsional bertujuan untuk memastikan bahwa perangkat lunak dapat berf
 	\end{figure}
 
 	\subsection{Menambahkan \textit{Assignment} yang Mengaktifkan Fitur "\textit{Archived Assignment}"}
-	Hasil yang diharapkan dari pengujian fungsi ini adalah \textit{\textit{assignment}} yang diibuat memiliki batas waktu pengumpulan sampai tanggal 18 Januari 2038. Pengujian dimulai dengan membuat \textit{assignment} dan mengaktifkan fitur \textit{Archived Assignment} pada halaman \textit{Add Assignment} seperti \hyperref[fig:arc]{Gambar 5.23}.
+	Hasil yang diharapkan dari pengujian fitur ini adalah \textit{\textit{assignment}} yang diibuat memiliki batas waktu pengumpulan sampai tanggal 18 Januari 2038. Pengujian dimulai dengan membuat \textit{assignment} dan mengaktifkan fitur \textit{Archived Assignment} pada halaman \textit{Add Assignment} seperti \hyperref[fig:arc]{Gambar 5.23}.
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/arcass/addarc}  
@@ -442,7 +398,7 @@ Pengujian fungsional bertujuan untuk memastikan bahwa perangkat lunak dapat berf
 	\end{figure}
 
 	\subsection{Mengakses Halaman \textit{Hall of Fame}}
-	Hasil yang diharapkan dari pengujian fungsi ini adalah halaman \textit{Hall of Fame} dapat menampilkan total nilai semua pengguna dari setiap \textit{assignment} yang telah dikumpulkan. Pengujian dimulai dengan mengakses halaman \textit{Hall of Fame} yang terletak di bawah \textit{side menu Scoreboard}. Halaman \textit{Hall of Fame} tampil seperti \hyperref[fig:halhof]{Gambar 5.26}
+	Hasil yang diharapkan dari pengujian fitur ini adalah halaman \textit{Hall of Fame} dapat menampilkan total nilai semua pengguna dari setiap \textit{assignment} yang telah dikumpulkan. Pengujian dimulai dengan mengakses halaman \textit{Hall of Fame} yang terletak di bawah \textit{side menu Scoreboard}. Halaman \textit{Hall of Fame} tampil seperti \hyperref[fig:halhof]{Gambar 5.26}
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/hof/hof}  
@@ -458,8 +414,17 @@ Pengujian fungsional bertujuan untuk memastikan bahwa perangkat lunak dapat berf
 		\label{fig:dethof} 
 	\end{figure}
 
+	\subsection{\textit{Login} Menggunakan \textit{Username} yang Terdaftar pada \textit{Server RADIUS}}
+	Hasil yang diharapkan dari pengujian fitur ini adalah pengguna dapat \textit{login} ke \textit{SharIF Judge} menggunakan \textit{username} yang terdaftar pada \textit{server RADIUS}. \textit{Username} yang digunakan dalam pengujian fitur ini adalah xxxxx. Pengujian dimulai dengan \textit{login} menggunakan \textit{username} xxxxxx ke perangkat lunak \textit{SharIF Judge} yang telah diinstal pada \textit{server} lab FTIS UNPAR (selanjutnya digunakan untuk pengujian eksperimental). \textit{SharIF Judge} yang telah diinstal, dapat diakses pada \textit{URL} \path{http://asd.labftis.net/}. \hyperref[fig:unduh]{Gambar 5.28} menunjukan bahwa \textit{username} xxxxx berhasil \textit{login} ke \textit{SharIF Judge}.
+	\begin{figure}[H]
+		\centering  
+		\includegraphics[scale=0.5]{ular-jpg}  
+		\caption[Berhasil \textit{Login} ke \textit{SharIF Judge}]{Berhasil \textit{Login} ke \textit{SharIF Judge}} 
+		\label{fig:radius} 
+	\end{figure}
+
 	\subsection{Mengunduh \textit{File Excel} dari Halaman \textit{All Submission} dan \textit{Users}}
-	Hasil yang diharapkan dari pengujian fungsi ini adalah \textit{file excel} berhasil diunduh dari halaman \textit{All Submission} dan \textit{Users}. \textit{File excel} yang diunduh pada halaman \textit{All Submission} berisikan daftar seluruh jawaban pengguna \textit{Sharif Judge}. \textit{File excel} yang diunduh pada halaman \textit{Users} berisikan dafttar seluruh pengguna \textit{Sharif Judge}. Pengujian dimulai dengan mengklik tombol unduh \textit{excel} yang terletak di atas halaman. \hyperref[fig:unduh]{Gambar 5.28} menunjukan letak tombol unduh \textit{excel} pada halaman \textit{Users}
+	Hasil yang diharapkan dari pengujian fitur ini adalah \textit{file excel} berhasil diunduh dari halaman \textit{All Submission} dan \textit{Users}. \textit{File excel} yang diunduh pada halaman \textit{All Submission} berisikan daftar seluruh jawaban pengguna \textit{SharIF Judge}. \textit{File excel} yang diunduh pada halaman \textit{Users} berisikan dafttar seluruh pengguna \textit{SharIF Judge}. Pengujian dimulai dengan mengklik tombol unduh \textit{excel} yang terletak di atas halaman. \hyperref[fig:unduh]{Gambar 5.29} menunjukan letak tombol unduh \textit{excel} pada halaman \textit{Users}
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[scale=0.5]{/pengujian/excel/letak}  
@@ -467,7 +432,7 @@ Pengujian fungsional bertujuan untuk memastikan bahwa perangkat lunak dapat berf
 		\label{fig:unduh} 
 	\end{figure}
 
-	\textit{Excel} yang diunduh dari halaman \textit{All Submission} bernama \textit{judge\_all\_submissions.xlsx} sedangkan halaman \textit{Users} bernama \textit{sharifjudge\_users.xlsx}. \textit{File excel} tersebut bisa dibuka menggunakan \textit{Microsoft Excel 2016}. \hyperref[fig:excelas]{Gambar 5.29} menunjukan isi dari \textit{excel judge\_all\_submissions.xlsx} dan \hyperref[fig:excelu]{Gambar 5.30} menunjukan isi dari \textit{excel sharifjudge\_users.xlsx}.
+	\textit{Excel} yang diunduh dari halaman \textit{All Submission} bernama \textit{judge\_all\_submissions.xlsx} sedangkan halaman \textit{Users} bernama \textit{sharifjudge\_users.xlsx}. \textit{File excel} tersebut bisa dibuka menggunakan \textit{Microsoft Excel 2016}. \hyperref[fig:excelas]{Gambar 5.30} menunjukan isi dari \textit{excel judge\_all\_submissions.xlsx} dan \hyperref[fig:excelu]{Gambar 5.31} menunjukan isi dari \textit{excel sharifjudge\_users.xlsx}.
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/excel/excelas}  
@@ -482,4 +447,170 @@ Pengujian fungsional bertujuan untuk memastikan bahwa perangkat lunak dapat berf
 		\label{fig:excelu} 
 	\end{figure}
 	
+\section{Pengujian Ekseprimental}
+Pengujian eksperimental dilakukan dengan cara menginstal perangkat lunak \textit{SharIF Judge} pada server lab FTIS UNPAR. SharIF Judge digunakan untuk mata kuliah Algoritma \& Struktur Data (ASD) semester genap 2017/2018. Selama pengujian berlangsung, terdapat beberapa persoalan yang muncul. Persoalan yang muncul dicatat ke dalam isu \textit{repository SharIF Judge} di \textit{GitHub}. Semua persoalan dapat dilihat di \path{https://github.com/ayenz/Sharif-Judge/issues}.
+
+	\subsection{\textit{Remove the Assignments Folder}}
+	Isu dengan kode unik \#4 meminta agar \textit{folder assignments} untuk dihapus. Hal ini bertujuan agar direktori \textit{URL} \path{/assignments} dapat diakses. \textit{Folder assignments} merupakan \textit{folder default} untuk menyimpan \textit{assignment}. \textit{Folder default} penyimpanan \textit{assignment} tersebut harus diubah terlebih dahulu. Untuk mengubah \textit{folder default} penyimpanan, diperlukan perubahan nilai pada halaman \textit{Settings} dan kode pada kelas \textit{Controller Install.php}. Selain mengubah \textit{folder default} penyimpanan \textit{assignment}, perubahan juga terjadi pada \textit{folder default tester} dan \textit{default timezone} yang bertujuan untuk merapihkan struktur direktori.
+	\begin{figure}[H]
+		\centering  
+		\includegraphics[width=1.0\textwidth]{/pengujian/set}  
+		\caption[Perubahan yang Terjadi pada Halaman \textit{Settings}]{Perubahan yang Terjadi pada Halaman \textit{Settings}} 
+		\label{fig:set} 
+	\end{figure}
 	
+	\hyperref[fig:set]{Gambar 5.32} menunjukan perubahan pada halaman \textit{Settings} terjadi pada \textit{text field} "\textit{Timezone}", "\textit{Full Path to tester}" dan "\textit{Full Path to assignments}". 
+	\begin{itemize}
+		\item Nilai yang digunakan untuk\textit{ text field "Full Path to assignments"} adalah \path{C:/xampp/htdocs/restricted/assignments}. Nilai tersebut memiliki arti bahwa \textit{folder default} penyimpanan \textit{assignment} diletakan pada direktori \path{C:/xampp/htdocs/restricted/assignments}.
+		\item Nilai yang digunakan untuk \textit{text field "Full Path to tester"} adalah \path{C:/xampp/htdocs/restricted/tester}. Nilai tersebut memiliki arti bahwa \textit{folder default tester} diletakan pada direktori \path{C:/xampp/htdocs/restricted/tester}.
+		\item Nilai yang digunakan untuk \textit{text field "Timezone"} adalah Asia/Jakarta. Nilai tersebut memiliki arti bahwa \textit{default timezone} yang digunakan pada \textit{SharIF Judge} mengikuti \textit{timezone} wilayah Asia/Jakarta.
+	\end{itemize}
+	
+	Perubahan kode pada kelas \textit{Controller Install.php} bertujuan agar penginstalan \textit{SharIF Judge} langsung menggunakan \textit{default} nilai seperti di atas. Berikut beberapa baris potongan kode program
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+...
+196	// insert default settings to table 'settings'
+197	$result = $this->db->insert_batch('settings', array(
+198	array('shj_key' => 'timezone',               'shj_value' => 'Asia/Tehran'),
+199	array('shj_key' => 'tester_path',            'shj_value' => '/home/shj/tester'),
+200	array('shj_key' => 'assignments_root',       'shj_value' => '/home/shj/assignments'),
+...
+\end{lstlisting}
+	Perubahan kode terjadi pada baris 198, 199, 200. Berikut hasil perubahan kode program yang terjadi di \textit{Install.php}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+...
+196	// insert default settings to table 'settings'
+197	$result = $this->db->insert_batch('settings', array(
+198	array('shj_key' => 'timezone',               'shj_value' => 'Asia/Jakarta'),
+199	array('shj_key' => 'tester_path',            'shj_value' => dirname(__FILE__, 3) . "/restricted/tester"),
+200	array('shj_key' => 'assignments_root',       'shj_value' => dirname(__FILE__, 3) . "/restricted/assignments"),
+...
+\end{lstlisting}
+	Setelah melakukan beberapa perubahan, folder assignment dapat dihapus.
+	
+	\subsection{\textit{Add User Email are not formatted correctly}}
+	Isu dengan kode unik \#5 mengatakan bahwa pendaftaran peserta via \textit{email} tidak berfungsi dengan baik. Pengguna mendapatkan \textit{email} dengan format yang tidak beraturan. Contohnya \textit{username} yang tertukar dengan \textit{role} dan \textit{password} tertukar dengan \textit{display name} seperti \hyperref[fig:dnve]{Gambar 5.33} 
+	\begin{figure}[H]
+		\centering  
+		\includegraphics[width=1.0\textwidth]{/pengujian/dnve}  
+		\caption[Format \textit{Email} Tidak Beraturan]{Format \textit{Email} Tidak Beraturan} 
+		\label{fig:dnve} 
+	\end{figure}
+
+	Hal di atas terjadi karena penambahan parameter "\textit{Display Name}" pada fungsi \textit{add\_user} yang terdapat di \textit{model User\_model.php}. Persoalan ini dapat diatasi dengan memperbaiki urutan data yang dikirimkan ke email. Berikut beberapa baris potongan kode program
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+...
+231	$text = str_replace('{SITE_URL}', base_url(), $text);
+232	$text = str_replace('{ROLE}', $user[3], $text);
+233	$text = str_replace('{USERNAME}', $user[0], $text);
+234	$text = str_replace('{PASSWORD}', htmlspecialchars($user[2]), $text);
+235	$text = str_replace('{LOGIN_URL}', base_url(), $text);
+...
+\end{lstlisting}
+	Perubahan kode terjadi pada baris 232 dan 234. Berikut hasil perubahan kode program yang terjadi di di \textit{User\_model.php}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+...
+231	$text = str_replace('{SITE_URL}', base_url(), $text);
+232	$text = str_replace('{ROLE}', $user[4], $text);
+233	$text = str_replace('{USERNAME}', $user[0], $text);
+234	$text = str_replace('{PASSWORD}', htmlspecialchars($user[3]), $text);
+235	$text = str_replace('{LOGIN_URL}', base_url(), $text);
+...
+\end{lstlisting}
+	Setelah melakukan perubahan kode program, pendaftaran peserta via \textit{email} dapat berfungsi dengan baik. \textit{Email} yang diterima pengguna telah menggunakan format yang benar.
+	
+	\subsection{\textit{Cannot Create Assignments}}
+	Isu dengan kode unik \#7 mengatakan bahwa Pak Husnul selaku dosen Algoritma \& Struktur Data, tidak bisa membuat \textit{assignment}.\textit{ Error log} yang dihasilkan tidak menunjukan pesan kesalahan apapun. 
+	Berikut isi \textit{error log} yang terdapat di direktori path{/var/log/apache2/error.log}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,columns=fullflexible, keepspaces=true, breaklines=true]
+[Wed Jan 31 06:25:02.516154 2018] [mpm_prefork:notice] [pid 1734] AH00163: Apache/2.4.18 (Ubuntu) configured -- resuming normal operations
+[Wed Jan 31 06:25:02.516182 2018] [core:notice] [pid 1734] AH00094: Command line: '/usr/sbin/apache2
+\end{lstlisting}
+	
+	Persoalan terjadi karena tidak ada atribut \textit{archived\_assignment} di tabel \textit{shj\_assignments}. Persoalan ini dapat diatasi dengan menambahkan atribut \textit{archived\_assignment} di tabel \textit{shj\_assignments}, sehingga struktur tabel \textit{shj\_assignments} menjadi seperti \hyperref[tab:atributtabelassignments]{Tabel 5.5}. \textit{Assignment} berhasil dibuat setelah atribut \textit{archived\_assignment} ditambahkan.
+	
+	\subsection{\textit{Link} ke \textit{New Home of Sharif-Judge}}
+	Isu dengan kode unik \#8 mengatakan bahwa pada halaman \textit{Add} atau \textit{Edit Assignment}, terdapat \textit{link} menuju ke dokumentasi \textit{Sharif Judge} milik mjnaderi. \textit{Link} tersebut diupdate menuju ke dokumentasi \textit{SharIF Judge} yang baru yaitu \path{https://github.com/ftisunpar/Sharif-Judge/}. Persoalan ini dapat diselesaikan dengan mengubah \textit{link} dokumentasi pada halaman \textit{add\_assignment.twig}. Berikut beberapa baris potongan kode program
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+...
+80	<span class="title_menu_item">
+81		<a href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/add_assignment.md" target="_blank"><i class="fa fa-question-circle color1"></i> Help</a>
+82	</span>
+...
+134	<span class="form_comment">
+135	<a href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/tests_structure.md" target="_blank">Use this structure</a>
+136	</span>
+...
+175	<label for="form_late_rule">Coefficient rule (<a target="_blank" href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/add_assignment.md#coefficient-rule">?</a>)</label><br>
+...
+190	<th rowspan="2">Allowed<br>Languages (<a target="_blank" href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/add_assignment.md#allowed-languages">?</a>)</th>
+191	<th rowspan="2">Diff<br>Command (<a target="_blank" href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/add_assignment.md#diff-command">?</a>)</th>
+192	<th rowspan="2">Diff<br>Argument (<a target="_blank" href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/add_assignment.md#diff-arguments">?</a>)</th>
+193	<th rowspan="2">Upload<br>Only (<a target="_blank" href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/add_assignment.md#upload-only">?</a>)</th>
+...
+\end{lstlisting}
+	Perubahan kode terjadi pada baris 81, 135, 175, 190, 191, 192 dan 193. Berikut hasil perubahan kode program yang terjadi di \textit{add\_assignment.twig}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+...
+80	<span class="title_menu_item">
+81		<a href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/add_assignment.md" target="_blank"><i class="fa fa-question-circle color1"></i> Help</a>
+82	</span>
+...
+134	<span class="form_comment">
+135	<a href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/tests_structure.md" target="_blank">Use this structure</a>
+136	</span>
+...
+175	<label for="form_late_rule">Coefficient rule (<a target="_blank" href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/add_assignment.md#coefficient-rule">?</a>)</label><br>
+...
+190	<th rowspan="2">Allowed<br>Languages (<a target="_blank" href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/add_assignment.md#allowed-languages">?</a>)</th>
+191	<th rowspan="2">Diff<br>Command (<a target="_blank" href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/add_assignment.md#diff-command">?</a>)</th>
+192	<th rowspan="2">Diff<br>Argument (<a target="_blank" href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/add_assignment.md#diff-arguments">?</a>)</th>
+193	<th rowspan="2">Upload<br>Only (<a target="_blank" href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/add_assignment.md#upload-only">?</a>)</th>
+...
+\end{lstlisting}
+
+	\subsection{Hapus Perbedaan antara \textit{Admin} dan \textit{Student} pada PDF \textit{Download}}
+	Isu dengan kode unik \#7 mengatakan agar mengubah beberapa bagian hasil implementasi kode pada kelas \textit{controller Assignments.php}. Kode tersebut terdapat pada fungsi unduh \textit{assignment} dengan ketentuan yang telah dirancang pada \hyperref[chap:batassoal]{sub bab 4.3}. Bagian kode \textit{\&\& \$this->user->level == 0} berfungsi untuk mengijinkan pengguna dengan \textit{role admin} dapat mengunduh \textit{assignment}. Bagian tersebut dihilangkan agar adanya transparansi antara dosen dan peserta, sehingga dosen saat membuat \textit{assignment} lebih yakin bahwa soalnya tidak akan bisa diunduh. Berikut beberapa baris potongan kode program
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+...
+112		if ( ! $pdf_files )
+113			show_error("File not found");
+114		elseif (!$this->assignment_model->assignment_info($assignment_id)['open'] && $this->user->level == 0 )
+115			show_error('Selected assignment has been closed.');
+116		elseif	( ! $this->assignment_model->is_participant($this->assignment_model->assignment_info($assignment_id)['participants'],$this->user->username) )
+117			show_error('You are not registered for submitting.');
+118		elseif ( shj_now() > $finishtime + $extratime && $this->user->level == 0 )
+119			show_error('Selected assignment has finished.');
+120		elseif ( shj_now() < $starttime && $this->user->level == 0 )
+121			show_error('Selected assignment has not started.');
+...
+\end{lstlisting}
+	
+	Perubahan kode terjadi pada baris 114, 116, 118 dan 120. Berikut hasil perubahan kode program yang terjadi di \textit{Assignments.php}
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+...
+107		if ($problem_id === NULL)
+108			$pattern = rtrim($this->settings_model->get_setting('assignments_root'),'/')."/assignment_{$assignment_id}/*.pdf";
+109		else
+110			$pattern = rtrim($this->settings_model->get_setting('assignments_root'),'/')."/assignment_{$assignment_id}/p{$problem_id}/*.pdf";
+111		$pdf_files = glob($pattern);
+112		if ( ! $pdf_files )
+113			show_error("File not found");
+114		elseif (!$this->assignment_model->assignment_info($assignment_id)['open'])
+115			show_error('Selected assignment has been closed.');
+116		elseif	( ! $this->assignment_model->is_participant($this->assignment_model->assignment_info($assignment_id)['participants'],$this->user->username) )
+117			show_error('You are not registered for submitting.');
+118		elseif ( shj_now() > $finishtime + $extratime)
+119			show_error('Selected assignment has finished.');
+120		elseif ( shj_now() < $starttime)
+121			show_error('Selected assignment has not started.');
+...
+\end{lstlisting}

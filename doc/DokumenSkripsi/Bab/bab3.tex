@@ -1,12 +1,12 @@
 \chapter{Analisis}
 \label{chap:analisis}
 
-Bab ini membahas tentang analisis kebutuhan \textit{Sharif Judge} yang diperlukan oleh Teknik Informatika dan solusi yang ditawarkan untuk memenuhi kebutuhan tersebut. Kebutuhan-kebutuhan tersebut didapat dari daftar isu repositori \textit{Sharif Judge} di \textit{GitHub} dan dari para dosen pengguna \textit{Sharif Judge}. Hasil dari analisis kebutuhan tersebut dicatat ke dalam \textit{Google Sheets} dan didiskusikan dengan dosen pembimbing. Selain analisis kebutuhan, pada bab ini juga akan dibahas analisis sistem kini pada perangkat lunak \textit{Sharif Judge}.
+Bab ini membahas tentang analisis kebutuhan \textit{Sharif Judge} yang diperlukan oleh Teknik Informatika dan solusi yang ditawarkan untuk memenuhi kebutuhan tersebut. Kebutuhan-kebutuhan tersebut didapat dari daftar isu \textit{repository} \textit{Sharif Judge} di \textit{GitHub} dan dari para dosen pengguna \textit{Sharif Judge}. Hasil dari analisis kebutuhan tersebut dicatat ke dalam \textit{Google Sheets} dan didiskusikan dengan dosen pembimbing. Selain analisis kebutuhan, pada bab ini juga akan dibahas analisis sistem kini pada perangkat lunak \textit{Sharif Judge}.
 
 
 \section{Analisis Kebutuhan Perangkat Lunak \textit{Sharif Judge}}
 \label{sec:analisis}
-Analisis dilakukan dengan menganalisis setiap isu terbuka yang ada pada repositori di \textit{GitHub}. Setiap isu di \textit{GitHub} terdapat kode unik yang dimulai dengan tanda '\#' dan diikuti dengan angka. Kode unik tersebut menunjukan urutan isu yang dibuat oleh para pengguna \textit{GitHub}. Dari analisa setiap isu yang ada, didapatkan beberapa pertanyaan dan usulan pengembangan. Beberapa isu yang memiliki usulan pengembangan akan dijadikan pertimbangan untuk mengembangkan \textit{Sharif Judge}. \\
+Analisis dilakukan dengan menganalisis setiap isu terbuka yang ada pada \textit{repository} di \textit{GitHub}. Setiap isu di \textit{GitHub} terdapat kode unik yang dimulai dengan tanda '\#' dan diikuti dengan angka. Kode unik tersebut menunjukan urutan isu yang dibuat oleh para pengguna \textit{GitHub}. Dari analisa setiap isu yang ada, didapatkan beberapa pertanyaan dan usulan pengembangan. Beberapa isu yang memiliki usulan pengembangan akan dijadikan pertimbangan untuk mengembangkan \textit{Sharif Judge}. \\
 
 Analisis kebutuhan dari para dosen pengguna \textit{Sharif Judge} dilakukan dalam bentuk wawancara secara langsung dan melalui \textit{email}. Dosen-dosen yang telah diwawancarai antara lain:
 \begin{enumerate}
@@ -81,7 +81,7 @@ Analisis kebutuhan dari para dosen pengguna \textit{Sharif Judge} dilakukan dala
 Pada tabel di atas teradapat beberapa kolom, yaitu:
 \begin{itemize}
 	\item Deskripsi \\
-	Jika sumber kebutuhan berasal dari \textit{GitHub}, maka pada kolom deskripsi akan ditulis judul dari isu yang ada pada repositori. Jika sumber kebutuhan berasal dari dosen, maka deskripsi kebutuhan langsung ditulis pada kolom tersebut.
+	Jika sumber kebutuhan berasal dari \textit{GitHub}, maka pada kolom deskripsi akan ditulis judul dari isu yang ada pada \textit{repository}. Jika sumber kebutuhan berasal dari dosen, maka deskripsi kebutuhan langsung ditulis pada kolom tersebut.
 	\item Sumber \\
 	Kolom sumber berisikan sumber dari kebutuhan pengembangan \textit{Sharif Judge} yaitu \textit{GitHub} atau Dosen.
 	\item \textit{Issue Number} / Nama Mata Kuliah \\
@@ -257,9 +257,10 @@ Pada skripsi ini, kebutuhan di atas diimplementasi. Solusi yang ditawarkan untuk
 Kebutuhan ini telah dibahas pada sub bab sebelumnya. Lihat sub bab \hyperref[subsec:filetxt]{3.1.12} untuk status dari kebutuhan ini.
 
 \subsection{Mengumpulkan \textit{File} JAR (Java Multi Kelas)}
-JAR (Java ARchive) adalah format \textit{file} platform-independen yang menggabungkan banyak \textit{file} menjadi satu. \textit{File-file} seperti kelas, gambar dan suara dapat digabungkan dalam \textit{file} JAR. Perangkat lunak \textit{Sharif Judge} yang terkini tidak mendukung pengumpulan \textit{file} dengan ekstensi JAR. \textit{Sharif Judge} hanya menerima beberapa tipe file yaitu C, C++, Java, Python 2, Python 3, Zip, dan PDF.
+JAR (\textit{Java ARchive}) adalah format \textit{file} platform-independen yang menggabungkan banyak \textit{file} menjadi satu. \textit{File-file} seperti kelas, gambar dan suara dapat digabungkan dalam \textit{file} JAR. Perangkat lunak \textit{Sharif Judge} yang terkini tidak mendukung pengumpulan \textit{file} dengan ekstensi JAR. \textit{Sharif Judge} hanya menerima beberapa tipe file yaitu C, C++, Java, Python 2, Python 3, Zip, dan PDF.
 
-Pada skripsi ini, kebutuhan di atas tidak diimplementasi. %Solusi yang ditawarkan untuk kebutuhan di atas yaitu menambahkan file dengan format JAR agar dapat dikumpul ke \textit{Sharif Judge}. File dengan format JAR akan langsung dinilai oleh \textit{Sharif Judge} sehingga para peserta dapat melihat hasil dari jawaban masing-masing.
+Pada skripsi ini, kebutuhan di atas tidak diimplementasi. Fitur ini tidak diimplementasi karena belum selesai setelah UTS Skripsi 2. Fitur ini telah dicommit ke \textit{repository} path{https://github.com/ayenz/Sharif-Judge/} di \textit{GitHub} pada \textit{branch} Skripsi\_29.
+%Solusi yang ditawarkan untuk kebutuhan di atas yaitu menambahkan file dengan format JAR agar dapat dikumpul ke \textit{Sharif Judge}. File dengan format JAR akan langsung dinilai oleh \textit{Sharif Judge} sehingga para peserta dapat melihat hasil dari jawaban masing-masing.
 
 \subsection{Branding Teknik Informatika}
 Branding Teknik Informatika dilakukan dengan cara mengubah logo dan ikon \textit{Sharif Judge} menjadi logo Teknik Informatika. Selain mengubah logo dan ikon, perubahan juga dilakukan terhadap nama perangkat lunak menjadi SharIF Judge dan link dokumentasi yang ada pada perangkat lunak \textit{Sharif Judge}. Hal di atas dapat dilakukan karena \textit{Sharif Judge} sendiri menggunakan lisensi GPL versi 3. GPL merupakan kepanjangan dari \textit{General Public License} yang memberikan beberapa kebebasan pada setiap penggunanya~\cite{brett:09:moss}.
@@ -598,7 +599,7 @@ Halaman \textit{register} berfungsi untuk mendaftar sebagai peserta \textit{Shar
 Halaman \textit{lost} berfungsi untuk para peserta yang lupa kombinasi \textit{username} dan \textit{password}. Peserta harus memasukan \textit{email} yang didaftarkan pada \textit{Sharif Judge}. \textit{Sharif Judge} akan mengirimkan \textit{link} untuk mereset \textit{password} ke \textit{email} yang telah dimasukan sebelumnya.
 
 \subsection{\textit{Controller}}
-Direktori \textit{controller} perangkat lunak \textit{Sharif Judge} terdapat pada \path{Sharif-Judge\application\controllers}.Di dalam \textit{folder controllers}, terdapat beberapa kelas \textit{controller} yang berisikan fungsi-fungsi sebagai perantara antara \textit{model, view}, dan \textit{resource} lainnya yang dibutuhkan untuk memproses \textit{HTTP request}.
+Direktori \textit{controller} perangkat lunak \textit{Sharif Judge} terdapat pada \path{Sharif-Judge\application\controllers}.Di dalam \textit{folder controllers}, terdapat beberapa kelas \textit{controller} yang berisikan fungsi-fungsi sebagai perantara \textit{model, view}, dan \textit{resource} lainnya yang dibutuhkan untuk memproses \textit{HTTP request}.
 
 \subsubsection{\textit{Assignments.php}}
 Pada \textit{file} \textit{Assignments.php} terdapat beberapa fungsi yaitu:

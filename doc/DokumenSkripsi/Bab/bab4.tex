@@ -287,6 +287,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 \end{lstlisting}
 
 \section{Menambahkan Halaman \textit{Logs}}% yang Mencatat Aktivitas \textit{Login} Pengguna}
+\label{chap:logs}
 Agar halaman \textit{Logs} dapat berjalan dengan baik, perlu ditambahkan tabel baru pada \textit{database} \textit{Sharif Judge}.  \textit{Tabel} baru tersebut bernama \textit{shj\_logins}. 
 \begin{table}[H] %atau h saja untuk "kira kira di sini"
 	\centering 
@@ -433,7 +434,7 @@ Untuk dapat menambahkan parameter "\textit{Display Name}" pada pendaftaran peser
 	\item Mengubah pemisah (\textit{separator}) antar parameter pada fungsi \textit{add\_user}. Pemisah antar parameter yang awalnya menggunakan spasi diubah menggunakan tanda koma.
 	\item Menambahkan keterangan parameter "\textit{Display Name}" pada halaman \textit{add\_user.twig} dan  \textit{add\_user\_result.twig}.
 	\item Menambahkan \textit{Display Name} untuk \textit{admin} pada proses \textit{install Sharif Judge}.
-	\item Mengubah urutan data yang digunakan pada fungsi pendaftaran peserta melalui \textit{email}.
+	%\item Mengubah urutan data yang digunakan pada fungsi pendaftaran peserta melalui \textit{email}.
 	\item Menambahkan \textit{text field Display Name} pada halaman \textit{Register} \textit{(Open Public Registration}).
 \end{enumerate}
 Dari rancangan algoritma yang diterapkan, terdapat perubahan dan penambahan kode pada beberapa kelas. Beberapa kelas tersebut antara lain \textit{controller Install.php, controller Login.php, model User\_model.php, view add\_user.twig, view add\_user\_result.twig} dan \textit{view register.twig}.
@@ -496,12 +497,6 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 193		array_push($users_ok, array($parts[0], $parts[1], $parts[2], $parts[3]));
 194	else
 195		array_push($users_error, array($parts[0], $parts[1], $parts[2], $parts[3], $result));
-...
-230	$text = str_replace('{SITE_URL}', base_url(), $text);
-231	$text = str_replace('{ROLE}', $user[3], $text);
-232	$text = str_replace('{USERNAME}', $user[0], $text);
-233	$text = str_replace('{PASSWORD}', htmlspecialchars($user[2]), $text);
-234	$text = str_replace('{LOGIN_URL}', base_url(), $text);
 ...
 \end{lstlisting}
 ~\\
@@ -575,12 +570,6 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 194		array_push($users_ok, array($parts[0], $parts[1], $parts[2], $parts[3], $parts[4]));
 195	else
 196		array_push($users_error, array($parts[0], $parts[1], $parts[2], $parts[3], $parts[4], $result));
-...
-231	$text = str_replace('{SITE_URL}', base_url(), $text);
-232	$text = str_replace('{ROLE}', $user[4], $text);
-233	$text = str_replace('{USERNAME}', $user[0], $text);
-234	$text = str_replace('{PASSWORD}', htmlspecialchars($user[3]), $text);
-235	$text = str_replace('{LOGIN_URL}', base_url(), $text);
 ...
 \end{lstlisting}
 ~\\
@@ -658,6 +647,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 \end{lstlisting}
 
 \section{Menambahkan Fitur "\textit{Lock Student's Display Name}"}
+\label{chap:lock}
 Fitur "\textit{Lock Student's Display Name}" membutuhkan sebuah "\textit{key}" pada \textit{database}, dimana "\textit{key}" tersebut berfungsi untuk menyimpan sebuah nilai. Nilai yang disimpan akan menentukan apakah para peserta dapat mengubah \textit{Display Name} atau tidak. "\textit{Key}" disimpan pada tabel \textit{shj\_settings} pada kolom \textit{shj\_key} dengan nama \textit{lock\_student\_display\_name}. \textit{lock\_student\_display\_name} memiliki nilai \textit{default shj\_value} = 0. Jika nilai dari \textit{lock\_student\_display\_name} = 1, maka para peserta tidak dapat mengubah \textit{Display Name}, sebaliknya jika bernilai 0, maka para peserta dapat mengubah \textit{Display Name}.
 
 Rancangan algoritma yang digunakan untuk menambahkan fitur "\textit{Lock Student's Display Name}" yaitu
@@ -807,6 +797,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 \end{lstlisting}
 
 \section{Menambahakan Fitur "\textit{Archived Assignment}"}
+\label{chap:arc}
 Fitur "\textit{Archived Assignment}" membutuhkan sebuah atribut baru pada \textit{database}, dimana atribut tersebut berfungsi untuk menyimpan sebuah nilai. Nilai yang disimpan akan menentukan apakah \textit{assignment} tersebut bersifat \textit{Archived Assignment} atau tidak. Atribut baru tersebut  ditambahkan pada tabel \textit{shj\_assignments} dengan nama \textit{archived\_assignment} yang menggunakan tipe data \textit{tinyint}. \textit{archived\_assignment} memiliki nilai \textit{default} = 0. Jika nilai dari \textit{archived\_assignment} = 1, maka \textit{assignment} tersebut merupakan sebuah \textit{archived\_assignment}, sebaliknya jika bernilai 0, maka \textit{assignment} tersebut merupakan \textit{assignment} biasa.
 
 Rancangan algoritma yang digunakan untuk menambahkan fitur "\textit{Archived Assignment}" yaitu
@@ -1128,7 +1119,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 ...
 \end{lstlisting}
 
-Fungsi tersebut ditambahkan setelah baris 479. Berikut hasil penambahan kode program yang terjadi di \textit{shj\_functions.js}
+Fungsi tersebut ditambahkan setelah baris 479. Hasil penamabahan kode program yang terjadi di \textit{shj\_functions.js} dapat dilihat di \hyperref[lamp:kodeprogramshjfunc]{Lampiran C}
 \iffalse
 \textit{shj\_functions.js}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
