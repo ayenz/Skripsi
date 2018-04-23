@@ -4,49 +4,93 @@
 Bab ini membahas tentang implementasi dan pengujian perangkat lunak berdasarkan rancangan yang sudah dibuat. Ada dua jenis pengujian yang dilakukan, yaitu pengujian fungsional dan pengujian eksperimental. Bab ini juga membahas tentang lingkungan yang digunakan untuk pengujian perangkat lunak ini.
 
 \section{Lingkungan untuk Implementasi dan Pengujian}
-Berikut spesifikasi lingkungan perangkat keras dan perangkat lunak yang digunakan untuk melakukan implementasi dan pengujian perangkat lunak
-\begin{table}[H] %atau h saja untuk "kira kira di sini" 
-	\caption{Lingkungan Perangkat Keras}
-	\label{tab:lingkunganpkpf}
-	\resizebox{\textwidth}{!}{%
-		\begin{tabular}{|l|l|}
-			\hline
-			\textbf{Parameter} & \textbf{Nilai} \\
-			\hline
-			\textit{Processor} & \textit{Intel Core i5 4200u}\\
-			\hline
-			\textit{Graphics Processing Unit (GPU)} & \textit{Intel HD Graphics HD4000} dan \textit{Nvidia GeForce 840M}\\
-			\hline
-			\textit{Random Access Memory (RAM)}& 12.00GB DDR3\\
-			\hline
-			\textit{Storage} & 120GB \textit{SSD} dan 1TB \textit{Harddisk}\\
-			\hline
-	\end{tabular}}
-\end{table}
+Terdapat dua lingkungan yang digunakan untuk melakukan implementasi dan pengujian. Lingkungan pertama digunakan untuk implementasi dan pengujian fungsi-fungsi perangkat lunak. Lingkungan kedua digunakan untuk pengujian eksperimental. Berikut spesifikasi lingkungan perangkat keras dan perangkat lunak yang digunakan 
+\begin{enumerate}
+	\item Lingkungan Pertama
+	\begin{table}[H] %atau h saja untuk "kira kira di sini" 
+		\caption{Lingkungan Perangkat Keras}
+		\label{tab:lingkunganpkpf}
+		\resizebox{\textwidth}{!}{%
+			\begin{tabular}{|l|l|}
+				\hline
+				\textbf{Parameter} & \textbf{Nilai} \\
+				\hline
+				\textit{Processor} & \textit{Intel Core i5 4200u}\\
+				\hline
+				\textit{Graphics Processing Unit (GPU)} & \textit{Intel HD Graphics HD4000} dan \textit{Nvidia GeForce 840M}\\
+				\hline
+				\textit{Random Access Memory (RAM)}& 12.00GB DDR3\\
+				\hline
+				\textit{Storage} & 120GB \textit{SSD} dan 1TB \textit{Harddisk}\\
+				\hline
+		\end{tabular}}
+	\end{table}
+	
+	\begin{table}[H] %atau h saja untuk "kira kira di sini" 
+		\caption{Lingkungan Perangkat Lunak}
+		\label{tab:lingkunganplpf}
+		\resizebox{\textwidth}{!}{%
+			\begin{tabular}{|l|l|}
+				\hline
+				\textbf{Parameter} & \textbf{Nilai} \\
+				\hline
+				Sistem Operasi & Windows 10 \textit{10 Education 64-bit}\\
+				\hline
+				Bahasa Pemrograman & PHP, JavaScript, CSS dan HTML\\
+				\hline
+				\textit{Text Editor} & \textit{Atom}\\
+				\hline
+				\textit{Framework} & \textit{CodeIgniter}\\
+				\hline
+				\multirow{4}{*}{Perangkat Lunak pendukung} 	& \textit{XAMPP Control Panel} v3.2.2\\
+				& \textit{Google Chrome Version} 65.0.3325.181 (Official Build) (64-bit)\\
+				& \textit{Firefox Quantum} 59.0.2 (64-bit)\\
+				& \textit{Microsoft Excel} 2016\\
+				\hline
+		\end{tabular}}
+	\end{table}
 
-\begin{table}[H] %atau h saja untuk "kira kira di sini" 
-	\caption{Lingkungan Perangkat Lunak}
-	\label{tab:lingkunganplpf}
-	\resizebox{\textwidth}{!}{%
+	\item Lingkungan Kedua
+	\begin{table}[H] %atau h saja untuk "kira kira di sini" 
+		\caption{Lingkungan Perangkat Keras}
+		\centering
+		\label{tab:lingkunganpkpe}
+		%\resizebox{\textwidth}{!}{%
 		\begin{tabular}{|l|l|}
 			\hline
 			\textbf{Parameter} & \textbf{Nilai} \\
 			\hline
-			Sistem Operasi & Windows 10 \textit{10 Education 64-bit}\\
+			\textit{Processor} & \textit{Intel Xeon E5-2603v4}\\
 			\hline
-			Bahasa Pemrograman & PHP, JavaScript, CSS dan HTML\\
+			\textit{Graphics Processing Unit (GPU)} & \textit{AMD RADEON R7 240}\\
 			\hline
-			\textit{Text Editor} & \textit{Atom}\\
+			\textit{Random Access Memory (RAM)}& 8.00GB DDR4\\
 			\hline
-			\textit{Framework} & \textit{CodeIgniter}\\
+			\textit{Storage} & 1TB \textit{Harddisk}\\
 			\hline
-			\multirow{4}{*}{Perangkat Lunak pendukung} 	& \textit{XAMPP Control Panel} v3.2.2\\
-														& \textit{Google Chrome Version} 65.0.3325.181 (Official Build) (64-bit)\\
-														& \textit{Firefox Quantum} 59.0.2 (64-bit)\\
-														& \textit{Microsoft Excel} 2016\\
+		\end{tabular}%}
+	\end{table}
+	
+	\begin{table}[h] %atau h saja untuk "kira kira di sini" 
+		\caption{Lingkungan Perangkat Lunak}
+		\label{tab:lingkunganplpe}
+		\centering
+		%\resizebox{\textwidth}{!}{%
+		\begin{tabular}{|l|l|}
 			\hline
-	\end{tabular}}
-\end{table}
+			\textbf{Parameter} & \textbf{Nilai} \\
+			\hline
+			Sistem Operasi & Ubuntu --\\
+			\hline
+			\multirow{4}{*}{Perangkat Lunak pendukung} 	& Apache Server\\
+			& MySQL \\
+			& PHP\\
+			& phpMyAdmin\\
+			\hline
+		\end{tabular}%}
+	\end{table}
+\end{enumerate}
+
 
 \section{Implementasi}
 Hasil implementasi dari rancangan perangkat lunak yang sudah dibuat, terdiri dari tiga bagian, yaitu
@@ -414,15 +458,6 @@ Pengujian fungsional bertujuan untuk memastikan setiap fitur baru pada SharIF Ju
 		\label{fig:dethof} 
 	\end{figure}
 
-	\subsection{\textit{Login} Menggunakan \textit{Username} yang Terdaftar pada \textit{Server RADIUS}}
-	Hasil yang diharapkan dari pengujian fitur ini adalah pengguna dapat \textit{login} ke \textit{SharIF Judge} menggunakan \textit{username} yang terdaftar pada \textit{server RADIUS}. \textit{Username} yang digunakan dalam pengujian fitur ini adalah xxxxx. Pengujian dimulai dengan \textit{login} menggunakan \textit{username} xxxxxx ke perangkat lunak \textit{SharIF Judge} yang telah diinstal pada \textit{server} lab FTIS UNPAR (selanjutnya digunakan untuk pengujian eksperimental). \textit{SharIF Judge} yang telah diinstal, dapat diakses pada \textit{URL} \path{http://asd.labftis.net/}. \hyperref[fig:radius]{Gambar 5.28} menunjukan bahwa \textit{username} xxxxx berhasil \textit{login} ke \textit{SharIF Judge}.
-	\begin{figure}[H]
-		\centering  
-		\includegraphics[scale=0.5]{ular-jpg}  
-		\caption[Berhasil \textit{Login} ke \textit{SharIF Judge}]{Berhasil \textit{Login} ke \textit{SharIF Judge}} 
-		\label{fig:radius} 
-	\end{figure}
-
 	\subsection{Mengunduh \textit{File Excel} dari Halaman \textit{All Submission} dan \textit{Users}}
 	Hasil yang diharapkan dari pengujian fitur ini adalah \textit{file excel} berhasil diunduh dari halaman \textit{All Submission} dan \textit{Users}. \textit{File excel} yang diunduh pada halaman \textit{All Submission} berisikan daftar seluruh jawaban pengguna \textit{SharIF Judge}. \textit{File excel} yang diunduh pada halaman \textit{Users} berisikan dafttar seluruh pengguna \textit{SharIF Judge}. Pengujian dimulai dengan mengklik tombol unduh \textit{excel} yang terletak di atas halaman. \hyperref[fig:unduh]{Gambar 5.29} menunjukan letak tombol unduh \textit{excel} pada halaman \textit{Users}
 	\begin{figure}[H]
@@ -448,7 +483,7 @@ Pengujian fungsional bertujuan untuk memastikan setiap fitur baru pada SharIF Ju
 	\end{figure}
 	
 \section{Pengujian Ekseprimental}
-Pengujian eksperimental dilakukan dengan cara menginstal perangkat lunak \textit{SharIF Judge} pada server lab FTIS UNPAR. SharIF Judge digunakan untuk mata kuliah Algoritma \& Struktur Data (ASD) semester genap 2017/2018. Selama pengujian berlangsung, terdapat beberapa persoalan yang muncul. Persoalan yang muncul dicatat ke dalam isu \textit{repository SharIF Judge} di \textit{GitHub}. Semua persoalan dapat dilihat di \path{https://github.com/ayenz/Sharif-Judge/issues}.
+Pengujian eksperimental dilakukan dengan cara menginstal perangkat lunak \textit{SharIF Judge} pada server lab FTIS UNPAR. SharIF Judge digunakan untuk mata kuliah Algoritma \& Struktur Data (ASD) semester genap 2017/2018. SharIF Judge yang telah diinstal, dapat diakses pada \textit{URL} \path{http://asd-lat.ftis.unpar/} dan \path{http://asd-quiz.ftis.unpar/}. Selama pengujian berlangsung, terdapat beberapa persoalan yang muncul. Persoalan yang muncul dicatat ke dalam isu \textit{repository SharIF Judge} di \textit{GitHub}. Semua persoalan dapat dilihat di \path{https://github.com/ayenz/Sharif-Judge/issues}.
 
 	\subsection{\textit{Remove the Assignments Folder}}
 	Isu dengan kode unik \#4 meminta agar \textit{folder assignments} untuk dihapus. Hal ini bertujuan agar direktori \textit{URL} \path{/assignments} dapat diakses. \textit{Folder assignments} merupakan \textit{folder default} untuk menyimpan \textit{assignment}. \textit{Folder default} penyimpanan \textit{assignment} tersebut harus diubah terlebih dahulu. Untuk mengubah \textit{folder default} penyimpanan, diperlukan perubahan nilai pada halaman \textit{Settings} dan kode pada kelas \textit{Controller Install.php}. Selain mengubah \textit{folder default} penyimpanan \textit{assignment}, perubahan juga terjadi pada \textit{folder default tester} dan \textit{default timezone} yang bertujuan untuk merapihkan struktur direktori.
@@ -614,3 +649,41 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 121			show_error('Selected assignment has not started.');
 ...
 \end{lstlisting}
+
+	\subsection{Download Excel Tidak Berfungsi pada Halaman \textit{Submission}}
+	Salah satu asisten dosen mata kuliah Desain \& Analisis Algoritma mengatakan bahwa fitur untuk mengunduh \textit{excel} pada halaman \textit{Submission} tidak berfungsi. Perangkat lunak \textit{Sharif Judge} yang terkini memiliki fitur yang dapat mengunduh \textit{excel} pada halaman \textit{All Submission, Final Submission} dan \textit{Users}. Fitur ini berfungsi untuk memuat seluruh daftar \textit{All Submission, Final Submission} dan \textit{Users} ke dalam format excel. Agar fitur ini dapat berjalan dengan baik, \textit{Sharif Judge} menggunakan \textit{library} bantuan yaitu \textit{PHPExcel}.
+	
+	Persoalan di atas terjadi karena versi \textit{PHP} yang digunakan tidak lagi mendukung \textit{library PHPExcel}. Dalam pengembangannya, \textit{PHPExcel} sudah tidak lagi digunakan. Para pengguna disarankan untuk migrasi ke \textit{library} penerusnya yaitu \textit{PhpSpreadsheet} atau alternatif lainnya \footnote{Adrien Crivelli, "PHPExcel - DEPRECATED" terakhir diubah 25 Desember 2017. \textit{https://github.com/PHPOffice/PHPExcel}}.
+	
+	Persoalan di atas dapat diselsaikan dengan mengubah \textit{library} \textit{PHPExcel} menjadi \textit{PhpSpreadsheet} sehingga fitur mengunduh \textit{excel} pada halaman \textit{All Submission, Final Submission} dan \textit{Users} dapat berfungsi kembali. \textit{PhpSpreadsheet} adalah \textit{library} yang ditulis dalam PHP. \textit{Library PhpSpreadsheet} menyediakan sekumpulan kelas yang memungkinkan pengguna untuk membaca dan menulis ke berbagai format \textit{file spreadsheet}, seperti \textit{Excel} dan \textit{LibreOffice Calc} ~\cite{phpoffice:10:phpspreadsheet}. Menginstall \textit{library PhpSpreadsheet} dapat dilakukan dengan menggunakan \textit{Composer} dan menjalankan perintah "\textit{composer require phpoffice/phpspreadsheet}".
+	
+	Rancangan algoritma yang digunakan untuk mengubah \textit{library PHPExcel} menjadi \textit{PhpSpreadsheet} yaitu
+	\begin{enumerate}
+		\item Menginstall \textit{Composer} pada perangkat lunak \textit{Sharif Judge}.
+		\item Menambahkan \textit{library PhpSpreadsheet} menggunakan \textit{Composer}.
+		\item Mengubah fungsi yang menggunakan kelas \textit{PHPExcel} menjadi menggunakan kelas \textit{PhpSpreadsheet}
+	\end{enumerate}
+	
+	Dari rancangan algoritma yang diterapkan, terdapat perubahan kode pada kelas \textit{controller Submissions.php} dan \textit{controller Users.php}. Berikut beberapa baris potongan kode program
+	
+	\begin{lstlisting}[language=PHP, basicstyle=\ttfamily, frame=single,
+	columns=fullflexible, keepspaces=true, breaklines=true]
+	...
+	107		if ($problem_id === NULL)
+	108			$pattern = rtrim($this->settings_model->get_setting('assignments_root'),'/')."/assignment_{$assignment_id}/*.pdf";
+	109		else
+	110			$pattern = rtrim($this->settings_model->get_setting('assignments_root'),'/')."/assignment_{$assignment_id}/p{$problem_id}/*.pdf";
+	111		$pdf_files = glob($pattern);
+	112		if ( ! $pdf_files )
+	113			show_error("File not found");
+	114		elseif (!$this->assignment_model->assignment_info($assignment_id)['open'])
+	115			show_error('Selected assignment has been closed.');
+	116		elseif	( ! $this->assignment_model->is_participant($this->assignment_model->assignment_info($assignment_id)['participants'],$this->user->username) )
+	117			show_error('You are not registered for submitting.');
+	118		elseif ( shj_now() > $finishtime + $extratime)
+	119			show_error('Selected assignment has finished.');
+	120		elseif ( shj_now() < $starttime)
+	121			show_error('Selected assignment has not started.');
+	...
+	\end{lstlisting}
+	
