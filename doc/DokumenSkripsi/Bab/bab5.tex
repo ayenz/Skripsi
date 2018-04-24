@@ -501,27 +501,20 @@ Pengujian eksperimental dilakukan dengan cara menginstal perangkat lunak \textit
 		\item Nilai yang digunakan untuk \textit{text field "Timezone"} adalah Asia/Jakarta. Nilai tersebut memiliki arti bahwa \textit{default timezone} yang digunakan pada \textit{SharIF Judge} mengikuti \textit{timezone} wilayah Asia/Jakarta.
 	\end{itemize}
 	
-	Perubahan kode pada kelas \textit{Controller Install.php} bertujuan agar penginstalan \textit{SharIF Judge} langsung menggunakan \textit{default} nilai seperti di atas. Berikut beberapa baris potongan kode program
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+	Perubahan kode pada kelas \textit{Controller Install.php} bertujuan agar penginstalan \textit{SharIF Judge} langsung menggunakan \textit{default} nilai seperti di atas. Berikut perubahan kode program
+	\textit{Install.php}
+\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-...
-196	// insert default settings to table 'settings'
-197	$result = $this->db->insert_batch('settings', array(
-198	array('shj_key' => 'timezone',               'shj_value' => 'Asia/Tehran'),
-199	array('shj_key' => 'tester_path',            'shj_value' => '/home/shj/tester'),
-200	array('shj_key' => 'assignments_root',       'shj_value' => '/home/shj/assignments'),
-...
-\end{lstlisting}
-	Perubahan kode terjadi pada baris 198, 199, 200. Berikut hasil perubahan kode program yang terjadi di \textit{Install.php}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
-...
-196	// insert default settings to table 'settings'
-197	$result = $this->db->insert_batch('settings', array(
-198	array('shj_key' => 'timezone',               'shj_value' => 'Asia/Jakarta'),
-199	array('shj_key' => 'tester_path',            'shj_value' => dirname(__FILE__, 3) . "/restricted/tester"),
-200	array('shj_key' => 'assignments_root',       'shj_value' => dirname(__FILE__, 3) . "/restricted/assignments"),
-...
+@@ -196,9 +196,9 @@ class Install extends CI_Controller
+
+// insert default settings to table 'settings'
+$result = $this->db->insert_batch('settings', array(
+-   	array('shj_key' => 'timezone',               'shj_value' => 'Asia/Tehran'),
+-       array('shj_key' => 'tester_path',            'shj_value' => '/home/shj/tester'),
+-       array('shj_key' => 'assignments_root',       'shj_value' => '/home/shj/assignments'),
++       array('shj_key' => 'timezone',               'shj_value' => 'Asia/Jakarta'),
++       array('shj_key' => 'tester_path',            'shj_value' => dirname(__FILE__, 3) . "/restricted/tester"),
++       array('shj_key' => 'assignments_root',       'shj_value' => dirname(__FILE__, 3) . "/restricted/assignments"),
 \end{lstlisting}
 	Setelah melakukan beberapa perubahan, folder assignment dapat dihapus.
 	
@@ -534,27 +527,22 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 		\label{fig:dnve} 
 	\end{figure}
 
-	Hal di atas terjadi karena penambahan parameter "\textit{Display Name}" pada fungsi \textit{add\_user} yang terdapat di \textit{model User\_model.php}. Persoalan ini dapat diatasi dengan memperbaiki urutan data yang dikirimkan ke email. Berikut beberapa baris potongan kode program
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+	Hal di atas terjadi karena penambahan parameter "\textit{Display Name}" pada fungsi \textit{add\_user} yang terdapat di \textit{model User\_model.php}. Persoalan ini dapat diatasi dengan memperbaiki urutan data yang dikirimkan ke email. Berikut perubahan kode program
+	\textit{User\_model.php}
+\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-...
-231	$text = str_replace('{SITE_URL}', base_url(), $text);
-232	$text = str_replace('{ROLE}', $user[3], $text);
-233	$text = str_replace('{USERNAME}', $user[0], $text);
-234	$text = str_replace('{PASSWORD}', htmlspecialchars($user[2]), $text);
-235	$text = str_replace('{LOGIN_URL}', base_url(), $text);
-...
-\end{lstlisting}
-	Perubahan kode terjadi pada baris 232 dan 234. Berikut hasil perubahan kode program yang terjadi di di \textit{User\_model.php}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
-...
-231	$text = str_replace('{SITE_URL}', base_url(), $text);
-232	$text = str_replace('{ROLE}', $user[4], $text);
-233	$text = str_replace('{USERNAME}', $user[0], $text);
-234	$text = str_replace('{PASSWORD}', htmlspecialchars($user[3]), $text);
-235	$text = str_replace('{LOGIN_URL}', base_url(), $text);
-...
+@@ -219,9 +219,9 @@ class User_model extends CI_Model
+	$this->email->subject('Sharif Judge Username and Password');
+	$text = $this->settings_model->get_setting('add_user_mail');
+	$text = str_replace('{SITE_URL}', base_url(), $text);
+-   	$text = str_replace('{ROLE}', $user[3], $text);
++   	$text = str_replace('{ROLE}', $user[4], $text);
+	$text = str_replace('{USERNAME}', $user[0], $text);
+-   	$text = str_replace('{PASSWORD}', htmlspecialchars($user[2]), $text);
++   	$text = str_replace('{PASSWORD}', htmlspecialchars($user[3]), $text);
+	$text = str_replace('{LOGIN_URL}', base_url(), $text);
+	$this->email->message($text);
+	$this->email->send();
 \end{lstlisting}
 	Setelah melakukan perubahan kode program, pendaftaran peserta via \textit{email} dapat berfungsi dengan baik. \textit{Email} yang diterima pengguna telah menggunakan format yang benar.
 	
@@ -569,85 +557,175 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 	Persoalan terjadi karena tidak ada atribut \textit{archived\_assignment} di tabel \textit{shj\_assignments}. Persoalan ini dapat diatasi dengan menambahkan atribut \textit{archived\_assignment} di tabel \textit{shj\_assignments}, sehingga struktur tabel \textit{shj\_assignments} menjadi seperti \hyperref[tab:atributtabelassignments]{Tabel 5.5}. \textit{Assignment} berhasil dibuat setelah atribut \textit{archived\_assignment} ditambahkan.
 	
 	\subsection{\textit{Link} ke \textit{New Home of Sharif-Judge}}
-	Isu dengan kode unik \#8 mengatakan bahwa pada halaman \textit{Add} atau \textit{Edit Assignment}, terdapat \textit{link} menuju ke dokumentasi \textit{Sharif Judge} milik mjnaderi. \textit{Link} tersebut diupdate menuju ke dokumentasi \textit{SharIF Judge} yang baru yaitu \path{https://github.com/ftisunpar/Sharif-Judge/}. Persoalan ini dapat diselesaikan dengan mengubah \textit{link} dokumentasi pada halaman \textit{add\_assignment.twig}. Berikut beberapa baris potongan kode program
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+	Isu dengan kode unik \#8 mengatakan bahwa pada halaman \textit{Add} atau \textit{Edit Assignment}, terdapat \textit{link} menuju ke dokumentasi \textit{Sharif Judge} milik mjnaderi. \textit{Link} tersebut diupdate menuju ke dokumentasi \textit{SharIF Judge} yang baru yaitu \path{https://github.com/ftisunpar/Sharif-Judge/}. Persoalan ini dapat diselesaikan dengan mengubah \textit{link} dokumentasi pada halaman \textit{add\_assignment.twig}. Berikut perubahan kode program
+	\textit{user.twig}
+\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-...
-80	<span class="title_menu_item">
-81		<a href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/add_assignment.md" target="_blank"><i class="fa fa-question-circle color1"></i> Help</a>
-82	</span>
-...
-134	<span class="form_comment">
-135	<a href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/tests_structure.md" target="_blank">Use this structure</a>
-136	</span>
-...
-175	<label for="form_late_rule">Coefficient rule (<a target="_blank" href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/add_assignment.md#coefficient-rule">?</a>)</label><br>
-...
-190	<th rowspan="2">Allowed<br>Languages (<a target="_blank" href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/add_assignment.md#allowed-languages">?</a>)</th>
-191	<th rowspan="2">Diff<br>Command (<a target="_blank" href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/add_assignment.md#diff-command">?</a>)</th>
-192	<th rowspan="2">Diff<br>Argument (<a target="_blank" href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/add_assignment.md#diff-arguments">?</a>)</th>
-193	<th rowspan="2">Upload<br>Only (<a target="_blank" href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/add_assignment.md#upload-only">?</a>)</th>
-...
+@@ -12,7 +12,7 @@
+
+{% block title_menu %}
+-       <span class="title_menu_item"><a href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/users.md" target="_blank"><i class="fa fa-question-circle color6"></i> Help</a></span>
++       <span class="title_menu_item"><a href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/users.md" target="_blank"><i class="fa fa-question-circle color6"></i> Help</a></span>
+<span class="title_menu_item"><a href="{{ site_url('users/add') }}"><i class="fa fa-plus color11"></i> Add Users</a></span>
+<span class="title_menu_item"><a href="{{ site_url('users/list_excel') }}"><i class="fa fa-download color9"></i> Excel</a></span>
+{% endblock %}
 \end{lstlisting}
-	Perubahan kode terjadi pada baris 81, 135, 175, 190, 191, 192 dan 193. Berikut hasil perubahan kode program yang terjadi di \textit{add\_assignment.twig}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+~\\	
+	\textit{settings.twig}
+\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-...
-80	<span class="title_menu_item">
-81		<a href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/add_assignment.md" target="_blank"><i class="fa fa-question-circle color1"></i> Help</a>
-82	</span>
-...
-134	<span class="form_comment">
-135	<a href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/tests_structure.md" target="_blank">Use this structure</a>
-136	</span>
-...
-175	<label for="form_late_rule">Coefficient rule (<a target="_blank" href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/add_assignment.md#coefficient-rule">?</a>)</label><br>
-...
-190	<th rowspan="2">Allowed<br>Languages (<a target="_blank" href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/add_assignment.md#allowed-languages">?</a>)</th>
-191	<th rowspan="2">Diff<br>Command (<a target="_blank" href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/add_assignment.md#diff-command">?</a>)</th>
-192	<th rowspan="2">Diff<br>Argument (<a target="_blank" href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/add_assignment.md#diff-arguments">?</a>)</th>
-193	<th rowspan="2">Upload<br>Only (<a target="_blank" href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/add_assignment.md#upload-only">?</a>)</th>
-...
+@@ -24,7 +24,7 @@ $(document).ready(function(){
+
+{% block title_menu %}
+<span class="title_menu_item">
+-       <a href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/settings.md" target="_blank"><i class="fa fa-question-circle color6"></i> Help</a>
++       <a href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/settings.md" target="_blank"><i class="fa fa-question-circle color6"></i> Help</a>
+</span>
+{% endblock %}
+
+@@ -151,7 +151,7 @@ $(document).ready(function(){
+
+<h2 class="shj_form">
+Sandboxing <span class="title_menu_item">
+-       <a href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/sandboxing.md" target="_blank"><i class="fa fa-question-circle color11"></i> Help</a>
++       <a href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/sandboxing.md" target="_blank"><i class="fa fa-question-circle color11"></i> Help</a>
+</span>
+</h2>
+
+@@ -160,7 +160,7 @@ $(document).ready(function(){
+<label for="form_easysandbox">EasySandbox</label>
+</p>
+<p class="form_comment">Enable EasySandbox for C/C++.<br>
+-       You must <a href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/sandboxing.md#build-easysandbox" target="_blank">build EasySandbox</a> before enabling it.<br>
++       You must <a href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/sandboxing.md#build-easysandbox" target="_blank">build EasySandbox</a> before enabling it.<br>
+{% if not sandbox_built %}
+<span style="color: red;">You have not built EasySandbox yet.</span>
+{% endif %}
+
+@@ -171,35 +171,35 @@ $(document).ready(function(){
+<label for="form_java_policy">Java Policy</label>
+</p>
+<p class="form_comment">
+-       Enable <a href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/sandboxing.md#java-sandboxing" target="_blank">Java Sandboxing</a>
++       Enable <a href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/sandboxing.md#java-sandboxing" target="_blank">Java Sandboxing</a>
+</p>
+
+<h2 class="shj_form">
+Shield <span class="title_menu_item">
+-       <a href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/shield.md" target="_blank"><i class="fa fa-question-circle color11"></i> Help</a>
++       <a href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/shield.md" target="_blank"><i class="fa fa-question-circle color11"></i> Help</a>
+</span>
+</h2>
+
+<p class="input_p">
+<input id="form_c_sh" type="checkbox" name="enable_c_shield" value="1" {{ enable_c_shield ? 'checked' }}/> <label for="form_c_sh">C Shield</label><br>
+-       <span class="form_comment">Enable <a href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/shield.md" target="_blank">Shield</a> for C</span>
++       <span class="form_comment">Enable <a href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/shield.md" target="_blank">Shield</a> for C</span>
+</p>
+<p class="input_p">
+<input id="form_cpp_sh" type="checkbox" name="enable_cpp_shield" value="1" {{ enable_cpp_shield ? 'checked' }}/>
+<label for="form_cpp_sh">C++ Shield</label><br>
+-       <span class="form_comment">Enable <a href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/shield.md" target="_blank">Shield</a> for C++</span>
++       <span class="form_comment">Enable <a href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/shield.md" target="_blank">Shield</a> for C++</span>
+</p>
+<p class="input_p">
+<input id="form_py2_sh" type="checkbox" name="enable_py2_shield" value="1" {{ enable_py2_shield ? 'checked' }}/>
+<label for="form_py2_sh">Python 2 Shield</label><br>
+-       <span class="form_comment">Enable <a href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/shield.md" target="_blank">Shield</a> for Python 2</span>
++       <span class="form_comment">Enable <a href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/shield.md" target="_blank">Shield</a> for Python 2</span>
+</p>
+<p class="input_p">
+<input id="form_py3_sh" type="checkbox" name="enable_py3_shield" value="1" {{ enable_py3_shield ? 'checked' }}/>
+<label for="form_py3_sh">Python 3 Shield</label><br>
+-       <span class="form_comment">Enable <a href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/shield.md" target="_blank">Shield</a> for Python 3</span>
++       <span class="form_comment">Enable <a href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/shield.md" target="_blank">Shield</a> for Python 3</span>
+</p>
+<p class="input_p">
+<label for="form_def_c">Shield Rules (for C)</label>
+\end{lstlisting}
+~\\	
+	\textit{add\_user.twig}
+\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+@@ -12,7 +12,7 @@
+
+{% block title_menu %}
+-       <span class="title_menu_item"><a href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/users.md#add-users" target="_blank"><i class="fa fa-question-circle color6"></i> Help</a></span>
++       <span class="title_menu_item"><a href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/users.md#add-users" target="_blank"><i class="fa fa-question-circle color6"></i> Help</a></span>
+{% endblock %}
+\end{lstlisting}
+~\\
+	\textit{add\_assignment.twig}
+\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+@@ -78,7 +78,7 @@
+
+{% block title_menu %}
+<span class="title_menu_item">
+-       <a href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/add_assignment.md" target="_blank"><i class="fa fa-question-circle color1"></i> Help</a>
++       <a href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/add_assignment.md" target="_blank"><i class="fa fa-question-circle color1"></i> Help</a>
+</span>
+{% endblock %}
+
+@@ -132,7 +132,7 @@
+<p class="input_p clear">
+<label for="form_tests_desc">Tests and Descriptions (zip file)<br>
+<span class="form_comment">
+-       <a href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/tests_structure.md" target="_blank">Use this structure</a>
++       <a href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/tests_structure.md" target="_blank">Use this structure</a>
+</span>
+</label>
+<input id="form_tests_desc" type="file" name="tests_desc" class="sharif_input medium"/>
+
+@@ -172,7 +172,7 @@
+{{ form_error('archived_assignment', '<div class="shj_error">', '</div>') }}
+</p>
+<p class="input_p">
+-       <label for="form_late_rule">Coefficient rule (<a target="_blank" href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/add_assignment.md#coefficient-rule">?</a>)</label><br>
++       <label for="form_late_rule">Coefficient rule (<a target="_blank" href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/add_assignment.md#coefficient-rule">?</a>)</label><br>
+<span class="form_comment medium clear" style="display: block;">PHP script without &lt;?php ?&gt; tags</span>
+<textarea id="form_late_rule" name="late_rule" rows="20" class="sharif_input add_text">{{ edit ? edit_assignment.late_rule : set_value('late_rule', default_late_rule) }}</textarea>
+{{ form_error('late_rule', '<div class="shj_error">', '</div>') }}
+
+@@ -187,10 +187,10 @@
+<th rowspan="2">Score</th>
+<th colspan="3" style="border-bottom: 1px solid #BDBDBD">Time Limit (ms)</th>
+<th rowspan="2">Memory<br>Limit (kB)</th>
+-       <th rowspan="2">Allowed<br>Languages (<a target="_blank" href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/add_assignment.md#allowed-languages">?</a>)</th>
+-       <th rowspan="2">Diff<br>Command (<a target="_blank" href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/add_assignment.md#diff-command">?</a>)</th>
+-       <th rowspan="2">Diff<br>Argument (<a target="_blank" href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/add_assignment.md#diff-arguments">?</a>)</th>
+-       <th rowspan="2">Upload<br>Only (<a target="_blank" href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/add_assignment.md#upload-only">?</a>)</th>
++       <th rowspan="2">Allowed<br>Languages (<a target="_blank" href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/add_assignment.md#allowed-languages">?</a>)</th>
++       <th rowspan="2">Diff<br>Command (<a target="_blank" href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/add_assignment.md#diff-command">?</a>)</th>
++       <th rowspan="2">Diff<br>Argument (<a target="_blank" href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/add_assignment.md#diff-arguments">?</a>)</th>
++       <th rowspan="2">Upload<br>Only (<a target="_blank" href="https://github.com/ftisunpar/Sharif-Judge/blob/docs/v1.4/add_assignment.md#upload-only">?</a>)</th>
+<th rowspan="2"></th>
+</tr>
+<tr>
 \end{lstlisting}
 
 	\subsection{Hapus Perbedaan antara \textit{Admin} dan \textit{Student} pada PDF \textit{Download}}
-	Isu dengan kode unik \#7 mengatakan agar mengubah beberapa bagian hasil implementasi kode pada kelas \textit{controller Assignments.php}. Kode tersebut terdapat pada fungsi unduh \textit{assignment} dengan ketentuan yang telah dirancang pada \hyperref[chap:batassoal]{sub bab 4.3}. Bagian kode \textit{\&\& \$this->user->level == 0} berfungsi untuk mengijinkan pengguna dengan \textit{role admin} dapat mengunduh \textit{assignment}. Bagian tersebut dihilangkan agar adanya transparansi antara dosen dan peserta, sehingga dosen saat membuat \textit{assignment} lebih yakin bahwa soalnya tidak akan bisa diunduh. Berikut beberapa baris potongan kode program
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+	Isu dengan kode unik \#7 mengatakan agar mengubah beberapa bagian hasil implementasi kode pada kelas \textit{controller Assignments.php}. Kode tersebut terdapat pada fungsi unduh \textit{assignment} dengan ketentuan yang telah dirancang pada \hyperref[chap:batassoal]{sub bab 4.3}. Bagian kode \textit{\&\& \$this->user->level == 0} berfungsi untuk mengijinkan pengguna dengan \textit{role admin} dapat mengunduh \textit{assignment}. Bagian tersebut dihilangkan agar adanya transparansi antara dosen dan peserta, sehingga dosen saat membuat \textit{assignment} lebih yakin bahwa soalnya tidak akan bisa diunduh. Berikut perubahan kode program
+	\textit{Assignments.php}
+\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-...
-112		if ( ! $pdf_files )
-113			show_error("File not found");
-114		elseif (!$this->assignment_model->assignment_info($assignment_id)['open'] && $this->user->level == 0 )
-115			show_error('Selected assignment has been closed.');
-116		elseif	( ! $this->assignment_model->is_participant($this->assignment_model->assignment_info($assignment_id)['participants'],$this->user->username) )
-117			show_error('You are not registered for submitting.');
-118		elseif ( shj_now() > $finishtime + $extratime && $this->user->level == 0 )
-119			show_error('Selected assignment has finished.');
-120		elseif ( shj_now() < $starttime && $this->user->level == 0 )
-121			show_error('Selected assignment has not started.');
-...
-\end{lstlisting}
-	
-	Perubahan kode terjadi pada baris 114, 116, 118 dan 120. Berikut hasil perubahan kode program yang terjadi di \textit{Assignments.php}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
-...
-107		if ($problem_id === NULL)
-108			$pattern = rtrim($this->settings_model->get_setting('assignments_root'),'/')."/assignment_{$assignment_id}/*.pdf";
-109		else
-110			$pattern = rtrim($this->settings_model->get_setting('assignments_root'),'/')."/assignment_{$assignment_id}/p{$problem_id}/*.pdf";
-111		$pdf_files = glob($pattern);
-112		if ( ! $pdf_files )
-113			show_error("File not found");
-114		elseif (!$this->assignment_model->assignment_info($assignment_id)['open'])
-115			show_error('Selected assignment has been closed.');
-116		elseif	( ! $this->assignment_model->is_participant($this->assignment_model->assignment_info($assignment_id)['participants'],$this->user->username) )
-117			show_error('You are not registered for submitting.');
-118		elseif ( shj_now() > $finishtime + $extratime)
-119			show_error('Selected assignment has finished.');
-120		elseif ( shj_now() < $starttime)
-121			show_error('Selected assignment has not started.');
-...
+@@ -111,13 +111,13 @@ class Assignments extends CI_Controller
+$pdf_files = glob($pattern);
+	if ( ! $pdf_files )
+		show_error("File not found");
+-   	elseif (!$this->assignment_model->assignment_info($assignment_id)['open'] && $this->user->level == 0 )
++   	elseif (!$this->assignment_model->assignment_info($assignment_id)['open'])
+		show_error('Selected assignment has been closed.');
+	elseif  ( ! $this->assignment_model->is_participant($this->assignment_model->assignment_info($assignment_id)['participants'],$this->user->username) )
+		show_error('You are not registered for submitting.');
+-   	elseif ( shj_now() > $finishtime + $extratime && $this->user->level == 0 )
++   	elseif ( shj_now() > $finishtime + $extratime)
+		show_error('Selected assignment has finished.');
+-   	elseif ( shj_now() < $starttime && $this->user->level == 0 )
++   	elseif ( shj_now() < $starttime)
+		show_error('Selected assignment has not started.');
+
+// Download the file to browser
 \end{lstlisting}
 
 	\subsection{\textit{Download Excel} Tidak Berfungsi pada Halaman \textit{Submission}}
@@ -666,6 +744,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 	
 	Dari rancangan algoritma yang diterapkan, terdapat perubahan kode pada kelas \textit{controller Submissions.php} dan \textit{controller Users.php}. Berikut perubahan kode program
 	
+	\textit{Submission.php}
 \begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -6,6 +6,13 @@
@@ -756,7 +835,11 @@ header('Cache-Control: max-age=0');
 +   $objWriter = IOFactory::createWriter($phpspreedsheet, ucfirst($ext));
 $objWriter->save('php://output');
 }
-
+\end{lstlisting}
+~\\	
+	\textit{Users.php}
+\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -6,6 +6,13 @@
 */
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -846,4 +929,3 @@ header('Cache-Control: max-age=0');
 $objWriter->save('php://output');
 }
 \end{lstlisting}
-	
