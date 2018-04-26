@@ -5,7 +5,7 @@ Bab ini membahas tentang perancangan setiap fitur yang diimplementasi pada peran
 
 \section{Mengganti Method \textit{shell\_exec("rm ...")} Menjadi \textit{unlink()}}
 \textit{Method} \textit{shell\_exec("rm ...")} yang memiliki fungsi untuk menghapus sebuah \textit{file} terdapat pada kelas \textit{controller Assignment.php}. Berikut perubahan kode program
-
+~\\
 \textit{Assignments.php}
 \begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true]
@@ -32,7 +32,7 @@ $this->messages[] = array(
 \section{Menambahkan Method Rekoneksi ke \textit{Database}}
 \textit{Method} rekoneksi ke \textit{database} ditambahkan pada kelas \textit{controller Queueprocess.php}. \textit{Method} yang digunakan yaitu \textit{\$this->db->reconnect()}. %\textit{Method} ini diletakan pada baris 134 tepat sebelum \textit{Sharif Judge} menyimpan hasil \textit{judge}. Hal tersebut dilakukan untuk menghindari \textit{connection times out} akibat pengujian yang memakan waktu lama.
 Berikut perubahan kode program
-
+~\\
 \textit{Queueprocess.php}
 \begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true]
@@ -59,7 +59,7 @@ Fungsi untuk mengunduh soal (deskripsi \& PDF) terdapat pada \textit{controller 
 \end{itemize}
 
 Berikut hasil pengimplementasian rancangan algoritma di atas ke dalam kode program
-
+~\\
 \textit{Assignments.php}
 \begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
@@ -93,8 +93,8 @@ $this->load->helper('download')->helper('file');
 \end{lstlisting}
 
 \section{Mensupport \textit{File} dengan Ekstensi TXT}
-Untuk dapat mensupport \textit{file} dengan ekstensi TXT pada perangkat lunak \textit{Sharif Judge}, diperlukan penambahan dan perubahan kode pada beberapa kelas. Beberapa kelas tersebut antara lain \textit{controller Submit.php, model Assignment\_model.php, view submissions.twig} dan kelas bantuan \textit{shj\_helper.php} yang terdapat pada direktori \path{Sharif-Judge\application\helper}. Berikut perubahan kode program
-
+Untuk dapat mensupport \textit{file} dengan ekstensi TXT pada perangkat lunak \textit{Sharif Judge}, diperlukan penambahan dan perubahan kode pada beberapa kelas. Beberapa kelas tersebut antara lain \textit{controller Submit.php, model Assignment\_model.php, view submissions.twig} dan kelas bantuan \textit{shj\_helper.php} yang terdapat pada direktori \path{Sharif-Judge\application\helper}. Berikut penambahan dan perubahan kode program
+~\\
 \textit{Submit.php}
 \begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
@@ -328,212 +328,144 @@ Untuk dapat menambahkan parameter "\textit{Display Name}" pada pendaftaran peser
 	\item Menambahkan \textit{text field Display Name} pada halaman \textit{Register} \textit{(Open Public Registration}).
 \end{enumerate}
 Dari rancangan algoritma yang diterapkan, terdapat perubahan dan penambahan kode pada beberapa kelas. Beberapa kelas tersebut antara lain \textit{controller Install.php, controller Login.php, model User\_model.php, view add\_user.twig, view add\_user\_result.twig} dan \textit{view register.twig}.
-Berikut beberapa baris potongan kode program
-
+Berikut penambahan dan perubahan kode program
+~\\
 \textit{Install.php}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-...
-252	// add admin user
-253	$this->user_model->add_user(
-254		$this->input->post('username'),
-255		$this->input->post('email'),
-256		$this->input->post('password'),
-257		'admin'
-	);
-...
-\end{lstlisting}
-~\\
-\textit{Login.php}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
-...
-92	$this->user_model->add_user(
-93		$this->input->post('username'),
-94		$this->input->post('email'),
-95		$this->input->post('password'),
-...
-\end{lstlisting}
-~\\
-\textit{User\_model.php}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
-...
-120	*/
-121	public function add_user($username, $email, $password, $role)
-122	{
-...
-138	'username' => $username,
-139	'email' => $email,
-140	'password' => $this->password_hash->HashPassword($password),
-...
-176	$parts = preg_split('/\s+/', $line);
-177	if (count($parts) != 4)
-178		continue; //ignore lines that not contain 4 parts
-...
-180	if (strtolower(substr($parts[2], 0, 6)) == 'random')
-181	{
-182		// generate random password
-183		$len = trim(substr($parts[2], 6), '[]');
-184		if (is_numeric($len)){
-185			$this->load->helper('string');
-186			$parts[2] = shj_random_password($len);
-187		}
-188	}
-189	
-190	$result = $this->add_user($parts[0], $parts[1], $parts[2], $parts[3]);
-191	
-192	if ($result === TRUE)
-193		array_push($users_ok, array($parts[0], $parts[1], $parts[2], $parts[3]));
-194	else
-195		array_push($users_error, array($parts[0], $parts[1], $parts[2], $parts[3], $result));
-...
-\end{lstlisting}
-~\\
-\textit{add\_user.twig}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
-...
-66	#
-67	# USERNAME EMAIL PASSWORD ROLE
-68	#
-...
-\end{lstlisting}
-~\\
-\textit{add\_user\_result.twig}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
-...
-9	{% for item in ok %}
-10	<li>Usename: {{ item[0] }} Email: {{ item[1] }} Password: <code>{{ item[2] }}</code> Role: {{ item[3] }}</li>
-11	{% endfor %}
-...
-17	{% for item in error %}
-18	<li>Usename: {{ item[0] }} Email: {{ item[1] }} Password: <code>{{ item[2] }}</code> Role: {{ item[3] }} ({{ item[4] }})</li>
-19	{% endfor %}
-...
-\end{lstlisting}
-~\\
-\textit{register.twig}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
-...
-33	{{ form_error('email','<div class="shj_error">','</div>') }}
-34	</p>
-35	<p>
-36	<label for="form_password">Password</label><br/>
-...
-\end{lstlisting}
-~\\
-Perubahan dan penambahan kode di \textit{User\_model.php} untuk menambahkan parameter "\textit{Display Name}". Penambahan kode tersebut terjadi pada baris 121, 139, 180, 183, 190, 193 dan 195. Mengubah pemisah antar parameter menggunakan tanda koma terjadi pada baris 176. Mengubah urutan data pada pada pendaftaran peserta melalui \textit{email} terjadi pada baris 231 dan 233. Berikut hasil penambahan dan perubahan kode program yang terjadi di \textit{User\_model.php}
-
-\textit{User\_model.php}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
-...
-120	*/
-121	public function add_user($username, $email, $display_name, $password, $role)
-122	{
-...
-138	'username' => $username,
-139	'email' => $email,
-140	'display_name' => $display_name,
-141	'password' => $this->password_hash->HashPassword($password),
-...
-177	$parts = preg_split('/,+/', $line);
-178	if (count($parts) != 5)
-179		continue; //ignore lines that not contain 5 parts
-...
-181	if (strtolower(substr($parts[3], 0, 6)) == 'random')
-182	{
-183		// generate random password
-184		$len = trim(substr($parts[3], 6), '[]');
-185		if (is_numeric($len)){
-186			$this->load->helper('string');
-187			$parts[3] = shj_random_password($len);
-188		}
-189	}
-190	
-191	$result = $this->add_user($parts[0], $parts[1], $parts[2], $parts[3]);
-192	
-193	if ($result === TRUE)
-194		array_push($users_ok, array($parts[0], $parts[1], $parts[2], $parts[3], $parts[4]));
-195	else
-196		array_push($users_error, array($parts[0], $parts[1], $parts[2], $parts[3], $parts[4], $result));
-...
-\end{lstlisting}
-~\\
-Penambahan kode di \textit{Install.php} untuk menambahkan \textit{Display Name admin} terjadi setelah baris 255. Berikut hasil penambahan kode program yang terjadi di \textit{Install.php}
- 
-\textit{Install.php}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
-...
-252	// add admin user
-253	$this->user_model->add_user(
-254		$this->input->post('username'),
-255		$this->input->post('email'),
-256		'Admin',
-257		$this->input->post('password'),
-258		'admin'
+@@ -255,6 +255,7 @@ class Install extends CI_Controller
+	$this->user_model->add_user(
+	$this->input->post('username'),
+	$this->input->post('email'),
++   	'Admin',
+	$this->input->post('password'),
+	'admin'
 );
-...
-\end{lstlisting}
-~\\ 
-Perubahan dan penambahan kode di halaman \textit{add\_user.twig} untuk menambahkan keterangan parameter "\textit{Display Name}". Penambahan kode tersebut terjadi pada baris 67, sedangkan halaman \textit{add\_user\_result.twig} terjadi pada baris 10 dan 18. Berikut hasil penambahan kode program yang terjadi di halaman \textit{add\_user.twig} dan halaman \textit{add\_user\_result.twig}
-
-\textit{add\_user.twig}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
-...
-66	#
-67	# USERNAME,EMAIL,DISPLAY-NAME,PASSWORD,ROLE
-68	#
-...
-\end{lstlisting}
-
-\textit{add\_user\_result.twig}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
-...
-9	{% for item in ok %}
-10	<li>Usename: {{ item[0] }} Email: {{ item[1] }} Diplay Name: {{ item[2] }} Password: <code>{{ item[3] }}</code> Role: {{ item[4] }} </li>
-11	{% endfor %}
-...
-17	{% for item in error %}
-18	<li>Usename: {{ item[0] }} Email: {{ item[1] }} Diplay Name: {{ item[2] }} Password: <code>{{ item[3] }}</code> Role: {{ item[4] }} ({{ item[5] }})</li>
-19	{% endfor %}
-...
 \end{lstlisting}
 ~\\
-Penambahan kode di halaman \textit{register.twig} untuk menambahkan \textit{text field Display Name} terjadi setelah baris 34 dan pada \textit{controller Login.php} setelah baris 94. Berikut hasil penambahan kode program yang terjadi di halaman \textit{register.twig} dan \textit{controller Login.php}.
-
-\textit{register.twig}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
-...
-33	{{ form_error('email','<div class="shj_error">','</div>') }}
-34	</p>
-35	<p>
-36		<label for="form_displayname">Display Name</label><br/>
-37		<input id="form_displayname" type="text" name="displayname" required="required" pattern="[A-Za-z\s]+" title="The Display Name field must be contain only alphabetical letters" class="sharif_input" value="{{ set_value('displayname') }}"/>
-38		{{ form_error('form_displayname', '<div class="shj_error">', '</div>') }}
-39	</p>
-40	<p>
-41	<label for="form_password">Password</label><br/>
-...
-\end{lstlisting}
-
 \textit{Login.php}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-...
-92	$this->user_model->add_user(
-93		$this->input->post('username'),
-94		$this->input->post('email'),
-95		$this->input->post('displayname'),
-96		$this->input->post('password'),
-...
+@@ -102,6 +102,7 @@ class Login extends CI_Controller
+	$this->user_model->add_user(
+	$this->input->post('username'),
+	$this->input->post('email'),
++   	$this->input->post('displayname'),
+	$this->input->post('password'),
+	'student'
+);
+\end{lstlisting}
+~\\
+\textit{User\_model.php}
+\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+@@ -118,7 +118,7 @@ class User_model extends CI_Model
+* @param $role
+* @return bool|string
+*/
+-   public function add_user($username, $email, $password, $role)
++   public function add_user($username, $email, $display_name, $password, $role)
+{
+if ( ! $this->form_validation->alpha_numeric($username) )
+return 'Username may only contain alpha-numeric characters.';
+
+@@ -137,6 +137,7 @@ class User_model extends CI_Model
+	$user=array(
+	'username' => $username,
+	'email' => $email,
++   	'display_name' => $display_name,
+	'password' => $this->password_hash->HashPassword($password),
+	'role' => $role
+);
+
+@@ -173,26 +174,26 @@ class User_model extends CI_Model
+if (strlen($line) == 0 OR $line[0] == '#')
+continue; //ignore comments and empty lines
+
+-       $parts = preg_split('/\s+/', $line);
+-   if (count($parts) != 4)
+-   	continue; //ignore lines that not contain 4 parts
++       $parts = preg_split('/,+/', $line);
++   if (count($parts) != 5)
++       continue; //ignore lines that not contain 5 parts
+
+-    if (strtolower(substr($parts[2], 0, 6)) == 'random')
++    if (strtolower(substr($parts[3], 0, 6)) == 'random')
+{
+// generate random password
+-    $len = trim(substr($parts[2], 6), '[]');
++    $len = trim(substr($parts[3], 6), '[]');
+	if (is_numeric($len)){
+	$this->load->helper('string');
+-   	$parts[2] = shj_random_password($len);
++       $parts[3] = shj_random_password($len);
+	}
+}
+
+-   $result = $this->add_user($parts[0], $parts[1], $parts[2], $parts[3]);
++   $result = $this->add_user($parts[0], $parts[1], $parts[2], $parts[3], $parts[4]);
+
+	if ($result === TRUE)
+-   	array_push($users_ok, array($parts[0], $parts[1], $parts[2], $parts[3]));
++       array_push($users_ok, array($parts[0], $parts[1], $parts[2], $parts[3], $parts[4]));
+	else
+-       array_push($users_error, array($parts[0], $parts[1], $parts[2], $parts[3], $result));
++       array_push($users_error, array($parts[0], $parts[1], $parts[2], $parts[3], $parts[4], $result));
+
+} // end of loop
+\end{lstlisting}
+~\\
+\textit{add\_user.twig}
+\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+@@ -64,7 +64,7 @@
+# Each line (except comments) represents a user.
+# The syntax of each line is:
+#
+-   # USERNAME EMAIL PASSWORD ROLE
++   # USERNAME,EMAIL,DISPLAY-NAME,PASSWORD,ROLE
+#
+# Roles: admin head_instructor instructor student
+# You can use RANDOM[n] for password to generate random n-digit password.
+\end{lstlisting}
+~\\
+\textit{add\_user\_result.twig}
+\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+@@ -7,7 +7,7 @@
+<p class="shj_ok">These users added successfully:</p>
+<ol>
+{% for item in ok %}
+-   <li>Usename: {{ item[0] }} Email: {{ item[1] }} Password: <code>{{ item[2] }}</code> Role: {{ item[3] }}</li>
++   <li>Usename: {{ item[0] }} Email: {{ item[1] }} Diplay Name: {{ item[2] }} Password: <code>{{ item[3] }}</code> Role: {{ item[4] }} </li>
+{% endfor %}
+</ol>
+{% endif %}
+@@ -15,7 +15,7 @@
+<p class="shj_error">Error adding these users:</p>
+<ol>
+{% for item in error %}
+-   <li>Usename: {{ item[0] }} Email: {{ item[1] }} Password: <code>{{ item[2] }}</code> Role: {{ item[3] }} ({{ item[4] }})</li>
++   <li>Usename: {{ item[0] }} Email: {{ item[1] }} Diplay Name: {{ item[2] }} Password: <code>{{ item[3] }}</code> Role: {{ item[4] }} ({{ item[5] }})</li>
+{% endfor %}
+</ol>
+\end{lstlisting}
+~\\
+\textit{register.twig}
+\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+@@ -32,6 +32,11 @@
+<input id="form_email" type="email" autocomplete="off" name="email" required="required" class="sharif_input" value="{{ set_value('email') }}"/>
+{{ form_error('email','<div class="shj_error">','</div>') }}
+</p>
++      <p>
++         label for="form_displayname">Display Name</label><br/>
++         <input id="form_displayname" type="text" name="displayname" required="required" pattern="[A-Za-z\s]+" title="The Display Name field must be contain only alphabetical letters" class="sharif_input" value="{{ set_value('displayname') }}"/>
++         {{ form_error('form_displayname', '<div class="shj_error">', '</div>') }}
++      </p>
+<p>
+<label for="form_password">Password</label><br/>
+<input id="form_password" type="password" name="password" required="required" pattern=".{6,200}" title="The Password field must be at least 6 characters in length" class="sharif_input"/>
 \end{lstlisting}
 
 \section{Menambahkan Fitur "\textit{Lock Student's Display Name}"}
@@ -550,140 +482,89 @@ Rancangan algoritma yang digunakan untuk menambahkan fitur "\textit{Lock Student
 \end{enumerate}
 
 Dari rancangan algoritma yang diterapkan, terdapat penambahan kode pada beberapa kelas. Beberapa kelas tersebut antara lain \textit{controller Profile.php, controller Settings.php, model User\_model.php, view settings.twig} dan \textit{view profile.twig}.
-Berikut beberapa baris potongan kode program
-
+Berikut penambahan dan perubahan kode program
+~\\
 \textit{Profile.php}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-...
-65		'role' => $user->role,
-66		'form_status' => $this->form_status,
-67	);
-...
+@@ -64,6 +64,7 @@ class Profile extends CI_Controller
+	'display_name' => $user->display_name,
+	'role' => $user->role,
+	'form_status' => $this->form_status,
++   	'lock_student_display_name' => $this->settings_model->get_setting(lock_student_display_name),
+	);
+
+$this->twig->display('pages/profile.twig', $data);
 \end{lstlisting}
 ~\\
 \textit{Settings.php}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-...
-113	'results_per_page_all' => $this->input->post('rpp_all'),
-114	'results_per_page_final' => $this->input->post('rpp_final'),
-115	'week_start' => $this->input->post('week_start'),
-...
+@@ -113,9 +113,10 @@ class Settings extends CI_Controller
+	'results_per_page_all' => $this->input->post('rpp_all'),
+	'results_per_page_final' => $this->input->post('rpp_final'),
+	'week_start' => $this->input->post('week_start'),
++   	'lock_student_display_name' => $this->input->post('lock_student_display_name')===NULL?0:1,
+	)
+);
 \end{lstlisting}
 ~\\
 \textit{User\_model.php}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-...
-405	$username = $the_user->username;
-406
-407	$user=array(
-408		'display_name' => $this->input->post('display_name'),
-409		'email' => $this->input->post('email')
-410	);
-...
+@@ -404,9 +404,15 @@ class User_model extends CI_Model
+return FALSE;
+$the_user = $query->row();
+$username = $the_user->username;
++
++   $display_name = $this->input->post('display_name');
++   $locked = $this->settings_model->get_setting(lock_student_display_name);
++   	if ($locked == 1) {
++          $display_name = $the_user->display_name;
++       }
+
+	$user=array(
+-   		'display_name' => $this->input->post('display_name'),
++      		'display_name' => $display_name,
+		'email' => $this->input->post('email')
+);
 \end{lstlisting}
 ~\\
 \textit{settings.twig}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-...
-115		<span class="form_comment">Enable Log</span>
-116	</p>
-117	<p class="input_p">
-...
+@@ -114,6 +114,11 @@ $(document).ready(function(){
+<label for="form_log">Log</label><br>
+<span class="form_comment">Enable Log</span>
+</p>
++   <p class="input_p">
++   		<input id="form_lock_student_display_name" type="checkbox" name="lock_student_display_name" value="1" {{ lock_student_display_name ? 'checked' }}/>
++   		<label for="form_lock_student_display_name">Lock Student's Display Name</label><br>
++           <span class="form_comment">Student's can't change their display name</span>
++   </p>
+<p class="input_p">
+	<label for="form_late_rule">Default Coefficient Rule</label>
+	<span class="form_comment clear">PHP script without &lt;?php ?&gt; tags</span><br>
 \end{lstlisting}
 ~\\
 \textit{profile.twig}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-...
-31		<input id="form_name" type="text" name="display_name" class="sharif_input medium" value="{{ display_name }}"/>
-32		{{ form_error('display_name', '<div class="shj_error">', '</div>') }}
-33	</p>
-...
-\end{lstlisting}
-~\\
-Penambahan kode di halaman \textit{settings.twig} untuk menambahkan check box fitur "\textit{Lock Student's Display Name}". Penambahan kode tersebut terjadi setelah baris 116. Berikut hasil penambahan kode program yang terjadi di halaman \textit{settings.twig}
-
-\textit{settings.twig}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
-...
-115		<span class="form_comment">Enable Log</span>
-116	</p>
-117	<p class="input_p">
-118		<input id="form_lock_student_display_name" type="checkbox" name="lock_student_display_name" value="1" {{ lock_student_display_name ? 'checked' }}/>
-119		<label for="form_lock_student_display_name">Lock Student's Display Name</label><br>
-120		<span class="form_comment">Student's can't change their display name</span>
-121	</p>
-122	<p class="input_p">
-...
-\end{lstlisting}
-~\\
-Penambahan kode di \textit{controller Settings.php} untuk menyimpan nilai dari \textit{check box} fitur "\textit{Lock Student's Display Name}" ke \textit{database}. Penambahan kode tersebut terjadi setelah baris 115. Berikut hasil penambahan kode program yang terjadi di \textit{controller Settings.php}
-
-\textit{Settings.php}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
-...
-113	'results_per_page_all' => $this->input->post('rpp_all'),
-114	'results_per_page_final' => $this->input->post('rpp_final'),
-115	'week_start' => $this->input->post('week_start'),
-116	'lock_student_display_name' => $this->input->post('lock_student_display_name')===NULL?0:1,
-...
-\end{lstlisting}
-~\\
-Penambahan kode di \textit{controller Profile.php} untuk mengecek apakah fitur "\textit{Lock Student's Display Name}" aktif atau tidak aktif. Penambahan kode tersebut terjadi setelah baris 66. Hasil pengecekan tersebut akan dikirimkan untuk halaman \textit{profile.twig}. Berikut hasil penambahan kode program yang terjadi di \textit{controller} \textit{Profile.php}
-
-\textit{Profile.php}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
-...
-65		'role' => $user->role,
-66		'form_status' => $this->form_status,
-67		'lock_student_display_name' => $this->settings_model->get_setting(lock_student_display_name),
-68	);
-...
-\end{lstlisting}
-~\\
-Penambahan kode di halaman \textit{profile.twig} untuk menentukan apakah \textit{text field Display Name} akan diaktifkan atau tidak. Penambahan kode tersebut terjadi setelah baris 31. Berikut hasil penambahan kode program yang terjadi di tampilan \textit{profile.twig}
-
-\textit{profile.twig}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
-...
-31
-32	{% if lock_student_display_name == 1 %}
-33	<input id="form_name" type="text" name="display_name" class="sharif_input medium" value="{{ display_name }}" disabled/>
-34	{% else %}
-35	<input id="form_name" type="text" name="display_name" class="sharif_input medium" value="{{ display_name }}"/>
-36	{% endif %}
-37
-...
-\end{lstlisting}
-~\\
-Penambahan kode di \textit{model User\_model.php} untuk mengecek apakah fitur "\textit{Lock Student's Display Name}" aktif atau tidak aktif. Penambahan kode tersebut terjadi setelah baris 405. Berikut hasil penambahan kode program yang terjadi di \textit{model User\_model.php}
-
-\textit{User\_model.php}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
-
-...
-405	$username = $the_user->username;
-406
-407	$display_name = $this->input->post('display_name');
-408	$locked = $this->settings_model->get_setting(lock_student_display_name);
-409	if ($locked == 1) {
-410		$display_name = $the_user->display_name;
-411	}
-412	
-413	$user=array(
-414		'display_name' => $display_name,
-415		'email' => $this->input->post('email')
-416	);
-...
+@@ -28,7 +28,13 @@
+</p>
+<p class="input_p clear">
+	<label for="form_name" class="short2">Name:</label>
+-       <input id="form_name" type="text" name="display_name" class="sharif_input medium" value="{{ display_name }}"/>
++
++  {% if lock_student_display_name == 1 %}
++  <input id="form_name" type="text" name="display_name" class="sharif_input medium" value="{{ display_name }}" disabled/>
++  {% else %}
++  <input id="form_name" type="text" name="display_name" class="sharif_input medium" value="{{ display_name }}"/>
++  {% endif %}
++
+	{{ form_error('display_name', '<div class="shj_error">', '</div>') }}
+</p>
+<p class="input_p clear">
 \end{lstlisting}
 
 \section{Menambahakan Fitur "\textit{Archived Assignment}"}
@@ -699,154 +580,91 @@ Rancangan algoritma yang digunakan untuk menambahkan fitur "\textit{Archived Ass
 \end{enumerate}
 
 Dari rancangan algoritma yang diterapkan, terdapat penambahan kode pada beberapa kelas. Beberapa kelas tersebut antara lain \textit{model Assignment\_model.php, view add\_assignment.twig} dan \textit{view dashboard.twig}.
-Berikut beberapa baris potongan kode program
+Berikut penambahan dan perubahan kode program
 ~\\
 \textit{Assignment\_model.php}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-...
-37	foreach($extra_items as $extra_item)
-38	{
-39		$extra_time *= $extra_item;
-40	}
-41	$assignment = array(
-42		'id' => $id,
-43		'name' => $this->input->post('assignment_name'),
-44		'problems' => $this->input->post('number_of_problems'),
-45		'total_submits' => 0,
-46		'open' => ($this->input->post('open')===NULL?0:1),
-47		'scoreboard' => ($this->input->post('scoreboard')===NULL?0:1),
-48		'javaexceptions' => ($this->input->post('javaexceptions')===NULL?0:1),
-49		'description' => '', /* todo */
-50		'start_time' => date('Y-m-d H:i:s', strtotime($this->input->post('start_time'))),
-51		'finish_time' => date('Y-m-d H:i:s', strtotime($this->input->post('finish_time'))),
-52		'extra_time' => $extra_time*60,
-53		'late_rule' => $this->input->post('late_rule'),
-54		'participants' => $this->input->post('participants')
-55	);
-...
+@@ -38,6 +38,9 @@ class Assignment_model extends CI_Model
+	{
+	$extra_time *= $extra_item;
+	}
++  
++   $archived_assignment = $archived_assignment = $this->input->post('archived_assignment')!==NULL ? 1 : 0;
++  
+$assignment = array(
+'id' => $id,
+'name' => $this->input->post('assignment_name'),
+
+@@ -51,7 +54,8 @@ class Assignment_model extends CI_Model
+		'finish_time' => date('Y-m-d H:i:s', strtotime($this->input->post('finish_time'))),
+		'extra_time' => $extra_time*60,
+		'late_rule' => $this->input->post('late_rule'),
+-       	'participants' => $this->input->post('participants')
++           'participants' => $this->input->post('participants'),
++           'archived_assignment' => $archived_assignment
+	);
+	if($edit)
+	{
 \end{lstlisting}
 ~\\
 \textit{add\_assignment.twig}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-...
-37	$("#add").click(function(){
-38			$('#problems_table>tbody').append(shj.row.replace(/PID/g, (shj.num_of_problems+1)));
-39			shj.num_of_problems++;
-40			$('#nop').attr('value', shj.num_of_problems);
-41		});
-42	$(document).on('click', '.delete_problem', function(){
-43		if (shj.num_of_problems==1) return;
-44		var row = $(this).parents('tr');
-...
-154		{{ form_error('javaexceptions', '<div class="shj_error">', '</div>') }}
-155	</p>
-156	<p class="input_p">
-...
+@@ -39,6 +39,18 @@
+			shj.num_of_problems++;
+			$('#nop').attr('value', shj.num_of_problems);
+		});
++    $("#form_a_archived_assignment").click(function(){
++                       if ($("#form_a_archived_assignment").is(':checked')) {
++        $("#start_time").val('1970-01-02 00:00:00');
++        $("#finish_time").val('2038-01-18 00:00:00');
++        $("#form_extra_time").val('0');
++      }
++      else{
++        $("#start_time").val('');
++        $("#finish_time").val('');
++        $("#form_extra_time").val('');
++      }
++               });
+		$(document).on('click', '.delete_problem', function(){
+		if (shj.num_of_problems==1) return;
+		var row = $(this).parents('tr');
+		
+@@ -153,6 +165,12 @@
+		<span class="form_comment space-left">Check this to show Java exceptions to users</span>
+		{{ form_error('javaexceptions', '<div class="shj_error">', '</div>') }}
+	</p>
++  <p class="input_p">
++            <input id="form_a_archived_assignment" type="checkbox" name="archived_assignment" value="1" {{ edit ? (edit_assignment.archived_assignment ? 'checked') : set_checkbox('archived_assignment', '1')|raw }} />
++            <label for="form_a_archived_assignment" class="default">Archived Assignment</label>
++            <span class="form_comment space-left">Check this to make an archived assignment</span>
++            {{ form_error('archived_assignment', '<div class="shj_error">', '</div>') }}
++   </p>
+	<p class="input_p">
+		<label for="form_late_rule">Coefficient rule (<a target="_blank" href="https://github.com/mjnaderi/Sharif-Judge/blob/docs/v1.4/add_assignment.md#coefficient-rule">?</a>)</label><br>
+		<span class="form_comment medium clear" style="display: block;">PHP script without &lt;?php ?&gt; tags</span>
 \end{lstlisting}
 ~\\
 \textit{dashboard.twig}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-...
-28	{% set colors = ['#812C8C','#FF750D','#2C578C','#013440','#A6222C','#42758C','#02A300','#BA6900'] %}
-29	{% for assignment in all_assignments %}
-30		{id:{{ assignment.id }},title:'{{ assignment.name|e('js') }}', start:'{{ assignment.start_time }}', end:' {{ assignment.finish_time }}',
-31		allDay:false,color:'{{ colors[(loop.index0)%colors|length] }}'}
-32	{% if not loop.last %},{% endif %}
-33	{% endfor %}
-...
-\end{lstlisting}
-~\\
-Penambahan kode di \textit{model Assignment\_model.php} untuk menyimpan nilai dari \textit{check box} fitur "\textit{Archived Assignment}" ke \textit{database}. Penambahan kode tersebut terjadi setelah baris 54. Penambahan kode setelah baris 40 berfungsi untuk mengambil nilai dari \textit{archived\_assignment} dari sebuah \textit{assignment}. Berikut hasil penambahan kode program yang terjadi di textit{model Assignment\_model.php} 
-
-\textit{Assignment\_model.php}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
-...
-37	foreach($extra_items as $extra_item)
-38	{
-39		$extra_time *= $extra_item;
-40	}
-41
-42	$archived_assignment = $archived_assignment = $this->input->post('archived_assignment')!==NULL ? 1 : 0;
-43
-44	$assignment = array(
-45		'id' => $id,
-46		'name' => $this->input->post('assignment_name'),
-47		'problems' => $this->input->post('number_of_problems'),
-48		'total_submits' => 0,
-49		'open' => ($this->input->post('open')===NULL?0:1),
-50		'scoreboard' => ($this->input->post('scoreboard')===NULL?0:1),
-51		'javaexceptions' => ($this->input->post('javaexceptions')===NULL?0:1),
-52		'description' => '', /* todo */
-53		'start_time' => date('Y-m-d H:i:s', strtotime($this->input->post('start_time'))),
-54		'finish_time' => date('Y-m-d H:i:s', strtotime($this->input->post('finish_time'))),
-55		'extra_time' => $extra_time*60,
-56		'late_rule' => $this->input->post('late_rule'),
-57		'participants' => $this->input->post('participants')
-58		'archived_assignment' => $archived_assignment
-59	);
-...
-\end{lstlisting}
-~\\
-Penambahan kode di halaman \textit{add\_assignment.twig} untuk menambahkan \textit{check box} fitur "\textit{Archived Assignment}". Penambahan kode tersebut  terjadi setelah baris 155. Penambahan kode setelah baris 41 untuk mengisi nilai \textit{text field Start time} menjadi 1970-01-02 00:00:00, \textit{text field Finish Time} menjadi 2038-01-18 00:00:00 dan \textit{text field Extra Time} menjadi 0. Berikut hasil penambahan kode program yang terjadi di halaman \textit{add\_assignment.twig}
-
-\textit{add\_assignment.twig}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
-...
-37	$("#add").click(function(){
-38			$('#problems_table>tbody').append(shj.row.replace(/PID/g, (shj.num_of_problems+1)));
-39			shj.num_of_problems++;
-40			$('#nop').attr('value', shj.num_of_problems);
-41		});
-42	$("#form_a_archived_assignment").click(function(){
-43		if ($("#form_a_archived_assignment").is(':checked')) {
-44			$("#start_time").val('1970-01-02 00:00:00');
-45			$("#finish_time").val('2038-01-18 00:00:00');
-46			$("#form_extra_time").val('0');
-47		}
-48		else{
-49			$("#start_time").val('');
-50			$("#finish_time").val('');
-51			$("#form_extra_time").val('');
-52		}
-53	});
-54	$(document).on('click', '.delete_problem', function(){
-55		if (shj.num_of_problems==1) return;
-56		var row = $(this).parents('tr');
-...
-166		{{ form_error('javaexceptions', '<div class="shj_error">', '</div>') }}
-167	</p>
-168	<p class="input_p">
-169		<input id="form_a_archived_assignment" type="checkbox" name="archived_assignment" value="1" {{ edit ? (edit_assignment.archived_assignment ? 'checked') : set_checkbox('archived_assignment', '1')|raw }} />
-170		<label for="form_a_archived_assignment" class="default">Archived Assignment</label>
-171		<span class="form_comment space-left">Check this to make an archived assignment</span>
-172		{{ form_error('archived_assignment', '<div class="shj_error">', '</div>') }}
-173	</p>
-174	<p class="input_p">
-...
-\end{lstlisting}
-~\\
-Penambahan kode di halaman \textit{dashboard.twig} untuk mengatur \textit{assignment} yang bersifat \textit{Archived Assignment} agar tidak muncul pada kalendar. Penambahan kode tersebut terjadi setelah baris 29. Berikut hasil penambahan kode program yang terjadi di halaman \textit{dashboard.twig}
-
-\textit{dashboard.twig}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
-...
-28	{% set colors = ['#812C8C','#FF750D','#2C578C','#013440','#A6222C','#42758C','#02A300','#BA6900'] %}
-29	{% for assignment in all_assignments %}
-30		{% if assignment.archived_assignment == '0' %}
-31			{id:{{ assignment.id }},title:'{{ assignment.name|e('js') }}', start:'{{ assignment.start_time }}', end:' {{ assignment.finish_time }}', allDay:false,color:'{{ colors[(loop.index0)%colors|length] }}'}
-32	{% endif %}
-33		{% if assignment.archived_assignment == '1' %}
-34	{}
-35	{% endif %}
-36	{% if not loop.last %},{% endif %}
-37	{% endfor %}
-...
+@@ -27,8 +27,13 @@ $(document).ready(function () {
+	events: [
+		{% set colors = ['#812C8C','#FF750D','#2C578C','#013440','#A6222C','#42758C','#02A300','#BA6900'] %}
+		{% for assignment in all_assignments %}
+-       	{id:{{ assignment.id }},title:'{{ assignment.name|e('js') }}', start:'{{ assignment.start_time }}', end:' {{ assignment.finish_time }}',
+-                               allDay:false,color:'{{ colors[(loop.index0)%colors|length] }}'}
++       	{% if assignment.archived_assignment == '0' %}
++           	{id:{{ assignment.id }},title:'{{ assignment.name|e('js') }}', start:'{{ assignment.start_time }}', end:' {{ assignment.finish_time }}',
++               allDay:false,color:'{{ colors[(loop.index0)%colors|length] }}'}
++        	{% endif %}
++        	{% if assignment.archived_assignment == '1' %}
++           	{}
++        	{% endif %}
+		{% if not loop.last %},{% endif %}
+		{% endfor %}
+]
 \end{lstlisting}
 
 \section{Menambahkan Halaman \textit{Hall of Fame}}
@@ -989,111 +807,7 @@ Halaman \textit{Hall of Fame} tidak membutuhkan atribut atau tabel baru pada \te
 	\end{table}
 \end{enumerate}
 
-Selain menambahkan kelas \textit{model, view} dan \textit{controller}, terdapat penambahan fungsi pada \textit{file shj\_functions.js} yang terletak di \path{Sharif-Judge\assets\js}. Penambahan fungsi tersebut berguna untuk meminta \textit{details} dari Hall of Fame peserta tertentu menggunakan fungsi hof\_details pada \textit{controller Halloffame.php} lalu menampilkannya.
-Berikut beberapa baris potongan kode program
-
-\textit{shj\_functions.js}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
-...
-478	});
-479
-480
-481
-482	/**
-483	* Set dir="auto" for all input elements
-484	*/
-485	$(document).ready(function(){
-486		$('input').attr('dir', 'auto');
-487	});
-...
-\end{lstlisting}
-
-Fungsi tersebut ditambahkan setelah baris 479. Hasil penamabahan kode program yang terjadi di \textit{shj\_functions.js} dapat dilihat di \hyperref[lamp:kodeprogramshjfunc]{Lampiran C}
-\iffalse
-\textit{shj\_functions.js}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
-...
-478	});
-479	
-480	/**
-481	* "Hall of Fame" page
-482	*/
-483	$(document).ready(function(){
-484		$('.hof_details').click(function(){
-485			var row = $(this).closest("tr");    // Find the row
-486			var username = row.find(".username").text();
-487			$.ajax({
-488			type: 'POST',
-489			url: shj.site_url+'halloffame/hof_details',
-490			data: {
-491				username: username,
-492				shj_csrf_token: shj.csrf_token
-493			},
-494			beforeSend: shj.loading_start,
-495			complete: shj.loading_finish,
-496			error: shj.loading_error,
-497	
-498			success: function(response){
-499				var currentAssignment = '';
-500				var prevAssignment = '';
-501				var temp = '';
-502	
-503				for (var i = 0; i < response.length; i++) {
-504					if (response[i].scoreboard == 0) {
-505						temp = temp + '--------------------------------------------------<br><b>' + response[i].assignment + '</b><br>Scoreboard Disabled!';
-506					}
-507					else{
-508						if (i == 0) {
-509							temp = temp + '<b>' + response[i].assignment + '</b> <br>' + response[i].problem + ' : ' + response[i].score +'<br>';
-510							prevAssignment = response[i].assignment;
-511						}
-512						else{
-513							currentAssignment = response[i].assignment;
-514							var index = currentAssignment.localeCompare(prevAssignment); //comparing previous assignment's name with current assignment's name
-515							if (index == 0) {
-516							temp = temp + response[i].problem + ' : ' + response[i].score + '<br>';
-517							prevAssignment = currentAssignment;
-518							}
-519							else{
-520							temp = temp + '--------------------------------------------------<br><b>'+currentAssignment + '</b><br>' + response[i].problem + ' : ' + response[i].score + '<br>';
-521							prevAssignment = currentAssignment;
-522						}
-523					}
-524				}
-525			}
-526	
-527			noty({
-528				text: 'Hall of Fame for username: <b>'+username+'</b><br>============================<br>'+temp,
-529				layout: 'center',
-530				type: 'confirm',
-531				animation: {
-532					open: {height: 'toggle'},
-533					close: {height: 'toggle'},
-534					easing: 'swing',
-535					speed: 300
-536				},
-537				buttons: [
-538					{addClass: 'btn shj-red', text: 'Close', onClick: function($noty){$noty.close();}}
-539				]
-540				});
-541			}
-542			});
-543		});
-544	});
-545	
-546	
-547	
-548	/**
-549	* Set dir="auto" for all input elements
-550	*/
-551	$(document).ready(function(){
-552		$('input').attr('dir', 'auto');
-553	});
-...
-\end{lstlisting}
-\fi
+Selain menambahkan kelas \textit{model, view} dan \textit{controller}, terdapat penambahan fungsi pada \textit{file shj\_functions.js} yang terletak di \path{Sharif-Judge\assets\js}. Penambahan fungsi tersebut berguna untuk meminta \textit{details} dari Hall of Fame peserta tertentu menggunakan fungsi hof\_details pada \textit{controller Halloffame.php} lalu menampilkannya. Hasil penamabahan dan perubahan kode program yang terjadi di \textit{shj\_functions.js} dapat dilihat di \hyperref[lamp:kodeprogramshjfunc]{Lampiran C}
 
 \section{Integrasi \textit{Login} ke \textit{Server RADIUS}}
 \textit{Sharif Judge} memerlukan \textit{library} baru agar dapat mengintegrasikan \textit{login} ke \textit{server RADIUS}. \textit{Library} yang digunakan adalah \textit{Dapphp/Radius}. \textit{Dapphp/Radius} adalah klien \textit{RADIUS PHP} untuk mengautentikasi pengguna terhadap \textit{server RADIUS} REFRENSI. Cara yang disarankan untuk menginstal \textit{Dapphp/Radius} adalah menggunakan \textit{Composer}. Jika \textit{Composer} telah terinstall, maka jalankan perintah "\textit{composer require dapphp/radius}" atau tambahkan "\textit{dapphp/radius}" pada file \textit{composer.json} bagian "\textit{section}"~\cite{drew:16:radius}.
@@ -1106,83 +820,35 @@ Rancangan algoritma yang digunakan untuk menambahkan mengintegrasikan \textit{lo
 	\item Mengintegrasikan \textit{login} pengguna \textit{Sharif Judge} ke \textit{server RADIUS}.
 \end{enumerate}
 
-Dari rancangan algoritma yang diterapkan, terdapat penambahan kode pada kelas \textit{model User\_model.php}. Berikut beberapa baris potongan kode program
-
+Dari rancangan algoritma yang diterapkan, terdapat penambahan kode pada kelas \textit{model User\_model.php}. Berikut penambahan dan perubahan kode program
+~\\
 \textit{User\_model.php}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-...
-7	defined('BASEPATH') OR exit('No direct script access allowed');
-8
-9	class User_model extends CI_Model
-...
-323	/**
-324	* Validate User
-325	*
-326	* Returns TRUE if given username and password is valid for login
-327	*
-328	* @param $username
-329	* @param $password
-330	* @return bool
-331	*/
-332	public function validate_user($username, $password)
-333	{
-334		$this->load->library('password_hash', array(8, FALSE));
-335		$query = $this->db->get_where('users', array('username' => $username));
-336		if ($query->num_rows() != 1)
-337			return FALSE;
-338		if ($query->row()->username !== $username) // needed (because of utf8_general_ci [ci=case insensitive])
-339			return FALSE;
-340		if ($this->password_hash->CheckPassword($password, $query->row()->password))
-341			return TRUE;
-342		return FALSE;
-343	}
-...
-\end{lstlisting}
+@@ -5,6 +5,7 @@
+* @author Mohammad Javad Naderi <mjnaderi@gmail.com>
+*/
+defined('BASEPATH') OR exit('No direct script access allowed');
++   use Dapphp\Radius\Radius;
 
-Penambahan kode di model \textit{User\_model} untuk memanggil \textit{library Dapphp/Radius} dan mengintegrasikan \textit{login} pengguna \textit{Sharif Judge} ke \textit{server RADIUS}. Penambahan kode tersebut terjadi setelah baris 7 dan 341. Berikut hasil penambahan kode program yang terjadi di model \textit{User\_model}
+class User_model extends CI_Model
+{
 
-\textit{User\_model.php}
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
-...
-7	defined('BASEPATH') OR exit('No direct script access allowed');
-8	+use Dapphp\Radius\Radius;
-9
-10	class User_model extends CI_Model
-...
-324	/**
-325	* Validate User
-326	*
-327	* Returns TRUE if given username and password is valid for login
-328	*
-329	* @param $username
-330	* @param $password
-331	* @return bool
-332	*/
-333	public function validate_user($username, $password)
-334	{
-335		$this->load->library('password_hash', array(8, FALSE));
-336		$query = $this->db->get_where('users', array('username' => $username));
-337		if ($query->num_rows() != 1)
-338			return FALSE;
-339		if ($query->row()->username !== $username) // needed (because of utf8_general_ci [ci=case insensitive])
-340			return FALSE;
-341		if ($this->password_hash->CheckPassword($password, $query->row()->password))
-342			return TRUE;
-343
-344		$this->load->config('secrets');
-345		if($this->config->item('shj_authenticate') == 'radius') {
-346			$client = new Radius();
-347			$client->setServer($this->config->item('shj_radius')['server']) // RADIUS server address
-348				->setSecret($this->config->item('shj_radius')['secret']);
-349			if($client->accessRequest($username, $password))
-350				return TRUE;
-351		}
-352		
-353		return FALSE;
-354	}
-...
+@@ -330,6 +331,15 @@ class User_model extends CI_Model
+		return FALSE;
+	if ($this->password_hash->CheckPassword($password, $query->row()->password))
+		return TRUE;
++  
++   	$this->load->config('secrets');
++       if($this->config->item('shj_authenticate') == 'radius') {
++       	$client = new Radius();
++           $client->setServer($this->config->item('shj_radius')['server']) // RADIUS server address
++                  ->setSecret($this->config->item('shj_radius')['secret']);
++           if($client->accessRequest($username, $password))
++           	return TRUE;
++       }
+	return FALSE;
+}
 \end{lstlisting}
 
 \section{Branding Teknik Informatika}
