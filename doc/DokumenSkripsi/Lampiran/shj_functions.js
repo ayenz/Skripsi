@@ -488,6 +488,7 @@ $(document).ready(function(){
 	$('.hof_details').click(function () {
 		var row = $(this).closest("tr");    // Find the row
     var username = row.find(".username").text();
+		var display_name = row.find(".display_name").text();
 		var view_code_request = $.ajax({
 			cache: true,
 			type: 'POST',
@@ -503,7 +504,7 @@ $(document).ready(function(){
 
 				for (var i = 0; i < response.length; i++) {
 					if (response[i].scoreboard == 0) {
-						temp = temp + '--------------------------------------------------<br><b>' + response[i].assignment + '</b><br>Scoreboard Disabled!';
+						temp = temp + '--------------------------------------------------<br><b>' + response[i].assignment + '</b><br>Scoreboard Disabled!<br>';
 					}
 					else{
 						if (i == 0) {
@@ -525,7 +526,7 @@ $(document).ready(function(){
 					}
 				}
 				$('.modal_inside').html('<pre class="code-column">'+temp+'</pre>');
-				$('.modal_inside').prepend('<p><code> Hall of Fame Details | Username: '+username+'</code></p>');
+				$('.modal_inside').prepend('<p><code> Hall of Fame Details | Username: '+username+' | Display Name: '+display_name+'</code></p>');
 			}
 		});
 		if (!shj.modal_open) {
