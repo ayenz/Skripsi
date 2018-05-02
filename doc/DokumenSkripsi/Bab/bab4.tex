@@ -4,7 +4,7 @@
 Bab ini membahas tentang perancangan setiap fitur yang diimplementasi pada perangkat lunak \textit{Sharif Judge}. 
 
 \section{Mengganti Method \textit{shell\_exec("rm ...")} Menjadi \textit{unlink()}}
-\textit{Method} \textit{shell\_exec("rm ...")} yang memiliki fungsi untuk menghapus sebuah \textit{file} terdapat pada kelas \textit{controller Assignment.php}. Berikut perubahan kode program
+\textit{Method} \textit{shell\_exec("rm ...")} yang memiliki fungsi untuk menghapus sebuah \textit{file} terdapat pada kelas \textit{controller Assignment.php}. \textit{Method shell\_exec("rm ...")} diubah menggunakan \textit{method unlink()}. Berikut perubahan kode program menggunakan \textit{syntax diff} \footnote{GNU Operating System, "Comparing and Merging Files" terakhir diubah 6 Mei 2017. \textit{https://www.gnu.org/software/diffutils/manual/diffutils.html\#Detailed-Unified}}.
 ~\\
 \textit{Assignments.php}
 \begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
@@ -30,7 +30,8 @@ $this->messages[] = array(
 \end{lstlisting}
 
 \section{Menambahkan Method Rekoneksi ke \textit{Database}}
-\textit{Method} rekoneksi ke \textit{database} ditambahkan pada kelas \textit{controller Queueprocess.php}. \textit{Method} yang digunakan yaitu \textit{\$this->db->reconnect()}. %\textit{Method} ini diletakan pada baris 134 tepat sebelum \textit{Sharif Judge} menyimpan hasil \textit{judge}. Hal tersebut dilakukan untuk menghindari \textit{connection times out} akibat pengujian yang memakan waktu lama.
+\textit{Method} rekoneksi ke \textit{database} ditambahkan pada kelas \textit{controller Queueprocess.php}. \textit{Method} yang digunakan yaitu \textit{\$this->db->reconnect()}. %\textit{Method} ini diletakan pada baris 134 tepat sebelum \textit{Sharif Judge} menyimpan hasil \textit{judge}. 
+Hal tersebut dilakukan untuk menghindari \textit{connection times out} akibat pengujian yang memakan waktu lama.
 Berikut perubahan kode program
 ~\\
 \textit{Queueprocess.php}
@@ -328,8 +329,8 @@ Untuk dapat menambahkan parameter "\textit{Display Name}" pada pendaftaran peser
 	\item Menambahkan \textit{text field Display Name} pada halaman \textit{Register} \textit{(Open Public Registration}).
 \end{enumerate}
 Dari rancangan algoritma yang diterapkan, terdapat perubahan dan penambahan kode pada beberapa kelas. Beberapa kelas tersebut antara lain \textit{controller Install.php, controller Login.php, model User\_model.php, view add\_user.twig, view add\_user\_result.twig} dan \textit{view register.twig}.
-Berikut penambahan dan perubahan kode program
 ~\\
+Penambahan kode di \textit{Install.php} untuk menambahkan \textit{Display Name admin}. Berikut hasil penambahan kode program yang terjadi di \textit{Install.php}\\
 \textit{Install.php}
 \begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
@@ -343,6 +344,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 );
 \end{lstlisting}
 ~\\
+Penambahan kode di halaman \textit{controller Login.php} untuk menerima \textit{input} dari \textit{text field Display Name} halaman \textit{register.twig}. Berikut hasil penambahan kode program yang terjadi di \textit{controller Login.php}\\
 \textit{Login.php}
 \begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
@@ -356,6 +358,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 );
 \end{lstlisting}
 ~\\
+Perubahan dan penambahan kode di \textit{User\_model.php} untuk menambahkan parameter "\textit{Display Name}" dan mengubah pemisah antar parameter menggunakan tanda koma. Berikut hasil penambahan dan perubahan kode program yang terjadi di \textit{User\_model.php}\\
 \textit{User\_model.php}
 \begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
@@ -415,6 +418,7 @@ continue; //ignore comments and empty lines
 } // end of loop
 \end{lstlisting}
 ~\\
+Perubahan dan penambahan kode di halaman \textit{add\_user.twig} dan \textit{add\_user\_result.twig} untuk menambahkan keterangan parameter "\textit{Display Name}". Berikut hasil penambahan kode program yang terjadi di halaman \textit{add\_user.twig} dan halaman \textit{add\_user\_result.twig}\\
 \textit{add\_user.twig}
 \begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
@@ -451,6 +455,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 </ol>
 \end{lstlisting}
 ~\\
+Penambahan kode di halaman \textit{register.twig} untuk menambahkan \textit{text field Display Name}. Berikut hasil penambahan kode program yang terjadi di halaman \textit{register.twig}\\
 \textit{register.twig}
 \begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
