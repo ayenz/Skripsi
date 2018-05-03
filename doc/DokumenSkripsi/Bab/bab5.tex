@@ -8,7 +8,7 @@ Terdapat dua lingkungan yang digunakan untuk melakukan implementasi dan pengujia
 \begin{enumerate}
 	\item Lingkungan Pertama
 	\begin{table}[H] %atau h saja untuk "kira kira di sini" 
-		\caption{Lingkungan Perangkat Keras}
+		\caption{Lingkungan Perangkat Keras Lingkungan Pertama}
 		\label{tab:lingkunganpkpf}
 		\resizebox{\textwidth}{!}{%
 			\begin{tabular}{|l|l|}
@@ -27,7 +27,7 @@ Terdapat dua lingkungan yang digunakan untuk melakukan implementasi dan pengujia
 	\end{table}
 	
 	\begin{table}[H] %atau h saja untuk "kira kira di sini" 
-		\caption{Lingkungan Perangkat Lunak}
+		\caption{Lingkungan Perangkat Lunak Lingkungan Pertama}
 		\label{tab:lingkunganplpf}
 		\resizebox{\textwidth}{!}{%
 			\begin{tabular}{|l|l|}
@@ -45,14 +45,14 @@ Terdapat dua lingkungan yang digunakan untuk melakukan implementasi dan pengujia
 				\multirow{4}{*}{Perangkat Lunak pendukung} 	& \textit{XAMPP Control Panel} v3.2.2\\
 				& \textit{Google Chrome Version} 65.0.3325.181 (Official Build) (64-bit)\\
 				& \textit{Firefox Quantum} 59.0.2 (64-bit)\\
-				& \textit{Microsoft Excel} 2016\\
+				& \textit{Microsoft Excel} 365\\
 				\hline
 		\end{tabular}}
 	\end{table}
 
 	\item Lingkungan Kedua
 	\begin{table}[H] %atau h saja untuk "kira kira di sini" 
-		\caption{Lingkungan Perangkat Keras}
+		\caption{Lingkungan Perangkat Keras Lingkungan Kedua}
 		\centering
 		\label{tab:lingkunganpkpe}
 		%\resizebox{\textwidth}{!}{%
@@ -72,7 +72,7 @@ Terdapat dua lingkungan yang digunakan untuk melakukan implementasi dan pengujia
 	\end{table}
 	
 	\begin{table}[h] %atau h saja untuk "kira kira di sini" 
-		\caption{Lingkungan Perangkat Lunak}
+		\caption{Lingkungan Perangkat Lunak Lingkungan Kedua}
 		\label{tab:lingkunganplpe}
 		\centering
 		%\resizebox{\textwidth}{!}{%
@@ -80,12 +80,11 @@ Terdapat dua lingkungan yang digunakan untuk melakukan implementasi dan pengujia
 			\hline
 			\textbf{Parameter} & \textbf{Nilai} \\
 			\hline
-			Sistem Operasi & Ubuntu --\\
+			Sistem Operasi & \textit{Ubuntu} 16.04.1\\
 			\hline
-			\multirow{4}{*}{Perangkat Lunak pendukung} 	& Apache Server\\
-			& MySQL \\
-			& PHP\\
-			& phpMyAdmin\\
+			\multirow{4}{*}{Perangkat Lunak pendukung} 	& \textit{Apache Server} 2.4.18\\
+			& \textit{MySQL} 5.7.22\\
+			& PHP 7.1.16-1\\
 			\hline
 		\end{tabular}%}
 	\end{table}
@@ -297,7 +296,7 @@ Pengujian fungsional bertujuan untuk memastikan setiap fitur baru pada SharIF Ju
 	
 	\textit{Assignment} dengan nama "\textit{Participant} Hanya \textit{Username} Tertentu", merupakan \textit{assignment} yang dikhususkan untuk peserta tertentu. \textit{Assignment} dengan nama "\textit{Assignment} Belum Mulai", merupakan \textit{assignment} yang belum dimulai. \textit{Assignment} dengan nama "\textit{Assignment} Telah Selesai", merupakan \textit{assignment} yang waktu pengumpulannya telah habis. \textit{Assignment} dengan nama "\textit{Closed Assignment}", merupakan \textit{assignment} yang memiliki status \textit{close}. \\
 	
-	Jika peserta yang tidak terdaftar sebagai \textit{participant}, mencoba untuk mengunduh \textit{assignment} dengan nama "\textit{Participant} Hanya \textit{Username} Tertentu", maka muncul pesan \textit{error "You are not registered for submitting."} seperti \hyperref[fig:np]{Gambar 5.7} 
+	Jika peserta yang tidak terdaftar sebagai \textit{participant}, mencoba untuk mengunduh \textit{assignment} dengan nama "\textit{Participant} Hanya \textit{Username} Tertentu", maka muncul pesan \textit{error "You are not registered for submitting."} seperti \hyperref[fig:np]{Gambar 5.9} 
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/batasisoal/np}  
@@ -305,7 +304,7 @@ Pengujian fungsional bertujuan untuk memastikan setiap fitur baru pada SharIF Ju
 		\label{fig:np} 
 	\end{figure}
 
-	Jika peserta mencoba untuk mengunduh \textit{assignment} dengan nama "\textit{Assignment} Belum Mulai", maka muncul pesan \textit{error "Selected assignment has not started."} seperti \hyperref[fig:ns]{Gambar 5.8} 
+	Jika peserta mencoba untuk mengunduh \textit{assignment} dengan nama "\textit{Assignment} Belum Mulai", maka muncul pesan \textit{error "Selected assignment has not started."} seperti \hyperref[fig:ns]{Gambar 5.10} 
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/batasisoal/ns}  
@@ -313,7 +312,7 @@ Pengujian fungsional bertujuan untuk memastikan setiap fitur baru pada SharIF Ju
 		\label{fig:ns} 
 	\end{figure}
 
-	Jika peserta mencoba untuk mengunduh \textit{assignment} dengan nama "\textit{Assignment} Telah Selesai", maka muncul pesan \textit{error "Selected assignment has finished."} seperti \hyperref[fig:f]{Gambar 5.9} 
+	Jika peserta mencoba untuk mengunduh \textit{assignment} dengan nama "\textit{Assignment} Telah Selesai", maka muncul pesan \textit{error "Selected assignment has finished."} seperti \hyperref[fig:f]{Gambar 5.11} 
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/batasisoal/f}  
@@ -321,7 +320,7 @@ Pengujian fungsional bertujuan untuk memastikan setiap fitur baru pada SharIF Ju
 		\label{fig:f} 
 	\end{figure}
 
-	Jika peserta mencoba untuk mengunduh \textit{assignment} dengan nama "\textit{Closed Assignment}", maka muncul pesan \textit{error "Selected assignment has been closed."} seperti \hyperref[fig:c]{Gambar 5.10} 
+	Jika peserta mencoba untuk mengunduh \textit{assignment} dengan nama "\textit{Closed Assignment}", maka muncul pesan \textit{error "Selected assignment has been closed."} seperti \hyperref[fig:c]{Gambar 5.12} 
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/batasisoal/c}  
@@ -338,7 +337,7 @@ Pengujian fungsional bertujuan untuk memastikan setiap fitur baru pada SharIF Ju
 		\label{fig:uploadtxt} 
 	\end{figure}
 	
-	Setelah \textit{assignment} berhasil dibuat, selanjutnya dicoba untuk mengumpulkan \textit{file} dengan ekstensi TXT pada halaman \textit{Submit} seperti \hyperref[fig:submittxt]{Gambar 5.12}. Jika berhasil mengumpulkan \textit{file} TXT, maka pengguna langsung diarahkan ke halaman \textit{All Submission} seperti \hyperref[fig:resultttxt]{Gambar 5.13}
+	Setelah \textit{assignment} berhasil dibuat, selanjutnya dicoba untuk mengumpulkan \textit{file} dengan ekstensi TXT pada halaman \textit{Submit} seperti \hyperref[fig:submittxt]{Gambar 5.14}. Jika berhasil mengumpulkan \textit{file} TXT, maka pengguna langsung diarahkan ke halaman \textit{All Submission} seperti \hyperref[fig:resultttxt]{Gambar 5.15}
 	
 	\begin{figure}[H]
 		\centering  
@@ -354,7 +353,7 @@ Pengujian fungsional bertujuan untuk memastikan setiap fitur baru pada SharIF Ju
 		\label{fig:resultttxt} 
 	\end{figure}
 
-	Pengujian dilanjutkan dengan mengunduh dan mencocokan isi dari \textit{file} TXT yang baru saja dikumpulkan. Jika isi dari \textit{file} TXT hasil unduh sama dengan \textit{file} TXT utama, maka fitur ini dapat berjalan dengan baik. \hyperref[fig:resultttxt]{Gambar 5.14} merupakan isi dari \textit{file} TXT yang dikumpulkan dan \hyperref[fig:resultttxt]{Gambar 5.15} isi dari \textit{file} TXT utama.
+	Pengujian dilanjutkan dengan mengunduh dan mencocokan isi dari \textit{file} TXT yang baru saja dikumpulkan. Jika isi dari \textit{file} TXT hasil unduh sama dengan \textit{file} TXT utama, maka fitur ini dapat berjalan dengan baik. \hyperref[fig:fileunduh]{Gambar 5.16} merupakan isi dari \textit{file} TXT hasil unduh dan \hyperref[fig:fileutama]{Gambar 5.17} isi dari \textit{file} TXT utama.
 	
 	\begin{figure}[H]
 		\centering  
@@ -371,7 +370,7 @@ Pengujian fungsional bertujuan untuk memastikan setiap fitur baru pada SharIF Ju
 	\end{figure}
 
 	\subsection{Mengakses Halaman \textit{24-hour Logs}}
-	Hasil yang diharapkan dari pengujian fitur ini adalah halaman \textit{24-hour Logs} dapat menampilkan seluruh aktivitas \textit{login} dari pengguna. Pengujian dimulai dari \textit{login} menggunakan \textit{username} dengan \textit{role admin}. Setelah berhasil \textit{login}, akses halaman \textit{24-hour Logs} yang terletak di paling bawah \textit{side menu}. Halaman \textit{24-hour Logs} tampil seperti \hyperref[fig:logs]{Gambar 5.16}
+	Hasil yang diharapkan dari pengujian fitur ini adalah halaman \textit{24-hour Logs} dapat menampilkan seluruh aktivitas \textit{login} dari pengguna. Pengujian dimulai dari \textit{login} menggunakan \textit{username} dengan \textit{role admin}. Setelah berhasil \textit{login}, akses halaman \textit{24-hour Logs} yang terletak di paling bawah \textit{side menu}. Halaman \textit{24-hour Logs} tampil seperti \hyperref[fig:logs]{Gambar 5.18}
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/logs/logs}  
@@ -386,10 +385,10 @@ Pengujian fungsional bertujuan untuk memastikan setiap fitur baru pada SharIF Ju
 		\caption[Halaman \textit{24-hour Logs} Mencatat Aktivitas \textit{Login} Pengguna]{Halaman \textit{24-hour Logs} Mencatat Aktivitas \textit{Login} Pengguna} 
 		\label{fig:logs1} 
 	\end{figure}
-	Terlihat pada \hyperref[fig:logs1]{Gambar 5.17}, \textit{username} stillmen pertama kali \textit{login} menggunakan \textit{ip address} 10.10.100.1 (baris 4). Setelah mencoba untuk \textit{login} menggunakan \textit{ip address} yang berbeda, halaman \textit{24-hour Logs} dapat mencatat dan menampilkan \textit{Login ID} dari \textit{username} stillmen (baris 2).
+	Terlihat pada \hyperref[fig:logs1]{Gambar 5.19}, \textit{username} stillmen pertama kali \textit{login} menggunakan \textit{ip address} 10.10.100.1 (baris 4). Setelah mencoba untuk \textit{login} menggunakan \textit{ip address} yang berbeda, halaman \textit{24-hour Logs} dapat mencatat dan menampilkan \textit{Login ID} dari \textit{username} stillmen (baris 2).
 	
 	\subsection{Mendaftarkan Peserta Menggunakan Tambahan Parameter "\textit{Display Name}"}
-	Hasil yang diharapkan dari pengujian fitur ini adalah peserta yang didaftarkan langsung memiliki \textit{Display Name}. Pengujian dimulai dengan menekan tombol \textit{Add Users} pada halaman \textit{Users}. Gunakan parameter "pengguna1,pengguna1@judge.com,Pengguna Satu,penggunaa1,student" untuk menambah peserta baru seperti \hyperref[fig:useradd]{Gambar 5.18}
+	Hasil yang diharapkan dari pengujian fitur ini adalah peserta yang didaftarkan langsung memiliki \textit{Display Name}. Pengujian dimulai dengan menekan tombol \textit{Add Users} pada halaman \textit{Users}. Gunakan parameter "pengguna1,pengguna1@judge.com,Pengguna Satu,penggunaa1,student" untuk menambah peserta baru seperti \hyperref[fig:useradd]{Gambar 5.20}
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/displayname/add}  
@@ -405,7 +404,7 @@ Pengujian fungsional bertujuan untuk memastikan setiap fitur baru pada SharIF Ju
 		\label{fig:success} 
 	\end{figure}
 
-	Pengujian dilanjutkan dengan \textit{login} menggunakan \textit{user} yang baru didaftarkan dan mengecek \textit{Display Name}. \hyperref[fig:dp]{Gambar 5.20} menunjukan bahwa \textit{Display Name} yang muncul sesuai dengan parameter \textit{Display Name} yang telah dimasukan sebelumnya.
+	Pengujian dilanjutkan dengan \textit{login} menggunakan \textit{user} yang baru didaftarkan dan mengecek \textit{Display Name}. \hyperref[fig:dp]{Gambar 5.22} menunjukan bahwa \textit{Display Name} yang muncul sesuai dengan parameter \textit{Display Name} yang telah dimasukan sebelumnya.
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/displayname/dp}  
@@ -414,7 +413,7 @@ Pengujian fungsional bertujuan untuk memastikan setiap fitur baru pada SharIF Ju
 	\end{figure}
 
 	\subsection{\textit{Disable Display Name} Peserta Menggunakan Fitur "\textit{Lock Student's Display Name}"}
-	Hasil yang diharapkan dari pengujian fitur ini adalah \textit{text field Display Name} pada halaman \textit{Profile} menjadi \textit{disable}, sehingga para peserta tidak dapat mengubahnya. Pengujian dimulai dengan mengaktifkan fitur \textit{Lock Student's Display Name} pada halaman \textit{Settings} seperti \hyperref[fig:dp]{Gambar 5.21}.
+	Hasil yang diharapkan dari pengujian fitur ini adalah \textit{text field Display Name} pada halaman \textit{Profile} menjadi \textit{disable}, sehingga para peserta tidak dapat mengubahnya. Pengujian dimulai dengan mengaktifkan fitur \textit{Lock Student's Display Name} pada halaman \textit{Settings} seperti \hyperref[fig:aktif]{Gambar 5.23}.
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/lock/aktif}  
@@ -422,7 +421,7 @@ Pengujian fungsional bertujuan untuk memastikan setiap fitur baru pada SharIF Ju
 		\label{fig:aktif} 
 	\end{figure}
 	
-	Pengujian dilanjutkan dengan mengecek \textit{text field Display Name} pada halaman \textit{Profile}. \hyperref[fig:dp]{Gambar 5.22} menunjukan bahwa \textit{text field Display Name} telah disable.
+	Pengujian dilanjutkan dengan mengecek \textit{text field Display Name} pada halaman \textit{Profile}. \hyperref[fig:disable]{Gambar 5.24} menunjukan bahwa \textit{text field Display Name} telah disable.
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/lock/disable}  
@@ -431,7 +430,7 @@ Pengujian fungsional bertujuan untuk memastikan setiap fitur baru pada SharIF Ju
 	\end{figure}
 
 	\subsection{Menambahkan \textit{Assignment} yang Mengaktifkan Fitur "\textit{Archived Assignment}"}
-	Hasil yang diharapkan dari pengujian fitur ini adalah \textit{\textit{assignment}} yang diibuat memiliki batas waktu pengumpulan sampai tanggal 18 Januari 2038. Pengujian dimulai dengan membuat \textit{assignment} dan mengaktifkan fitur \textit{Archived Assignment} pada halaman \textit{Add Assignment} seperti \hyperref[fig:arc]{Gambar 5.23}.
+	Hasil yang diharapkan dari pengujian fitur ini adalah \textit{\textit{assignment}} yang diibuat memiliki batas waktu pengumpulan sampai tanggal 18 Januari 2038. Pengujian dimulai dengan membuat \textit{assignment} dan mengaktifkan fitur \textit{Archived Assignment} pada halaman \textit{Add Assignment} seperti \hyperref[fig:arc]{Gambar 5.25}.
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/arcass/addarc}  
@@ -439,7 +438,7 @@ Pengujian fungsional bertujuan untuk memastikan setiap fitur baru pada SharIF Ju
 		\label{fig:arc} 
 	\end{figure}
 	
-	\hyperref[fig:listarc]{Gambar 5.24} menunjukan bahwa \textit{assignment} yang baru dibuat (baris 1) memiliki nilai \textit{Finish Time} "2038-01-18 00:00:00" yang artinya \textit{assignment} tersebut dapat dikumpulkan sampai tanggal 18 Januari 2038.
+	\hyperref[fig:listarc]{Gambar 5.26} menunjukan bahwa \textit{assignment} yang baru dibuat (baris 1) memiliki nilai \textit{Finish Time} "2038-01-18 00:00:00" yang artinya \textit{assignment} tersebut dapat dikumpulkan sampai tanggal 18 Januari 2038.
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/arcass/listarc}  
@@ -447,7 +446,7 @@ Pengujian fungsional bertujuan untuk memastikan setiap fitur baru pada SharIF Ju
 		\label{fig:listarc} 
 	\end{figure}
 
-	Pengujian dilanjutkan dengan mengecek kalendar pada halaaman \textit{Dashboard}. \textit{Assignment} yang mengaktifkan fitur \textit{Archived Assignment} tidak akan muncul pada kalendar seperti \hyperref[fig:listarc]{Gambar 5.25}
+	Pengujian dilanjutkan dengan mengecek kalendar pada halaaman \textit{Dashboard}. \textit{Assignment} yang mengaktifkan fitur \textit{Archived Assignment} tidak akan muncul pada kalendar seperti \hyperref[fig:kalarc]{Gambar 5.27}
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/arcass/kalarc}  
@@ -456,7 +455,7 @@ Pengujian fungsional bertujuan untuk memastikan setiap fitur baru pada SharIF Ju
 	\end{figure}
 
 	\subsection{Mengakses Halaman \textit{Hall of Fame}}
-	Hasil yang diharapkan dari pengujian fitur ini adalah halaman \textit{Hall of Fame} dapat menampilkan total nilai semua pengguna dari setiap \textit{assignment} yang telah dikumpulkan. Pengujian dimulai dengan mengakses halaman \textit{Hall of Fame} yang terletak di bawah \textit{side menu Scoreboard}. Halaman \textit{Hall of Fame} tampil seperti \hyperref[fig:halhof]{Gambar 5.26}
+	Hasil yang diharapkan dari pengujian fitur ini adalah halaman \textit{Hall of Fame} dapat menampilkan total nilai semua pengguna dari setiap \textit{assignment} yang telah dikumpulkan. Pengujian dimulai dengan mengakses halaman \textit{Hall of Fame} yang terletak di bawah \textit{side menu Scoreboard}. Halaman \textit{Hall of Fame} tampil seperti \hyperref[fig:halhof]{Gambar 5.28}
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/hof/hof}  
@@ -464,51 +463,27 @@ Pengujian fungsional bertujuan untuk memastikan setiap fitur baru pada SharIF Ju
 		\label{fig:halhof} 
 	\end{figure}
 
-	Pengujian dilanjutkan dengan mengklik baris pada tabel untuk melihat \textit{details} nilai pengguna. \hyperref[fig:dethof]{Gambar 5.27} menunjukan \textit{details} nilai yang diperoleh pengguna dengan \textit{username admin}.
+	Pengujian dilanjutkan dengan mengklik baris pada tabel untuk melihat \textit{details} nilai pengguna. \hyperref[fig:dethof]{Gambar 5.29} menunjukan \textit{details} nilai yang diperoleh pengguna dengan \textit{username admin}.
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/hof/detailhof}  
 		\caption[\textit{Details} Nilai yang Diperoleh]{\textit{Details} Nilai yang Diperoleh} 
 		\label{fig:dethof} 
 	\end{figure}
-
-	\subsection{Mengunduh \textit{File Excel} dari Halaman \textit{All Submission} dan \textit{Users}}
-	Hasil yang diharapkan dari pengujian fitur ini adalah \textit{file excel} berhasil diunduh dari halaman \textit{All Submission} dan \textit{Users}. \textit{File excel} yang diunduh pada halaman \textit{All Submission} berisikan daftar seluruh jawaban pengguna \textit{SharIF Judge}. \textit{File excel} yang diunduh pada halaman \textit{Users} berisikan dafttar seluruh pengguna \textit{SharIF Judge}. Pengujian dimulai dengan mengklik tombol unduh \textit{excel} yang terletak di atas halaman. \hyperref[fig:unduh]{Gambar 5.29} menunjukan letak tombol unduh \textit{excel} pada halaman \textit{Users}
-	\begin{figure}[H]
-		\centering  
-		\includegraphics[scale=0.5]{/pengujian/excel/letak}  
-		\caption[Letak Tombol Unduh \textit{Excel} pada Halaman \textit{Users}]{Letak Tombol Unduh \textit{Excel} pada Halaman \textit{Users}} 
-		\label{fig:unduh} 
-	\end{figure}
-
-	\textit{Excel} yang diunduh dari halaman \textit{All Submission} bernama \textit{judge\_all\_submissions.xlsx} sedangkan halaman \textit{Users} bernama \textit{sharifjudge\_users.xlsx}. \textit{File excel} tersebut bisa dibuka menggunakan \textit{Microsoft Excel 2016}. \hyperref[fig:excelas]{Gambar 5.30} menunjukan isi dari \textit{excel judge\_all\_submissions.xlsx} dan \hyperref[fig:excelu]{Gambar 5.31} menunjukan isi dari \textit{excel sharifjudge\_users.xlsx}.
-	\begin{figure}[H]
-		\centering  
-		\includegraphics[width=1.0\textwidth]{/pengujian/excel/excelas}  
-		\caption[Isi \textit{Excel judge\_all\_submissions.xlsx}]{Isi \textit{Excel judge\_all\_submissions.xlsx}} 
-		\label{fig:excelas} 
-	\end{figure}
-
-	\begin{figure}[H]
-		\centering  
-		\includegraphics[width=1.0\textwidth]{/pengujian/excel/excelu}  
-		\caption[Isi \textit{Excel sharifjudge\_users.xlsx}]{Isi \textit{Excel sharifjudge\_users.xlsx}} 
-		\label{fig:excelu} 
-	\end{figure}
 	
 \section{Pengujian Ekseprimental}
-Pengujian eksperimental dilakukan dengan cara menginstal perangkat lunak \textit{SharIF Judge} pada server lab FTIS UNPAR. SharIF Judge digunakan untuk mata kuliah Algoritma \& Struktur Data (ASD) semester genap 2017/2018. SharIF Judge yang telah diinstal, dapat diakses pada \textit{URL} \path{http://asd-lat.ftis.unpar/} dan \path{http://asd-quiz.ftis.unpar/}. Selama pengujian berlangsung, terdapat beberapa persoalan yang muncul. Persoalan yang muncul dicatat ke dalam isu \textit{repository SharIF Judge} di \textit{GitHub}. Semua persoalan dapat dilihat di \path{https://github.com/ayenz/Sharif-Judge/issues}.
+Pengujian eksperimental dilakukan dengan cara menginstal perangkat lunak \textit{SharIF Judge} pada server lab FTIS UNPAR. SharIF Judge digunakan untuk mata kuliah Algoritma \& Struktur Data (ASD) semester genap 2017/2018. \textit{SharIF Judge} yang telah diinstal, dapat diakses pada \textit{URL} \path{http://asd-lat.ftis.unpar/} dan \path{http://asd-quiz.ftis.unpar/}. Selama pengujian berlangsung, terdapat beberapa persoalan yang muncul. Persoalan yang muncul dicatat ke dalam isu \textit{repository SharIF Judge} di \textit{GitHub}. Semua persoalan dapat dilihat di \path{https://github.com/ayenz/Sharif-Judge/issues}.
 
 	\subsection{\textit{Remove the Assignments Folder}}
-	Isu dengan kode unik \#4 meminta agar \textit{folder assignments} untuk dihapus. Hal ini bertujuan agar direktori \textit{URL} \path{/assignments} dapat diakses. \textit{Folder assignments} merupakan \textit{folder default} untuk menyimpan \textit{assignment}. \textit{Folder default} penyimpanan \textit{assignment} tersebut harus diubah terlebih dahulu. Untuk mengubah \textit{folder default} penyimpanan, diperlukan perubahan nilai pada halaman \textit{Settings} dan kode pada kelas \textit{Controller Install.php}. Selain mengubah \textit{folder default} penyimpanan \textit{assignment}, perubahan juga terjadi pada \textit{folder default tester} dan \textit{default timezone} yang bertujuan untuk merapihkan struktur direktori.
+	Isu dengan kode unik \#4 meminta agar \textit{folder assignments} untuk dihapus. Hal ini bertujuan agar direktori \textit{URL} \path{/assignments} dapat diakses. \textit{Folder assignments} merupakan \textit{folder default} untuk menyimpan \textit{assignment}. \textit{Folder default} penyimpanan \textit{assignment} tersebut harus diubah terlebih dahulu. Untuk mengubah \textit{folder default} penyimpanan, diperlukan perubahan nilai pada halaman \textit{Settings} dan kode pada kelas \textit{Controller Install.php}. Selain mengubah \textit{folder default} penyimpanan \textit{assignment}, perubahan juga dilakukan pada \textit{folder default tester} dan \textit{default timezone} yang bertujuan untuk merapihkan struktur direktori.
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/set}  
-		\caption[Perubahan yang Terjadi pada Halaman \textit{Settings}]{Perubahan yang Terjadi pada Halaman \textit{Settings}} 
+		\caption[Perubahan yang Dilakukan pada Halaman \textit{Settings}]{Perubahan yang Dilakukan pada Halaman \textit{Settings}} 
 		\label{fig:set} 
 	\end{figure}
 	
-	\hyperref[fig:set]{Gambar 5.32} menunjukan perubahan pada halaman \textit{Settings} terjadi pada \textit{text field} "\textit{Timezone}", "\textit{Full Path to tester}" dan "\textit{Full Path to assignments}". 
+	\hyperref[fig:set]{Gambar 5.32} menunjukan perubahan pada halaman \textit{Settings} dilakukan pada \textit{text field} "\textit{Timezone}", "\textit{Full Path to tester}" dan "\textit{Full Path to assignments}". 
 	\begin{itemize}
 		\item Nilai yang digunakan untuk\textit{ text field "Full Path to assignments"} adalah \path{C:/xampp/htdocs/restricted/assignments}. Nilai tersebut memiliki arti bahwa \textit{folder default} penyimpanan \textit{assignment} diletakan pada direktori \path{C:/xampp/htdocs/restricted/assignments}.
 		\item Nilai yang digunakan untuk \textit{text field "Full Path to tester"} adalah \path{C:/xampp/htdocs/restricted/tester}. Nilai tersebut memiliki arti bahwa \textit{folder default tester} diletakan pada direktori \path{C:/xampp/htdocs/restricted/tester}.
@@ -753,10 +728,10 @@ $pdf_files = glob($pattern);
 	\begin{enumerate}
 		\item Menginstall \textit{Composer} pada perangkat lunak \textit{Sharif Judge}.
 		\item Menambahkan \textit{library PhpSpreadsheet} menggunakan \textit{Composer}.
-		\item Mengubah fungsi yang menggunakan kelas \textit{PHPExcel} menjadi menggunakan kelas \textit{PhpSpreadsheet}
+		\item Mengubah fungsi yang menggunakan library \textit{PHPExcel} menjadi menggunakan library \textit{PhpSpreadsheet}
 	\end{enumerate}
 	
-	Dari rancangan algoritma yang diterapkan, terdapat perubahan kode pada kelas \textit{controller Submissions.php} dan \textit{controller Users.php}. Berikut perubahan kode program
+	Dari rancangan algoritma yang diterapkan, terdapat perubahan kode pada kelas \textit{controller Submissions.php} dan \textit{controller Users.php}. Perubahan kode di \textit{controller Submissions.php} dan \textit{controller Users.php} untuk mengubah fungsi yang menggunakan kelas \textit{PHPExcel} menjadi menggunakan kelas \textit{PhpSpreadsheet}. Berikut hasil perubahan kode program
 	
 	\textit{Submission.php}
 \begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
@@ -943,6 +918,21 @@ header('Cache-Control: max-age=0');
 $objWriter->save('php://output');
 }
 \end{lstlisting}
+
+	Setelah melakukan perubahan pada beberapa kelas, fungsi unduh \textit{excel} pada halaman \textit{All Submission, Final Submission} dan \textit{Users} dapat berjalan dengan baik. \textit{File excel} yang diunduh bisa dibuka menggunakan \textit{Microsoft Excel 365}. \hyperref[fig:excelas]{Gambar 5.32} menunjukan isi dari \textit{excel judge\_all\_submissions.xlsx} yang diunduh dari halaman \textit{All Submission}. \hyperref[fig:excelu]{Gambar 5.33} menunjukan isi dari \textit{excel sharifjudge\_users.xlsx} yang diunduh dari halaman \textit{Users}.
+	\begin{figure}[H]
+		\centering  
+		\includegraphics[width=1.0\textwidth]{/pengujian/excel/excelas}  
+		\caption[Isi \textit{Excel judge\_all\_submissions.xlsx}]{Isi \textit{Excel judge\_all\_submissions.xlsx}} 
+		\label{fig:excelas} 
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering  
+		\includegraphics[width=1.0\textwidth]{/pengujian/excel/excelu}  
+		\caption[Isi \textit{Excel sharifjudge\_users.xlsx}]{Isi \textit{Excel sharifjudge\_users.xlsx}} 
+		\label{fig:excelu} 
+	\end{figure}
 
 \section{Masukan dari Pengguna \textit{GitHub}}
 \label{sec:masukangithub}

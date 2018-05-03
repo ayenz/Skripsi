@@ -16,32 +16,11 @@ Beberapa keunggulan dari \textit{CodeIgniter} yaitu:
 	\item Menggunakan Konsep M-V-C \\
 		\textit{CodeIgniter} menggunakan pendekatan \textit{Model-View-Controller} yang memungkinkan pemisahan anatara logika dan presentasi.
 	\item Menghasilkan \textit{Clean URLs} \\
-		\textit{URL} yang dihasilkan oleh \textit{CodeIgniter} \textit{Clean URLs} dan \textit{search-engine friendly}. Clean URLs akan mempermudah pengguna dalam membaca URL. Contoh perbandingan URL biasa dengan Clean URLs: URL biasa: \path{\\example.com/index.php?page=news}, Clean URLs: \path{\\example.com/news}.
+		\textit{URL} yang dihasilkan oleh \textit{CodeIgniter} \textit{Clean URLs} dan \textit{search-engine friendly}. Clean URLs akan mempermudah pengguna dalam membaca URL. Contoh perbandingan URL biasa dengan Clean URLs: URL biasa: \path{\\example.com\index.php?page=news}, Clean URLs: \path{\\example.com\news}.
 	\item \textit{Packs a Punch} \\
-		\textit{CodeIgniter} dilengkapi dengan \textit{library} yang umumnya diperlukan untuk mengembangkan web, seperti mengakses database, mengirim email, memvalidasi data \textit{form}, menjaga \textit{session}, memanipulasi gambar dan masih banyak lagi.
+		\textit{CodeIgniter} dilengkapi dengan \textit{library} yang umumnya diperlukan untuk mengembangkan \textit{web}, seperti mengakses \textit{database}, mengirim \textit{email}, memvalidasi data \textit{form}, menjaga \textit{session}, memanipulasi gambar dan masih banyak lagi.
 	\item \textit{Extensible} \\
 		Sistem dapat dengan mudah diperluas dengan menggunakan \textit{library} pengguna, \textit{helper}, atau melalui \textit{class extensions} dan \textit{system hooks}.
-	\item Tidak Membutuhkan \textit{Template Engine} \\
-		\textit{CodeIgniter} dilengkapi dengan \textit{template parser} sederhana yang dapat digunakan secara opsional. \textit{Template Engine} tidak dapat menandingi kinerja dari \textit{native} PHP. Sintak yang harus dipelajari untuk menggunakan \textit{Template Engine} biasanya lebih mudah dari mempelajari dasar-dasar PHP. Perhatikan potongan kode PHP di bawah ini: \\
-		\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
-		columns=fullflexible, keepspaces=true, breaklines=true]
-<ul>
-<?php foreach ($addressbook as $name):?>
-<li><?=$name?></li>
-<?php endforeach; ?>
-</ul>
-\end{lstlisting}
-		
-		Sangat berlawanan dengan \textit{pseudo-code} yang digunakan oleh \textit{Template Engine}: \\
-	\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
-<ul>
-{foreach from=$addressbook item="name"}
-<li>{$name}</li>
-{/foreach}
-</ul>
-\end{lstlisting}
-		Terlihat \textit{Template Engine} sedikit lebih rapih, namun harus ditukar dengan performa yang kurang baik karena \textit{pseudo-code} harus dikonversi kembali menjadi PHP. Salah satu tujuan dari \textit{CodeIgniter} adalah performa maksimal, oleh karena itu \textit{CodeIgniter} tidak menggunakan \textit{Template Engine}.
 	\item Dokumentasi yang Baik \\
 		Dokumentasi merupakan salah satu bagian terpenting dari kode itu sendiri. \textit{CodeIgniter} berkomitmen membuat kode yang sangat bersih dan terdokumentasi dengan baik. 
 \end{itemize}
