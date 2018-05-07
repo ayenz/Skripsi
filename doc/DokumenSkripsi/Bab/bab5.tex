@@ -6,9 +6,10 @@ Bab ini membahas tentang implementasi dan pengujian perangkat lunak berdasarkan 
 \section{Lingkungan untuk Implementasi dan Pengujian}
 Terdapat dua lingkungan yang digunakan untuk melakukan implementasi dan pengujian. Lingkungan pertama digunakan untuk implementasi dan pengujian fungsi-fungsi perangkat lunak. Lingkungan kedua digunakan untuk pengujian eksperimental. Berikut spesifikasi lingkungan perangkat keras dan perangkat lunak yang digunakan 
 \begin{enumerate}
-	\item Lingkungan Pertama
+	\item Lingkungan Pertama\\
+	Tabel \ref{tab:lingkunganpkpf} menunjukan perangkat keras lingkungan pertama.
 	\begin{table}[H] %atau h saja untuk "kira kira di sini" 
-		\caption{Lingkungan Perangkat Keras Lingkungan Pertama}
+		\caption{Perangkat Keras Lingkungan Pertama}
 		\label{tab:lingkunganpkpf}
 		\resizebox{\textwidth}{!}{%
 			\begin{tabular}{|l|l|}
@@ -26,8 +27,9 @@ Terdapat dua lingkungan yang digunakan untuk melakukan implementasi dan pengujia
 		\end{tabular}}
 	\end{table}
 	
+	Tabel \ref{tab:lingkunganplpf} menunjukan perangkat lunak lingkungan pertama.
 	\begin{table}[H] %atau h saja untuk "kira kira di sini" 
-		\caption{Lingkungan Perangkat Lunak Lingkungan Pertama}
+		\caption{Perangkat Lunak Lingkungan Pertama}
 		\label{tab:lingkunganplpf}
 		\resizebox{\textwidth}{!}{%
 			\begin{tabular}{|l|l|}
@@ -50,9 +52,10 @@ Terdapat dua lingkungan yang digunakan untuk melakukan implementasi dan pengujia
 		\end{tabular}}
 	\end{table}
 
-	\item Lingkungan Kedua
+	\item Lingkungan Kedua\\
+	Tabel \ref{tab:lingkunganpkpe} menunjukan perangkat keras lingkungan kedua.
 	\begin{table}[H] %atau h saja untuk "kira kira di sini" 
-		\caption{Lingkungan Perangkat Keras Lingkungan Kedua}
+		\caption{Perangkat Keras Lingkungan Kedua}
 		\centering
 		\label{tab:lingkunganpkpe}
 		%\resizebox{\textwidth}{!}{%
@@ -71,8 +74,9 @@ Terdapat dua lingkungan yang digunakan untuk melakukan implementasi dan pengujia
 		\end{tabular}%}
 	\end{table}
 	
+	Tabel \ref{tab:lingkunganplpe} menunjukan perangkat lunak lingkungan kedua.
 	\begin{table}[h] %atau h saja untuk "kira kira di sini" 
-		\caption{Lingkungan Perangkat Lunak Lingkungan Kedua}
+		\caption{Perangkat Lunak Lingkungan Kedua}
 		\label{tab:lingkunganplpe}
 		\centering
 		%\resizebox{\textwidth}{!}{%
@@ -97,7 +101,7 @@ Hasil implementasi dari rancangan perangkat lunak yang sudah dibuat, terdiri dar
 	\item Kode Program \\
 	Perubahan dan penambahan kode program untuk mengimplementasi kebutuhan \textit{Sharif Judge}, ditulis dalam bahasa pemrograman PHP. Seluruh perubahan kode program telah dijabarkan dalam setiap sub bab pada bab 4. Kode program untuk halaman \textit{Logs} dapat dilihat di \hyperref[lamp:kodeprogramhalamanlogs]{Lampiran A}. Kode program untuk halaman \textit{Hall of Fame} dapat dilihat di \hyperref[lamp:kodeprogramhalamanhof]{Lampiran B}.
 	\item Basis Data \\
-	Terdapat penambahan tabel dalam mengimplementasi kebutuhan \textit{Sharif Judge} pada \hyperref[chap:logs]{sub bab 4.5}. Tabel tersebut diberi nama \textit{shj\_logins}. Berikut struktur tabel \textit{shj\_logins}
+	Terdapat penambahan tabel dalam mengimplementasi kebutuhan \textit{Sharif Judge} pada \hyperref[chap:logs]{sub bab 4.5}. Tabel tersebut diberi nama \textit{shj\_logins}. Tabel \ref{tab:tabellogsfix} menunjukan struktur tabel \textit{shj\_logins}
 	\begin{table}[H] %atau h saja untuk "kira kira di sini"
 		\centering 
 		\caption{Struktur Tabel \textit{shj\_logins}}
@@ -119,7 +123,7 @@ Hasil implementasi dari rancangan perangkat lunak yang sudah dibuat, terdiri dar
 		\end{tabular}
 	\end{table}
 	
-	Terdapat penambahan \textit{key} dan \textit{value} dalam mengimplementasi kebutuhan \textit{Sharif Judge} pada \hyperref[chap:lock]{sub bab 4.7}. Pada tabel \textit{shj\_settings} ditambahkan \textit{shj\_key} dengan nama \textit{lock\_student\_display\_name} dan \textit{shj\_value} dengan nilai 0. Berikut struktur tabel \textit{shj\_settings}
+	Terdapat penambahan \textit{key} dan \textit{value} dalam mengimplementasi kebutuhan \textit{Sharif Judge} pada \hyperref[chap:lock]{sub bab 4.7}. Pada tabel \textit{shj\_settings} ditambahkan \textit{shj\_key} dengan nama \textit{lock\_student\_display\_name} dan \textit{shj\_value} dengan nilai 0. Tabel \ref{tab:atributtabelsettings} menunjukan struktur tabel \textit{shj\_settings}
 	
 	\begin{table}[H] %atau h saja untuk "kira kira di sini"
 		\centering 
@@ -185,7 +189,7 @@ Hasil implementasi dari rancangan perangkat lunak yang sudah dibuat, terdiri dar
 		\end{tabular}}
 	\end{table}
 	
-	Terdapat penambahan atribut dalam mengimplementasi kebutuhan \textit{Sharif Judge} pada \hyperref[chap:arc]{sub bab 4.8}. Pada tabel \textit{shj\_assignments} ditambahkan atribut baru dengan nama \textit{archived\_assignment}. Berikut struktur tabel \textit{shj\_assignments}
+	Terdapat penambahan atribut dalam mengimplementasi kebutuhan \textit{Sharif Judge} pada \hyperref[chap:arc]{sub bab 4.8}. Pada tabel \textit{shj\_assignments} ditambahkan atribut baru dengan nama \textit{archived\_assignment}. Tabel \ref{tab:atributtabelassignments} menunjukan struktur tabel \textit{shj\_assignments}
 	
 	\begin{table}[H] %atau h saja untuk "kira kira di sini"
 		\centering 
@@ -230,7 +234,7 @@ Hasil implementasi dari rancangan perangkat lunak yang sudah dibuat, terdiri dar
 	\end{table}
 
 	\item Tampilan \\
-	Tampilan untuk untuk pengembangan Sharif Judge ini dirancang bedasarkan rancangan tampilan yang sudah dibuat. Berikut beberapa tampilan halaman baru pada pengembangan \textit{Sharif Judge}
+	Tampilan untuk untuk pengembangan \textit{Sharif Judge} ini dirancang bedasarkan rancangan tampilan yang sudah dibuat. Gambar \ref{fig:newlogin} menunjukan tampilan halaman \textit{login SharIF Judge}.
 	
 	\begin{figure}[H]
 		\centering  
@@ -238,7 +242,8 @@ Hasil implementasi dari rancangan perangkat lunak yang sudah dibuat, terdiri dar
 		\caption[Tampilan Halaman Login]{Tampilan Halaman \textit{Login}} 
 		\label{fig:newlogin} 
 	\end{figure}
-	
+	\pagebreak
+	Gambar \ref{fig:newhof} menunjukan tampilan halaman \textit{Hall of Fame}.
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/hof/hof}  
@@ -246,27 +251,31 @@ Hasil implementasi dari rancangan perangkat lunak yang sudah dibuat, terdiri dar
 		\label{fig:newhof} 
 	\end{figure}
 
+	Gambar \ref{fig:newhofdetail} menunjukan tampilan \textit{detail} dari \textit{Hall of Fame}.
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/hof/detailhof}  
 		\caption[Tampilan Detail dari Hall of Fame]{Tampilan \textit{Detail} dari \textit{Hall of Fame}} 
 		\label{fig:newhofdetail} 
 	\end{figure}
-
+	\pagebreak
+	Gambar \ref{fig:newlogs} menunjukan tampilan halaman \textit{24-hour Logs}.
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{newlogs}  
-		\caption[Tampilan Halaman Logs]{Tampilan Halaman \textit{Logs}} 
+		\caption[Tampilan Halaman \textit{24-hour Logs}]{Tampilan Halaman \textit{24-hour Logs}} 
 		\label{fig:newlogs} 
 	\end{figure}
-
+	
+	Gambar \ref{fig:sidemenu} menunjukan tampilan \textit{side menu SharIF Judge}.
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[scale=0.7]{sidemenu}  
-		\caption[Tampilan Side Menu]{Tampilan \textit{Side Menu}} 
+		\caption[Tampilan\textit{ Side Menu SharIF Judge}]{Tampilan \textit{Side Menu SharIF Judge}} 
 		\label{fig:sidemenu} 
 	\end{figure}
-
+	
+	Gambar \ref{fig:ikons} menunjukan tampilan Ikon \textit{SharIF Judge} pada \textit{Title Bar}.
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[scale=1]{ikon}  
@@ -274,6 +283,7 @@ Hasil implementasi dari rancangan perangkat lunak yang sudah dibuat, terdiri dar
 		\label{fig:ikons} 
 	\end{figure} 
 	
+	Gambar \ref{fig:logos} menunjukan tampilan Logo \textit{SharIF Judge} pada \textit{Top Bar}.
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[scale=1]{logo}  
@@ -286,7 +296,7 @@ Hasil implementasi dari rancangan perangkat lunak yang sudah dibuat, terdiri dar
 %Pengujian fungsional bertujuan untuk memastikan bahwa perangkat lunak dapat berfungsi sebagaimana mestinya. Jika fungsi yang telah diimplementasi tidak berjalan dengan baik, maka perangkat lunak masih memiliki kekurangan.
 Pengujian fungsional bertujuan untuk memastikan setiap fitur baru pada SharIF Judge dapat berfungsi dengan baik.
 	\subsection{Mengunduh Soal (deskripsi \& PDF) yang Telah Dibatasi} 
-	Hasil yang diharapkan dari pengujian fitur ini adalah soal dapat dibatasi sesuai dengan ketentuan yang telah dirancang pada \hyperref[chap:batassoal]{sub bab 4.3}. Pengujian dimulai dengan membuat empat buah \textit{assignment}.
+	Hasil yang diharapkan dari pengujian fitur ini adalah soal dapat dibatasi sesuai dengan ketentuan yang telah dirancang pada \hyperref[chap:batassoal]{sub bab 4.3}. Pengujian dimulai dengan membuat empat buah \textit{assignment}. Gambar \ref{fig:listassignment} menunjukan empat buah \textit{assignment} yang dibuat.
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/batasisoal/listassignment}  
@@ -330,10 +340,11 @@ Pengujian fungsional bertujuan untuk memastikan setiap fitur baru pada SharIF Ju
 
 	\subsection{Membuat \textit{Assignment} yang Menerima \textit{File} dengan Ekstensi TXT}
 	Hasil yang diharapkan dari pengujian fitur ini adalah \textit{assignment} yang dibuat bisa menerima \textit{file} dengan ekstensi TXT dan pengguna bisa mengumpulkan file dengan ekstensi TXT ke \textit{assignment} tersebut. Pengujian dimulai dengan membuat \textit{assignment} yang bersifat "\textit{Upload Only}" dan menambahkan '\textit{txt}' pada \textit{text field Allowed Language}.
+	\hyperref[fig:uploadtxt]{Gambar 5.13} menunjukan pembuatan \textit{assignment upload} TXT
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/uploadtxt/uploadtxt}  
-		\caption[Pembuatan \textit{Assignment} Upload TXT]{Pembuatan \textit{Assignment} Upload TXT} 
+		\caption[Pembuatan \textit{Assignment Upload} TXT]{Pembuatan \textit{Assignment Upload} TXT} 
 		\label{fig:uploadtxt} 
 	\end{figure}
 	
@@ -396,7 +407,7 @@ Pengujian fungsional bertujuan untuk memastikan setiap fitur baru pada SharIF Ju
 		\label{fig:useradd} 
 	\end{figure}
 
-	Jika pengguna baru berhasil ditambahkan, maka akan muncul pesan bahwa tersebut berhasil didaftarkan.
+	Jika pengguna baru berhasil ditambahkan, maka akan muncul pesan bahwa tersebut berhasil didaftarkan seperti \hyperref[fig:success]{Gambar 5.21}
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/displayname/success}  
@@ -490,9 +501,9 @@ Pengujian eksperimental dilakukan dengan cara menginstal perangkat lunak \textit
 		\item Nilai yang digunakan untuk \textit{text field "Timezone"} adalah Asia/Jakarta. Nilai tersebut memiliki arti bahwa \textit{default timezone} yang digunakan pada \textit{SharIF Judge} mengikuti \textit{timezone} wilayah Asia/Jakarta.
 	\end{itemize}
 	
-	Perubahan kode pada kelas \textit{Controller Install.php} bertujuan agar penginstalan \textit{SharIF Judge} langsung menggunakan \textit{default} nilai seperti di atas. Berikut perubahan kode program
-	\textit{Install.php}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+	Perubahan kode pada kelas \textit{Controller Install.php} bertujuan agar penginstalan \textit{SharIF Judge} langsung menggunakan \textit{default} nilai seperti di atas. Listing \ref{lstt:1} menunjukan perubahan kode program yang dilakukan di \textit{Install.php}
+	
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada \textit{Install.php}, label=lstt:1,basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -196,9 +196,9 @@ class Install extends CI_Controller
 
@@ -516,9 +527,9 @@ $result = $this->db->insert_batch('settings', array(
 		\label{fig:dnve} 
 	\end{figure}
 
-	Hal di atas terjadi karena penambahan parameter "\textit{Display Name}" pada fungsi \textit{add\_user} yang terdapat di \textit{model User\_model.php}. Persoalan ini dapat diatasi dengan memperbaiki urutan data yang dikirimkan ke email. Berikut perubahan kode program
-	\textit{User\_model.php}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+	Hal di atas terjadi karena penambahan parameter "\textit{Display Name}" pada fungsi \textit{add\_user} yang terdapat di \textit{model User\_model.php}. Persoalan ini dapat diatasi dengan memperbaiki urutan data yang dikirimkan ke email. Listing \ref{lstt:2} menunjukan perubahan kode program yang dilakukan di \textit{User\_model.php}
+	
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada \textit{User\_model.php}, label=lstt:2, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -219,9 +219,9 @@ class User_model extends CI_Model
 	$this->email->subject('Sharif Judge Username and Password');
@@ -546,9 +557,9 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 	Persoalan terjadi karena tidak ada atribut \textit{archived\_assignment} di tabel \textit{shj\_assignments}. Persoalan ini dapat diatasi dengan menambahkan atribut \textit{archived\_assignment} di tabel \textit{shj\_assignments}, sehingga struktur tabel \textit{shj\_assignments} menjadi seperti \hyperref[tab:atributtabelassignments]{Tabel 5.5}. \textit{Assignment} berhasil dibuat setelah atribut \textit{archived\_assignment} ditambahkan.
 	
 	\subsection{\textit{Link} ke \textit{New Home of Sharif-Judge}}
-	Isu dengan kode unik \#8 mengatakan bahwa pada halaman \textit{Add} atau \textit{Edit Assignment}, terdapat \textit{link} menuju ke dokumentasi \textit{Sharif Judge} milik mjnaderi. \textit{Link} tersebut diupdate menuju ke dokumentasi \textit{SharIF Judge} yang baru yaitu \path{https://github.com/ftisunpar/Sharif-Judge/}. Persoalan ini dapat diselesaikan dengan mengubah \textit{link} dokumentasi pada halaman \textit{add\_assignment.twig}. Berikut perubahan kode program
-	\textit{user.twig}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+	Isu dengan kode unik \#8 mengatakan bahwa pada halaman \textit{Add} atau \textit{Edit Assignment}, terdapat \textit{link} menuju ke dokumentasi \textit{Sharif Judge} milik mjnaderi. \textit{Link} tersebut diupdate menuju ke dokumentasi \textit{SharIF Judge} yang baru yaitu \path{https://github.com/ftisunpar/Sharif-Judge/}. Persoalan ini dapat diselesaikan dengan mengubah \textit{link} dokumentasi pada halaman \textit{add\_assignment.twig}. Listing \ref{lstt:3} menunjukan perubahan kode program yang dilakukan di halaman \textit{user.twig}
+	
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada halaman \textit{user.twig}, label=lstt:3, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -12,7 +12,7 @@
 
@@ -560,8 +571,8 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 {% endblock %}
 \end{lstlisting}
 ~\\	
-	\textit{settings.twig}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+	Listing \ref{lstt:4} menunjukan perubahan kode program yang dilakukan di halaman \textit{settings.twig}
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada halaman \textit{settings.twig}, label=lstt:4, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -24,7 +24,7 @@ $(document).ready(function(){
 
@@ -633,8 +644,8 @@ Shield <span class="title_menu_item">
 <label for="form_def_c">Shield Rules (for C)</label>
 \end{lstlisting}
 ~\\	
-	\textit{add\_user.twig}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+	Listing \ref{lstt:5} menunjukan perubahan kode program yang dilakukan di halaman \textit{add\_user.twig}
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada halaman \textit{add\_user.twig}, label=lstt:5, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -12,7 +12,7 @@
 
@@ -644,9 +655,8 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 {% endblock %}
 \end{lstlisting}
 ~\\
-	\textit{add\_assignment.twig}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
+	Listing \ref{lstt:6} menunjukan perubahan kode program yang dilakukan di halaman \textit{add\_assignment.twig}
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada halaman \textit{add\_assignment.twig}, label=lstt:6, basicstyle=\ttfamily, frame=single, columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -78,7 +78,7 @@
 
 {% block title_menu %}
@@ -694,9 +704,9 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 \end{lstlisting}
 
 	\subsection{Hapus Perbedaan antara \textit{Admin} dan \textit{Student} pada PDF \textit{Download}}
-	Isu dengan kode unik \#7 mengatakan agar mengubah beberapa bagian hasil implementasi kode pada kelas \textit{controller Assignments.php}. Kode tersebut terdapat pada fungsi unduh \textit{assignment} dengan ketentuan yang telah dirancang pada \hyperref[chap:batassoal]{sub bab 4.3}. Bagian kode \textit{\$this->user->level == 0} berfungsi untuk mengijinkan pengguna dengan \textit{role admin} dapat mengunduh \textit{assignment}. Bagian tersebut dihilangkan agar adanya transparansi antara dosen dan peserta, sehingga dosen saat membuat \textit{assignment} lebih yakin bahwa soalnya tidak akan bisa diunduh. Berikut perubahan kode program
-	\textit{Assignments.php}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+	Isu dengan kode unik \#7 mengatakan agar mengubah beberapa bagian hasil implementasi kode pada kelas \textit{controller Assignments.php}. Kode tersebut terdapat pada fungsi unduh \textit{assignment} dengan ketentuan yang telah dirancang pada \hyperref[chap:batassoal]{sub bab 4.3}. Bagian kode \textit{\$this->user->level == 0} berfungsi untuk mengijinkan pengguna dengan \textit{role admin} dapat mengunduh \textit{assignment}. Bagian tersebut dihilangkan agar adanya transparansi antara dosen dan peserta, sehingga dosen saat membuat \textit{assignment} lebih yakin bahwa soalnya tidak akan bisa diunduh. Listing \ref{lstt:7} menunjukan perubahan kode program yang dilakukan di \textit{Assignment.php}
+	
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada \textit{Assignments.php}, label=lstt:7, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -111,13 +111,13 @@ class Assignments extends CI_Controller
 $pdf_files = glob($pattern);
@@ -731,10 +741,9 @@ $pdf_files = glob($pattern);
 		\item Mengubah fungsi yang menggunakan library \textit{PHPExcel} menjadi menggunakan library \textit{PhpSpreadsheet}
 	\end{enumerate}
 	
-	Dari rancangan algoritma yang diterapkan, terdapat perubahan kode pada kelas \textit{controller Submissions.php} dan \textit{controller Users.php}. Perubahan kode di \textit{controller Submissions.php} dan \textit{controller Users.php} untuk mengubah fungsi yang menggunakan kelas \textit{PHPExcel} menjadi menggunakan kelas \textit{PhpSpreadsheet}. Berikut hasil perubahan kode program
-~\\	
-	\textit{Submission.php}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+	Dari rancangan algoritma yang diterapkan, terdapat perubahan kode pada kelas \textit{controller Submissions.php} dan \textit{controller Users.php}. Perubahan kode di \textit{controller Submissions.php} dan \textit{controller Users.php} untuk mengubah fungsi yang menggunakan kelas \textit{PHPExcel} menjadi menggunakan kelas \textit{PhpSpreadsheet}. Listing \ref{lstt:8} menunjukan perubahan kode program yang dilakukan di \textit{Submission.php}
+	
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada \textit{Submission.php}, label=lstt:8, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -6,6 +6,13 @@
 */
@@ -826,8 +835,9 @@ $objWriter->save('php://output');
 }
 \end{lstlisting}
 ~\\	
-	\textit{Users.php}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+	Listing \ref{lstt:9} menunjukan perubahan kode program yang dilakukan di \textit{Users.php}
+	
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada \textit{Users.php}, label=lstt:9, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -6,6 +6,13 @@
 */

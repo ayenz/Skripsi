@@ -354,8 +354,8 @@ Pengguna dapat menghilangkan \textit{index.php} dan memiliki \textit{urls} yang 
 \path{http://example.mjnaderi.ir/dashboard}\\
 \path{http://example.mjnaderi.ir/users/add}\\
 Untuk memungkinkan \textit{clean urls}, ubah isi file \textit{.htaccess2} menjadi \textit{.htaccess} yang berlokasi di direktori utama \textit{Sharif Judge}.
-Berikut isi file \textit{.htaccess2}: 
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+Listing \ref{ls:1} menunjukan isi \textit{file} \textit{.htaccess2}: 
+\begin{lstlisting}[basicstyle=\ttfamily, caption=Isi \textit{file} \textit{.htaccess2}, label=ls:1, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 # You also need to change 
 # $config['index_page'] = 'index.php';
@@ -659,8 +659,8 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 \textit{Problem} diatas dapat diselesaikan menggunakan contoh solusi berikut ini:
 \begin{itemize}
 	\item Solusi \textit{Problem} 1 \\ 
-	Menggunakan bahasa \textit{C}
-	\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+	Listing \ref{ls:2} menunjukan solusi menggunakan bahasa \textit{C}
+	\begin{lstlisting}[basicstyle=\ttfamily, caption=Solusi Menggunakan Bahasa \textit{C}, label=ls:2, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 #include<stdio.h>
 int main(){
@@ -679,9 +679,9 @@ int main(){
 \end{lstlisting} 
 	
 	
-	Menggunakan bahasa \textit{C++}
+	Listing \ref{ls:3} menunjukan solusi menggunakan bahasa \textit{C++}
 	\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
+columns=fullflexible, keepspaces=true, caption=Solusi Menggunakan Bahasa \textit{C++}, label=ls:3, breaklines=true]
 #include <iostream>
 using namespace std;
 int main(){
@@ -697,8 +697,8 @@ int main(){
 }
 \end{lstlisting} 
 	
-	Menggunakan bahasa \textit{Java}
-	\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+	Listing \ref{ls:4} menunjukan solusi menggunakan bahasa \textit{Java}
+	\begin{lstlisting}[basicstyle=\ttfamily, caption=Solusi Menggunakan Bahasa \textit{Java}, label=ls:4, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 import java.util.Scanner;
 class sum
@@ -719,8 +719,8 @@ class sum
 \end{lstlisting}
 	
 	\item Solusi \textit{Problem} 2 \\ 
-	Menggunakan bahasa \textit{C}
-	\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+	Listing \ref{ls:5} menunjukan solusi menggunakan bahasa \textit{C}
+	\begin{lstlisting}[basicstyle=\ttfamily, caption=Solusi Menggunakan Bahasa \textit{C}, label=ls:5, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 #include<stdio.h>
 int main(){
@@ -741,9 +741,8 @@ int main(){
 }
 \end{lstlisting}
 	 
-	
-	Menggunakan bahasa \textit{C++}
-	\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+	Listing \ref{ls:6} menunjukan solusi menggunakan bahasa \textit{C++}
+	\begin{lstlisting}[basicstyle=\ttfamily, caption=Solusi Menggunakan Bahasa \textit{C++}, label=ls:6, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 #include<iostream>
 using namespace std;
@@ -777,8 +776,8 @@ Pengguna harus menyediakan sebuah \textit{file zip} yang berisikan \textit{test 
 	Dengan metode ini, pengguna harus memasukan beberapa \textit{file input dan output} pada \textit{folder} \textit{problem}. \textit{Sharif Judge} akan memasukan nilai dari \textit{file input} ke kode \textit{users} dan membandingkan hasil keluaran dari kode \textit{users} dengan \textit{file output}. \textit{Input files} harus berada dalam folder \textit{"in"} dengan nama \textit{input1.text, input2.txt, dst}.\textit{Output files} harus berada dalam folder \textit{"out"} dengan nama \textit{output1.txt, output2.txt, dst}.
 	
 	\item \textit{Metode Tester} \\
-	Dengan metode ini, pengguna harus menyediakan beberapa \textit{file input} dan sebuah \textit{file C++ (tester.cpp)} dan beberapa \textit{file output}. \textit{Sharif Judge} akan memasukan nilai dari \textit{file input} ke kode \textit{users} dan mengambil keluaran dari kode \textit{users}. \textit{tester.cpp} akan mengambil nilai dari \textit{file input, file output, }dan keluaran \textit{users}. Jika keluaran dari kode \textit{users} benar akan mengembalikan nilai 0, sebaliknya jika salah akan mengeluarkan nilai 1. Berikut contoh kode untuk menulis \textit{tester.cpp}:
-	\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+	Dengan metode ini, pengguna harus menyediakan beberapa \textit{file input} dan sebuah \textit{file C++ (tester.cpp)} dan beberapa \textit{file output}. \textit{Sharif Judge} akan memasukan nilai dari \textit{file input} ke kode \textit{users} dan mengambil keluaran dari kode \textit{users}. \textit{tester.cpp} akan mengambil nilai dari \textit{file input, file output, }dan keluaran \textit{users}. Jika keluaran dari kode \textit{users} benar akan mengembalikan nilai 0, sebaliknya jika salah akan mengeluarkan nilai 1. Listing \ref{ls:7} menunjukan contoh kode untuk menulis \textit{tester.cpp}:
+	\begin{lstlisting}[basicstyle=\ttfamily, caption=Contoh kode \textit{tester.cpp}, label=ls:7, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 /*
 * tester.cpp
@@ -854,8 +853,8 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 	--- output10.txt
 \end{lstlisting}
 
-\textit{Problem} 1 menggunakan metode \textit{"Tester"} untuk mengecek hasil keluaran, sehingga memiliki \textit{file tester.cpp}. Berikut isi dari \textit{file tester.cpp} untuk \textit{problem} 1:
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+\textit{Problem} 1 menggunakan metode \textit{"Tester"} untuk mengecek hasil keluaran, sehingga memiliki \textit{file tester.cpp}. Listing \ref{ls:8} menunjukan isi dari \textit{file tester.cpp} untuk \textit{problem} 1:
+\begin{lstlisting}[basicstyle=\ttfamily, caption=Isi \textit{File tester.cpp} Problem 1, label=ls:8, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 /*
 * tester.cpp
@@ -916,9 +915,9 @@ int main(int argc, char const *argv[])
 Sebelum menggunakan \textit{Moss} ada beberapa hal yang harus diperhatikan yaitu:
 \begin{itemize}
 	\item Pengguna harus mendapatkan \textit{Moss user id} dan mengaturnya di \textit{Sharif Judge}. Untuk mendapatkan \textit{Moss user id}, pengguna harus terlebih dahulu daftar pada halaman \path{http://theory.stanford.edu/~aiken/moss/}. Pengguna akan mendapatkan sebuah \textit{email} yang berisikan \textit{script perl}. \textit{Moss user id} berada pada \textit{script} tersebut. \\
-	Berikut potongan \textit{perl script} yang berisikan \textit{user id}:
+	Listing \ref{ls:9} menunjukan potongan \textit{perl script} yang berisikan \textit{user id}:
 
-\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+\begin{lstlisting}[basicstyle=\ttfamily, caption=Potongan \textit{perl script}, label=ls:9, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 ...
 

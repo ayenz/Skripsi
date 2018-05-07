@@ -4,10 +4,9 @@
 Bab ini membahas tentang perancangan setiap fitur yang diimplementasi pada perangkat lunak \textit{Sharif Judge}. 
 
 \section{Mengganti Method \textit{shell\_exec("rm ...")} Menjadi \textit{unlink()}}
-\textit{Method} \textit{shell\_exec("rm ...")} yang memiliki fungsi untuk menghapus sebuah \textit{file} terdapat pada kelas \textit{controller Assignment.php}. \textit{Method shell\_exec("rm ...")} diubah menggunakan \textit{method unlink()}. Berikut perubahan kode program menggunakan \textit{syntax diff} \footnote{GNU Operating System, "Comparing and Merging Files" terakhir diubah 6 Mei 2017. \textit{https://www.gnu.org/software/diffutils/manual/diffutils.html\#Detailed-Unified}}.
-~\\
-\textit{Assignments.php}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+\textit{Method} \textit{shell\_exec("rm ...")} yang memiliki fungsi untuk menghapus sebuah \textit{file} terdapat pada kelas \textit{controller Assignment.php}. \textit{Method shell\_exec("rm ...")} diubah menggunakan \textit{method unlink()}. Listing \ref{lst:1} menunjukan perubahan kode program menggunakan \textit{syntax diff} \footnote{GNU Operating System, "Comparing and Merging Files" terakhir diubah 6 Mei 2017. \textit{https://www.gnu.org/software/diffutils/manual/diffutils.html\#Detailed-Unified}}.
+
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada \textit{Assignment.php}, label=lst:1, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true]
 @@ -433,8 +433,7 @@ class Assignments extends CI_Controller
 
@@ -31,11 +30,9 @@ $this->messages[] = array(
 
 \section{Menambahkan Method Rekoneksi ke \textit{Database}}
 \textit{Method} rekoneksi ke \textit{database} ditambahkan pada kelas \textit{controller Queueprocess.php}. \textit{Method} yang digunakan yaitu \textit{\$this->db->reconnect()}. %\textit{Method} ini diletakan pada baris 134 tepat sebelum \textit{Sharif Judge} menyimpan hasil \textit{judge}. 
-Hal tersebut dilakukan untuk menghindari \textit{connection times out} akibat pengujian yang memakan waktu lama.
-Berikut perubahan kode program
-~\\
-\textit{Queueprocess.php}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+Hal tersebut dilakukan untuk menghindari \textit{connection times out} akibat pengujian yang memakan waktu lama. Listing \ref{lst:2} menunjukan perubahan kode program yang dilakukan di \textit{Queueprocess.php}
+
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada \textit{Queueprocess.php}, label=lst:2, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true]
 @@ -131,6 +131,9 @@ class Queueprocess extends CI_Controller
 $submission['status'] = $output;
@@ -59,10 +56,9 @@ Fungsi untuk mengunduh soal (deskripsi \& PDF) terdapat pada \textit{controller 
 	\item Jika waktu sekarang belum melewati waktu mulai, maka munculkan pesan \textit{error} "\textit{Selected assignment has not started}."	
 \end{itemize}
 
-Berikut hasil pengimplementasian rancangan algoritma di atas ke dalam kode program
-~\\
-\textit{Assignments.php}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+Listing \ref{lst:3} menunjukan hasil pengimplementasian rancangan algoritma di atas ke dalam kode program \textit{Assignments.php}
+
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada \textit{Assignments.php}, label=lst:3, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -99,6 +99,10 @@ class Assignments extends CI_Controller
 */
@@ -94,11 +90,11 @@ $this->load->helper('download')->helper('file');
 \end{lstlisting}
 
 \section{Mensupport \textit{File} dengan Ekstensi TXT}
-Untuk dapat mensupport \textit{file} dengan ekstensi TXT pada perangkat lunak \textit{Sharif Judge}, diperlukan penambahan dan perubahan kode pada beberapa kelas. Beberapa kelas tersebut antara lain \textit{controller Submit.php, model Assignment\_model.php, view submissions.twig} dan kelas bantuan \textit{shj\_helper.php} yang terdapat pada direktori \path{Sharif-Judge\application\helper}.
+Untuk dapat mensupport \textit{file} dengan ekstensi TXT pada perangkat lunak \textit{Sharif Judge}, diperlukan perubahan kode pada beberapa kelas. Beberapa kelas tersebut antara lain \textit{controller Submit.php, model Assignment\_model.php, view submissions.twig} dan kelas bantuan \textit{shj\_helper.php} yang terdapat pada direktori \path{Sharif-Judge\application\helper}.
 ~\\
-Perubahan dan penambahan kode di \textit{Submit.php} untuk menerima \textit{file} yang dikumpul menggunakan ekstensi TXT. Berikut hasil perubahan dan penambahan kode program yang dilakukan di \textit{Submit.php}\\
-\textit{Submit.php}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+Perubahan di \textit{Submit.php} untuk menerima \textit{file} yang dikumpul menggunakan ekstensi TXT. Listing \ref{lst:4} menunjukan hasil perubahan kode program yang dilakukan di \textit{Submit.php}
+
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada \textit{Submit.php}, label=lst:4, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -58,6 +58,7 @@ class Submit extends CI_Controller
 		case 'java': return 'java';
@@ -128,9 +124,9 @@ return FALSE;
 }
 \end{lstlisting}
 ~\\
-Perubahan dan penambahan kode di \textit{Assignment\_model.php} untuk membuat assigment dapat dikumpulkan dengan menggunakan file TXT. Berikut hasil perubahan dan penambahan kode program yang dilakukan di \textit{Assignment\_model.php}\\
-\textit{Assignment\_model.php}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+Perubahan kode di \textit{Assignment\_model.php} untuk membuat assigment dapat dikumpulkan dengan menggunakan file TXT. Listing \ref{lst:5} menunjukan hasil perubahan kode program yang dilakukan di \textit{Assignment\_model.php}
+
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada \textit{Assignments\_model.php}, label=lst:5, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -98,7 +98,7 @@ class Assignment_model extends CI_Model
 	elseif ($item2 === 'pdf')
@@ -143,9 +139,9 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 	if ( ! in_array($i, $uo) && ! in_array($item2, array('c','c++','python 2','python 3','java')) )
 \end{lstlisting}
 ~\\
-Perubahan dan penambahan kode di \textit{shj\_helper.php} untuk mengubah jenis kode ke ekstensi dan bahasa. Berikut hasil perubahan dan penambahann kode program yang dilakukan di \textit{shj\_helper.php}\\
-\textit{shj\_helper.php}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+Perubahan kode di \textit{shj\_helper.php} untuk mengubah jenis kode ke ekstensi dan bahasa. Listing \ref{lst:6} menunjukan hasil perubahan kode program yang dilakukan di \textit{shj\_helper.php}
+
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada \textit{shj\_helper.php}, label=lst:6, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -81,6 +81,7 @@ if ( ! function_exists('filetype_to_extension'))
 	case 'java': return 'java';
@@ -166,9 +162,9 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 }
 \end{lstlisting}
 ~\\
-Perubahan dan penambahan kode di halaman \textit{submissions.twig} untuk mengunduh file dengan ekstensi TXT. Berikut hasil perubahan dan penambahan kode program yang dilakukan di halaman \textit{submissions.twig}\\
-\textit{submissions.twig}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+Perubahan kode di halaman \textit{submissions.twig} untuk mengunduh file dengan ekstensi TXT. Listing \ref{lst:7} menunjukan hasil perubahan kode program yang dilakukan di halaman \textit{submissions.twig}
+
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada halaman \textit{submission.twig}, label=lst:7, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -158,7 +158,7 @@
 	{% endif %}
@@ -183,7 +179,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 
 \section{Menambahkan Halaman \textit{Logs}}% yang Mencatat Aktivitas \textit{Login} Pengguna}
 \label{chap:logs}
-Agar halaman \textit{Logs} dapat berjalan dengan baik, perlu ditambahkan tabel baru pada \textit{database} \textit{Sharif Judge}.  \textit{Tabel} baru tersebut bernama \textit{shj\_logins}. 
+Agar halaman \textit{Logs} dapat berjalan dengan baik, perlu ditambahkan tabel baru pada \textit{database} \textit{Sharif Judge}. Tabel baru tersebut bernama \textit{shj\_logins}. 
 \begin{table}[H] %atau h saja untuk "kira kira di sini"
 	\centering 
 	\caption{Perancangan Tabel \textit{shj\_logins}}
@@ -205,7 +201,7 @@ Agar halaman \textit{Logs} dapat berjalan dengan baik, perlu ditambahkan tabel b
 		\end{tabular}
 \end{table}
 
-Keterangan atribut:
+Tabel \ref{tab:tabellogs} menunjukan perancangan tabel \textit{shj\_logins}. Tabel tersebut memiliki beberapa atribut, yaitu:
 \begin{enumerate}
 	\item \textit{login\_id}: sebagai penanda yang membedakan setiap \textit{login} peserta satu dengan yang lain. Memiliki \textit{length default} int dari \textit{phpMyAdmin} yaitu 11. Atribut \textit{login\_id} merupakan \textit{primary key} karena id harus unik agar setiap \textit{login} peserta dapat dibedakan. Atribut ini juga bersifat \textit{auto increment}.
 	\item \textit{username}: \textit{username} peserta yang berhasil \textit{login} pada \textit{Sharif Judge}. Memiliki \textit{length varchar} 20 karena \textit{length username} pada tabel \textit{shj\_users} adalah 20.
@@ -217,9 +213,10 @@ Keterangan atribut:
 Selain tabel diatas, halaman logs juga ditambahkan kelas \textit{model, view} dan \textit{controller}.
 \begin{enumerate}
 	\item \textit{Model} \\
-	\textit{Model} untuk halaman \textit{logs} bernama \textit{Logs\_model.php}. Berikut adalah perincian fungsi yang terdapat dalam rancangan \textit{model Logs\_model.php}.
+	\textit{Model} untuk halaman \textit{logs} bernama \textit{Logs\_model.php}. Pada \textit{model Logs\_model.php} terdapat beberapa fungsi. Tabel \ref{tab:f1logs} menunjukan perincian fungsi \textit{insert\_to\_logs} yang terdapat pada \textit{model Logs\_model.php}
 	\begin{table}[H]
 		\caption{Perincian fungsi \textit{insert\_to\_logs}}
+		\label{tab:f1logs}
 		\begin{tabular}{|c|p{11cm}|}
 			\hline
 			Nama \textit{Method} 	& 	\textit{insert\_to\_logs} 	\\
@@ -242,8 +239,10 @@ Selain tabel diatas, halaman logs juga ditambahkan kelas \textit{model, view} da
 		\end{tabular}
 	\end{table}
 
+	Tabel \ref{tab:f2logs} menunjukan perincian fungsi \textit{get\_all\_logs} yang terdapat pada \textit{model Logs\_model.php}
 	\begin{table}[H]
 		\caption{Perincian fungsi \textit{get\_all\_logs}}
+		\label{tab:f2logs}
 		\begin{tabular}{|c|p{11cm}|}
 			\hline
 			Nama \textit{Method} 	& 	\textit{get\_all\_logs} 	\\
@@ -264,7 +263,7 @@ Selain tabel diatas, halaman logs juga ditambahkan kelas \textit{model, view} da
 	\end{table}
 
 	\item View \\
-	\textit{View} untuk halaman \textit{logs} bernama \textit{logs.twig}. Menu halaman \textit{logs} terletak di paling bawah menu lainnya dan bernama '\textit{24-hour log}'. Berikut adalah rancangan tampilan halaman \textit{logs}.
+	\textit{View} untuk halaman \textit{logs} bernama \textit{logs.twig}. Menu halaman \textit{logs} terletak di paling bawah menu lainnya dan bernama '\textit{24-hour log}'. Gambar \ref{fig:mockuplogs} menunjukan rancangan tampilan halaman \textit{logs}.
 	
 	\begin{figure}[H]
 		\centering  
@@ -274,9 +273,10 @@ Selain tabel diatas, halaman logs juga ditambahkan kelas \textit{model, view} da
 	\end{figure}
 
 	\item \textit{Controller} \\
-	\textit{Controller} untuk halaman \textit{logs} bernama \textit{Logs.php}. Berikut adalah perincian fungsi yang terdapat dalam rancangan \textit{controller Logs.php}.
+	\textit{Controller} untuk halaman \textit{logs} bernama \textit{Logs.php}. Pada \textit{controller Logs.php} terdapat beberapa fungsi. Tabel \ref{tab:f3logs} menunjukan perincian fungsi \textit{consturct\_\_} yang terdapat pada \textit{controller Logs.php}
 	\begin{table}[H]
 		\caption{Perincian fungsi \textit{consturct\_\_}}
+		\label{tab:f3logs}
 		\begin{tabular}{|c|p{11cm}|}
 			\hline
 			Nama \textit{Method} 	& 	\textit{consturct\_\_} 	\\
@@ -298,9 +298,11 @@ Selain tabel diatas, halaman logs juga ditambahkan kelas \textit{model, view} da
 			\hline
 		\end{tabular}
 	\end{table}
-	
+
+	Tabel \ref{tab:f4logs} menunjukan perincian fungsi \textit{index} yang terdapat pada \textit{controller Logs.php}
 	\begin{table}[H]
 		\caption{Perincian fungsi \textit{index}}
+		\label{tab:f4logs}
 		\begin{tabular}{|c|p{11cm}|}
 			\hline
 			Nama \textit{Method} 	& 	\textit{index} 	\\
@@ -322,9 +324,9 @@ Selain tabel diatas, halaman logs juga ditambahkan kelas \textit{model, view} da
 	\end{table}
 \end{enumerate}
 
-Selain menambahkan kelas \textit{model, view} dan \textit{controller}, terdapat perubahan dan penambahan kode pada kelas \textit{controller Login.php} dan \textit{config Install.php}. Perubahan dan penambahan kode di \textit{controller Login.php} untuk menyimpan data login pengguna ke dalam database. Berikut perubahan dan penambahan kode di \textit{controller Login.php}\\
-\textit{Login.php}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+Selain menambahkan kelas \textit{model, view} dan \textit{controller}, terdapat perubahan kode pada kelas \textit{controller Login.php} dan \textit{config Install.php}. Perubahan kode di \textit{controller Login.php} untuk menyimpan data login pengguna ke dalam database. Listing \ref{lst:8} menunujukan hasil perubahan kode program yang dilakukan di \textit{controller Login.php}
+
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada \textit{Login.php}, label=lst:8, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -53,6 +53,8 @@ class Login extends CI_Controller
 $username = $this->input->post('username');
@@ -346,9 +348,9 @@ $login_data = array(
 else
 \end{lstlisting}
 ~\\
-Perubahan dan penambahan kode di \textit{config Install.php} untuk membuat tabel \textit{shj\_logins} pada \textit{database} saat penginstalan \textit{SharIF Judge}. Berikut perubahan dan penambahan kode di \textit{config Install.php}\\
-\textit{Install.php}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+Perubahan kode di \textit{config Install.php} untuk membuat tabel \textit{shj\_logins} pada \textit{database} saat penginstalan \textit{SharIF Judge}. Listing \ref{lst:9} menunjukan hasil perubahan kode program yang dilakukan di \textit{config Install.php}
+
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada \textit{Install.php}, label=lst:9, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -249,7 +249,18 @@ class Install extends CI_Controller
 if ( ! $this->dbforge->create_table('users', TRUE))
@@ -373,7 +375,7 @@ $this->user_model->add_user(
 \end{lstlisting}
 
 \section{Menambahkan Parameter "\textit{Display Name}" pada Pendaftaran Peserta \textit{Sharif Judge}}
-Untuk dapat menambahkan parameter "\textit{Display Name}" pada pendaftaran peserta \textit{Sharif Judge}, diperlukan beberapa perubahan dan penambahan kode. Berikut rancangan algoritma yang dilakukan
+Untuk dapat menambahkan parameter "\textit{Display Name}" pada pendaftaran peserta \textit{Sharif Judge}, diperlukan beberapa perubahan kode program. Berikut rancangan algoritma yang dilakukan
 \begin{enumerate}
 	\item Menambahkan parameter "\textit{Display Name}" pada fungsi \textit{add\_user} yang terdapat di \textit{model User\_model.php}.
 	\item Mengubah pemisah (\textit{separator}) antar parameter pada fungsi \textit{add\_user}. Pemisah antar parameter yang awalnya menggunakan spasi diubah menggunakan tanda koma.
@@ -382,11 +384,11 @@ Untuk dapat menambahkan parameter "\textit{Display Name}" pada pendaftaran peser
 	%\item Mengubah urutan data yang digunakan pada fungsi pendaftaran peserta melalui \textit{email}.
 	\item Menambahkan \textit{text field Display Name} pada halaman \textit{Register} \textit{(Open Public Registration}).
 \end{enumerate}
-Dari rancangan algoritma yang diterapkan, terdapat perubahan dan penambahan kode pada beberapa kelas. Beberapa kelas tersebut antara lain \textit{controller Install.php, controller Login.php, model User\_model.php, view add\_user.twig, view add\_user\_result.twig} dan \textit{view register.twig}.
+Dari rancangan algoritma yang diterapkan, terdapat perubahan kode pada beberapa kelas. Beberapa kelas tersebut antara lain \textit{controller Install.php, controller Login.php, model User\_model.php, view add\_user.twig, view add\_user\_result.twig} dan \textit{view register.twig}.
 ~\\
-Penambahan kode di \textit{Install.php} untuk menambahkan \textit{Display Name admin}. Berikut hasil penambahan kode program yang dilakukan di \textit{Install.php}\\
-\textit{Install.php}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+Perubahan kode di \textit{Install.php} untuk menambahkan \textit{Display Name admin}. Listing \ref{lst:10} menunjukan hasil perubahan kode program yang dilakukan di \textit{Install.php}
+
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada \textit{Install.php}, label=lst:10, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -255,6 +255,7 @@ class Install extends CI_Controller
 	$this->user_model->add_user(
@@ -398,9 +400,9 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 );
 \end{lstlisting}
 ~\\
-Penambahan kode di halaman \textit{controller Login.php} untuk menerima \textit{input} dari \textit{text field Display Name} halaman \textit{register.twig}. Berikut hasil penambahan kode program yang dilakukan di \textit{controller Login.php}\\
-\textit{Login.php}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+Perubahan kode di halaman \textit{controller Login.php} untuk menerima \textit{input} dari \textit{text field Display Name} halaman \textit{register.twig}. Listing \ref{lst:11} menunjukan hasil perubahan kode program yang dilakukan di \textit{Login.php}
+
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada \textit{Login.php}, label=lst:11, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -102,6 +102,7 @@ class Login extends CI_Controller
 	$this->user_model->add_user(
@@ -412,9 +414,9 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 );
 \end{lstlisting}
 ~\\
-Perubahan dan penambahan kode di \textit{User\_model.php} untuk menambahkan parameter "\textit{Display Name}" dan mengubah pemisah antar parameter menggunakan tanda koma. Berikut hasil perubahan dan penambahan kode program yang dilakukan di \textit{User\_model.php}\\
-\textit{User\_model.php}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+Perubahan kode di \textit{User\_model.php} untuk menambahkan parameter "\textit{Display Name}" dan mengubah pemisah antar parameter menggunakan tanda koma. Listing \ref{lst:12} menunjukan hasil perubahan kode program yang dilakukan di \textit{User\_model.php}
+
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada \textit{User\_model.php}, label=lst:12, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -118,7 +118,7 @@ class User_model extends CI_Model
 * @param $role
@@ -472,9 +474,9 @@ continue; //ignore comments and empty lines
 } // end of loop
 \end{lstlisting}
 ~\\
-Perubahan dan penambahan kode di halaman \textit{add\_user.twig} dan \textit{add\_user\_result.twig} untuk menambahkan keterangan parameter "\textit{Display Name}". Berikut hasil penambahan kode program yang dilakukan di halaman \textit{add\_user.twig} dan halaman \textit{add\_user\_result.twig}\\
-\textit{add\_user.twig}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+Perubahan kode di halaman \textit{add\_user.twig} dan \textit{add\_user\_result.twig} untuk menambahkan keterangan parameter "\textit{Display Name}". Listing \ref{lst:13} menunjukan hasil perubahan kode program yang dilakukan di halaman \textit{add\_user.twig}. Listing \ref{lst:14} menunjukan hasil perubahan kode program yang dilakukan di halaman \textit{add\_user\_result.twig}
+
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada halaman \textit{add\_user.twig}, label=lst:13, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -64,7 +64,7 @@
 # Each line (except comments) represents a user.
@@ -487,8 +489,8 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 # You can use RANDOM[n] for password to generate random n-digit password.
 \end{lstlisting}
 ~\\
-\textit{add\_user\_result.twig}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada halaman \textit{add\_user\_result.twig}, label=lst:14, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -7,7 +7,7 @@
 <p class="shj_ok">These users added successfully:</p>
@@ -509,9 +511,8 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 </ol>
 \end{lstlisting}
 ~\\
-Penambahan kode di halaman \textit{register.twig} untuk menambahkan \textit{text field Display Name}. Berikut hasil penambahan kode program yang dilakukan di halaman \textit{register.twig}\\
-\textit{register.twig}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+Perubahan kode di halaman \textit{register.twig} untuk menambahkan \textit{text field Display Name}. Listing \ref{lst:15} menunjukan hasil perubahan kode program yang dilakukan di halaman \textit{register.twig}
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada halaman \textit{register.twig}, label=lst:15, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -32,6 +32,11 @@
 <input id="form_email" type="email" autocomplete="off" name="email" required="required" class="sharif_input" value="{{ set_value('email') }}"/>
@@ -540,11 +541,11 @@ Rancangan algoritma yang digunakan untuk menambahkan fitur "\textit{Lock Student
 	\item Menambahkan fungsi untuk mengecek kembali nilai dari \textit{lock\_student\_display\_name} pada saat peserta menyimpan perubahan yang dilakukan di halaman \textit{profile.twig}. Hal tersebut dilakukan untuk menangani para peserta yang "memaksa" agar dapat mengubah \textit{Display Name} dengan cara \textit{inspect element} lalu menghapus kode "\textit{disabled}" pada \textit{text field Display Name}.
 \end{enumerate}
 
-Dari rancangan algoritma yang diterapkan, terdapat penambahan kode pada beberapa kelas. Beberapa kelas tersebut antara lain \textit{controller Profile.php, controller Settings.php, model User\_model.php, view settings.twig}, \textit{view profile.twig} dan \textit{config Install.php}.
+Dari rancangan algoritma yang diterapkan, terdapat perubahan kode pada beberapa kelas. Beberapa kelas tersebut antara lain \textit{controller Profile.php, controller Settings.php, model User\_model.php, view settings.twig}, \textit{view profile.twig} dan \textit{config Install.php}.
 ~\\
-Perubahan dan penambahan kode di \textit{Profile.php} untuk mengirimkan nilai '\textit{lock\_student\_display\_name}' ke halaman \textit{profile.twig}. Berikut hasil perubahan dan penambahan kode program yang dilakukan di \textit{Profile.php}\\
-\textit{Profile.php}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+Perubahan  kode di \textit{Profile.php} untuk mengirimkan nilai '\textit{lock\_student\_display\_name}' ke halaman \textit{profile.twig}. Listing \ref{lst:16} menunjukan hasil perubahan kode program yang dilakukan di \textit{Profile.php}
+
+\begin{lstlisting}[language=diff,caption=Perubahan kode program pada \textit{Profile.php}, label=lst:16, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -64,6 +64,7 @@ class Profile extends CI_Controller
 	'display_name' => $user->display_name,
@@ -556,9 +557,9 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 $this->twig->display('pages/profile.twig', $data);
 \end{lstlisting}
 ~\\
-Perubahan dan penambahan kode di \textit{Settings.php} untuk menyimpan nilai dari \textit{check box} fitur "\textit{Lock Student's Display Name}" dari halaman \textit{settings.twig} ke \textit{database}. Berikut hasil perubahan dan penambahan kode program yang dilakukan di \textit{Settings.php}\\
-\textit{Settings.php}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+Perubahan  kode di \textit{Settings.php} untuk menyimpan nilai dari \textit{check box} fitur "\textit{Lock Student's Display Name}" dari halaman \textit{settings.twig} ke \textit{database}. Listing \ref{lst:17} menunjukan hasil perubahan kode program yang dilakukan di \textit{Settings.php}
+
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada \textit{Settings.php}, label=lst:17, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -113,9 +113,10 @@ class Settings extends CI_Controller
 	'results_per_page_all' => $this->input->post('rpp_all'),
@@ -569,9 +570,9 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 );
 \end{lstlisting}
 ~\\
-Perubahan dan penambahan kode di \textit{User\_model.php} untuk mengecek apakah fitur "\textit{Lock Student's Display Name}" aktif atau tidak aktif. Berikut hasil perubahan dan penambahan kode program yang dilakukan di \textit{User\_model.php}\\
-\textit{User\_model.php}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+Perubahan kode di \textit{User\_model.php} untuk mengecek apakah fitur "\textit{Lock Student's Display Name}" aktif atau tidak aktif. Listing \ref{lst:18} menunjukan hasil perubahan kode program yang dilakukan di \textit{User\_model.php}
+
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada \textit{User\_model.php}, label=lst:18, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -404,9 +404,15 @@ class User_model extends CI_Model
 return FALSE;
@@ -591,9 +592,9 @@ $username = $the_user->username;
 );
 \end{lstlisting}
 ~\\
-Perubahan dan penambahan kode di \textit{settings.twig} untuk menambahkan check box fitur "\textit{Lock Student's Display Name}". Berikut hasil perubahan dan penambahan kode program yang dilakukan di \textit{settings.twig}\\
-\textit{settings.twig}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+Perubahan kode di \textit{settings.twig} untuk menambahkan check box fitur "\textit{Lock Student's Display Name}". Listing \ref{lst:19} menunjukan hasil perubahan kode program yang dilakukan di halaman \textit{settings.twig}
+
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada halaman \textit{settings.twig}, label=lst:19, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -114,6 +114,11 @@ $(document).ready(function(){
 <label for="form_log">Log</label><br>
@@ -609,9 +610,9 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 	<span class="form_comment clear">PHP script without &lt;?php ?&gt; tags</span><br>
 \end{lstlisting}
 ~\\
-Perubahan dan penambahan kode di halaman \textit{profile.twig} untuk menentukan apakah \textit{text field Display Name} akan diaktifkan atau tidak. Berikut hasil perubahan dan penambahan kode program yang dilakukan di halaman \textit{profile.twig}\\
-\textit{profile.twig}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+Perubahan kode di halaman \textit{profile.twig} untuk menentukan apakah \textit{text field Display Name} akan diaktifkan atau tidak. Listing \ref{lst:20} menunjukan hasil perubahan kode program yang dilakukan di halaman \textit{profile.twig}
+
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada halaman \textit{profile.twig}, label=lst:20, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -28,7 +28,13 @@
 </p>
@@ -630,9 +631,9 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 <p class="input_p clear">
 \end{lstlisting}
 ~\\
-Perubahan dan penambahan kode di \textit{config Install.php} untuk menambahkan atribut \linebreak \textit{lock\_student\_display\_name} pada tabel \textit{shj\_settings} di \textit{database} saat penginstalan \textit{SharIF Judge}. Berikut perubahan dan penambahan kode di \textit{config Install.php}\\
-\textit{Install.php}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+Perubahan kode di \textit{config Install.php} untuk menambahkan atribut \linebreak \textit{lock\_student\_display\_name} pada tabel \textit{shj\_settings} di \textit{database} saat penginstalan \textit{SharIF Judge}. Listing \ref{lst:21} menunjukan perubahan kode di \textit{config Install.php}
+
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada \textit{Install.php}, label=lst:21, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -220,6 +221,7 @@ class Install extends CI_Controller
 array('shj_key' => 'results_per_page_all',   'shj_value' => '40'),
@@ -656,11 +657,11 @@ Rancangan algoritma yang digunakan untuk menambahkan fitur "\textit{Archived Ass
 	\item \textit{Assignment} yang bersifat \textit{Archived Assignment} tidak muncul pada kalendar halaman \textit{dashboard}.
 \end{enumerate}
 
-Dari rancangan algoritma yang diterapkan, terdapat penambahan kode pada beberapa kelas. Beberapa kelas tersebut antara lain \textit{model Assignment\_model.php, view add\_assignment.twig}, \textit{view dashboard.twig} dan \textit{config Install.php}.
+Dari rancangan algoritma yang diterapkan, terdapat perubahan kode program pada beberapa kelas. Beberapa kelas tersebut antara lain \textit{model Assignment\_model.php, view add\_assignment.twig}, \textit{view dashboard.twig} dan \textit{config Install.php}.
 ~\\
-Perubahan dan penambahan kode di \textit{Assignment\_model.php} untuk menyimpan nilai dari \textit{check box} fitur "\textit{Archived Assignment}" dari halaman \textit{add\_assignment.twig} ke \textit{database}. Berikut hasil perubahan dan penambahan kode program yang dilakukan di \textit{Assignment\_model.php}\\
-\textit{Assignment\_model.php}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+Perubahan kode di \textit{Assignment\_model.php} untuk menyimpan nilai dari \textit{check box} fitur "\textit{Archived Assignment}" dari halaman \textit{add\_assignment.twig} ke \textit{database}. Listing \ref{lst:22} menunjukan hasil perubahan kode program yang dilakukan di \textit{Assignment\_model.php}
+
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada \textit{Assignments\_model.php}, label=lst:22, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -38,6 +38,9 @@ class Assignment_model extends CI_Model
 	{
@@ -685,10 +686,9 @@ $assignment = array(
 	{
 \end{lstlisting}
 ~\\
-Perubahan dan penambahan kode di halaman \textit{add\_assignment.twig} untuk menambahkan \textit{check box} fitur "\textit{Archived Assignment}" dan  mengisi nilai \textit{text field Start time} menjadi 1970-01-02 00:00:00, \textit{text field Finish Time} menjadi 2038-01-18 00:00:00 serta \textit{text field Extra Time} menjadi 0. Berikut hasil perubahan dan penambahan kode program yang dilakukan di halaman \textit{add\_assignment.twig}\\
-\textit{add\_assignment.twig}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
+Perubahan kode di halaman \textit{add\_assignment.twig} untuk menambahkan \textit{check box} fitur "\textit{Archived Assignment}" dan  mengisi nilai \textit{text field Start time} menjadi 1970-01-02 00:00:00, \textit{text field Finish Time} menjadi 2038-01-18 00:00:00 serta \textit{text field Extra Time} menjadi 0. Listing \ref{lst:23} munujukan hasil perubahan kode program yang dilakukan di halaman \textit{add\_assignment.twig}
+
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada halaman \textit{add\_assignment.twig}, label=lst:23, basicstyle=\ttfamily, frame=single, columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -39,6 +39,18 @@
 			shj.num_of_problems++;
 			$('#nop').attr('value', shj.num_of_problems);
@@ -724,9 +724,9 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 		<span class="form_comment medium clear" style="display: block;">PHP script without &lt;?php ?&gt; tags</span>
 \end{lstlisting}
 ~\\
-Perubahan dan penambahan kode di halaman \textit{dashboard.twig} untuk mengatur \textit{assignment} yang bersifat \textit{Archived Assignment} agar tidak muncul pada kalendar. Berikut hasil perubahan dan penambahan kode program yang dilakukan di halaman \textit{dashboard.twig}\\
-\textit{dashboard.twig}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+Perubahan kode di halaman \textit{dashboard.twig} untuk mengatur \textit{assignment} yang bersifat \textit{Archived Assignment} agar tidak muncul pada kalendar. Listing \ref{lst:24} menunjukan hasil perubahan kode program yang dilakukan di halaman \textit{dashboard.twig}
+
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada halaman \textit{dashboard.twig}, label=lst:24, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -27,8 +27,13 @@ $(document).ready(function () {
 	events: [
@@ -746,9 +746,9 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 ]
 \end{lstlisting}
 ~\\
-Perubahan dan penambahan kode di \textit{config Install.php} untuk menambahkan atribut \linebreak \textit{archived\_assignment} pada tabel \textit{shj\_assignments} di \textit{database} saat penginstalan \textit{SharIF Judge}. Berikut perubahan dan penambahan kode di \textit{config Install.php}\\
-\textit{Install.php}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+Perubahan kode di \textit{config Install.php} untuk menambahkan atribut \textit{archived\_assignment} pada tabel \textit{shj\_assignments} di \textit{database} saat penginstalan \textit{SharIF Judge}. Listing \ref{lst:25} menunjukan hasil perubahan kode di \textit{config Install.php}
+
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada \textit{Install.php}, label=lst:25, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -105,6 +105,7 @@ class Install extends CI_Controller
 	'late_rule'     => array('type' => 'TEXT'),
@@ -765,9 +765,10 @@ Halaman \textit{Hall of Fame} tidak membutuhkan atribut atau tabel baru pada \te
 
 \begin{enumerate}
 	\item \textit{Model} \\
-	\textit{Model} untuk halaman \textit{Hall of Fame} bernama \textit{Hof\_model.php}. Berikut adalah perincian fungsi yang terdapat dalam rancangan \textit{model Hof\_model.php}.
+	\textit{Model} untuk halaman \textit{Hall of Fame} bernama \textit{Hof\_model.php}. Pada \textit{model Hof\_model.php} terdapat beberapa fungsi. Tabel \ref{tab:f1hof} menunjukan perincian fungsi \textit{get\_all\_final\_submission} yang terdapat pada \textit{Hof\_model.php}
 	\begin{table}[H]
 		\caption{Perincian fungsi \textit{get\_all\_final\_submission}}
+		\label{tab:f1hof}
 		\begin{tabular}{|c|p{11cm}|}
 			\hline
 			Nama \textit{Method} 	& 	\textit{get\_all\_final\_submission} 	\\
@@ -789,8 +790,10 @@ Halaman \textit{Hall of Fame} tidak membutuhkan atribut atau tabel baru pada \te
 		\end{tabular}
 	\end{table}
 	
+	Tabel \ref{tab:f2hof} menunjukan perincian fungsi \textit{get\_all\_user\_assignments} yang terdapat pada \linebreak \textit{Hof\_model.php}
 	\begin{table}[H]
 		\caption{Perincian fungsi \textit{get\_all\_user\_assignments}}
+		\label{tab:f2hof}
 		\begin{tabular}{|c|p{11cm}|}
 			\hline
 			Nama \textit{Method} 	& 	\textit{get\_all\_user\_assignments} 	\\
@@ -812,7 +815,7 @@ Halaman \textit{Hall of Fame} tidak membutuhkan atribut atau tabel baru pada \te
 	\end{table}
 	
 	\item \textit{View} \\
-	\textit{View} untuk halaman \textit{Hall of Fame} bernama \textit{halloffame.twig}. Menu halaman \textit{Hall of Fame} terletak di bawah menu \textit{Scoreboard}. Pada halaman ini juga berlaku sistem rangking dimana para peserta diurutkan bedasarkan total skor. Jika total skor yang dimiliki peserta memiliki nilai yang sama dengan peserta lainnya, maka peserta tersebut memiliki rangking yang sama dengan peserta lainnya. Berikut adalah rancangan tampilan halaman \textit{Hall of Fame}
+	\textit{View} untuk halaman \textit{Hall of Fame} bernama \textit{halloffame.twig}. Menu halaman \textit{Hall of Fame} terletak di bawah menu \textit{Scoreboard}. Pada halaman ini juga berlaku sistem rangking dimana para peserta diurutkan bedasarkan total skor. Jika total skor yang dimiliki peserta memiliki nilai yang sama dengan peserta lainnya, maka peserta tersebut memiliki rangking yang sama dengan peserta lainnya. Gambar \ref{fig:mockuphof} menunjukan rancangan tampilan halaman \textit{Hall of Fame}. Gambar \ref{fig:mockuphofdetail} menunjukan rancangan tampilan \textit{detail} dari \textit{Hall of Fame}. 
 	
 	\begin{figure}[H]
 		\centering  
@@ -821,8 +824,6 @@ Halaman \textit{Hall of Fame} tidak membutuhkan atribut atau tabel baru pada \te
 		\label{fig:mockuphof} 
 	\end{figure}
 
-	Berikut adalah rancangan tampilan detail dari \textit{Hall of Fame} peserta tertentu
-	
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{mockuphofdetail}  
@@ -831,9 +832,10 @@ Halaman \textit{Hall of Fame} tidak membutuhkan atribut atau tabel baru pada \te
 	\end{figure}
 	
 	\item \textit{Controller} \\
-	\textit{Controller} untuk halaman \textit{Hall of Fame} bernama \textit{Halloffame.php}. Berikut adalah perincian fungsi yang terdapat dalam rancangan \textit{controller Logs.php}.
+	\textit{Controller} untuk halaman \textit{Hall of Fame} bernama \textit{Halloffame.php}. Pada \textit{controller Halloffame.php} terdapat beberapa fungsi. Tabel \ref{tab:f3hof} menunjukan perincian fungsi \textit{consturct\_\_} yang terdapat pada \textit{Halloffame.php}
 	\begin{table}[H]
 		\caption{Perincian fungsi \textit{consturct\_\_}}
+		\label{tab:f3hof}
 		\begin{tabular}{|c|p{11cm}|}
 			\hline
 			Nama \textit{Method} 	& 	\textit{consturct\_\_} 	\\
@@ -855,8 +857,10 @@ Halaman \textit{Hall of Fame} tidak membutuhkan atribut atau tabel baru pada \te
 		\end{tabular}
 	\end{table}
 	
+	Tabel \ref{tab:f4hof} menunjukan perincian fungsi \textit{index} yang terdapat pada \textit{Halloffame.php}
 	\begin{table}[H]
 		\caption{Perincian fungsi \textit{index}}
+		\label{tab:f4hof}
 		\begin{tabular}{|c|p{11cm}|}
 			\hline
 			Nama \textit{Method} 	& 	\textit{index} 	\\
@@ -877,8 +881,10 @@ Halaman \textit{Hall of Fame} tidak membutuhkan atribut atau tabel baru pada \te
 		\end{tabular}
 	\end{table}
 	
+	Tabel \ref{tab:f5hof} menunjukan perincian fungsi \textit{hof\_details} yang terdapat pada \textit{Halloffame.php}
 	\begin{table}[H]
 		\caption{Perincian fungsi \textit{hof\_details}}
+		\label{tab:f5hof}
 		\begin{tabular}{|c|p{11cm}|}
 			\hline
 			Nama \textit{Method} 	& 	\textit{hof\_details} 	\\
@@ -913,11 +919,11 @@ Rancangan algoritma yang digunakan untuk menambahkan mengintegrasikan \textit{lo
 	\item Mengintegrasikan \textit{login} pengguna \textit{Sharif Judge} ke \textit{server RADIUS}.
 \end{enumerate}
 
-Dari rancangan algoritma yang diterapkan, terdapat penambahan kode pada kelas \textit{model User\_model.php}.
+Dari rancangan algoritma yang diterapkan, terdapat perubahan kode pada kelas \textit{model User\_model.php}.
 ~\\
-Perubahan dan penambahan kode di model \textit{User\_model} untuk memanggil \textit{library Dapphp/Radius} dan mengintegrasikan \textit{login} pengguna \textit{Sharif Judge} ke \textit{server RADIUS}. Berikut hasil penambahan kode program yang dilakukan di model \textit{User\_model}\\
-\textit{User\_model.php}
-\begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
+Perubahan kode di model \textit{User\_model.php} untuk memanggil \textit{library Dapphp/Radius} dan mengintegrasikan \textit{login} pengguna \textit{Sharif Judge} ke \textit{server RADIUS}. Listing \ref{lst:26} menunjukan hasil perubahan kode program yang dilakukan di \textit{User\_model.php}
+
+\begin{lstlisting}[language=diff, caption=Perubahan kode program pada \textit{User\_model.php}, label=lst:26, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 @@ -5,6 +5,7 @@
 * @author Mohammad Javad Naderi <mjnaderi@gmail.com>
@@ -948,7 +954,7 @@ class User_model extends CI_Model
 Kode program file secrets.php dapat dilihat di \hyperref[lamp:kodeprogramsecrets]{Lampiran D}.
 
 \section{Branding Teknik Informatika}
-Branding Teknik Informatika dilakukan dengan cara mengubah seluruh logo dan ikon \textit{Sharif Judge} menggunakan logo dan ikon Teknik Informatika. Berikut logo dan ikon Teknik Informatika yang digunakan
+Branding Teknik Informatika dilakukan dengan cara mengubah seluruh logo dan ikon \textit{Sharif Judge} menggunakan logo dan ikon Teknik Informatika. Gambar \ref{fig:logosmall} menunjukan logo dan ikon Teknik Informatika yang digunakan. Gambar \ref{fig:banner} \textit{banner Sharif Judge} yang digunakan.
 
 \begin{figure}[H]
 	\centering  
