@@ -230,40 +230,40 @@ Hasil implementasi dari rancangan perangkat lunak yang sudah dibuat, terdiri dar
 	\end{table}
 
 	\item Tampilan \\
-	Tampilan untuk untuk pengembangan Sharif Judge ini dirancang bedasarkan rancangan tampilan yang sudah dibuat. Berikut beberapa tampilan halaman baru pada pengembangan Sharif Judge
+	Tampilan untuk untuk pengembangan Sharif Judge ini dirancang bedasarkan rancangan tampilan yang sudah dibuat. Berikut beberapa tampilan halaman baru pada pengembangan \textit{Sharif Judge}
 	
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{newlogin}  
-		\caption[Tampilan Halaman Login]{Tampilan Halaman Login} 
+		\caption[Tampilan Halaman Login]{Tampilan Halaman \textit{Login}} 
 		\label{fig:newlogin} 
 	\end{figure}
 	
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/hof/hof}  
-		\caption[Tampilan Halaman Hall of Fame]{Tampilan Halaman Hall of Fame} 
+		\caption[Tampilan Halaman Hall of Fame]{Tampilan Halaman \textit{Hall of Fame}} 
 		\label{fig:newhof} 
 	\end{figure}
 
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/hof/detailhof}  
-		\caption[Tampilan Detail dari Hall of Fame]{Tampilan Detail dari Hall of Fame} 
+		\caption[Tampilan Detail dari Hall of Fame]{Tampilan \textit{Detail} dari \textit{Hall of Fame}} 
 		\label{fig:newhofdetail} 
 	\end{figure}
 
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{newlogs}  
-		\caption[Tampilan Halaman Logs]{Tampilan Halaman Logs} 
+		\caption[Tampilan Halaman Logs]{Tampilan Halaman \textit{Logs}} 
 		\label{fig:newlogs} 
 	\end{figure}
 
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[scale=0.7]{sidemenu}  
-		\caption[Tampilan Side Menu]{Tampilan Side Menu} 
+		\caption[Tampilan Side Menu]{Tampilan \textit{Side Menu}} 
 		\label{fig:sidemenu} 
 	\end{figure}
 
@@ -472,7 +472,7 @@ Pengujian fungsional bertujuan untuk memastikan setiap fitur baru pada SharIF Ju
 	\end{figure}
 	
 \section{Pengujian Ekseprimental}
-Pengujian eksperimental dilakukan dengan cara menginstal perangkat lunak \textit{SharIF Judge} pada server lab FTIS UNPAR. SharIF Judge digunakan untuk mata kuliah Algoritma \& Struktur Data (ASD) semester genap 2017/2018. \textit{SharIF Judge} yang telah diinstal, dapat diakses pada \textit{URL} \path{http://asd-lat.ftis.unpar/} dan \path{http://asd-quiz.ftis.unpar/}. Selama pengujian berlangsung, terdapat beberapa persoalan yang muncul. Persoalan yang muncul dicatat ke dalam isu \textit{repository SharIF Judge} di \textit{GitHub}. Semua persoalan dapat dilihat di \path{https://github.com/ayenz/Sharif-Judge/issues}.
+Pengujian eksperimental dilakukan dengan cara menginstal perangkat lunak \textit{SharIF Judge} pada server lab FTIS UNPAR. \textit{SharIF Judge} digunakan untuk mata kuliah Algoritma \& Struktur Data (ASD) semester genap 2017/2018. \textit{SharIF Judge} yang telah diinstal, dapat diakses pada \textit{URL} \path{http://asd-lat.ftis.unpar/} dan \path{http://asd-quiz.ftis.unpar/}. Selama pengujian berlangsung, terdapat beberapa persoalan yang muncul. Persoalan yang muncul dicatat ke dalam isu \textit{repository SharIF Judge} di \textit{GitHub}. Semua persoalan dapat dilihat di \path{https://github.com/ayenz/Sharif-Judge/issues}.
 
 	\subsection{\textit{Remove the Assignments Folder}}
 	Isu dengan kode unik \#4 meminta agar \textit{folder assignments} untuk dihapus. Hal ini bertujuan agar direktori \textit{URL} \path{/assignments} dapat diakses. \textit{Folder assignments} merupakan \textit{folder default} untuk menyimpan \textit{assignment}. \textit{Folder default} penyimpanan \textit{assignment} tersebut harus diubah terlebih dahulu. Untuk mengubah \textit{folder default} penyimpanan, diperlukan perubahan nilai pada halaman \textit{Settings} dan kode pada kelas \textit{Controller Install.php}. Selain mengubah \textit{folder default} penyimpanan \textit{assignment}, perubahan juga dilakukan pada \textit{folder default tester} dan \textit{default timezone} yang bertujuan untuk merapihkan struktur direktori.
@@ -483,7 +483,7 @@ Pengujian eksperimental dilakukan dengan cara menginstal perangkat lunak \textit
 		\label{fig:set} 
 	\end{figure}
 	
-	\hyperref[fig:set]{Gambar 5.32} menunjukan perubahan pada halaman \textit{Settings} dilakukan pada \textit{text field} "\textit{Timezone}", "\textit{Full Path to tester}" dan "\textit{Full Path to assignments}". 
+	\hyperref[fig:set]{Gambar 5.30} menunjukan perubahan pada halaman \textit{Settings} dilakukan pada \textit{text field} "\textit{Timezone}", "\textit{Full Path to tester}" dan "\textit{Full Path to assignments}". 
 	\begin{itemize}
 		\item Nilai yang digunakan untuk\textit{ text field "Full Path to assignments"} adalah \path{C:/xampp/htdocs/restricted/assignments}. Nilai tersebut memiliki arti bahwa \textit{folder default} penyimpanan \textit{assignment} diletakan pada direktori \path{C:/xampp/htdocs/restricted/assignments}.
 		\item Nilai yang digunakan untuk \textit{text field "Full Path to tester"} adalah \path{C:/xampp/htdocs/restricted/tester}. Nilai tersebut memiliki arti bahwa \textit{folder default tester} diletakan pada direktori \path{C:/xampp/htdocs/restricted/tester}.
@@ -508,7 +508,7 @@ $result = $this->db->insert_batch('settings', array(
 	Setelah melakukan beberapa perubahan, folder assignment dapat dihapus.
 	
 	\subsection{\textit{Add User Email are not formatted correctly}}
-	Isu dengan kode unik \#5 mengatakan bahwa pendaftaran peserta via \textit{email} tidak berfungsi dengan baik. Pengguna mendapatkan \textit{email} dengan format yang tidak beraturan. Contohnya \textit{username} yang tertukar dengan \textit{role} dan \textit{password} tertukar dengan \textit{display name} seperti \hyperref[fig:dnve]{Gambar 5.33} 
+	Isu dengan kode unik \#5 mengatakan bahwa pendaftaran peserta via \textit{email} tidak berfungsi dengan baik. Pengguna mendapatkan \textit{email} dengan format yang tidak beraturan. Contohnya \textit{username} yang tertukar dengan \textit{role} dan \textit{password} tertukar dengan \textit{display name} seperti \hyperref[fig:dnve]{Gambar 5.31} 
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/dnve}  
@@ -536,8 +536,8 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 	Setelah melakukan perubahan kode program, pendaftaran peserta via \textit{email} dapat berfungsi dengan baik. \textit{Email} yang diterima pengguna telah menggunakan format yang benar.
 	
 	\subsection{\textit{Cannot Create Assignments}}
-	Isu dengan kode unik \#7 mengatakan bahwa Pak Husnul selaku dosen Algoritma \& Struktur Data, tidak bisa membuat \textit{assignment}.\textit{ Error log} yang dihasilkan tidak menunjukan pesan kesalahan apapun. 
-	Berikut isi \textit{error log} yang terdapat di direktori path{/var/log/apache2/error.log}
+	Isu dengan kode unik \#7 mengatakan bahwa Bapak Husnul selaku dosen Algoritma \& Struktur Data, tidak bisa membuat \textit{assignment}.\textit{ Error log} yang dihasilkan tidak menunjukan pesan kesalahan apapun. 
+	Berikut isi \textit{error log} yang terdapat di direktori \path{/var/log/apache2/error.log}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,columns=fullflexible, keepspaces=true, breaklines=true]
 [Wed Jan 31 06:25:02.516154 2018] [mpm_prefork:notice] [pid 1734] AH00163: Apache/2.4.18 (Ubuntu) configured -- resuming normal operations
 [Wed Jan 31 06:25:02.516182 2018] [core:notice] [pid 1734] AH00094: Command line: '/usr/sbin/apache2
@@ -694,7 +694,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 \end{lstlisting}
 
 	\subsection{Hapus Perbedaan antara \textit{Admin} dan \textit{Student} pada PDF \textit{Download}}
-	Isu dengan kode unik \#7 mengatakan agar mengubah beberapa bagian hasil implementasi kode pada kelas \textit{controller Assignments.php}. Kode tersebut terdapat pada fungsi unduh \textit{assignment} dengan ketentuan yang telah dirancang pada \hyperref[chap:batassoal]{sub bab 4.3}. Bagian kode \textit{\&\& \$this->user->level == 0} berfungsi untuk mengijinkan pengguna dengan \textit{role admin} dapat mengunduh \textit{assignment}. Bagian tersebut dihilangkan agar adanya transparansi antara dosen dan peserta, sehingga dosen saat membuat \textit{assignment} lebih yakin bahwa soalnya tidak akan bisa diunduh. Berikut perubahan kode program
+	Isu dengan kode unik \#7 mengatakan agar mengubah beberapa bagian hasil implementasi kode pada kelas \textit{controller Assignments.php}. Kode tersebut terdapat pada fungsi unduh \textit{assignment} dengan ketentuan yang telah dirancang pada \hyperref[chap:batassoal]{sub bab 4.3}. Bagian kode \textit{\$this->user->level == 0} berfungsi untuk mengijinkan pengguna dengan \textit{role admin} dapat mengunduh \textit{assignment}. Bagian tersebut dihilangkan agar adanya transparansi antara dosen dan peserta, sehingga dosen saat membuat \textit{assignment} lebih yakin bahwa soalnya tidak akan bisa diunduh. Berikut perubahan kode program
 	\textit{Assignments.php}
 \begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
@@ -718,7 +718,7 @@ $pdf_files = glob($pattern);
 \end{lstlisting}
 
 	\subsection{\textit{Download Excel} Tidak Berfungsi pada Halaman \textit{Submission}}
-	Salah satu asisten dosen mata kuliah Desain \& Analisis Algoritma mengatakan bahwa fitur untuk mengunduh \textit{excel} pada halaman \textit{Submission} tidak berfungsi. Perangkat lunak \textit{Sharif Judge} yang terkini memiliki fitur yang dapat mengunduh \textit{excel} pada halaman \textit{All Submission, Final Submission} dan \textit{Users}. Fitur ini berfungsi untuk memuat seluruh daftar \textit{All Submission, Final Submission} dan \textit{Users} ke dalam format excel. Agar fitur ini dapat berjalan dengan baik, \textit{Sharif Judge} menggunakan \textit{library} bantuan yaitu \textit{PHPExcel}.
+	Salah satu asisten dosen mata kuliah Desain \& Analisis Algoritma mengatakan bahwa fitur untuk mengunduh \textit{excel} pada halaman \textit{Submission} tidak berfungsi. Perangkat lunak \textit{Sharif Judge} yang terkini memiliki fitur yang dapat mengunduh \textit{excel} pada halaman \textit{All Submission, Final Submission} dan \textit{Users}. Fitur ini berfungsi untuk memuat seluruh daftar \textit{All Submission, Final Submission} dan \textit{Users} ke dalam format \textit{excel}. Agar fitur ini dapat berjalan dengan baik, \textit{Sharif Judge} menggunakan \textit{library} bantuan yaitu \textit{PHPExcel}.
 	
 	Persoalan di atas terjadi karena versi PHP yang digunakan tidak lagi mendukung \textit{library PHPExcel}. Dalam pengembangannya, \textit{PHPExcel} sudah tidak lagi digunakan. Para pengguna disarankan untuk migrasi ke \textit{library} penerusnya yaitu \textit{PhpSpreadsheet} atau alternatif lainnya \footnote{Adrien Crivelli, "PHPExcel - DEPRECATED" terakhir diubah 25 Desember 2017. \textit{https://github.com/PHPOffice/PHPExcel}}.
 	
@@ -732,7 +732,7 @@ $pdf_files = glob($pattern);
 	\end{enumerate}
 	
 	Dari rancangan algoritma yang diterapkan, terdapat perubahan kode pada kelas \textit{controller Submissions.php} dan \textit{controller Users.php}. Perubahan kode di \textit{controller Submissions.php} dan \textit{controller Users.php} untuk mengubah fungsi yang menggunakan kelas \textit{PHPExcel} menjadi menggunakan kelas \textit{PhpSpreadsheet}. Berikut hasil perubahan kode program
-	
+~\\	
 	\textit{Submission.php}
 \begin{lstlisting}[language=diff, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]

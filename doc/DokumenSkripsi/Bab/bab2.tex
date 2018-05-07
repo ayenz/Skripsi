@@ -16,7 +16,7 @@ Beberapa keunggulan dari \textit{CodeIgniter} yaitu:
 	\item Menggunakan Konsep M-V-C \\
 		\textit{CodeIgniter} menggunakan pendekatan \textit{Model-View-Controller} yang memungkinkan pemisahan anatara logika dan presentasi.
 	\item Menghasilkan \textit{Clean URLs} \\
-		\textit{URL} yang dihasilkan oleh \textit{CodeIgniter} \textit{Clean URLs} dan \textit{search-engine friendly}. Clean URLs akan mempermudah pengguna dalam membaca URL. Contoh perbandingan URL biasa dengan Clean URLs: URL biasa: \path{\\example.com\index.php?page=news}, Clean URLs: \path{\\example.com\news}.
+		\textit{CodeIgniter} menghasilkan \textit{Clean URLs} dan \textit{search-engine friendly}. \textit{Clean URLs} akan mempermudah pengguna dalam membaca \textit{URL}. Contoh perbandingan \textit{URL} biasa dengan \textit{Clean URL}s: \textit{URL} biasa: \path{\\example.com\index.php?page=news}, \textit{Clean URLs}: \path{\\example.com\news}.
 	\item \textit{Packs a Punch} \\
 		\textit{CodeIgniter} dilengkapi dengan \textit{library} yang umumnya diperlukan untuk mengembangkan \textit{web}, seperti mengakses \textit{database}, mengirim \textit{email}, memvalidasi data \textit{form}, menjaga \textit{session}, memanipulasi gambar dan masih banyak lagi.
 	\item \textit{Extensible} \\
@@ -85,7 +85,7 @@ class Model_name extends CI_Model {
 		Pada dasarnya \textit{model} akan dimuat dan dipanggil dari \textit{method} atau fungsi yang ada pada \textit{controller}. Untuk menghubungkan \textit{model}, pengguna harus menggunakan method berikut:
 		\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-$this->model->model('model_name');
+$this->load->model('model_name');
 \end{lstlisting}
 		
 		Jika \textit{model} yang pengguna buat terletak di dalam sebuah sub-direktori, maka pengguna harus menyertakan alamat relatif \textit{(relative path)} dari \textit{model} yang dibuat. Sebagai contoh, jika \textit{model} yang pengguna berlokasi di \path{application/models/blog/Queries.php} pengguna dapat menghubungkannya dengan cara:
@@ -110,7 +110,7 @@ $this->load->model('model_name', 'foobar');
 $this->foobar->method();
 \end{lstlisting}
 		
-		Berikut merupakan contoh sebuah \textit{controller} yang terhubung dengan sebuah \textit{model} dan menampilkan data hasil olahan model ke \textit{view}:
+		Berikut merupakan contoh sebuah \textit{controller} yang terhubung dengan sebuah \textit{model} dan menampilkan data hasil olahan \textit{model} ke \textit{view}:
 		\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 class Blog_controller extends CI_Controller {
@@ -133,11 +133,11 @@ class Blog_controller extends CI_Controller {
 		\item Koneksi ke \textit{Database} \\
 		Ketika sebuah \textit{model} dipanggil, \textit{model} tidak akan terhubung ke \textit{database} secara otomatis. Beberapa opsi yang dapat digunakan untuk menghubungkan \textit{model} ke \textit{database}:
 		\begin{itemize}
-			\item Pengguna dapat menghubungkan dengan menggunakan metode standar database antara \textit{class Controller} atau \textit{class Model}. \\
-			\item Pengguna dapat mengatur sebuah \textit{model} melakukan \textit{auto-connect} dengan menambahkan nilai \textit{TRUE} (boolean) di parameter ketiga atau mengatur konektivitas sebagaimana yang telah didefinisikan di dalam berkas \path{application/config/database.php}
+			\item Pengguna dapat menghubungkan dengan menggunakan metode standar \textit{database} antara \textit{class Controller} atau \textit{class Model}. \\
+			\item Pengguna dapat mengatur sebuah \textit{model} melakukan \textit{auto-connect} dengan menambahkan nilai \textit{TRUE} (boolean) di parameter ketiga atau mengatur konektivitas sebagaimana yang telah didefinisikan di dalam \textit{file} \path{application/config/database.php}
 			\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
-\$this->load->model('model_name', '', TRUE);
+$this->load->model('model_name', '', TRUE);
 \end{lstlisting}
 			\item Pengguna dapat mengatur koneksi secara manual dengan menambahkan \textit{item-item} berupa \textit{array} pada \textit{parameter} ketiga seperti contoh berikut:
 			\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
@@ -179,7 +179,7 @@ class Page{
 	
 	\subsubsection{\textit{Controller}}
 	\textit{Controller} berfungsi sebagai perantara antara \textit{Model}, \textit{View} dan \textit{resource} lain yang dibutuhkan untuk memproses \textit{HTTP request} dan menghasilkan halaman web. Controller merupakan sebuah kelas yang dinamakan demikian agar dapat dikaitkan dengan URI. Sebagai contoh URI \path{example.com/index.php/blog/}, \textit{CodeIgniter} akan mencari \textit{controller} bernama \textit{Blog.php} dan menjalankannya. Nama \textit{cont}roller harus diawali dengan huruf kapital. Selain itu controller juga harus \textit{extend} kelas "\textit{CI\_Controller}".
-	Perhatikan contoh berikut:
+	Perhatikan contoh berikut:\\
 	Contoh yang benar :
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
@@ -201,30 +201,51 @@ class blog extends CI_Controller {
 	Berikut beberapa hal penting yang terdapat pada \textit{Controller}:
 	\begin{itemize}
 		\item \textit{Method} \\
-		Untuk menjalankan suatu \textit{method}, pengguna perlu menuliskannya pada segmen kedua URI. Contoh \path{example.com/index.php/blog/comments} maka method \textit{comments()} akan dijalankan pada \textit{controller} \textit{blog.php}. \textit{Method index()} akan dijalankan jika bagian kedua URI kosong. Jika URI mengandung lebih dari dua segment, maka segment-segment tersebut akan dimasukan ke dalam \textit{method} sebagai parameter.
+		Untuk menjalankan suatu \textit{method}, pengguna perlu menuliskannya pada segmen kedua URI. Perhatikan contoh berikut:
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+<?php
+class Blog extends CI_Controller {
+		public function index()
+		{
+			echo 'Hello World!';
+		}
+		
+		public function comments()
+		{
+			echo 'Look at this!';
+		}
+		
+		public function shoes($sandals, $id)
+		{
+			echo $sandals;
+			echo $id;
+		}
+}
+\end{lstlisting}
+		Jika pengguna memuat URL \path{example.com/index.php/blog/comments}, maka method \textit{comments()} akan dijalankan pada \textit{controller} \textit{Blog.php}. \textit{Method index()} akan dijalankan jika bagian kedua URI kosong. Jika URI mengandung lebih dari dua segment, maka segmen-segmen tersebut akan dimasukan ke dalam \textit{method} sebagai parameter. Contoh: pengguna memuat URL \path{example.com/index.php/blog/shoes/sandals/123}. Segmen "\textit{sandals}" dan "123" akan dimasukan sebagai \textit{parameter} ke dalam \textit{method shoes}.
 		
 		\item \textit{Default Controller} \\
 		\textit{CodeIgniter} dapat diperintahkan untuk menjalankan \textit{default controller} jika tidak terdapat URI. Hal ini umumnya terjadi ketika terdapat permintaan menggunakan URL dasar \textit{website}. Penentuan \textit{default controller} terdapat pada \textit{file} \path{application/config/routes.php}. Perhatikan contoh berikut:
-		\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 $route['default_controller'] = 'blog';
-		}
 \end{lstlisting} 
-		\textit{Blog} merupakan nama kelas \textit{controller} yang ingin digunakan. Jika pengguna mengakses file \textit{index.php} utama tanpa menentukan segmen URI, maka akan dijalankan \textit{controller} \textit{blog}.
+		\textit{Blog} merupakan nama kelas \textit{controller} yang ingin digunakan. Jika pengguna mengakses file \textit{index.php} utama tanpa menentukan segmen URI, maka akan dijalankan \textit{controller} \textit{Blog}.
 		
-		\item Processing Output \\
-		CodeIgniter memiliki kelas \textit{output} yang menangani pengiriman data ke \textit{web browser} secara otomatis. Dalam beberapa kasus saat pengguna ingin mengubah cara pengiriman data tersebut, CodeIgniter akan menambahkan method bernama "\_output()" ke \textit{controller} terkait. Jika controller memiliki method bernama "\_output()" maka controller tersebut akan selalu dipanggil oleh kelas "output".
-		Contoh penggunaan method "\_output()" : 
-		\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
-columns=fullflexible, keepspaces=true, breaklines=true]
-public function _output(\$output)
-{
-	echo $output;
-}
-\end{lstlisting}
+%		\item \textit{Processing Output} \\
+%		\textit{CodeIgniter} memiliki kelas \textit{output} yang menangani pengiriman data ke \textit{web browser} secara otomatis. Dalam beberapa kasus saat pengguna ingin mengubah cara pengiriman data tersebut, CodeIgnite\textit{}r akan menambahkan \textit{method} bernama "\_output()" ke \textit{controller} terkait. Jika controller memiliki method bernama "\_output()" maka controller tersebut akan selalu dipanggil oleh kelas "\textit{output}".
+%		Contoh penggunaan method "\_output()" : 
+%\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+%columns=fullflexible, keepspaces=true, breaklines=true]
+%public function _output(\$output)
+%{
+%	echo $output;
+%}
+%\end{lstlisting}
 		
-		\item \textit{Private Method}
-		\textit{Method-method} dengan tipe \textit{private} tidak dapat diakses oleh publik. Method ini hanya dapat diakses oleh method lain dalam \textit{controller} yang sama dan \textit{method} ini juga tidak dapat diakses melalui URL. Contoh penulisan \textit{private method}:
+		\item \textit{Private Method}\\
+		\textit{Method-method} dengan tipe \textit{private} tidak dapat diakses oleh publik. \textit{Method} ini hanya dapat diakses oleh \textit{method} lain dalam \textit{controller} yang sama dan \textit{method} ini juga tidak dapat diakses melalui URL. Contoh penulisan \textit{private method}:
 		\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 private function _utility()
@@ -240,11 +261,11 @@ example.com/index.php/blog/_utility/
 \end{lstlisting}
 		
 		\item Mengorganisir \textit{Controller} ke Dalam Sub Direktori \\
-		\textit{CodeIgniter} mengizinkan pengguna untuk mengorganisir \textit{controller} ke dalam sub direktori. Pengguna dapat membuat sub direktori di dalam direktori \path{application/controllers/} dan simpan kelas \textit{controller} ke direktori tersebut. Ketika menggunakan fitur ini, pengguna harus menspesifikasikan folder tersebut ke dalam URI. Perhatikan contoh berikut:
+		\textit{CodeIgniter} mengizinkan pengguna untuk mengorganisir \textit{controller} ke dalam sub direktori. Pengguna dapat membuat sub direktori di dalam direktori \path{application/controllers/} dan menyimpan kelas \textit{controller} ke direktori tersebut. Ketika menggunakan fitur ini, pengguna harus menspesifikasikan folder tersebut ke dalam URI. Perhatikan contoh berikut:
 		Sebuah \textit{controller} berlokasi pada direktori \path{application/controllers/products/Shoes.php}. Untuk memanggil controller tersebut, URI pengguna yang tampil akan seperti \path{example.com/index.php/products/shoes/show/123}.
 	\end{itemize}
 
-\textit{CodeIgniter} memiliki pendekatan yang cukup fleksibel terhadap \textit{MVC} karena \textit{Model} tidak selalu diperlukan. Para pengguna dapat membangun aplikasi hanya menggunakan \textit{Controller} dan \textit{View}. Hal tersebut dapat dilakukan jika pengguna tidak memerlukan adanya pemisahan tambahan atau pengguna merasa bahwa menggunakan sebuah \textit{Model} membutuhkan kompleksitas yang lebih tinggi~\cite{bcit:17:cidoc}. 
+%\textit{CodeIgniter} memiliki pendekatan yang cukup fleksibel terhadap \textit{MVC} karena \textit{Model} tidak selalu diperlukan. Para pengguna dapat membangun aplikasi hanya menggunakan \textit{Controller} dan \textit{View}. Hal tersebut dapat dilakukan jika pengguna tidak memerlukan adanya pemisahan tambahan atau pengguna merasa bahwa menggunakan sebuah \textit{Model} membutuhkan kompleksitas yang lebih tinggi~\cite{bcit:17:cidoc}. 
 
 \subsection{Desain dan Tujuan Arsitektur}
 Dari sudut pandang teknis dan arsitektural, \textit{CodeIgniter} dibuat dengan tujuan sebagai berikut:
@@ -307,7 +328,7 @@ $system_path = '/home/mohammad/secret/system';
 $application_folder = '/home/mohammad/secret/application';
 \end{lstlisting}
 	\item Buat sebuah \textit{Mysql} atau \textit{PostgreSql} \textit{database} untuk \textit{Sharif Judge}. Jangan menginstall paket koneksi \textit{database} untuk \textit{C/C++, Java}, atau \textit{Python}
-	\item Atur pengaturan koneksi database di file \path{application/config/database.php}. Pengguna dapat menggunakan awalan untuk nama tabel.
+	\item Atur pengaturan koneksi \textit{database} di file \path{application/config/database.php}. Pengguna dapat menggunakan awalan untuk nama tabel.
 	\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 /*  Enter database connection settings here:  */
@@ -326,7 +347,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 \end{itemize}
 
 \subsection{\textit{Clean URLs}}
-Secara \textit{default}, \textit{index.php} merupakan bagian dari seluruh \textit{urls} yang ada pada \textit{Sharif Judge} seperti~\cite{mjnaderi:14:sharifjudgedoc}:  \\
+Secara \textit{default}, \textit{index.php} merupakan bagian dari seluruh \textit{URLs} yang ada pada \textit{Sharif Judge} seperti~\cite{mjnaderi:14:sharifjudgedoc}:  \\
 \path{http://example.mjnaderi.ir/index.php/dashboard} \\
 \path{http://example.mjnaderi.ir/index.php/users/add} \\
 Pengguna dapat menghilangkan \textit{index.php} dan memiliki \textit{urls} yang baik jika sistem pengguna mendukung aturan \textit{rewrite} seperti: \\ 
@@ -436,7 +457,7 @@ student7 st7@sharifjudge.ir random[6] student
 Pengguna dapat menambahkan \textit{assignment} dengan cara mengklik \textit{Add} di halaman \textit{assigments}~\cite{mjnaderi:14:sharifjudgedoc}. Pengguna akan melihat halaman seperti gambar~\ref{fig:addass}.
 \begin{figure}[H]
 	\centering  
-	\includegraphics[scale=0.5]{add_assignment}  
+	\includegraphics[width=1.0\textwidth]{add_assignment}  
 	\caption[Tampilan Halaman \textit{Assignments}]{Tampilan Halaman \textit{Assignments}} 
 	\label{fig:addass} 
 \end{figure} 
@@ -450,7 +471,7 @@ Berikut beberapa pengaturan yang terdapat pada halaman \textit{Add Assignments}:
 	\textit{Users} tidak dapat mengumpulkan \textit{assignment} sebelum \textit{"Start Time"}. Gunakan format ini untuk \textit{start time}: \textit{MM/DD/YYYY HH:MM:SS}. Contoh: \textit{08/31/2013 12:00:00}
 	
 	\item \textit{Finish Time, Extra Time}\\
-	\textit{Users} tidak dapat mengumpulkan \textit{ssignment} setelah \textit{Finish Time + Extra Time}. \textit{Assignment} yang telat akan dikalikan dengan koefisien tertentu. Pengguna harus menulis \textit{script} PHP untuk menghitung koefisien pada bidang \textit{"Coefficient Rule"}. Gunakan format berikut untuk \textit{finish time}: \textit{MM/DD/YYYY HH:MM:SS}. Contoh: \textit{08/31/2013 23:59:59}. Waktu ekstra harus dalam menit. Pengguna dapat menggunakan \textit{*}. Contoh \textit{120} (2 jam) atau \textit{48*60} (2 hari).
+	\textit{Users} tidak dapat mengumpulkan \textit{assignment} setelah \textit{Finish Time + Extra Time}. \textit{Assignment} yang telat akan dikalikan dengan koefisien tertentu. Pengguna harus menulis \textit{script} PHP untuk menghitung koefisien pada bidang \textit{"Coefficient Rule"}. Gunakan format berikut untuk \textit{finish time}: \textit{MM/DD/YYYY HH:MM:SS}. Contoh: \textit{08/31/2013 23:59:59}. Waktu ekstra harus dalam menit. Pengguna dapat menggunakan \textit{*}. Contoh \textit{120} (2 jam) atau \textit{48*60} (2 hari).
 	
 	\item \textit{Participants} \\
 	Masukan \textit{username} dari partisipan disini. Gunakan tanda koma untuk memisah \textit{username} antar peserta. Hanya \textit{users} ini yang dapat mengumpulkan \textit{assignment}. Pengguna dapat menggunakan kata kunci \textit{ALL} untuk mengijinkan semua \textit{users} agar dapat mengumpulkan \textit{assignment}. Contoh: \textit{admin, instructor1 , instructor2 ,student1  ,   student2,student3 , student4}.
@@ -461,7 +482,7 @@ Berikut beberapa pengaturan yang terdapat pada halaman \textit{Add Assignments}:
 	\item Scoreboard \\
 	Pengguna dapat mengaktifkan atau mematikan papan nilai dengan menggunakan pilihan ini.
 	
-	\item \textit{Java Exceptions}
+	\item \textit{Java Exceptions}\\
 	Pengguna dapat mengaktifkan dan mematikan \textit{java exceptions} yang ditunjukan kepada \textit{students}. Perubahan pada pilihan ini tidak berdampak pada kode yang sebelumnya sudah dinilai. Nama \textit{exception} akan muncul jika \textit{tester/java\_exceptions\_list} berisikan nama tersebut. Jika pengguna mengaktifkan fitur ini, kode di bawah ini akan ditampilkan kepada \textit{students} saat \textit{exception} dilemparkan: \newpage
 	\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
@@ -529,7 +550,7 @@ $coefficient = 0;
 	\textit{Command} ini digunakan untuk membandingkan keluaran dengan keluaran yang benar. Secara \textit{default Sharif Judge} menggunakan \textit{diff}, namun pengguna dapat mengubah \textit{command} pada bagian ini.
 	
 	\item \textit{Diff Arguments} \\
-	Pengguna dapat mengatur argumen dari\textit{Diff Command} disini. Untuk melihat daftar lengkap \textit{diff} argumen, pengguna dapat melihat \textit{man diff}. \textit{Sharif Judge} menambahkan dua pilihan baru yaitu \textit{ignore} dan \textit{identical}. \textit{Ignore} akan menghiraukan semua baris baru dan spasi. \textit{Identical} tidak akan menghiraukan apapun namun keluaran dari file yang dikumpulkan harus identik dengan keluaran \textit{test case} agar dapat diterima.
+	Pengguna dapat mengatur argumen dari \textit{Diff Command} disini. Untuk melihat daftar lengkap \textit{diff} argumen, pengguna dapat melihat \textit{man diff}. \textit{Sharif Judge} menambahkan dua pilihan baru yaitu \textit{ignore} dan \textit{identical}. \textit{Ignore} akan menghiraukan semua baris baru dan spasi. \textit{Identical} tidak akan menghiraukan apapun namun keluaran dari file yang dikumpulkan harus identik dengan keluaran \textit{test case} agar dapat diterima.
 	
 	\item \textit{Upload Only} \\
 	Jika pengguna mengatur \textit{problem} sebagai \textit{Upload-Only}, maka \textit{Sharif Judge} tidak akan menilai \textit{assignment} pada \textit{problem} tersebut. Pengguna dapat menggunakan \textit{zip} dan \textit{PDF} pada \textit{allowed languages} jika mengaktifkan pilihan ini.
@@ -821,19 +842,19 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 	|   |-- input9.txt
 	|   --- input10.txt
 	--- out
-		|-- output1.txt
-		|-- output2.txt
-		|-- output3.txt
-		|-- output4.txt
-		|-- output5.txt
-		|-- output6.txt
-		|-- output7.txt
-		|-- output8.txt
-		|-- output9.txt
-		--- output10.txt
+	|-- output1.txt
+	|-- output2.txt
+	|-- output3.txt
+	|-- output4.txt
+	|-- output5.txt
+	|-- output6.txt
+	|-- output7.txt
+	|-- output8.txt
+	|-- output9.txt
+	--- output10.txt
 \end{lstlisting}
 
-\textit{Problem} 1 menggunakan metode \textit{"Tester} untuk mengecek hasil keluaran, sehingga memiliki \textit{file tester.cpp}. Berikut isi dari \textit{file tester.cpp} untuk \textit{problem} 1:
+\textit{Problem} 1 menggunakan metode \textit{"Tester"} untuk mengecek hasil keluaran, sehingga memiliki \textit{file tester.cpp}. Berikut isi dari \textit{file tester.cpp} untuk \textit{problem} 1:
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 /*
