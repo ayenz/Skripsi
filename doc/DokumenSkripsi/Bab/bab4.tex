@@ -530,7 +530,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 
 \section{Menambahkan Fitur "\textit{Lock Student's Display Name}"}
 \label{chap:lock}
-Fitur "\textit{Lock Student's Display Name}" membutuhkan sebuah "\textit{key}" pada \textit{database}, dimana "\textit{key}" tersebut berfungsi untuk menyimpan sebuah nilai. Nilai yang disimpan akan menentukan apakah para peserta dapat mengubah \textit{Display Name} atau tidak. "\textit{Key}" disimpan pada tabel \textit{shj\_settings} pada kolom \textit{shj\_key} dengan nama \textit{lock\_student\_display\_name}. \textit{lock\_student\_display\_name} memiliki nilai \textit{default shj\_value} = 0. Jika nilai dari \textit{lock\_student\_display\_name} = 1, maka para peserta tidak dapat mengubah \textit{Display Name}, sebaliknya jika bernilai 0, maka para peserta dapat mengubah \textit{Display Name}.
+Fitur "\textit{Lock Student's Display Name}" membutuhkan sebuah "\textit{key}" pada \textit{database}."\textit{Key}" tersebut berfungsi untuk menyimpan sebuah nilai. Nilai yang disimpan akan menentukan apakah para peserta dapat mengubah \textit{Display Name} atau tidak. "\textit{Key}" disimpan pada tabel \textit{shj\_settings} pada kolom \textit{shj\_key} dengan nama \textit{lock\_student\_display\_name}. \textit{lock\_student\_display\_name} memiliki nilai \textit{default shj\_value} = 0. Jika nilai dari \textit{lock\_student\_display\_name} = 1, maka para peserta tidak dapat mengubah \textit{Display Name}, sebaliknya jika bernilai 0, maka para peserta dapat mengubah \textit{Display Name}.
 
 Rancangan algoritma yang digunakan untuk menambahkan fitur "\textit{Lock Student's Display Name}" yaitu
 \begin{enumerate}
@@ -647,7 +647,7 @@ show_error("Error adding data to table ".$this->db->dbprefix('settings'));
 
 \section{Menambahakan Fitur "\textit{Archived Assignment}"}
 \label{chap:arc}
-Fitur "\textit{Archived Assignment}" membutuhkan sebuah atribut baru pada \textit{database}, dimana atribut tersebut berfungsi untuk menyimpan sebuah nilai. Nilai yang disimpan akan menentukan apakah \textit{assignment} tersebut bersifat \textit{Archived Assignment} atau tidak. Atribut baru tersebut  ditambahkan pada tabel \textit{shj\_assignments} dengan nama \textit{archived\_assignment} yang menggunakan tipe data \textit{tinyint}. \textit{archived\_assignment} memiliki nilai \textit{default} = 0. Jika nilai dari \textit{archived\_assignment} = 1, maka \textit{assignment} tersebut merupakan sebuah \textit{archived\_assignment}, sebaliknya jika bernilai 0, maka \textit{assignment} tersebut merupakan \textit{assignment} biasa.
+Fitur "\textit{Archived Assignment}" membutuhkan sebuah atribut baru pada \textit{database}. Atribut tersebut berfungsi untuk menyimpan sebuah nilai. Nilai yang disimpan akan menentukan apakah \textit{assignment} tersebut bersifat \textit{Archived Assignment} atau tidak. Atribut baru tersebut  ditambahkan pada tabel \textit{shj\_assignments} dengan nama \textit{archived\_assignment} yang menggunakan tipe data \textit{tinyint}. \textit{archived\_assignment} memiliki nilai \textit{default} = 0. Jika nilai dari \textit{archived\_assignment} = 1, maka \textit{assignment} tersebut merupakan sebuah \textit{archived\_assignment}, sebaliknya jika bernilai 0, maka \textit{assignment} tersebut merupakan \textit{assignment} biasa.
 
 Rancangan algoritma yang digunakan untuk menambahkan fitur "\textit{Archived Assignment}" yaitu
 \begin{enumerate}
@@ -815,7 +815,7 @@ Halaman \textit{Hall of Fame} tidak membutuhkan atribut atau tabel baru pada \te
 	\end{table}
 	
 	\item \textit{View} \\
-	\textit{View} untuk halaman \textit{Hall of Fame} bernama \textit{halloffame.twig}. Menu halaman \textit{Hall of Fame} terletak di bawah menu \textit{Scoreboard}. Pada halaman ini juga berlaku sistem rangking dimana para peserta diurutkan bedasarkan total skor. Jika total skor yang dimiliki peserta memiliki nilai yang sama dengan peserta lainnya, maka peserta tersebut memiliki rangking yang sama dengan peserta lainnya. Gambar \ref{fig:mockuphof} menunjukan rancangan tampilan halaman \textit{Hall of Fame}. Gambar \ref{fig:mockuphofdetail} menunjukan rancangan tampilan \textit{detail} dari \textit{Hall of Fame}. 
+	\textit{View} untuk halaman \textit{Hall of Fame} bernama \textit{halloffame.twig}. Menu halaman \textit{Hall of Fame} terletak di bawah menu \textit{Scoreboard}. Pada halaman ini juga berlaku sistem rangking sehingga nama para peserta yang muncul diurutkan bedasarkan total skor. Jika total skor yang dimiliki peserta memiliki nilai yang sama dengan peserta lainnya, maka peserta tersebut memiliki rangking yang sama dengan peserta lainnya. Gambar \ref{fig:mockuphof} menunjukan rancangan tampilan halaman \textit{Hall of Fame}. Gambar \ref{fig:mockuphofdetail} menunjukan rancangan tampilan \textit{detail} dari \textit{Hall of Fame}. 
 	
 	\begin{figure}[H]
 		\centering  

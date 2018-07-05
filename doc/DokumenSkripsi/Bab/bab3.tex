@@ -1,12 +1,12 @@
 \chapter{Analisis}
 \label{chap:analisis}
 
-Bab ini membahas tentang analisis kebutuhan \textit{Sharif Judge} yang diperlukan oleh Teknik Informatika dan solusi yang ditawarkan untuk memenuhi kebutuhan tersebut. Kebutuhan-kebutuhan tersebut didapat dari daftar isu \textit{repository} \textit{Sharif Judge} di \textit{GitHub} dan dari para dosen pengguna \textit{Sharif Judge}. Hasil dari analisis kebutuhan tersebut dicatat ke dalam \textit{Google Sheets} dan didiskusikan dengan dosen pembimbing. Selain analisis kebutuhan, pada bab ini juga membahas analisis sistem kini pada perangkat lunak \textit{Sharif Judge}.
+Bab ini membahas tentang analisis kebutuhan \textit{Sharif Judge} yang diperlukan oleh Teknik Informatika dan solusi yang ditawarkan untuk memenuhi kebutuhan tersebut. Kebutuhan-kebutuhan tersebut didapat dari daftar \textit{issue} \textit{repository} \textit{Sharif Judge} di \textit{GitHub} dan dari para dosen pengguna \textit{Sharif Judge}. Hasil dari analisis kebutuhan tersebut dicatat ke dalam \textit{Google Sheets} dan didiskusikan dengan dosen pembimbing. Selain analisis kebutuhan, pada bab ini juga  analisis sistem kini pada perangkat lunak \textit{Sharif Judge}.
 
 
 \section{Analisis Kebutuhan Perangkat Lunak \textit{Sharif Judge}}
 \label{sec:analisis}
-Analisis dilakukan dengan menganalisis setiap isu terbuka yang ada pada \textit{repository} di \textit{GitHub}. Setiap isu di \textit{GitHub} terdapat kode unik yang dimulai dengan tanda '\#' dan diikuti dengan angka. Kode unik tersebut menunjukan urutan isu yang dibuat oleh para pengguna \textit{GitHub}. Dari analisa setiap isu yang ada, didapatkan beberapa pertanyaan dan usulan pengembangan. Beberapa isu yang memiliki usulan pengembangan akan dijadikan pertimbangan untuk mengembangkan \textit{Sharif Judge}. \\
+Analisis dilakukan dengan menganalisis setiap \textit{issue} terbuka yang ada pada \textit{repository} di \textit{GitHub}. Pada setiap \textit{issue} di \textit{GitHub}, terdapat kode unik yang dimulai dengan tanda '\#' dan diikuti dengan angka. Kode unik tersebut menunjukan urutan \textit{issue} yang dibuat oleh para pengguna \textit{GitHub}. Dari analisa setiap \textit{issue} yang ada, didapatkan beberapa pertanyaan dan usulan pengembangan. Beberapa \textit{issue} yang memiliki usulan pengembangan akan dijadikan pertimbangan untuk mengembangkan \textit{Sharif Judge}. \\
 
 Analisis kebutuhan dari para dosen pengguna \textit{Sharif Judge} dilakukan dalam bentuk wawancara secara langsung dan melalui \textit{email}. Dosen-dosen yang telah diwawancarai antara lain:
 \begin{enumerate}
@@ -48,7 +48,7 @@ Analisis kebutuhan dari para dosen pengguna \textit{Sharif Judge} dilakukan dala
 		16 & \makecell[l]{Membatasi soal (deskripsi dan PDF) \\ hanya bisa diakses saat \textit{assignment} \\ "\textit{open}" dan setelah waktu mulai} & Dosen & AIF202 & Joanna Helga & Akan diimplementasi\\ \hline
 		17 & \makecell[l]{\textit{Register} peserta yg \textit{mode batch}, \\ \textit{Sharif Judge} tidak minta nama \\ orangnya (lebih baik ada nama orangnya)} & Dosen & AIF202 & Joanna Helga & Akan diimplementasi\\ \hline
 		18 & \makecell[l]{Nama peserta seharusnya tidak \\ bisa diganti (Bisa menjadi \\ "mainan" dan tindak kecurangan \\ karena dapat memberikan \textit{hint})} & Dosen & AIF202 & Joanna Helga & Akan diimplementasi\\ \hline
-		19 & \makecell[l]{Ingin memiliki fungsi dimana \\ \textit{Assignment} tidak memiliki batasan \\ waktu (arsip soal tahun \\ lalu dapat dikerjakan kapan saja)} & Dosen & AIF202 & Joanna Helga & Akan diimplementasi\\ \hline
+		19 & \makecell[l]{Ingin memiliki fungsi \\ \textit{Assignment} tidak memiliki batasan \\ waktu (arsip soal tahun \\ lalu dapat dikerjakan kapan saja)} & Dosen & AIF202 & Joanna Helga & Akan diimplementasi\\ \hline
 		20 & \makecell[l]{Ingin memiliki \textit{scoreboard global} \\ untuk semua \textit{assignment}.} & Dosen & AIF202 & Joanna Helga & Akan Diimplementasi\\ \hline
 		21 & \makecell[l]{Membatasi soal (deskripsi dan PDF) \\ hanya bisa diakses saat \textit{assignment} \\ "\textit{open}" dan setelah waktu mulai} & Dosen & AIF102 \& AIF202 & Claudio Fransiscus & Akan diimplementasi\\ \hline
 		22 & \makecell[l]{\textit{Sharif Judge} tidak dapat menerima \\ \textit{file} dengan ekstensi *.txt \\ untuk \textit{Pre-Test}} & Dosen & AIF102 \& AIF202 & Claudio Fransiscus & Akan diimplementasi\\ \hline
@@ -68,9 +68,9 @@ Analisis kebutuhan dari para dosen pengguna \textit{Sharif Judge} dilakukan dala
 		\begin{tabular}{|l|l|l|l|l|l|}
 			\hline
 			25 & \makecell[l]{Ingin memiliki fungsi \textit{reminder}. \\ Banyak mahasiswa lupa mengerjakan \\ tugas dan tidak bisa mengumpulkan. \\ Fungsi \textit{reminder} akan mengirimkan \\ \textit{reminder} ke \textit{email} mahasiswa} & Dosen & AIF102 \& AIF202 & Claudio Fransiscus & Tidak diimplementasi\\ \hline
-			26 & \makecell[l]{Membatasi soal (deskripsi dan PDF) \\ hanya bisa diakses saat \textit{assignment} \\ "\textit{open}" dan setelah waktu mulai} & Dosen & AIF102 \& AIF202 & Pascal Alfadian & Akan diimplementasi\\ \hline
+			26 & \makecell[l]{Membatasi soal (deskripsi dan PDF) \\ hanya bisa diakses saat \textit{assignment} \\ "\textit{open}" dan setelah waktu mulai} & Dosen & AIF4012 & Pascal Alfadian & Akan diimplementasi\\ \hline
 			27 & \makecell[l]{Integrasi login ke \textit{RADIUS} \\ (\textit{password} sama dengan \textit{login Windows})} & Dosen & AIF401 & Pascal Alfadian & Akan diimplementasi\\ \hline
-			28 & \makecell[l]{Mengumpulkan \textit{file} TXT} & Dosen & AIF401 & Pascal Alfadian & diimplementasi\\ \hline
+			28 & \makecell[l]{Mengumpulkan \textit{file} TXT} & Dosen & AIF401 & Pascal Alfadian & Akan diimplementasi\\ \hline
 			29 & \makecell[l]{Mengumpulkan \textit{file} JAR (java multi kelas)} & Dosen & AIF401 & Pascal Alfadian & Akan diimplementasi\\ \hline
 			30 & Branding Teknik Informatika & Dosen & AIF401 & Pascal Alfadian & Akan diimplementasi\\ \hline
 	\end{tabular}}
@@ -80,42 +80,42 @@ Analisis kebutuhan dari para dosen pengguna \textit{Sharif Judge} dilakukan dala
 \hyperref[tab:kebutuhan]{Tabel 3.1} menunjukan daftar kebutuhan perangkat lunak \textit{Sharif Judge}. Pada tabel di atas teradapat beberapa kolom, yaitu:
 \begin{itemize}
 	\item Deskripsi \\
-	Jika sumber kebutuhan berasal dari \textit{GitHub}, maka pada kolom deskripsi akan ditulis judul dari isu yang ada pada \textit{repository}. Jika sumber kebutuhan berasal dari dosen, maka deskripsi kebutuhan langsung ditulis pada kolom tersebut.
+	Jika sumber kebutuhan berasal dari \textit{GitHub}, maka pada kolom deskripsi akan ditulis judul dari \textit{issue} yang ada pada \textit{repository}. Jika sumber kebutuhan berasal dari dosen, maka deskripsi kebutuhan langsung ditulis pada kolom tersebut.
 	\item Sumber \\
-	Kolom sumber berisikan sumber dari kebutuhan pengembangan \textit{Sharif Judge} yaitu \textit{GitHub} atau Dosen.
+	Kolom sumber berisi sumber dari kebutuhan pengembangan \textit{Sharif Judge} yaitu \textit{GitHub} atau Dosen.
 	\item \textit{Issue Number} / Nama Mata Kuliah \\
-	Jika sumber kebutuhan berasal dari \textit{GitHub}, maka pada kolom ini akan ditulis \hyperref[sec:analisis]{kode unik} yang ada pada setiap isu. Jika sumber kebutuhan berasal dari dosen, maka pada kolom ini akan ditulis mata kuliah yang diajar oleh dosen tersebut. Keterangan kode mata kuliah AIF102 = Algoritma \& Struktur Data, AIF202 = Desain \& Analisis Algoritma dan AIF401 = Skripsi 1.
+	Jika sumber kebutuhan berasal dari \textit{GitHub}, maka pada kolom ini akan ditulis \hyperref[sec:analisis]{kode unik} yang ada pada setiap \textit{issue}. Jika sumber kebutuhan berasal dari dosen, maka pada kolom ini akan ditulis mata kuliah yang diajar oleh dosen tersebut. Keterangan kode mata kuliah AIF102 = Algoritma \& Struktur Data, AIF202 = Desain \& Analisis Algoritma dan AIF401 = Skripsi 1.
 	\item Pembuat \textit{Issue} / Nama Dosen \\
-	Jika sumber kebutuhan berasal dari \textit{GitHub}, maka pada kolom ini akan ditulis \textit{username} pembuat isu tersebut. Jika sumber kebutuhan berasal dari dosen, maka pada kolom ini akan ditulis nama dosen yang memberikan daftar kebutuhan.
+	Jika sumber kebutuhan berasal dari \textit{GitHub}, maka pada kolom ini akan ditulis \textit{username} pembuat \textit{issue} tersebut. Jika sumber kebutuhan berasal dari dosen, maka pada kolom ini akan ditulis nama dosen yang memberikan daftar kebutuhan.
 	\item Status \\
 	Kolom Status berisikan status dari kebutuhan tersebut apakah akan diimplementasi atau tidak diimplementasi.
 \end{itemize}
 
-%Pada tabel di atas terdapat kolom Deskirpsi, Sumber, Issue Number / Nama Mata Kuliah, Pembuat Issue / Nama Dosen dan Status. Kolom Deskripsi berisikan deskripsi kebutuhan yang disebutkan oleh para dosen, namun jika sumber kebutuhan berasal dari GitHub maka akan berisikan judul isu. Kolom Sumber berisikan sumber kebutuhan yaitu GitHub atau Dosen. Kolom Issue Number / Nama Mata Kuliah berisikan 
+%Pada tabel di atas terdapat kolom Deskirpsi, Sumber, Issue Number / Nama Mata Kuliah, Pembuat Issue / Nama Dosen dan Status. Kolom Deskripsi berisikan deskripsi kebutuhan yang disebutkan oleh para dosen, namun jika sumber kebutuhan berasal dari GitHub maka akan berisikan judul \textit{Issue}. Kolom Sumber berisikan sumber kebutuhan yaitu GitHub atau Dosen. Kolom Issue Number / Nama Mata Kuliah berisikan 
 
 \subsection{\textit{Security with PHP}}
-Isu dengan kode unik \#61 dibuat oleh pengguna \textit{GitHub} dengan \textit{username} \textit{danwdart} pada tanggal 6 April 2017. Pada isu tersebut dikatakan bahwa seseorang pengguna \textit{Sharif Judge} dapat mengubah parameter PHP \textit{shell\_exec(rm ...)} yang mengakibatkan pengeksekusian kode bisa dilakukan secara sewenang-wenang. Untuk menghindari hal di atas, \textit{username} danwdart menyarankan untuk mengganti perintah PHP \textit{shell\_exec(rm ...)} dengan method lain.
+\textit{Issue} dengan kode unik \#61 dibuat oleh pengguna \textit{GitHub} dengan \textit{username} \textit{danwdart} pada tanggal 6 April 2017. Pada \textit{issue} tersebut dikatakan bahwa seseorang pengguna \textit{Sharif Judge} dapat mengubah parameter PHP \textit{shell\_exec(rm ...)} yang dikenal sebagai serangan command injection. \textit{Command injection} adalah suatu jenis serangan yang bertujuan untuk mengeksekusi perintah secara sewenang-wenang pada perangkat lunak \footnote{OWASP, "Command Injection" terakhir diubah 31 Mei 2018. \textit{https://www.owasp.org/index.php/Command\_Injection}}. Untuk menghindari hal di atas, \textit{username} danwdart menyarankan untuk mengganti perintah PHP \textit{shell\_exec(rm ...)} dengan method lain.
 
-Pada skripsi ini, isu di atas akan diimplementasi. Solusi yang ditawarkan adalah mengganti penggunaan PHP \textit{shell\_exec(rm ...)} dengan \textit{method} lain.  Perintah \textit{shell\_exec("rm ...")} memiliki fungsi untuk menghapus sebuah file. Perintah tersebut dapat diganti menggunakan \textit{method} \textit{unlink()} yang memiliki fungsi sama yaitu menghapus sebuah file.
+Pada skripsi ini, \textit{issue} di atas akan diimplementasi. Solusi yang ditawarkan adalah mengganti penggunaan PHP \textit{shell\_exec(rm ...)} dengan \textit{method} lain.  Perintah \textit{shell\_exec("rm ...")} memiliki fungsi untuk menghapus sebuah file. Perintah tersebut dapat diganti menggunakan \textit{method} \textit{unlink()} yang memiliki fungsi sama yaitu menghapus sebuah file.
 %Hal tersebut dapat dicegah dengan cara mengubah perintah shell\_exec("rm ...") dengan method \textit{unlink()}.
 
 \subsection{\textit{Securing Assignment}}
-Isu dengan kode unik \#55 dibuat oleh pengguna \textit{GitHub} dengan \textit{username} \textit{wojcik13} pada tanggal 23 Oktober 2016. \textit{Username} \textit{wojcik13} menanyakan apakah ada pilihan pada \textit{Sharif Judge} untuk mengamankan \textit{assignment} dengan \textit{password}.
+\textit{Issue} dengan kode unik \#55 dibuat oleh pengguna \textit{GitHub} dengan \textit{username} \textit{wojcik13} pada tanggal 23 Oktober 2016. \textit{Username} \textit{wojcik13} menanyakan apakah ada pilihan pada \textit{Sharif Judge} untuk mengamankan \textit{assignment} dengan \textit{password}.
 
-Pada skripsi ini, isu di atas tidak diimplementasi. Isu di atas merupakan sebuah pertanyaan fitur pada \textit{Sharif Judge} untuk mengamankan assignment dengan menggunakan password. Oleh karena isu tersebut merupakan sebuah pertanyaan, maka pada skripsi ini isu di atas tidak diimplementasi.
+Pada skripsi ini, \textit{issue} di atas tidak diimplementasikan. \textit{Issue} di atas merupakan sebuah pertanyaan fitur pada \textit{Sharif Judge} untuk mengamankan assignment dengan menggunakan password. Oleh karena \textit{issue} tersebut merupakan sebuah pertanyaan, maka pada skripsi ini \textit{issue} di atas tidak diimplementasikan.
 
 \subsection{\textit{New Function}}
-Isu dengan kode unik \#53 dibuat oleh pengguna \textit{GitHub} dengan \textit{username} \textit{wojcik13} pada tanggal 2 Oktober 2016. \textit{Username} \textit{wojcik13} menanyakan apakah ada fungsi pada \textit{Sharif Judge} seperti menghentikan \textit{scoreboard} dan fungsi mengatur sesi. 
+\textit{Issue} dengan kode unik \#53 dibuat oleh pengguna \textit{GitHub} dengan \textit{username} \textit{wojcik13} pada tanggal 2 Oktober 2016. \textit{Username} \textit{wojcik13} menanyakan apakah ada fungsi pada \textit{Sharif Judge} seperti menghentikan \textit{scoreboard} dan fungsi mengatur sesi. 
 
-Pada skripsi ini, isu di atas tidak diimplementasi. Isu di atas merupakan sebuah pertanyaan fitur pada \textit{Sharif Judge} untuk menghentikan \textit{scoreboard} dan mengatur sesi. Oleh karena isu tersebut merupakan sebuah pertanyaan, maka pada skripsi ini isu di atas tidak diimplementasi.
+Pada skripsi ini, \textit{issue} di atas tidak diimplementasikan. \textit{Issue} di atas merupakan sebuah pertanyaan fitur pada \textit{Sharif Judge} untuk menghentikan \textit{scoreboard} dan mengatur sesi. Oleh karena \textit{issue} tersebut merupakan sebuah pertanyaan, maka pada skripsi ini \textit{issue} di atas tidak diimplementasikan.
 
 \subsection{\textit{Solve Problem Indicator}}
-Isu dengan kode unik \#46 dibuat oleh pengguna \textit{GitHub} dengan \textit{username} \textit{atiabjobayer} pada tanggal 16 April 2016. \textit{Username} \textit{atiabjobayer} mengatakan bahwa para pengguna \textit{Sharif Judge} tidak dapat melihat masalah yang telah diselesaikan.
+\textit{Issue} dengan kode unik \#46 dibuat oleh pengguna \textit{GitHub} dengan \textit{username} \textit{atiabjobayer} pada tanggal 16 April 2016. \textit{Username} \textit{atiabjobayer} mengatakan bahwa para pengguna \textit{Sharif Judge} tidak dapat melihat masalah yang telah diselesaikan.
 
-Pada skripsi ini, isu di atas tidak diimplementasi. Pada isu di atas, username \textit{atiabjobayer} kurang spesifik dalam menjelaskan kebutuhannya. Oleh karena isu tersebut kurang spesifik, maka pada skripsi ini isu di atas tidak diimplementasi.
+Pada skripsi ini, \textit{issue} di atas tidak diimplementasikan. Pada \textit{issue} di atas, username \textit{atiabjobayer} kurang spesifik dalam menjelaskan kebutuhannya. Oleh karena \textit{issue} tersebut kurang spesifik, maka pada skripsi ini \textit{issue} di atas tidak diimplementasikan.
 
 \subsection{\textit{Some Problem \& Sugestion}}
-Isu dengan kode unik \#45 dibuat oleh pengguna \textit{GitHub} dengan username \textit{atiabjobayer} pada tanggal 16 April 2016. \textit{Username} \textit{atiabjobayer} mengatakan bahwa ada beberapa persoalan yang ada pada perangkat lunak \textit{Sharif Judge}. Beberapa masalah tersebut yaitu:
+\textit{Issue} dengan kode unik \#45 dibuat oleh pengguna \textit{GitHub} dengan username \textit{atiabjobayer} pada tanggal 16 April 2016. \textit{Username} \textit{atiabjobayer} mengatakan bahwa ada beberapa persoalan yang ada pada perangkat lunak \textit{Sharif Judge}. Beberapa masalah tersebut yaitu:
 	\begin{enumerate}
 		\item Beberapa kontes besar pemrograman diadakan dengan metode \textit{ACM ICPC} namun \textit{Sharif Judge} tidak mendukung sistem penilaian \textit{ICPC}.
 		\item Pengguna dapat melihat deskripsi masalah sebelum kontes dimulai. Hal ini dapat membahayakan keamanan kontes pemrograman.
@@ -124,18 +124,18 @@ Isu dengan kode unik \#45 dibuat oleh pengguna \textit{GitHub} dengan username \
 		\item Pengguna tidak dapat mengumpulkan kode mereka dari \textit{text-editor}.
 	\end{enumerate}
 
-Pada skripsi ini, isu di atas tidak diimplementasi. Isu di atas memiliki cakupan persoalan yang terlalu luas. Oleh karena isu tersebut memiliki persoalan yang terlalu luas, maka pada skripsi ini isu di atas tidak diimplementasi.
+Pada skripsi ini, \textit{issue} di atas tidak diimplementasikan. \textit{Issue} di atas memiliki cakupan persoalan yang terlalu luas. Oleh karena \textit{issue} tersebut memiliki persoalan yang terlalu luas, maka pada skripsi ini \textit{issue} di atas tidak diimplementasikan.
 	
 \subsection{\textit{Queue failed to process if submission take too long to complete?}}
-Isu dengan kode unik \#32 dibuat oleh pengguna \textit{GitHub} dengan \textit{username} \textit{truongan}. Pada isu tersebut dikatakan bahwa \textit{assignment} yang memiliki masalah dengan \textit{test case} besar akan menyebabkan \textit{submission status} menjadi \textit{pending}. \textit{User} \textit{truongan} memperkirakan hal di atas terjadi dikarenakan \textit{database connection times out}. 
+\textit{Issue} dengan kode unik \#32 dibuat oleh pengguna \textit{GitHub} dengan \textit{username} \textit{truongan}. Pada \textit{issue} tersebut dikatakan bahwa \textit{assignment} yang memiliki masalah dengan \textit{test case} besar akan menyebabkan \textit{submission status} menjadi \textit{pending}. \textit{User} \textit{truongan} memperkirakan hal di atas terjadi dikarenakan \textit{database connection times out}. 
 
-Pada skripsi ini, isu di atas diimplementasi. Solusi yang ditawarkan untuk mengatasi hal di atas adalah menambahakan \textit{method reconnect database}. \textit{Method reconnect database} akan menghubungkan kembali \textit{database} ketika terjadi kasus seperti di atas.
+Pada skripsi ini, \textit{issue} di atas diimplementasi. Solusi yang ditawarkan untuk mengatasi hal di atas adalah menambahakan \textit{method reconnect database}. \textit{Method reconnect database} akan menghubungkan kembali \textit{database} ketika terjadi kasus seperti di atas.
 % Untuk mengatasi masalah tersebut diperlukan method reconnect database pada file \textit{Queueprocess.php}.
 
 \subsection{\textit{Compilation Error on All Language}}
-Isu dengan kode unik \#34 dibuat oleh pengguna \textit{GitHub} dengan \textit{username} \textit{Eririn07}. \textit{Username} \textit{Eririn07} mencoba untuk menilai sebuah kode dan mendapatkan beberapa \textit{error}. Kode \textit{error} yang muncul ketika menilai kode dengan bahasa \textit{Java adalah Java HotSpot(TM) 64-Bit Server VM warning: INFO: os::commit\_memory(0x00007f9cfd000000, 2555904, 1) failed; error='Permission denied' (errno=13)} dan Kode error \textit{File Not Found} muncul ketika menilai kode dengan bahasa C. \textit{Username} \textit{Eririn07} menanyakan bagaimana mengatasi masalah di atas.
+\textit{Issue} dengan kode unik \#34 dibuat oleh pengguna \textit{GitHub} dengan \textit{username} \textit{Eririn07}. \textit{Username} \textit{Eririn07} mencoba untuk menilai sebuah kode dan mendapatkan beberapa \textit{error}. Kode \textit{error} yang muncul ketika menilai kode dengan bahasa \textit{Java adalah Java HotSpot(TM) 64-Bit Server VM warning: INFO: os::commit\_memory(0x00007f9cfd000000, 2555904, 1) failed; error='Permission denied' (errno=13)} dan Kode error \textit{File Not Found} muncul ketika menilai kode dengan bahasa C. \textit{Username} \textit{Eririn07} menanyakan bagaimana mengatasi masalah di atas.
 
-Pada skripsi ini, isu di atas tidak diimplementasi. Isu di atas merupakan sebuah pertanyaan untuk mengatasi kode error yang muncul. Oleh karena isu tersebut merupakan sebuah pertanyaan, maka pada skripsi ini isu di atas tidak diimplementasi.
+Pada skripsi ini, \textit{issue} di atas tidak diimplementasikan. \textit{Issue} di atas merupakan sebuah pertanyaan untuk mengatasi kode error yang muncul. Oleh karena \textit{issue} tersebut merupakan sebuah pertanyaan, maka pada skripsi ini \textit{issue} di atas tidak diimplementasikan.
 
 \subsection{Membatasi Soal (Deskripsi \& PDF) Hanya Bisa Diakses saat \textit{Assignment} "\textit{Open}" dan Setelah Waktu Mulai}
 \label{subsec:membatasisoal}
@@ -146,12 +146,12 @@ Pada skripsi ini, kebutuhan di atas akan diimplementasi. Solusi yang ditawarkan 
 \subsection{Menguji Kemiripan Kode Antar Mahasiswa}
 Perangkat lunak \textit{Sharif Judge} terkini sudah memiliki fitur untuk menguji kemiripan kode antar peserta dengan menggunakan \textit{Moss} (\textit{Measure Of Software Similarity}). \textit{Moss} adalah sistem otomatis untuk mendeteksi kemiripan program. Aplikasi \textit{Moss} telah berkembang dari tahun 1994 hingga sekarang. Algoritma yang digunakan pada aplikasi \textit{Moss} sangat efektif dibandingkan algoritma deteksi kecurangan lainnya~\cite{aiken:10:moss}. 
 
-Pada skripsi ini, kebutuhan di atas tidak diimplementasi karena aplikasi \textit{Moss} sedang tidak dapat digunakan. Hal tersebut terjadi karena aplikasi \textit{Moss} membutuhkan port 7690, namun port tersebut diblok oleh UNPAR.
+Pada skripsi ini, kebutuhan di atas tidak diimplementasikan karena aplikasi \textit{Moss} sedang tidak dapat digunakan. Hal tersebut terjadi karena aplikasi \textit{Moss} membutuhkan port 7690, namun port tersebut diblok oleh UNPAR.
 
 \subsection{Satu Akun Hanya Dapat Login Satu Waktu}
-Para peserta \textit{Sharif Judge} dapat \textit{login} menggunakan akunnya di beberapa komputer. Peserta yang mengetahui \textit{user} dan \textit{password} peserta lain dapat dengan mudah \textit{login} ke \textit{Sharif Judge}. Hal tersebut sering dijadikan celah bagi beberapa peserta untuk melakukan tindak kecurangan. Peserta yang sudah \textit{login} menggunakan akun peserta lainnya, dapat melihat dan menyalin kode yang telah dikumpulkan ke \textit{Sharif Judge}. Tindak kecurangan ini sering terjadi pada saat kuis maupun ujian. Bapak Husnul Hakim menginginkan perangkat lunak \textit{Sharif Judge} dimana akun para peserta hanya dapat \textit{login} satu waktu. Jika sebuah akun telah \textit{login} di satu komputer, maka akun tersebut tidak dapat \textit{login} di komputer lainnya. Diharapkan dengan adanya fitur tersebut dapat menekan jumlah tindak kecurangan yang terjadi. 
+Para peserta \textit{Sharif Judge} dapat \textit{login} menggunakan akunnya di beberapa komputer. Peserta yang mengetahui \textit{user} dan \textit{password} peserta lain dapat dengan mudah \textit{login} ke \textit{Sharif Judge}. Hal tersebut sering dijadikan celah bagi beberapa peserta untuk melakukan tindak kecurangan. Peserta yang sudah \textit{login} menggunakan akun peserta lainnya, dapat melihat dan menyalin kode yang telah dikumpulkan ke \textit{Sharif Judge}. Tindak kecurangan ini sering terjadi pada saat kuis maupun ujian. Bapak Husnul Hakim menginginkan setiap akun pada  perangkat lunak \textit{Sharif Judge} hanya dapat \textit{login} satu waktu. Jika sebuah akun telah \textit{login} di satu komputer, maka akun tersebut tidak dapat \textit{login} di komputer lainnya. Diharapkan dengan adanya fitur tersebut dapat menekan jumlah tindak kecurangan yang terjadi. 
 
-Pada skripsi ini, kebutuhan di atas tidak diimplementasi. Jika fitur di atas diimplementasi, maka dikhawatirkan akan merepotkan admin lab. Para admin harus membuka akun pengguna setiap kali ada akun yang terkunci pada sebuah komputer. Sebagai gantinya, penulis menawarkan sebuah solusi. Solusi yang ditawarkan untuk mengurangi tingkat kecurangan seperti di atas yaitu membuat halaman baru yang berisikan \textit{logs} \textit{username} yang berhasil \textit{login} ke \textit{Sharif Judge}. Halaman \textit{logs} tersebut akan mencatat \textit{username} yang \textit{login} menggunakan \textit{ip} berbeda dalam waktu dibawah 24 jam. Dengan adanya halaman \textit{Logs} ini, para dosen dapat memantau \textit{username} yang \textit{login} pada dua tempat berbeda.
+Pada skripsi ini, kebutuhan di atas tidak diimplementasikan. Jika fitur di atas diimplementasi, maka dikhawatirkan akan merepotkan admin lab. Para admin harus membuka akun pengguna setiap kali ada akun yang terkunci pada sebuah komputer. Sebagai gantinya, penulis menawarkan sebuah solusi. Solusi yang ditawarkan untuk mengurangi tingkat kecurangan seperti di atas yaitu membuat halaman baru yang berisikan \textit{logs} \textit{username} yang berhasil \textit{login} ke \textit{Sharif Judge}. Halaman \textit{logs} tersebut akan mencatat \textit{username} yang \textit{login} menggunakan \textit{ip} berbeda dalam waktu dibawah 24 jam. Dengan adanya halaman \textit{Logs} ini, para dosen dapat memantau \textit{username} yang \textit{login} pada dua tempat berbeda. Penggunaan halaman \textit{logs} dapat dilihat pada \textit{user guide} atau dokumentasi \textit{SharIF Judge} di \textit{GitHub}.
 
 \subsection{Membatasi Soal (Deskripsi \& PDF) Hanya Bisa Diakses saat \textit{Assignment} "\textit{Open}" dan Setelah Waktu Mulai}
 Kebutuhan ini telah dibahas pada sub bab sebelumnya. Lihat sub bab \hyperref[subsec:membatasisoal]{3.1.8} untuk status dari kebutuhan ini.
@@ -160,7 +160,7 @@ Kebutuhan ini telah dibahas pada sub bab sebelumnya. Lihat sub bab \hyperref[sub
 \label{subsec:filetxt}
 Pengumpulan \textit{file} dengan format TXT dibutuhkan untuk \textit{Pre-test}. Perangkat lunak \textit{Sharif Judge} yang terkini hanya dapat menerima \textit{file} C, C++, Java, Python 2, Python 3, Zip, dan PDF. Para peserta yang ingin mengumupulkan jawaban \textit{Pre-test}, harus terlebih dahulu mengubah ekstensi \textit{file} menjadi Java atau mengompres \textit{file} ke dalam Zip. 
 
-Pada skripsi ini, kebutuhan di atas akan diimplementasi. Solusi yang ditawarkan untuk kebutuhan di atas yaitu menambahkan \textit{file} dengan format TXT agar dapat dikumpul ke \textit{Sharif Judge}. \textit{Assignment} yang digunakan merupakan \textit{assignmnent} yang bersifat "\textit{Upload Only}". Dosen dapat menambahkan format TXT pada bagian "\textit{Allowed Language}" sehingga para peserta dapat mengumpulkan jawaban \textit{Pre-test} menggunakan \textit{file} dengan ekstensi TXT.
+Pada skripsi ini, kebutuhan di atas akan diimplementasi. Solusi yang ditawarkan untuk kebutuhan di atas yaitu menambahkan \textit{file} dengan format TXT agar dapat dikumpul ke \textit{Sharif Judge}. \textit{Assignment} yang digunakan merupakan \textit{assignmnent} yang bersifat "\textit{Upload Only}". Dosen dapat menambahkan format TXT pada bagian "\textit{Allowed Language}" sehingga para peserta dapat mengumpulkan jawaban \textit{Pre-test} menggunakan \textit{file} dengan ekstensi TXT. Penggunaan fitur ini dapat dilihat pada \textit{user guide} atau dokumentasi \textit{SharIF Judge} di \textit{GitHub}.
 
 \subsection{Membatasi Soal (Deskripsi \& PDF) Hanya Bisa Diakses saat \textit{Assignment} "\textit{Open}" dan Setelah Waktu Mulai}
 Kebutuhan ini telah dibahas pada sub bab sebelumnya. Lihat sub bab \hyperref[subsec:membatasisoal]{3.1.8} untuk status dari kebutuhan ini.
@@ -171,7 +171,7 @@ Kebutuhan ini telah dibahas pada sub bab sebelumnya. Lihat sub bab \hyperref[sub
 \subsection{Perlu Ditambah Petunjuk Penamaan \textit{File} \textit{Input} dan \textit{Output}}
 Dalam membuat sebuah assignment pada perangkat lunak \textit{Sharif Judge} terdapat \textit{file test case} yang harus disertakan. \textit{File test case} yang disertakan memiliki beberapa ketentuan. Beberapa ketentuan tersebut seperti struktur direktori dan penamaan dalam \textit{file test case}. 
 
-Pada skripsi ini, kebutuhan di atas tidak diimplementasi. Pada halaman \textit{add assignment} telah disediakan \textit{link} menuju dokumentasi \textit{Sharif Judge} di \textit{GitHub} yang menjelaskan ketentuan dalam menyertakan \textit{file test case}. Ketentuan tersebut harus terpenuhi agar sebuah \textit{assignment} dapat berjalan dengan baik. Oleh sebab itu, kebutuhan ini tidak diimplementasi.
+Pada skripsi ini, kebutuhan di atas tidak diimplementasikan. Pada halaman \textit{add assignment} telah disediakan \textit{link} menuju dokumentasi \textit{Sharif Judge} di \textit{GitHub} yang menjelaskan ketentuan dalam menyertakan \textit{file test case}. Ketentuan tersebut harus terpenuhi agar sebuah \textit{assignment} dapat berjalan dengan baik. Oleh sebab itu, kebutuhan ini tidak diimplementasikan.
 
 \subsection{Membatasi Soal (Deskripsi \& PDF) Hanya Bisa Diakses saat \textit{Assignment} "\textit{Open}" dan Setelah Waktu Mulai}
 Kebutuhan ini telah dibahas pada sub bab sebelumnya. Lihat sub bab \hyperref[subsec:membatasisoal]{3.1.8} untuk status dari kebutuhan ini.
@@ -179,22 +179,22 @@ Kebutuhan ini telah dibahas pada sub bab sebelumnya. Lihat sub bab \hyperref[sub
 \subsection{Pendaftaran Peserta Disertai dengan \textit{Display Name}}
 Pendaftaran peserta ke dalam \textit{Sharif Judge} terkini tidak disertai dengan \textit{Display Name}. Perangkat lunak \textit{Sharif Judge} membutuhkan empat buah parameter yang dipisah menggunakan spasi untuk mendaftarkan peserta. Parameter tersebut antara lain, \textit{username, \textit{email}, password} dan \textit{role}. Contoh penggunaannya seperti "i14085 i14085@unpar.ac.id random85 student" yang artinya peserta didaftarkan menggunakan \textit{username} i14085, \textit{email} i14085@unpar.ac.id, \textit{password} random85 dan \textit{role} sebagai \textit{student}. Setiap peserta yang berhasil didaftarkan masih belum memiliki \textit{Display Name}. Para peserta harus memasukan \textit{Display Name} masing-masing secara manual. 
 
-Pada skripsi ini, kebutuhan di atas akan diimplementasi. Solusi yang ditawarkan untuk memenuhi kebutuhan di atas yaitu menambahkan parameter \textit{Display Name} pada saat pendaftaran peserta. Pendaftaran peserta menggunakan lima buah paramater dan dipisah menggunakan tanda koma. Parameter tersebut antara lain,\textit{ username, email, display name, password,} dan \textit{role}. Contoh penggunaan parameter di atas seperti "i14085,i14085@unpar.ac.id,Budi Simon,random85,student" yang artinya peserta didaftarkan menggunakan \textit{username} i14085, \textit{email} i14085@unpar.ac.id, \textit{display name} Budi Simon, \textit{password} random85 dan \textit{role} sebagai \textit{student}. Dengan pengimplementasian fitur ini, setiap peserta yang didaftarkan akan langsung memiliki Display Name masing-masing.
+Pada skripsi ini, kebutuhan di atas akan diimplementasi. Solusi yang ditawarkan untuk memenuhi kebutuhan di atas yaitu menambahkan parameter \textit{Display Name} pada saat pendaftaran peserta. Pendaftaran peserta menggunakan lima buah paramater dan dipisah menggunakan tanda koma. Parameter tersebut antara lain,\textit{ username, email, display name, password,} dan \textit{role}. Contoh penggunaan parameter di atas seperti "i14085,i14085@unpar.ac.id,Budi Simon,random85,student" yang artinya peserta didaftarkan menggunakan \textit{username} i14085, \textit{email} i14085@unpar.ac.id, \textit{display name} Budi Simon, \textit{password} random85 dan \textit{role} sebagai \textit{student}. Dengan pengimplementasian fitur ini, setiap peserta yang didaftarkan akan langsung memiliki Display Name masing-masing. Penggunaan fitur ini dapat dilihat pada \textit{user guide} atau dokumentasi \textit{SharIF Judge} di \textit{GitHub}.
 
 \subsection{Nama Pengguna \textit{Sharif Judge} Seharusnya Tidak Bisa Diubah}
 \textit{Display Name} pada perangkat lunak \textit{Sharif Judge} berfungsi sebagai nama peserta. Selain itu, nama peserta akan muncul pada halaman \textit{Scoreboard} sebuah \textit{assignment} yang dapat dilihat oleh seluruh peserta. \textit{Sharif Judge} yang terkini mengijinkan para peserta untuk mengubah \textit{Display Name} pada halaman \textit{Profile}. Hal tersebut dapat dijadikan sebuah "mainan" dan tindakan kecurangan karena dapat memberikan \textit{hint} untuk peserta lain. Oleh karena itu, Ibu Joanna Helga menginginkan nama peserta yang terdaftar pada \textit{Sharif Judge} tidak dapat diubah. 
 
-Pada skripsi ini, kebutuhan di atas akan diimplementasi. Solusi yang ditawarkan untuk memenuhi kebutuhan di atas yaitu menambahkan sebuah fitur dimana fitur tersebut dapat mengunci \textit{Display Name} peserta \textit{Sharif Judge}. Fitur ini diletakan pada halaman \textit{Settings} yang dapat diatur oleh \textit{admin}. Jika \textit{admin} mengaktifkan fitur tersebut, maka \textit{input text Display Name} pada halaman \textit{Profile} menjadi nonaktif sehingga para peserta tidak dapat mengubah \textit{Display Name}. Sebaliknya jika \textit{admin} menonaktifkan fitur tersebut, maka \textit{input text Display Name} pada halaman Profile akan kembali aktif.
+Pada skripsi ini, kebutuhan di atas akan diimplementasi. Solusi yang ditawarkan untuk memenuhi kebutuhan di atas yaitu menambahkan sebuah fitur yang dapat mengunci \textit{Display Name} peserta \textit{Sharif Judge}. Fitur ini diletakan pada halaman \textit{Settings} yang dapat diatur oleh \textit{admin}. Jika \textit{admin} mengaktifkan fitur tersebut, maka \textit{input text Display Name} pada halaman \textit{Profile} menjadi nonaktif sehingga para peserta tidak dapat mengubah \textit{Display Name}. Sebaliknya jika \textit{admin} menonaktifkan fitur tersebut, maka \textit{input text Display Name} pada halaman Profile akan kembali aktif. Penggunaan fitur ini dapat dilihat pada \textit{user guide} atau dokumentasi \textit{SharIF Judge} di \textit{GitHub}.
 
-\subsection{\textit{Sharif Judge} Diharapkan Memiliki Fungsi Dimana \textit{Assignment} Dapat Dikumpulkan Tanpa Adanya Batasan Waktu}
-Pada masa Pra UTS dan Pra UAS biasanya para dosen akan memberikan \textit{assignment} sebagai bahan pembelajaran. Arsip-arsip soal ujian dan latihan tahun lalu akan dijadikan sebuah \textit{assignment} yang dapat dikerjakan oleh para peserta. \textit{Assignment} tersebut memiliki waktu pengumpulan yang cenderung lama. Ibu Joanna Helga menginginkan sebuah fitur dimana \textit{Sharif Judge} dapat mengatur \textit{assignment} tertentu menjadi tidak memiliki batasan waktu dan dapat dikumpulkan kapan saja. 
+\subsection{\textit{Sharif Judge} Diharapkan Memiliki Fungsi \textit{Assignment} Dapat Dikumpulkan Tanpa Adanya Batasan Waktu}
+Pada masa Pra UTS dan Pra UAS biasanya para dosen akan memberikan \textit{assignment} sebagai bahan pembelajaran. Arsip-arsip soal ujian dan latihan tahun lalu akan dijadikan sebuah \textit{assignment} yang dapat dikerjakan oleh para peserta. \textit{Assignment} tersebut memiliki waktu pengumpulan yang cenderung lama. Ibu Joanna Helga menginginkan sebuah fitur yang \textit{Sharif Judge} dapat mengatur \textit{assignment} tertentu menjadi tidak memiliki batasan waktu dan dapat dikumpulkan kapan saja. 
 
-Pada skripsi ini, kebutuhan di atas akan diimplementasi. Solusi yang ditawarkan untuk memenuhi kebutuhan di atas yaitu membuat sebuah fitur tambahan pada \textit{assignment}. \textit{Assignment} yang mengaktifkan fitur ini tidak akan muncul pada kalendar yang terdapat di halaman \textit{Dashboard}. Fitur tersebut akan membuat batas waktu pengumpulan menjadi tanggal 18 Januari 2038. Tanggal 18 Januari 2038 diambil karena merupakan batas dari waktu \textit{UNIX}. Batas tersebut diperoleh karena setiap detik yang dilewati sejak tanggal 1 Januari 1970 disimpan menggunakan \textit{integer 32-bit}. Tanggal 18 Januari 2038 waktu UTC+7 merupakan batas maksimum dari \textit{integer 32-bit} tersebut. Masalah ini dikenal sebagai masalah "Year 2038 problem". 
+Pada skripsi ini, kebutuhan di atas akan diimplementasi. Solusi yang ditawarkan untuk memenuhi kebutuhan di atas yaitu membuat sebuah fitur tambahan pada \textit{assignment}. \textit{Assignment} yang mengaktifkan fitur ini tidak akan muncul pada kalendar yang terdapat di halaman \textit{Dashboard}. Fitur tersebut akan membuat batas waktu pengumpulan menjadi tanggal 18 Januari 2038. Tanggal 18 Januari 2038 diambil karena merupakan batas dari waktu \textit{UNIX}. Batas tersebut diperoleh karena setiap detik yang dilewati sejak tanggal 1 Januari 1970 disimpan menggunakan \textit{integer 32-bit}. Tanggal 18 Januari 2038 waktu UTC+7 merupakan batas maksimum dari \textit{integer 32-bit} tersebut. Masalah ini dikenal sebagai masalah "Year 2038 problem". Penggunaan fitur ini dapat dilihat pada \textit{user guide} atau dokumentasi \textit{SharIF Judge} di \textit{GitHub}.
 
 \subsection{\textit{Sharif Judge} Diharapkan Memiliki \textit{Scoreboard Global} untuk Semua \textit{Assignment}}
 \textit{Sharif Judge} terkini memiliki halaman \textit{Scoreboard} yang berfungsi menampilkan seluruh nilai akhir para peserta dari sebuah \textit{assignment}. Pada halaman \textit{Socreboard} juga menampilkan nilai dari setiap \textit{problem} yang ada pada sebuah \textit{assignment}. Nilai yang muncul pada halaman ini adalah nilai para peserta yang telah mengumpulkan jawabannya. Nilai yang muncul tersebut akan diurutkan mulai dari yang tertinggi hingga terendah. Ibu Joanna Helga menginginkan sebuah \textit{Scoreboard global} untuk semua \textit{assignment}. \textit{Scoreboard global} tersebut menampilkan total skor beserta detail skor setiap \textit{problem} yang telah dikerjakan para peserta diseluruh \textit{assignment} yang ada. 
 
-Pada skripsi ini, kebutuhan di atas akan diimplementasi. Solusi yang ditawarkan untuk memenuhi kebutuhan di atas yaitu membuat halaman baru yang diberi nama \textit{Hall of Fame}. Halaman \textit{Hall of Fame} menampilkan berapa \textit{problem} yang telah dikerjakan oleh para peserta diseluruh \textit{assignment} yang ada. Nama peserta yang muncul pada halaman ini diurutkan sesuai dengan total skor dari seluruh \textit{assignment} yang telah dikerjakan oleh para peserta.
+Pada skripsi ini, kebutuhan di atas akan diimplementasi. Solusi yang ditawarkan untuk memenuhi kebutuhan di atas yaitu membuat halaman baru yang diberi nama \textit{Hall of Fame}. Halaman \textit{Hall of Fame} menampilkan berapa \textit{problem} yang telah dikerjakan oleh para peserta diseluruh \textit{assignment} yang ada. Nama peserta yang muncul pada halaman ini diurutkan sesuai dengan total skor dari seluruh \textit{assignment} yang telah dikerjakan oleh para peserta. Penggunaan halaman \textit{Hall of Fame} dapat dilihat pada \textit{user guide} atau dokumentasi \textit{SharIF Judge} di \textit{GitHub}.
 
 \subsection{Membatasi Soal (Deskripsi \& PDF) Hanya Bisa Diakses saat \textit{Assignment} "\textit{Open}" dan Setelah Waktu Mulai}
 Kebutuhan ini telah dibahas pada sub bab sebelumnya. Lihat sub bab \hyperref[subsec:membatasisoal]{3.1.8} untuk status dari kebutuhan ini.
@@ -205,17 +205,17 @@ Kebutuhan ini telah dibahas pada sub bab sebelumnya. Lihat sub bab \hyperref[sub
 \subsection{UI Masih Merepotkan}
 Bapak Claudio Fransiscus mengeluhkan UI pada perangkat lunak \textit{Sharif Judge} merepotkan. Contohnya seperti pada saat peserta ingin memilih \textit{assignment}, para peserta harus masuk ke halaman \textit{assignment} dan memilih \textit{assignment} yang ingin dikerjakan. Contoh lainnya seperti skenario mengumpulkan jawaban, para peserta harus masuk ke halaman \textit{submit}, memilih \textit{problem} yang ingin dikumpulkan, memilih bahasa, memilih \textit{file} yang akan dikumpulkan dan \textit{submit}.
 
-Pada skripsi ini, kebutuhan di atas tidak diimplementasi. Bapak Claudio Fransiscus masih kurang spesifik dalam menjelaskan kebutuhannya. Oleh karena kebutuhan tersebut kurang spesifik, maka pada skripsi ini kebutuhan di atas tidak diimplementasi.
+Pada skripsi ini, kebutuhan di atas tidak diimplementasikan. Bapak Claudio Fransiscus masih kurang spesifik dalam menjelaskan kebutuhannya. Oleh karena kebutuhan tersebut kurang spesifik, maka pada skripsi ini kebutuhan di atas tidak diimplementasikan.
 
 \subsection{UI Ada yang Tidak Berguna}
 Bapak Claudio Fransiscus mengeluhkan beberapa UI pada perangkat lunak \textit{Sharif Judge} tidak berguna. Pada \textit{side bar} \textit{Sharif Judge} terdapat beberapa menu halaman. Menurut Bapak Claudio Fransiscus, beberapa \textit{menu} tersebut tidak semuanya terpakai. \textit{Menu} yang sering digunakan hanya \textit{Assignments}, \textit{Submit}, Submission dan \textit{Scoreboard}.
 
-Pada skripsi ini, kebutuhan di atas tidak diimplementasi. Claudio Fransiscus masih kurang spesifik dalam menjelaskan kebutuhannya. Oleh karena kebutuhan tersebut kurang spesifik, maka pada skripsi ini kebutuhan di atas tidak diimplementasi.
+Pada skripsi ini, kebutuhan di atas tidak diimplementasikan. Claudio Fransiscus masih kurang spesifik dalam menjelaskan kebutuhannya. Oleh karena kebutuhan tersebut kurang spesifik, maka pada skripsi ini kebutuhan di atas tidak diimplementasikan.
 
 \subsection{\textit{Sharif Judge} Diharapkan Memiliki Fungsi \textit{Reminder}}
 Setiap assignment pada perangkat lunak \textit{Sharif Judge} memiliki batas pengumpulan. Jika \textit{assignment} telah melewati batas pengumpulan maka para peserta tidak dapat mengumpulkan tugasnya. Banyak peserta sering kali lupa untuk mengerjakan \textit{assignment} dan pada akhirnya melewati batas pengumpulan. Bapak Claudio Fransiscus menginginkan perangkat lunak \textit{Sharif Judge} yang memiliki fitur \textit{reminder}. Fitur \textit{reminder} akan mengirimkan \textit{email} ke setiap peserta yang berisikan peringatan bahwa ada \textit{assignment} yang harus diselsaikan. 
 
-Pada skripsi ini, kebutuhan di atas tidak diimplementasi. Kebutuhan di atas belum dapat diimplementasi karena masih belum ada sistem \textit{scheduler}. Selain itu, bobot pekerjaan diperkirakan akan membutuhkan waktu lebih dari 1 semester.
+Pada skripsi ini, kebutuhan di atas tidak diimplementasikan. Kebutuhan di atas belum dapat diimplementasi karena masih belum ada sistem \textit{scheduler}. Selain itu, bobot pekerjaan diperkirakan akan membutuhkan waktu lebih dari 1 semester.
 
 \subsection{Membatasi Soal (Deskripsi \& PDF) Hanya Bisa Diakses saat \textit{Assignment} "\textit{Open}" dan Setelah Waktu Mulai}
 Kebutuhan ini telah dibahas pada sub bab sebelumnya. Lihat sub bab \hyperref[subsec:membatasisoal]{3.1.8} untuk status dari kebutuhan ini.
@@ -232,7 +232,7 @@ Kebutuhan ini telah dibahas pada sub bab sebelumnya. Lihat sub bab \hyperref[sub
 \subsection{Mengumpulkan \textit{File} JAR (Java Multi Kelas)}
 JAR (\textit{Java ARchive}) adalah format \textit{file} platform-independen yang menggabungkan banyak \textit{file} menjadi satu. \textit{File-file} seperti kelas, gambar dan suara dapat digabungkan dalam \textit{file} JAR. Perangkat lunak \textit{Sharif Judge} yang terkini tidak mendukung pengumpulan \textit{file} dengan ekstensi JAR. \textit{Sharif Judge} hanya menerima beberapa tipe file yaitu C, C++, Java, Python 2, Python 3, Zip, dan PDF.
 
-Pada skripsi ini, kebutuhan di atas akan diimplementasi. %Fitur ini tidak diimplementasi karena belum selesai setelah UTS Skripsi 2. Fitur ini telah dicommit ke \textit{repository} \path{https://github.com/ayenz/Sharif-Judge/} di \textit{GitHub} pada \textit{branch} Skripsi\_29.
+Pada skripsi ini, kebutuhan di atas akan diimplementasi. %Fitur ini tidak diimplementasikan karena belum selesai setelah UTS Skripsi 2. Fitur ini telah dicommit ke \textit{repository} \path{https://github.com/ayenz/Sharif-Judge/} di \textit{GitHub} pada \textit{branch} Skripsi\_29.
 Solusi yang ditawarkan untuk kebutuhan di atas yaitu menambahkan file dengan format JAR agar dapat dikumpul ke \textit{Sharif Judge}. File dengan format JAR akan langsung dinilai oleh \textit{Sharif Judge} sehingga para peserta dapat melihat hasil dari jawaban masing-masing.
 
 \subsection{Branding Teknik Informatika}
@@ -373,13 +373,6 @@ Pada \textit{file} \textit{User\_Model.php} terdapat beberapa fungsi yaitu:
 \end{itemize}
 
 \subsection{\textit{View}}
-Pada perangkat lunak \textit{\textit{Sharif Judge}}, kelas view menggunakan \textit{framework} aplikasi yaitu \textit{Twig}. \textit{Twig} merupakan sebuah \textit{template engine modern} untuk \textit{PHP}. Beberapa kelebihannya adalah
-\begin{itemize}
-	\item Cepat: \textit{Twig} dapat mengcompile \textit{template} ke dalam kode \textit{HTML} dan dapat dioptimalkan. Dibandingkan dengan kode \textit{PHP} biasa, \textit{Twig} dapat menghasilkan kode \textit{PHP} menjadi seminimum mungkin.
-	\item Aman: \textit{Twig} memiliki mode \textit{sandbox} untuk mengevaluasi kode template yang tidak tepercaya. Hal ini memungkinkan \textit{Twig} digunakan sebagai \textit{template language} untuk banyak aplikasi dimana pengguna dapat memodifikasi desain \textit{template} yang ada.
-	\item Fleksibel: \textit{Twig} didukung oleh \textit{lexer} dan \textit{parser} yang fleksibel. Hal ini memungkinkan para pengembang untuk menentukan tag dan filter khusus~\cite{fabien:09:twig}.
-\end{itemize}
-
 Direktori \textit{view} perangkat lunak \textit{Sharif Judge} terdapat pada \path{Sharif-Judge\application\views}. Di dalam \textit{folder views}, terdapat beberapa \textit{folder} yang memisahkan kelas \textit{view} diantaranya adalah \textit{folder error}, \textit{pages} dan \textit{templates}. \textit{Folder error} berisikan tampilan ketika pengguna melakukan kesalahan seperti\textit{ 404 Page Not Found} atau \textit{Database Error}. \textit{Folder template} berisikan tampilan dasar penyusun \textit{Sharif Judge} seperti \textit{Top Bar, Side Bar} dan \textit{Header}. Folder pages berisikan tampilan utama \textit{\textit{Sharif Judge}}. Pada folder ini terdapat beberapa folder yaitu admin dan authtentication. \textit{Folder admin} berisikan tampilan yang hanya dapat dilihat oleh admin seperti tampilan \textit{Settings, User, Install, Add Assignemnt, Add Notification} dan lain-lain. \textit{Folder authentication} berisikan tampilan yang berhubungan dengan akses akun pengguna tampilan \textit{Login, Register} dan \textit{Reset Password}.
 
 \subsubsection{\textit{dashboard.twig}}
@@ -398,7 +391,7 @@ Direktori \textit{view} perangkat lunak \textit{Sharif Judge} terdapat pada \pat
 	\caption[Halaman \textit{Notifications}]{Halaman \textit{Notifications}} 
 	\label{fig:notifications} 
 \end{figure} 
-\hyperref[fig:notifications]{Gambar 3.4} menunjukan halaman notifikasi. Halaman notifikasi berisikan seluruh notifikasi yang telah dibuat oleh admin. Jika admin yang memasuki halaman tersebut, maka terdapat pilihan "\textit{New}" dimana admin dapat menambahkan pengumuman baru untuk para pengguna \textit{Sharif Judge}. Pengumuman tersebut akan munucl pada tabel notifikasi di \textit{dashboard}.
+\hyperref[fig:notifications]{Gambar 3.4} menunjukan halaman notifikasi. Halaman notifikasi berisikan seluruh notifikasi yang telah dibuat oleh admin. Jika admin yang memasuki halaman tersebut, maka terdapat pilihan "\textit{New}". Fungsi "\textit{New}" tersebut memungkinkan admin dapat menambahkan pengumuman baru untuk para pengguna \textit{Sharif Judge}. Pengumuman tersebut akan muncul pada tabel notifikasi di \textit{dashboard}.
 
 \subsubsection{\textit{assignments.twig}}
 \begin{figure}[H]
@@ -416,7 +409,7 @@ Direktori \textit{view} perangkat lunak \textit{Sharif Judge} terdapat pada \pat
 	\caption[Halaman \textit{Problems}]{Halaman \textit{Problems}} 
 	\label{fig:problems} 
 \end{figure} 
-\hyperref[fig:problems]{Gambar 3.6} menunjukan halaman \textit{problems}. Halaman \textit{problems} berisikan masalah-masalah yang ada pada suatu \textit{assignment}. Pada halaman ini, pengguna dapat melihat diskripsi pada masing-masing masalah. Selain melihat diskripsi masalah, para pengguna juga dapat mengumpulkan jawaban dari setiap masalah tersebut.
+\hyperref[fig:problems]{Gambar 3.6} menunjukan halaman \textit{problems}. Halaman \textit{problems} berisikan masalah-masalah yang ada pada suatu \textit{assignment}. Pada halaman ini, pengguna dapat melihat deskripsi pada masing-masing masalah. Selain melihat deskripsi masalah, para pengguna juga dapat mengumpulkan jawaban dari setiap masalah tersebut.
 
 \subsubsection{\textit{submit.twig}}
 \begin{figure}[H]
@@ -505,7 +498,7 @@ Direktori \textit{view} perangkat lunak \textit{Sharif Judge} terdapat pada \pat
 	\caption[Halaman \textit{Add Assignment}]{Halaman \textit{Add Assignment}} 
 	\label{fig:addassignment} 
 \end{figure} 
-\hyperref[fig:addassignment]{Gambar 3.16} menunjukan halaman \textit{add assignment}. Halaman \textit{add assignment} berfungsi untuk menambah \textit{assignment} pada \textit{Sharif Judge}. Pada halaman ini, \textit{admin} dan \textit{head instructor} dapat mengatur beberapa pengaturan \textit{assignment} tersebut. Beberapa pengaturan seperti nama, waktu mulai, waktu akhir, \textit{scoreboard} dan lain-lain. \textit{Admin} juga dapat mengunggah diskripsi serta \textit{file} PDF untuk \textit{assignment} tersebut.
+\hyperref[fig:addassignment]{Gambar 3.16} menunjukan halaman \textit{add assignment}. Halaman \textit{add assignment} berfungsi untuk menambah \textit{assignment} pada \textit{Sharif Judge}. Pada halaman ini, \textit{admin} dan \textit{head instructor} dapat mengatur beberapa pengaturan \textit{assignment} tersebut. Beberapa pengaturan seperti nama, waktu mulai, waktu akhir, \textit{scoreboard} dan lain-lain. \textit{Admin} juga dapat mengunggah deskripsi serta \textit{file} PDF untuk \textit{assignment} tersebut.
 
 \subsubsection{\textit{rejudge.twig}}
 \begin{figure}[H]
@@ -595,7 +588,7 @@ Pada \textit{file} \textit{Notification.php} terdapat beberapa fungsi yaitu:
 Pada \textit{file} \textit{Problems.php} terdapat beberapa fungsi yaitu:
 \begin{itemize}
 	\item \textit{index}: menampilkan deskripsi \textit{problem} yang diberikan
-	\item \textit{edit}: mengubah diskripsi \textit{problem} yang ada pada \textit{Sharif Judge}
+	\item \textit{edit}: mengubah deskripsi \textit{problem} yang ada pada \textit{Sharif Judge}
 \end{itemize}
 
 \subsubsection{\textit{Profile.php}}

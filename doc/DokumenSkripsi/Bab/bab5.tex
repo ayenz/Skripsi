@@ -4,7 +4,7 @@
 Bab ini membahas tentang implementasi dan pengujian perangkat lunak berdasarkan rancangan yang sudah dibuat. Ada dua jenis pengujian yang dilakukan, yaitu pengujian fungsional dan pengujian eksperimental. Bab ini juga membahas tentang lingkungan yang digunakan untuk pengujian perangkat lunak ini.
 
 \section{Lingkungan untuk Implementasi dan Pengujian}
-Terdapat dua lingkungan yang digunakan untuk melakukan implementasi dan pengujian. Lingkungan pertama digunakan untuk implementasi dan pengujian fungsi-fungsi perangkat lunak. Lingkungan kedua digunakan untuk pengujian eksperimental. Berikut spesifikasi lingkungan perangkat keras dan perangkat lunak yang digunakan 
+Terdapat dua lingkungan yang digunakan untuk melakukan implementasi dan pengujian. Lingkungan pertama digunakan untuk pengembangan perangkat lunak \textit{SharIF Judge}. Lingkungan kedua digunakan untuk pengujian fitur-fitur hasil pengembangan. Berikut spesifikasi lingkungan perangkat keras dan perangkat lunak yang digunakan 
 \begin{enumerate}
 	\item Lingkungan Pertama\\
 	Tabel \ref{tab:lingkunganpkpf} menunjukan perangkat keras lingkungan pertama.
@@ -483,10 +483,10 @@ Pengujian fungsional bertujuan untuk memastikan setiap fitur baru pada SharIF Ju
 	\end{figure}
 	
 \section{Pengujian Ekseprimental}
-Pengujian eksperimental dilakukan dengan cara menginstal perangkat lunak \textit{SharIF Judge} pada server lab FTIS UNPAR. \textit{SharIF Judge} digunakan untuk mata kuliah Algoritma \& Struktur Data (ASD) semester genap 2017/2018. \textit{SharIF Judge} yang telah diinstal, dapat diakses pada \textit{URL} \path{http://asd-lat.ftis.unpar/} dan \path{http://asd-quiz.ftis.unpar/}. Selama pengujian berlangsung, terdapat beberapa persoalan yang muncul. Persoalan yang muncul dicatat ke dalam isu \textit{repository SharIF Judge} di \textit{GitHub}. Semua persoalan dapat dilihat di \path{https://github.com/ayenz/Sharif-Judge/issues}.
+Pengujian eksperimental dilakukan dengan cara menginstal perangkat lunak \textit{SharIF Judge} pada server lab FTIS UNPAR. \textit{SharIF Judge} digunakan untuk mata kuliah Algoritma \& Struktur Data (ASD) semester genap 2017/2018. \textit{SharIF Judge} yang telah diinstal, dapat diakses pada \textit{URL} \path{http://asd-lat.ftis.unpar/} dan \path{http://asd-quiz.ftis.unpar/}. Selama pengujian berlangsung, terdapat beberapa persoalan yang muncul. Persoalan yang muncul dicatat ke dalam \textit{issue} \textit{repository SharIF Judge} di \textit{GitHub}. Semua persoalan dapat dilihat di \path{https://github.com/ayenz/Sharif-Judge/issues}.
 
 	\subsection{\textit{Remove the Assignments Folder}}
-	Isu dengan kode unik \#4 meminta agar \textit{folder assignments} untuk dihapus. Hal ini bertujuan agar direktori \textit{URL} \path{/assignments} dapat diakses. \textit{Folder assignments} merupakan \textit{folder default} untuk menyimpan \textit{assignment}. \textit{Folder default} penyimpanan \textit{assignment} tersebut harus diubah terlebih dahulu. Untuk mengubah \textit{folder default} penyimpanan, diperlukan perubahan nilai pada halaman \textit{Settings} dan kode pada kelas \textit{Controller Install.php}. Selain mengubah \textit{folder default} penyimpanan \textit{assignment}, perubahan juga dilakukan pada \textit{folder default tester} dan \textit{default timezone} yang bertujuan untuk merapihkan struktur direktori.
+	\textit{Issue} dengan kode unik \#4 meminta agar \textit{folder assignments} untuk dihapus. Hal ini bertujuan agar direktori \textit{URL} \path{/assignments} dapat diakses. \textit{Folder assignments} merupakan \textit{folder default} untuk menyimpan \textit{assignment}. \textit{Folder default} penyimpanan \textit{assignment} tersebut harus diubah terlebih dahulu. Untuk mengubah \textit{folder default} penyimpanan, diperlukan perubahan nilai pada halaman \textit{Settings} dan kode pada kelas \textit{Controller Install.php}. Selain mengubah \textit{folder default} penyimpanan \textit{assignment}, perubahan juga dilakukan pada \textit{folder default tester} dan \textit{default timezone} yang bertujuan untuk merapihkan struktur direktori.
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/set}  
@@ -519,7 +519,7 @@ $result = $this->db->insert_batch('settings', array(
 	Setelah melakukan beberapa perubahan, folder assignment dapat dihapus.
 	
 	\subsection{\textit{Add User Email are not formatted correctly}}
-	Isu dengan kode unik \#5 mengatakan bahwa pendaftaran peserta via \textit{email} tidak berfungsi dengan baik. Pengguna mendapatkan \textit{email} dengan format yang tidak beraturan. Contohnya \textit{username} yang tertukar dengan \textit{role} dan \textit{password} tertukar dengan \textit{display name} seperti \hyperref[fig:dnve]{Gambar 5.31} 
+	\textit{Issue} dengan kode unik \#5 mengatakan bahwa pendaftaran peserta via \textit{email} tidak berfungsi dengan baik. Pengguna mendapatkan \textit{email} dengan format yang tidak beraturan. Contohnya \textit{username} yang tertukar dengan \textit{role} dan \textit{password} tertukar dengan \textit{display name} seperti \hyperref[fig:dnve]{Gambar 5.31} 
 	\begin{figure}[H]
 		\centering  
 		\includegraphics[width=1.0\textwidth]{/pengujian/dnve}  
@@ -547,7 +547,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 	Setelah melakukan perubahan kode program, pendaftaran peserta via \textit{email} dapat berfungsi dengan baik. \textit{Email} yang diterima pengguna telah menggunakan format yang benar.
 	
 	\subsection{\textit{Cannot Create Assignments}}
-	Isu dengan kode unik \#7 mengatakan bahwa Bapak Husnul selaku dosen Algoritma \& Struktur Data, tidak bisa membuat \textit{assignment}.\textit{ Error log} yang dihasilkan tidak menunjukan pesan kesalahan apapun. 
+	\textit{Issue} dengan kode unik \#7 mengatakan bahwa Bapak Husnul selaku dosen Algoritma \& Struktur Data, tidak bisa membuat \textit{assignment}.\textit{ Error log} yang dihasilkan tidak menunjukan pesan kesalahan apapun. 
 	Berikut isi \textit{error log} yang terdapat di direktori \path{/var/log/apache2/error.log}
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,columns=fullflexible, keepspaces=true, breaklines=true]
 [Wed Jan 31 06:25:02.516154 2018] [mpm_prefork:notice] [pid 1734] AH00163: Apache/2.4.18 (Ubuntu) configured -- resuming normal operations
@@ -557,7 +557,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 	Persoalan terjadi karena tidak ada atribut \textit{archived\_assignment} di tabel \textit{shj\_assignments}. Persoalan ini dapat diatasi dengan menambahkan atribut \textit{archived\_assignment} di tabel \textit{shj\_assignments}, sehingga struktur tabel \textit{shj\_assignments} menjadi seperti \hyperref[tab:atributtabelassignments]{Tabel 5.5}. \textit{Assignment} berhasil dibuat setelah atribut \textit{archived\_assignment} ditambahkan.
 	
 	\subsection{\textit{Link} ke \textit{New Home of Sharif-Judge}}
-	Isu dengan kode unik \#8 mengatakan bahwa pada halaman \textit{Add} atau \textit{Edit Assignment}, terdapat \textit{link} menuju ke dokumentasi \textit{Sharif Judge} milik mjnaderi. \textit{Link} tersebut diupdate menuju ke dokumentasi \textit{SharIF Judge} yang baru yaitu \path{https://github.com/ftisunpar/Sharif-Judge/}. Persoalan ini dapat diselesaikan dengan mengubah \textit{link} dokumentasi pada halaman \textit{add\_assignment.twig}. Listing \ref{lstt:3} menunjukan perubahan kode program yang dilakukan di halaman \textit{user.twig}
+	\textit{Issue} dengan kode unik \#8 mengatakan bahwa pada halaman \textit{Add} atau \textit{Edit Assignment}, terdapat \textit{link} menuju ke dokumentasi \textit{Sharif Judge} milik mjnaderi. \textit{Link} tersebut diupdate menuju ke dokumentasi \textit{SharIF Judge} yang baru yaitu \path{https://github.com/ftisunpar/Sharif-Judge/}. Persoalan ini dapat diselesaikan dengan mengubah \textit{link} dokumentasi pada halaman \textit{add\_assignment.twig}. Listing \ref{lstt:3} menunjukan perubahan kode program yang dilakukan di halaman \textit{user.twig}
 	
 \begin{lstlisting}[language=diff, caption=Perubahan kode program pada halaman \textit{user.twig}, label=lstt:3, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
@@ -704,7 +704,7 @@ columns=fullflexible, keepspaces=true, breaklines=true]
 \end{lstlisting}
 
 	\subsection{Hapus Perbedaan antara \textit{Admin} dan \textit{Student} pada PDF \textit{Download}}
-	Isu dengan kode unik \#7 mengatakan agar mengubah beberapa bagian hasil implementasi kode pada kelas \textit{controller Assignments.php}. Kode tersebut terdapat pada fungsi unduh \textit{assignment} dengan ketentuan yang telah dirancang pada \hyperref[chap:batassoal]{sub bab 4.3}. Bagian kode \textit{\$this->user->level == 0} berfungsi untuk mengijinkan pengguna dengan \textit{role admin} dapat mengunduh \textit{assignment}. Bagian tersebut dihilangkan agar adanya transparansi antara dosen dan peserta, sehingga dosen saat membuat \textit{assignment} lebih yakin bahwa soalnya tidak akan bisa diunduh. Listing \ref{lstt:7} menunjukan perubahan kode program yang dilakukan di \textit{Assignment.php}
+	\textit{Issue} dengan kode unik \#7 mengatakan agar mengubah beberapa bagian hasil implementasi kode pada kelas \textit{controller Assignments.php}. Kode tersebut terdapat pada fungsi unduh \textit{assignment} dengan ketentuan yang telah dirancang pada \hyperref[chap:batassoal]{sub bab 4.3}. Bagian kode \textit{\$this->user->level == 0} berfungsi untuk mengijinkan pengguna dengan \textit{role admin} dapat mengunduh \textit{assignment}. Bagian tersebut dihilangkan agar adanya transparansi antara dosen dan peserta, sehingga dosen saat membuat \textit{assignment} lebih yakin bahwa soalnya tidak akan bisa diunduh. Listing \ref{lstt:7} menunjukan perubahan kode program yang dilakukan di \textit{Assignment.php}
 	
 \begin{lstlisting}[language=diff, caption=Perubahan kode program pada \textit{Assignments.php}, label=lstt:7, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
@@ -946,7 +946,7 @@ $objWriter->save('php://output');
 
 \section{Masukan dari Pengguna \textit{GitHub}}
 \label{sec:masukangithub}
-Pada saat skripsi ini dibuat, seluruh perkembangan perangkat lunak \textit{SharIF Judge} dicommit pada repositori \textit{GitHub}. Repositori yang digunakan bersifat \textit{public}, sehingga seluruh pengguna \textit{GitHub} dapat mengakses repositori tersebut. Pengguna \textit{GitHub} dengan \textit{username} wojcik13 memberikan masukan dengan membuat isu dengan judul "\textit{Some development proposals}" dan berkode unik \#6. Berikut isi masukan dari \textit{username} wojcik13
+Pada saat skripsi ini dibuat, seluruh perkembangan perangkat lunak \textit{SharIF Judge} dicommit pada repositori \textit{GitHub}. Repositori yang digunakan bersifat \textit{public}, sehingga seluruh pengguna \textit{GitHub} dapat mengakses repositori tersebut. Pengguna \textit{GitHub} dengan \textit{username} wojcik13 memberikan masukan dengan membuat \textit{issue} dengan judul "\textit{Some development proposals}" dan berkode unik \#6. Berikut isi masukan dari \textit{username} wojcik13
 \begin{quote}
 	``\textit{Hello,} \\
 	\textit{As I see, you're developing and adding some functions to Sharif Judge, well, I'm newbie here and I don't know how to add some functions to repo. If You will have time to add them, I would be grateful.}\\
