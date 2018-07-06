@@ -7,19 +7,19 @@ Bab ini membahas tentang landasan teori yang digunakan dalam skripsi ini. Landas
 \section{\textit{CodeIgniter}}
 \label{sec:codeigniter} 
  
-\textit{CodeIgniter} merupakan sebuah \textit{framework} bagi pengguna yang ingin membangun aplikasi web menggunakan PHP. Tujuan utamanya adalah memungkinkan para pengguna untuk mengembangkan proyek-proyek menjadi lebih cepat dibandingkan menulis kode dari awal. \textit{Framework} ini memiliki banyak libary untuk fungsi-fungsi yang biasa diperlukan, serta antarmuka dan struktur logis yang sederhana untuk mengakses library ini. \textit{CodeIgniter} membuat para pengguna lebih fokus pada proyek dengan cara meminimalkan jumlah kode yang dibutuhkan~\cite{bcit:17:cidoc}. \\
+\textit{CodeIgniter} merupakan sebuah \textit{framework} bagi pengguna yang ingin membangun aplikasi web menggunakan PHP. Tujuan utamanya adalah memungkinkan para pengguna untuk mengembangkan proyek-proyek menjadi lebih cepat dibandingkan menulis kode dari awal. \textit{Framework} ini memiliki banyak \textit{library} untuk fungsi-fungsi yang biasa diperlukan, serta antarmuka dan struktur logis yang sederhana untuk mengakses \textit{library} ini. \textit{CodeIgniter} membuat para pengguna lebih fokus pada proyek dengan cara meminimalkan jumlah kode yang dibutuhkan~\cite{bcit:17:cidoc}. \\
 
 Beberapa keunggulan dari \textit{CodeIgniter} yaitu:
 \begin{itemize}
-	\item \textit{Framework} yang Ringan \\
+	\item \textit{Framework} yang ringan \\
 		Inti dari sistem \textit{CodeIgniter} membutuhkan \textit{library} yang kecil. Hal ini sangat berbeda dengan \textit{framework} lain yang membutuhkan \textit{resource} lebih. \textit{Library} tambahan dimuat secara dinamis atau sesuai dengan permintaan sehingga sistem dapat berjalan cepat.
-	\item Menggunakan Konsep M-V-C \\
-		\textit{CodeIgniter} menggunakan pendekatan \textit{Model-View-Controller} yang memungkinkan pemisahan anatara logika dan presentasi. Pendekatan \textit{Model-View-Controller} dibahas pada sub bab \ref{sec:mvc}.
+	\item Menggunakan konsep M-V-C \\
+		\textit{CodeIgniter} menggunakan pendekatan \textit{Model-View-Controller} yang memungkinkan pemisahan antara logika dan presentasi. Pendekatan \textit{Model-View-Controller} dibahas pada sub bab \ref{sec:mvc}.
 	\item Menghasilkan \textit{Clean URLs} \\
 		\textit{CodeIgniter} menghasilkan \textit{Clean URLs} dan \textit{search-engine friendly}. \textit{Clean URLs} bertujuan untuk mempermudah pengguna dalam membaca \textit{URL}. Contoh perbandingan \textit{URL} biasa dengan \textit{Clean URL}s: \textit{URL} biasa: \path{\\example.com\index.php?page=news}, \textit{Clean URLs}: \path{\\example.com\news}.
-	\item Memiliki Banyak Fitur Bantuan \\
+	\item Memiliki banyak fitur bantuan \\
 		\textit{CodeIgniter} dilengkapi dengan \textit{library} yang umumnya diperlukan untuk mengembangkan \textit{web}, seperti mengakses \textit{database}, mengirim \textit{email}, memvalidasi data \textit{form}, menjaga \textit{session}, memanipulasi gambar dan masih banyak lagi.
-	\item Mudah Diperluas \\
+	\item Mudah diperluas \\
 		\textit{CodeIgniter} dapat diperluas dengan menambahkan \textit{library} pengguna dan kelas bantuan (\textit{helper}).
 \end{itemize}
 
@@ -46,7 +46,7 @@ Gambar~\ref{fig:flow} menunjukan bagaimana data mengalir ke seluruh sistem~\cite
 \textit{CodeIgniter} merupakan \textit{framework} yang menggunaakan pola pengembangan \textit{Model-View-Controller}. \textit{MVC} adalah pendekatan perangkat lunak yang memisahkan logika aplikasi dari presentasi. Hal tersebut memungkinkan halaman web pengguna memiliki \textit{scripting} yang sedikit karena presentasi terpisah dari \textit{scripting} PHP~\cite{bcit:17:cidoc}. \\
 
 	\subsubsection{\textit{Model}}
-	\textit{Model} merepresentasikan bagian struktur data pengguna. Biasanya kelas \textit{Model} berisi fungsi-fungsi yang membantu pengguna untuk mengambil, menyimpan, dan memperbarui informasi pada \textit{database}. Berikut beberapa hal penting yang terdapat pada \textit{Model}:
+	\textit{Model} merepresentasikan bagian struktur data pengguna. Biasanya kelas \textit{Model} berisi fungsi-fungsi yang membantu pengguna untuk mengambil, menyimpan, dan memperbarui informasi pada \textit{database}. Berikut ini adalah beberapa hal penting yang terdapat pada \textit{Model}:
 	\begin{itemize}
 		\item Susunan dari \textit{Model} \\
 		Kelas \textit{Model} berada di direktori \path{application/models/}. \textit{Model} dapat disimpan ke dalam sub direktori. Bentuk dasar kode pada kelas \textit{model} digambarkan seperti berikut ini:
@@ -61,7 +61,7 @@ class Model_name extends CI_Model {
 }
 \end{lstlisting}
 		
-		\textit{Model\_name} adalah nama kelas dari kelas \textit{model} yang pengguna buat. Penamaan kelas \textit{Model} harus dimulai dengan huruf kapital. Selain itu, kelas \textit{model} harus mengextend (\textit{class CI\_Model} atau \textit{MY\_Model}).
+		\textit{Model\_name} adalah nama kelas dari kelas \textit{model} yang pengguna buat. Penamaan kelas \textit{Model} harus dimulai dengan huruf kapital. Selain itu, kelas \textit{model} harus merupakan turunan (\textit{class CI\_Model} atau \textit{MY\_Model}).
 		
 		\item Menghubungkan Sebuah \textit{Model} \\
 		Pada dasarnya \textit{model} akan dimuat dan dipanggil dari \textit{method} atau fungsi yang ada pada \textit{controller}. Untuk menghubungkan \textit{model}, pengguna harus menggunakan method berikut:
@@ -160,7 +160,7 @@ class Page{
 \end{lstlisting}
 	
 	\subsubsection{\textit{Controller}}
-	\textit{Controller} berfungsi sebagai perantara antara \textit{Model}, \textit{View} dan \textit{resource} lain yang dibutuhkan untuk memproses \textit{HTTP request} dan menghasilkan halaman web. \textit{Controller} merupakan sebuah kelas yang dinamakan demikian agar dapat dikaitkan dengan URI. Sebagai contoh URI \path{example.com/index.php/blog/}. Pada contoh tersebut \textit{segment} terakhir dari URI adalah \textit{blog}, sehingga \textit{CodeIgniter} akan mencari kelas \textit{controller} bernama \textit{Blog.php} dan memuatnya ke dalam \textit{browser}. Nama \textit{controller} harus diawali dengan huruf kapital. Selain itu controller juga harus mengextend kelas "\textit{CI\_Controller}".
+	\textit{Controller} berfungsi sebagai perantara antara \textit{Model}, \textit{View} dan \textit{resource} lain yang dibutuhkan untuk memproses \textit{HTTP request} dan menghasilkan halaman web. \textit{Controller} merupakan sebuah kelas yang dinamakan demikian agar dapat dikaitkan dengan URI. Sebagai contoh URI \path{example.com/index.php/blog/}. Pada contoh tersebut \textit{segment} terakhir dari URI adalah \textit{blog}, sehingga \textit{CodeIgniter} akan mencari kelas \textit{controller} bernama \textit{Blog.php} dan memuatnya ke dalam \textit{browser}. Nama \textit{controller} harus diawali dengan huruf kapital. Selain itu controller juga harus merupakan turunan kelas "\textit{CI\_Controller}".
 	Contoh yang benar :
 \begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
@@ -254,16 +254,16 @@ example.com/index.php/blog/_utility/
 \textit{Sharif Judge} adalah \textit{online judge} gratis untuk bahasa pemrograman C, C++, Java dan Python. Perangkat lunak ini diciptakan oleh Mohammad Javad Naderi pada tahun 2014 dan bersifat \textit{open source}. Antarmuka \textit{Sharif Judge} ditulis menggunakan bahasa pemrograman PHP (\textit{framework CodeIgniter}) dan \textit{backend} menggunakan \textit{BASH} \cite{mjnaderi:14:sharifjudge}.
 \textit{Sharif Judge} memiliki beberapa fitur seperti:
 \begin{itemize}
-	\item Beberapa peran (\textit{role}) \textit{users} (\textit{admin, head instructor, instructor, student})
+	\item Terdapat beberapa peran (\textit{role}) \textit{users} yaitu \textit{admin, head instructor, instructor, student}
 	\item \textit{Sandboxing} (belum diterapkan untuk \textit{phyton}). \textit{Sandboxing} adalah sebuah mekanisme yang dapat menjalankan aplikasi dalam lingkungan virtual yang aman.
 	\item Deteksi kecurangan (mendeteksi kode yang mirip) menggunakan \textit{Moss}
 	\item Pengaturan untuk menilai keterlambatan pengiriman
-	\item Antrian Pengiriman
+	\item Antrian pengiriman
 	\item Mengunduh hasil dalam bentuk \textit{file excel}
 	\item Mengunduh kode yang telah dikirim dalam bentuk \textit{file zip}
 	\item Metode "\textit{Output Comparison}" dan "\textit{Tester Code}" untuk memeriksa kebenaran dari hasil keluaran.
-	\item Menambahakan beberapa pengguna sekaligus
-	\item Deskripsi \textit{Problem} (\textit{PDF/Markdown/HTML})
+	\item Menambahkan beberapa pengguna sekaligus
+	\item Deskripsi \textit{problem} (\textit{PDF/Markdown/HTML})
 	\item Penilaian ulang (\textit{rejudge})
 	\item Papan nilai
 	\item Notifikasi
@@ -273,19 +273,19 @@ example.com/index.php/blog/_utility/
 Untuk menjalankan \textit{Sharif Judge}, dibutuhkan sebuah server \textit{Linux} dengan persyaratan berikut ~\cite{mjnaderi:14:sharifjudgedoc}:
 \begin{itemize}
 	\item \textit{Webserver} menjalankan PHP versi 5.3 atau yang lebih baru
-	\item Pengguna harus dapat menjalankan PHP dari \textit{command line}. Pada \textit{Ubuntu}, pengguna perlu menginstal paket \textit{php5-cli}
+	\item Pengguna harus dapat menjalankan PHP dari \textit{command line}. Pada \textit{Ubuntu}, pengguna perlu menginstall paket \textit{php5-cli}
 	\item \textit{Mysql database} (dengan ekstensi \textit{mysqli} untuk PHP) atau \textit{PostgreSql database}
 	\item PHP harus memiliki akses untuk menjalankan \textit{shell commands} menggunakan fungsi \textit{shell\textunderscore exec}. Contohnya seperti \textit{command} di bawah ini: 
 		\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true, breaklines=true]
 echo shell_exec("php -v");
 \end{lstlisting}
-	\item Perkakas yang digunakan untuk \textit{compiling} dan menjalankan kode yang dikumpulkan adalah (\textit{gcc, g++, javac, java, python2, python3 commands})
-	\item \textit{Perl} lebih baik diinstal untuk alasan ketepatan waktu, batas memori dan memaksimalkan batas ukuran pada \textit{output} kode yang dikirimkan. \textit{Perl} merupakan salah satu bahasa pemrograman yang dapat digunakan untuk membangun perangkat lunak.
+	\item Perkakas yang digunakan untuk melakukan proses kompilasi dan menjalankan kode yang dikumpulkan adalah (\textit{gcc, g++, javac, java, python2, python3 commands})
+	\item \textit{Perl} lebih baik diinstall untuk alasan ketepatan waktu, batas memori dan memaksimalkan batas ukuran pada \textit{output} kode yang dikirimkan. \textit{Perl} merupakan salah satu bahasa pemrograman yang dapat digunakan untuk membangun perangkat lunak.
 \end{itemize}
 
 
-Jika persyaratan di atas telah terpenuhi, maka akan masuk tahap instalasi sebagai berikut:
+Jika persyaratan di atas telah terpenuhi, maka instalasi dapat dilakukan dengan cara sebagai berikut:
 \begin{itemize}
 	\item Mengunduh versi terakhir dari \textit{Sharif Judge} dan \textit{unpack} hasil download di direktori \textit{public html}
 	\item Memindahkan folder \textit{system} dan \textit{application} keluar dari \textit{public directory} dan
@@ -502,7 +502,7 @@ $coefficient = 0;
 \end{lstlisting}
 	
 	\item \textit{Time Limit} \\
-	Pengguna dapat mengatur batas waktu untuk menjalankan kode dalam satuan milisekon. \textit{Python} dan \textit{Java} biasanya lebih lambat dari \textit{C/C++}.	Oleh karena itu \textit{Python} dan \textit{Java} membutuhkan waktu yang lebih.
+	Pengguna dapat mengatur batas waktu untuk menjalankan kode dalam satuan milisekon. Program yang ditulis menggunakan \textit{Python} dan \textit{Java} biasanya lebih lambat dari \textit{C/C++}.	Oleh karena itu \textit{Python} dan \textit{Java} membutuhkan waktu yang lebih.
 	
 	\item \textit{Memory Limit} \\
 	Pengguna dapat mengatur batas memori dalam satuan \textit{kilobyte}, namun penggunaan \textit{Memory Limit} tidak terlalu akurat.
@@ -786,7 +786,7 @@ int main(int argc, char const *argv[])
 
 Sebelum menggunakan \textit{Moss} ada beberapa hal yang harus diperhatikan yaitu:
 \begin{itemize}
-	\item Pengguna harus mendapatkan \textit{Moss user id} dan mengaturnya di \textit{Sharif Judge}. Untuk mendapatkan \textit{Moss user id}, pengguna harus terlebih dahulu daftar pada halaman \path{http://theory.stanford.edu/~aiken/moss/}. Pengguna akan mendapatkan sebuah \textit{email} yang berisikan \textit{script perl}. \textit{Moss user id} berada pada \textit{script} tersebut. \\
+	\item Pengguna harus mendapatkan \textit{Moss user id} dan mengaturnya di \textit{Sharif Judge}. Untuk mendapatkan \textit{Moss user id}, pengguna harus terlebih dahulu mendaftar pada halaman \path{http://theory.stanford.edu/~aiken/moss/}. Pengguna akan mendapatkan sebuah \textit{email} yang berisikan \textit{script perl}. \textit{Moss user id} berada pada \textit{script} tersebut. \\
 	Listing \ref{ls:9} menunjukan potongan \textit{perl script} yang berisikan \textit{user id}:
 
 \begin{lstlisting}[basicstyle=\ttfamily, caption=Potongan \textit{perl script}, label=ls:9, frame=single,
