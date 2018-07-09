@@ -645,7 +645,7 @@ if ( ! $result)
 show_error("Error adding data to table ".$this->db->dbprefix('settings'));
 \end{lstlisting}
 
-\section{Menambahakan Fitur "\textit{Archived Assignment}"}
+\section{Menambahkan Fitur "\textit{Archived Assignment}"}
 \label{chap:arc}
 Fitur "\textit{Archived Assignment}" membutuhkan sebuah atribut baru pada \textit{database}. Atribut tersebut berfungsi untuk menyimpan sebuah nilai. Nilai yang disimpan akan menentukan apakah \textit{assignment} tersebut bersifat \textit{Archived Assignment} atau tidak. Atribut baru tersebut  ditambahkan pada tabel \textit{shj\_assignments} dengan nama \textit{archived\_assignment} yang menggunakan tipe data \textit{tinyint}. \textit{archived\_assignment} memiliki nilai \textit{default} = 0. Jika nilai dari \textit{archived\_assignment} = 1, maka \textit{assignment} tersebut merupakan sebuah \textit{archived\_assignment}, sebaliknya jika bernilai 0, maka \textit{assignment} tersebut merupakan \textit{assignment} biasa.
 
@@ -782,7 +782,8 @@ Halaman \textit{Hall of Fame} tidak membutuhkan atribut atau tabel baru pada \te
 			Deskripsi	& Proses untuk mengembalikan semua entri nilai submission yang telah djumlahkan pada tabel \textit{shj\_submissions} \\
 			\hline
 			Algoritma	& \begin{itemize}
-				\item Menjumlahkan seluruh nilai submission setiap peserta yang tidak bersifat "\textit{Upload Only}". Nilai yang telah dijumlahkan akan disimpan sebagai total skor.
+				\item Menghitung dan menjumlahkan nilai seluruh problem pada setiap assignment peserta tertentu dengan menggunakan rumus perhitungan nilai dari \textit{Controller Submissions.php}. Rumus yang digunakan adalah \textit{SCORE = pre\_score * coefficient / 10000}.
+				\item Menjumlahkan seluruh nilai assignment setiap peserta yang tidak bersifat "\textit{Upload Only}". Nilai yang telah dijumlahkan akan disimpan sebagai total skor.
 				\item Mengurutkan total skor dari yang paling besar.
 				\item Mengembalikan seluruh entri yang telah dijumlahkan dalam bentuk \textit{array}.
 			\end{itemize} \\

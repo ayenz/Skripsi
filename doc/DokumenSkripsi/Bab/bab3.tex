@@ -127,9 +127,14 @@ Pada skripsi ini, \textit{issue} di atas tidak diimplementasikan. Pada \textit{i
 Pada skripsi ini, \textit{issue} di atas tidak diimplementasikan. \textit{Issue} di atas memiliki cakupan persoalan yang terlalu luas. Oleh karena \textit{issue} tersebut memiliki persoalan yang terlalu luas, maka pada skripsi ini \textit{issue} di atas tidak diimplementasikan.
 	
 \subsection{\textit{Queue failed to process if submission take too long to complete?}}
-\textit{Issue} dengan kode unik \#32 dibuat oleh pengguna \textit{GitHub} dengan \textit{username} \textit{truongan}. Pada \textit{issue} tersebut dikatakan bahwa \textit{assignment} yang memiliki masalah dengan \textit{test case} besar akan menyebabkan \textit{submission status} menjadi \textit{pending}. \textit{User} \textit{truongan} memperkirakan hal di atas terjadi dikarenakan \textit{database connection times out}. 
+\textit{Issue} dengan kode unik \#32 dibuat oleh pengguna \textit{GitHub} dengan \textit{username} \textit{truongan}. Pada \textit{issue} tersebut dikatakan bahwa \textit{assignment} yang memiliki masalah dengan \textit{test case} besar akan menyebabkan \textit{submission status} menjadi \textit{pending}. \textit{User} \textit{truongan} memperkirakan hal di atas terjadi dikarenakan \textit{database connection times out}. Untuk mengatasinya, \textit{user truongan} menambahkan \textit{method reconnect database} pada file \textit{Queueprocess.php}. \textit{User truongan} mengatakan bahwa perbaikan kode yang telah dilakukan dapat mengatasi persoalan di atas.
 
-Pada skripsi ini, \textit{issue} di atas diimplementasi. Solusi yang ditawarkan untuk mengatasi hal di atas adalah menambahakan \textit{method reconnect database}. \textit{Method reconnect database} akan menghubungkan kembali \textit{database} ketika terjadi kasus seperti di atas.
+Pada skripsi ini, \textit{issue} di atas akan diimplementasi. Solusi yang ditawarkan untuk mengatasi hal di atas adalah mengimplementasi kode \textit{method reconnect database} yang telah dilakukan oleh \textit{user truongan}. \textit{Method reconnect database} telah disediakan oleh \textit{framework CodeIgniter} yaitu 
+\begin{lstlisting}[basicstyle=\ttfamily, frame=single,
+columns=fullflexible, keepspaces=true, breaklines=true]
+$this->db->reconnect();
+\end{lstlisting}
+textit{Method reconnect database} akan menghubungkan kembali \textit{database} ketika terjadi kasus seperti di atas.
 % Untuk mengatasi masalah tersebut diperlukan method reconnect database pada file \textit{Queueprocess.php}.
 
 \subsection{\textit{Compilation Error on All Language}}
