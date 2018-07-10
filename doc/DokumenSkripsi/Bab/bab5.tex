@@ -4,7 +4,7 @@
 Bab ini membahas tentang implementasi dan pengujian perangkat lunak berdasarkan rancangan yang sudah dibuat. Ada dua jenis pengujian yang dilakukan, yaitu pengujian fungsional dan pengujian eksperimental. Bab ini juga membahas tentang lingkungan yang digunakan untuk pengujian perangkat lunak ini.
 
 \section{Lingkungan untuk Implementasi dan Pengujian}
-Terdapat dua lingkungan yang digunakan untuk melakukan implementasi dan pengujian. Lingkungan pertama digunakan untuk pengembangan perangkat lunak \textit{SharIF Judge}. Lingkungan kedua digunakan untuk pengujian fitur-fitur hasil pengembangan. Berikut spesifikasi lingkungan perangkat keras dan perangkat lunak yang digunakan 
+Terdapat dua lingkungan yang digunakan untuk melakukan implementasi dan pengujian. Lingkungan pertama digunakan untuk mengembangkan perangkat lunak \textit{SharIF Judge}. Lingkungan kedua digunakan untuk menguji fitur-fitur hasil pengembangan. Berikut spesifikasi lingkungan perangkat keras dan perangkat lunak yang digunakan 
 \begin{enumerate}
 	\item Lingkungan Pertama\\
 	Tabel \ref{tab:lingkunganpkpf} menunjukan perangkat keras lingkungan pertama.
@@ -242,7 +242,7 @@ Hasil implementasi dari rancangan perangkat lunak yang sudah dibuat, terdiri dar
 		\caption[Tampilan Halaman Login]{Tampilan Halaman \textit{Login}} 
 		\label{fig:newlogin} 
 	\end{figure}
-	\pagebreak
+
 	Gambar \ref{fig:newhof} menunjukan tampilan halaman \textit{Hall of Fame}.
 	\begin{figure}[H]
 		\centering  
@@ -258,7 +258,7 @@ Hasil implementasi dari rancangan perangkat lunak yang sudah dibuat, terdiri dar
 		\caption[Tampilan Detail dari Hall of Fame]{Tampilan \textit{Detail} dari \textit{Hall of Fame}} 
 		\label{fig:newhofdetail} 
 	\end{figure}
-	\pagebreak
+
 	Gambar \ref{fig:newlogs} menunjukan tampilan halaman \textit{24-hour Logs}.
 	\begin{figure}[H]
 		\centering  
@@ -294,7 +294,7 @@ Hasil implementasi dari rancangan perangkat lunak yang sudah dibuat, terdiri dar
 
 \section{Pengujian Fungsional}
 %Pengujian fungsional bertujuan untuk memastikan bahwa perangkat lunak dapat berfungsi sebagaimana mestinya. Jika fungsi yang telah diimplementasi tidak berjalan dengan baik, maka perangkat lunak masih memiliki kekurangan.
-Pengujian fungsional bertujuan untuk memastikan setiap fitur baru pada SharIF Judge dapat berfungsi dengan baik.
+Pengujian fungsional bertujuan untuk memastikan setiap fitur baru pada \textit{SharIF Judge} dapat berfungsi dengan baik.
 	\subsection{Mengunduh Soal (deskripsi \& PDF) yang Telah Dibatasi} 
 	Hasil yang diharapkan dari pengujian fitur ini adalah soal dapat dibatasi sesuai dengan ketentuan yang telah dirancang pada \hyperref[chap:batassoal]{sub bab 4.3}. Pengujian dimulai dengan membuat empat buah \textit{assignment}. Gambar \ref{fig:listassignment} menunjukan empat buah \textit{assignment} yang dibuat.
 	\begin{figure}[H]
@@ -483,7 +483,7 @@ Pengujian fungsional bertujuan untuk memastikan setiap fitur baru pada SharIF Ju
 	\end{figure}
 	
 \section{Pengujian Ekseprimental}
-Pengujian eksperimental dilakukan dengan cara menginstal perangkat lunak \textit{SharIF Judge} pada server lab FTIS UNPAR. \textit{SharIF Judge} digunakan untuk mata kuliah Algoritma \& Struktur Data (ASD) semester genap 2017/2018. \textit{SharIF Judge} yang telah diinstal, dapat diakses pada \textit{URL} \path{http://asd-lat.ftis.unpar/} dan \path{http://asd-quiz.ftis.unpar/}. Selama pengujian berlangsung, terdapat beberapa persoalan yang muncul. Persoalan yang muncul dicatat ke dalam \textit{issue} \textit{repository SharIF Judge} di \textit{GitHub}. Semua persoalan dapat dilihat di \path{https://github.com/ayenz/Sharif-Judge/issues}.
+Pengujian eksperimental dilakukan dengan cara menginstal perangkat lunak \textit{SharIF Judge} pada server lab FTIS UNPAR. Pengujian ini bertujuan untuk menguji coba secara langsung fitur-fitur baru \textit{SharIF Judge} pada mata kuliah pemrograman. \textit{SharIF Judge} diuji untuk mata kuliah Algoritma \& Struktur Data (ASD) semester genap 2017/2018. \textit{SharIF Judge} yang telah diinstall, dapat diakses pada \textit{URL} \path{http://asd-lat.ftis.unpar/} dan \path{http://asd-quiz.ftis.unpar/}. Selama pengujian berlangsung, terdapat beberapa persoalan yang muncul. Persoalan yang muncul dicatat ke dalam \textit{issue} \textit{repository SharIF Judge} di \textit{GitHub}. Semua persoalan dapat dilihat di \path{https://github.com/ayenz/Sharif-Judge/issues}.
 
 	\subsection{\textit{Remove the Assignments Folder}}
 	\textit{Issue} dengan kode unik \#4 meminta agar \textit{folder assignments} untuk dihapus. Hal ini bertujuan agar direktori \textit{URL} \path{/assignments} dapat diakses. \textit{Folder assignments} merupakan \textit{folder default} untuk menyimpan \textit{assignment}. \textit{Folder default} penyimpanan \textit{assignment} tersebut harus diubah terlebih dahulu. Untuk mengubah \textit{folder default} penyimpanan, diperlukan perubahan nilai pada halaman \textit{Settings} dan kode pada kelas \textit{Controller Install.php}. Selain mengubah \textit{folder default} penyimpanan \textit{assignment}, perubahan juga dilakukan pada \textit{folder default tester} dan \textit{default timezone} yang bertujuan untuk merapihkan struktur direktori.
