@@ -100,6 +100,7 @@ Hasil implementasi dari rancangan perangkat lunak yang sudah dibuat, terdiri dar
 \begin{enumerate}
 	\item Kode Program \\
 	Perubahan dan penambahan kode program untuk mengimplementasi kebutuhan \textit{Sharif Judge}, ditulis dalam bahasa pemrograman PHP. Seluruh perubahan kode program telah dijabarkan dalam setiap sub bab pada bab 4. Kode program untuk halaman \textit{Logs} dapat dilihat di \hyperref[lamp:kodeprogramhalamanlogs]{Lampiran A}. Kode program untuk halaman \textit{Hall of Fame} dapat dilihat di \hyperref[lamp:kodeprogramhalamanhof]{Lampiran B}.
+	
 	\item Basis Data \\
 	Terdapat penambahan tabel dalam mengimplementasi kebutuhan \textit{Sharif Judge} pada \hyperref[chap:logs]{sub bab 4.5}. Tabel tersebut diberi nama \textit{shj\_logins}. Tabel \ref{tab:tabellogsfix} menunjukan struktur tabel \textit{shj\_logins}
 	\begin{table}[H] %atau h saja untuk "kira kira di sini"
@@ -483,7 +484,7 @@ Pengujian fungsional bertujuan untuk memastikan setiap fitur baru pada \textit{S
 	\end{figure}
 	
 \section{Pengujian Ekseprimental}
-Pengujian eksperimental dilakukan dengan cara menginstal perangkat lunak \textit{SharIF Judge} pada server lab FTIS UNPAR. Pengujian ini bertujuan untuk menguji coba secara langsung fitur-fitur baru \textit{SharIF Judge} pada mata kuliah pemrograman. \textit{SharIF Judge} diuji untuk mata kuliah Algoritma \& Struktur Data (ASD) semester genap 2017/2018. \textit{SharIF Judge} yang telah diinstall, dapat diakses pada \textit{URL} \path{http://asd-lat.ftis.unpar/} dan \path{http://asd-quiz.ftis.unpar/}. Selama pengujian berlangsung, terdapat beberapa persoalan yang muncul. Persoalan yang muncul dicatat ke dalam \textit{issue} \textit{repository SharIF Judge} di \textit{GitHub}. Semua persoalan dapat dilihat di \path{https://github.com/ayenz/Sharif-Judge/issues}.
+Pengujian eksperimental dilakukan dengan cara menginstal perangkat lunak \textit{SharIF Judge} pada server lab FTIS UNPAR. Pengujian ini bertujuan untuk menguji secara langsung fitur-fitur baru \textit{SharIF Judge} pada mata kuliah pemrograman. \textit{SharIF Judge} diuji untuk mata kuliah Algoritma \& Struktur Data (ASD) semester genap 2017/2018. \textit{SharIF Judge} yang telah diinstall, dapat diakses pada \textit{URL} \path{http://asd-lat.ftis.unpar/} dan \path{http://asd-quiz.ftis.unpar/}. Selama pengujian berlangsung, terdapat beberapa persoalan yang muncul. Persoalan yang muncul dicatat ke dalam \textit{issue} \textit{repository SharIF Judge} di \textit{GitHub}. Semua persoalan dapat dilihat di \path{https://github.com/ayenz/Sharif-Judge/issues}.
 
 	\subsection{\textit{Remove the Assignments Folder}}
 	\textit{Issue} dengan kode unik \#4 meminta agar \textit{folder assignments} untuk dihapus. Hal ini bertujuan agar direktori \textit{URL} \path{/assignments} dapat diakses. \textit{Folder assignments} merupakan \textit{folder default} untuk menyimpan \textit{assignment}. \textit{Folder default} penyimpanan \textit{assignment} tersebut harus diubah terlebih dahulu. Untuk mengubah \textit{folder default} penyimpanan, diperlukan perubahan nilai pada halaman \textit{Settings} dan kode pada kelas \textit{Controller Install.php}. Selain mengubah \textit{folder default} penyimpanan \textit{assignment}, perubahan juga dilakukan pada \textit{folder default tester} dan \textit{default timezone} yang bertujuan untuk merapihkan struktur direktori.
@@ -943,6 +944,16 @@ $objWriter->save('php://output');
 		\caption[Isi \textit{Excel sharifjudge\_users.xlsx}]{Isi \textit{Excel sharifjudge\_users.xlsx}} 
 		\label{fig:excelu} 
 	\end{figure}
+
+\section{Analisis Dampak}
+Analisis dampak pada perangkat lunak adalah proses mengidentifikasi pengaruh yang muncul dari perubahan yang telah dilakukan dan memperkirakan apa yang perlu dimodifikasi untuk mencapai perubahan~\cite{arnold:96:impact}. Perangkat lunak \textit{Sharif Judge} yang telah dikembangkan, mengalami beberapa perubahan. Beberapa perubahan tersebut yaitu:
+\begin{enumerate}
+	\item Basis Data \\
+	Pada basis data, terdapat penambahan tabel yaitu tabel \textit{shj\_logins} dan beberapa penambahan atribut pada tabel \textit{shj\_assignments} dan \textit{shj\_settings}. Dengan adanya perubahan struktur basis data, maka proses instalasi \textit{SharIF Judge} juga berubah. Proses instalasi \textit{SharIF Judge} juga harus diperbarui agar dapat membuat basis data yang sesuai dengan hasil pengembangan.
+	
+	\item Tampilan \\
+	Pada tampilan, terdapat penambahan halaman dan perubahan logo serta nama perangkat lunak. Beberapa halaman baru yang ditambahkan adalah halaman \textit{Hall of Fame} dan \textit{24-hour Logs}. Logo Sharif Judge diubah menggunakan logo Program Studi Teknik Informatika. Nama perangkat lunak \textit{Sharif Judge} diubah menjadi \textit{SharIF Judge}.
+\end{enumerate}
 
 \section{Masukan dari Pengguna \textit{GitHub}}
 \label{sec:masukangithub}
