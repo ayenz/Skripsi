@@ -35,10 +35,10 @@ Gambar~\ref{fig:flow} menunjukan bagaimana data mengalir ke seluruh sistem~\cite
 \begin{enumerate}
 	\item File \textit{index.php} berfungsi sebagai \textit{front controller} dan menginisialisasi \textit{resource} utama yang dibutuhkan untuk menjalankan \textit{CodeIgniter}.
 	\item \textit{Router} memeriksa \textit{HTTP request} untuk menentukan apa yang harus dilakukan.
-	\item Jika terdapat \textit{file cache}, maka akan langsung dikirimkan ke \textit{browser}. File cache merupakan data yang pernah diakses oleh pengguna. Data tersebut dapat berupa teks, gambar atau \textit{file}. 
+	\item Jika terdapat \textit{file cache}, maka akan langsung dikirimkan ke \textit{browser}. \textit{File cache} merupakan data yang pernah diakses oleh pengguna. Data tersebut dapat berupa teks, gambar atau \textit{file}. 
 	\item \textit{HTTP request} dan data pengguna yang dikirim akan terlebih dahulu disaring untuk alasan keamanan. \textit{Application controller} akan dimuat setelah proses penyaringan selesai.
 	\item \textit{Controller} akan memuat kelas \textit{Model, library} utama dan kelas bantuan.
-	\item \textit{View} akan memuat tampilan akhir dan dikirim ke web \textit{browser}. Jika caching diaktifkan, maka tampilan dimasukan ke dalam cache terlebih dahulu sehingga pada permintaan selanjutnya tampilan tersebut dapat diakses lebih cepat.
+	\item \textit{View} akan memuat tampilan akhir dan dikirim ke web \textit{browser}. Jika \textit{caching} diaktifkan, maka tampilan dimasukan ke dalam \textit{cache} terlebih dahulu sehingga pada permintaan selanjutnya tampilan tersebut dapat diakses lebih cepat.
 \end{enumerate}
 
 \subsection{\textit{Model-View-Controller}}
@@ -826,7 +826,7 @@ $opt_d = 0;
 \item Pengguna dianjurkan untuk mendeteksi kode yang mirip setelah waktu \textit{assignment} berakhir, karena para peserta masih dapat mengubah \textit{Final Submissions} masing-masing sebelum waktu habis. Dengan cara tersebut, \textit{Sharif Judge} dapat mengirimkan \textit{Final submissions} para peserta ke \textit{server Moss}.
 \end{itemize}
 
-\subsection{Database}
+\subsection{\textit{Database}}
 Sebuah \textit{database} dibutuhkan untuk menjalankan \textit{Sharif Judge}. \textit{Database} yang dapat digunakan yaitu \textit{Mysql} dan \textit{PostgreSql}. Pada \textit{database} tersebut terdapat beberapa tabel yang secara otomatis dibuat saat proses instalasi \textit{Sharif Judge}. Beberapa tabel tersebut yaitu:
 \begin{itemize}
 	\item \textit{shj\_assignments} \\
@@ -850,9 +850,9 @@ Sebuah \textit{database} dibutuhkan untuk menjalankan \textit{Sharif Judge}. \te
 \end{itemize}
 
 \section{\textit{Twig}}
-Pada perangkat lunak \textit{\textit{Sharif Judge}}, kelas view menggunakan \textit{framework} aplikasi yaitu \textit{Twig}. \textit{Twig} merupakan sebuah \textit{template engine modern} untuk \textit{PHP} ~\cite{fabien:09:twig}. Sebuah \textit{template Twig} dapat mengandung \textit{variables} atau \textit{expression} dan \textit{tags}. \textit{Variables} atau \textit{expression} akan diubah pada saat \textit{template Twig} dievaluasi dan \textit{tags} yang akan mengontrol logika dari \textit{template} tersebut. Listing \ref{twig:1} menunjukan kode template minimal yang menunjukan beberapa hal mendasar.
+Pada perangkat lunak \textit{\textit{Sharif Judge}}, kelas view menggunakan \textit{framework} aplikasi yaitu \textit{Twig}. \textit{Twig} merupakan sebuah \textit{template engine modern} untuk \textit{PHP} ~\cite{fabien:09:twig}. Sebuah \textit{template Twig} dapat mengandung \textit{variables} atau \textit{expression} dan \textit{tags}. \textit{Variables} atau \textit{expression} akan diubah pada saat \textit{template Twig} dievaluasi dan \textit{tags} yang akan mengontrol logika dari \textit{template} tersebut. Listing \ref{twig:1} menunjukan template kode yang menunjukan beberapa hal mendasar.
 
-\begin{lstlisting}[language=diff, caption=Kode Template Minimal , label=twig:1, basicstyle=\ttfamily, frame=single,
+\begin{lstlisting}[language=diff, caption=Template Kode , label=twig:1, basicstyle=\ttfamily, frame=single,
 columns=fullflexible, keepspaces=true]
 <!DOCTYPE html>
 <html>
